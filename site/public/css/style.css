@@ -31,12 +31,12 @@
 }
 
 .tela-input {
-    width: 80%;
+    width: 42%;
 }
 
 .button-registrar {
     padding: 3%;
-    width: 50%;
+    width: 55%;
     font-size: 70%;
 }
 
@@ -44,3 +44,6 @@
     font-size: 140%;
 }
 
+input {
+    height: 13%;
+}
