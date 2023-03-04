@@ -1,7 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 .roxo{
     background-color: #7E8CCD;
 }
 .navbar{
     padding: 0;
 }
+/* ===================== Registro ====================== */
+.background-register {
+    background-image: url("../assets/imgs/HomeFundo.png");
+    background-size: cover;
+    filter: blur(3px);
+}
 
+.comeco-cadastro {
+    height: 14%;
+}
+
+.meio-cadastro {
+    height: 66%;
+}
+
+.fim-cadastro {
+    height: 20%;
+}
+
+.font-rubik{
+    /* font-size: 350%; */
+    font-family: 'Rubik', sans-serif;
+}
+/* 
+.tela-input {
+    width: 80%;
+}
+
+.button-registrar {
+    padding: 3%;
+    width: 50%;
+    font-size: 70%;
+}
+
+.font-size-cadastro {
+    font-size: 240%;
+}
+ */
