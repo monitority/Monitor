@@ -44,10 +44,36 @@
     font-size: 1.2rem;
 }
 
+.card-cadastro-hide {
+    display: flex;
+}
+
+.card-cadastro-forms {
+    width: 50%;
+}
+
+.card-cadastro-forms {
+    border-radius: 0rem 0.5rem 0.5rem 0rem;
+}
+
+.alinhar-text {
+    text-align: center;
+}
+
 input {
     height: 13%;
 }
 
-@media (max-width: 700ppx) {
-    
+@media (max-width: 700px) {
+    .card-cadastro-hide {
+        display: none;
+    }
+
+    .card-cadastro-forms {
+        width: 80%;
+    }
+
+    .card-cadastro-forms {
+        border-radius: 0.8rem;
+    }
 }
