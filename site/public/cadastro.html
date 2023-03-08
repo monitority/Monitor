@@ -9,64 +9,121 @@
     <!-- CSS Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <link rel="stylesheet" href="./css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="./css/cadastro.css">
 
-    <title>Cadastro |</title>
+
+
+
+    <title>Registro |</title>
 </head>
 
 <body>
-    <main>
-        <div class="d-flex justify-content-center align-items-center position-relative">
-            <div class="background-register vw-100 vh-100">
-            </div>
-            <div class="vw-100 h-75 position-absolute d-flex justify-content-center card-cadastro">
-                <div class="w-25 h-100 bg-light justify-content-center align-items-center rounded-start card-cadastro-hide">
-                    <img src="./assets/imgs/cadastro.png" class="w-100">
+
+    <div class="container ">
+        <!-- left-side bg-light -->
+        <div class="col-md-10 main">
+            <div class="col-md-6 left-side cor">
+                <img src="./css/register.svg" alt="" class="vh-75">
+                <br>
+
+
+            </div><!--col-sm-6-->
+
+            <div class="col-md-6 right-side bg-body-secondary">
+                <h3>Você já tem uma conta?</h3>
+
+                <!--Form with header-->
+                <div class="form">
+                    <div class="divisao">
+                        <div class="divisao-column-1">
+                            <div class="form-group ">
+                                <label for="form2">Usersname</label>
+                                <input type="text" id="form2" class="form-control input-lg primeiro" type="text" name=""
+                                    placeholder="Digite seu Usersname" onblur="validarUsuario()" required>
+                            </div>
+                            <div class="form-group ">
+                                <label for="form2">Usersname</label>
+                                <input type="text" id="form2" class="form-control input-lg primeiro" type="text" name=""
+                                    placeholder="Digite seu Usersname" onblur="validarUsuario()" required>
+
+                            </div>
+                            <div class="form-group ">
+                                <label for="form2">Usersname</label>
+                                <input type="text" id="form2" class="form-control input-lg segundo" type="text" name=""
+                                    placeholder="Digite seu Usersname" onblur="validarUsuario()" required>
+
+                            </div>
+                            <div class="form-group ">
+                                <label for="form2">Usersname</label>
+                                <input type="text" id="form2" class="form-control input-lg segundo" type="text" name=""
+                                    placeholder="Digite seu Usersname" onblur="validarUsuario()" required>
+
+                            </div>
+                        </div>
+                        <div class="divisao-column-1">
+                            <div class="form-group">
+                                <label for="form4">Password</label>
+                                <input type="password" id="form4" S class="form-control input-lg terceiro"
+                                    placeholder="Digite sua Senha" onblur="validarSenha()" required>
+                            </div>
+                            <div class="form-group ">
+                                <label for="form2">Usersname</label>
+                                <input type="text" id="form2" class="form-control input-lg terceiro" type="text" name=""
+                                    placeholder="Digite seu Usersname" onblur="validarUsuario()" required>
+
+                            </div>
+                            <div class="form-group ">
+                                <label for="form2">Usersname</label>
+                                <input type="text" id="form2" class="form-control input-lg quarto" type="text" name=""
+                                    placeholder="Digite seu Usersname" onblur="validarUsuario()" required>
+
+                            </div>
+                            <div class="form-group ">
+                                <label for="form2">Usersname</label>
+                                <input type="text" id="form2" class="form-control input-lg quarto" type="text" name=""
+                                    placeholder="Digite seu Usersname" onblur="validarUsuario()" required>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">Lembra-me</label>
+                    </div>
+
+                    <div class="text-xs-center">
+                        <button class="btn btn-deep-purple">Login</button>
+                    </div>
+
+                    <div class="inputBox">
+                        <span class="cadastrar">Não tem conta? Cadastre-se clicando
+                            <a href="cadastro.html"> aqui.</a></span>
+                    </div>
+
+
                 </div>
-                <div class=" h-100 bg-body-secondary card-cadastro-forms" >
-                    <div class="w-100 comeco-cadastro d-flex justify-content-center align-items-center">
-                        <p class="fw-semibold font-rubik">Cadastro</p>
-                    </div>
-                    <div class="w-100 meio-cadastro d-flex justify-content-around">
-                        <div class="d-flex flex-column tela-input justify-content-around align-items-center">
-                            <input class="form-control" type="text" placeholder="Nome"
-                                aria-label="default input example">
-                            <input class="form-control" type="text" placeholder="CNPJ"
-                                aria-label="default input example">
-                            <input class="form-control" type="text" placeholder="Email"
-                                aria-label="default input example">
-                            <input class="form-control" type="text" placeholder="Senha"
-                                aria-label="default input example">
-                        </div>
-                        <div class="d-flex flex-column tela-input justify-content-around align-items-center">
-                            <input class="form-control" type="text" placeholder="Empresa"
-                                aria-label="default input example">
-                            <input class="form-control" type="text" placeholder="Nome Fantasia"
-                                aria-label="default input example">
-                            <input class="form-control" type="text" placeholder="Tel."
-                                aria-label="default input example">
-                            <input class="form-control" type="text" placeholder="Confir. Senha"
-                                aria-label="default input example">
-                        </div>
-                    </div>
-                    <div class="w-100 fim-cadastro d-flex justify-content-center align-items-center">
-                        <div
-                            class="h-100 w-50 d-flex flex-column justify-content-around align-items-center font-size-cadastro alinhar-text">
-                            <button type="button" class="btn btn-outline-success button-registrar">Registrar</button>
-                            <p>Já tem uma conta? <a href="#" class="">Entre</a></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
+                <!--/Form with header
+
+
+            </div><!--col-sm-6-->
+
+
+            </div><!--col-sm-8-->
+
+        </div><!--container-->
+
+
 </body>
 
 </html>
 
 <!-- JavaScript Bootstrap -->
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
     crossorigin="anonymous"></script>
 
 <script src="./js/funcao.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
