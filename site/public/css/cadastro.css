@@ -1,17 +1,20 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&subset=latin-ext');
 
-
 .main {
-    margin-top: 70px;
+    margin-top: 40px;
 }
 
 .left-side {
-    min-height: 514px;
+    min-height: 556.7px;
+}
+
+.form-control {
+    width: 95% !important;
 }
 
 .input-lg, .form-group-lg .form-control {
-    height: 46px;
-    padding: 10px 16px;
+    height: 40px;
+    padding: 10px 10px;
 }
 
 input, button, select, textarea {
