@@ -17,10 +17,6 @@ body {
     line-height: 1.42857143;
     color: #333;
     background-color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
 }
 
 #playground-container {
@@ -34,6 +30,9 @@ body {
     box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.24);
     padding: 0px;
     background: #FFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* background:#2196f3; */
@@ -50,6 +49,7 @@ body {
     padding: 0px 0px 0px;
     background-size: cover;
     background-color:  #b3b1b1;
+    display: flex;
     justify-content: center;
     align-items: center;
     align-self: center;
@@ -134,10 +134,18 @@ input, button, select, textarea {
     box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.24);
 }
 
+.text-xs-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 .inputBox {
     color: #000000;
     margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 section .contentBox .formBox .span .a {
