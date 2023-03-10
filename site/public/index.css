@@ -1,0 +1,45 @@
+
+
+.nossoServico{
+    background: linear-gradient(180deg, #15204D 9.17%, #020E2C 36.73%);
+
+}
+
+.divImagem{
+    margin-left: 7%;
+    
+}
+
+.divTexto{
+    color: aliceblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-left: 10%;
+}
+
+.tituloBanner{
+    padding-bottom: 15px;
+
+}
+.textoNossoServico{
+  font-size: 1.7rem;
+}
+
+h1{
+  font-weight: bold;
+}
+@media(max-width: 600px){
+  .imagem {
+    display: none;
+  }
+  .divTexto{
+    width: 80%;
+    padding-bottom: 5%;
+  }
+  .textoNossoServico{
+    font-size: 1.5rem;
+  }
+}
+
