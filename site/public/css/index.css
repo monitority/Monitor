@@ -1,5 +1,143 @@
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: dashed;
+  scroll-behavior: smooth;
+}
 
+body{
+  background-color: #15204D;
+  font-family:Arial, Helvetica, sans-serif;   
+}
+.navbar{
+  padding: 0;
+}
+
+.roxo{
+  background-color: #7E8CCD;
+}
+
+.conteiner-fluid{
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center center;
+}
+
+
+.nav-item:hover {
+  border-bottom: 2px solid #99BB00;
+}
+
+.conteiner-conteudos{
+  height: 100%;
+  background-color: #15204D;
+}
+
+.d-inline-flex {
+  display: inline-flex!important;
+  justify-content: center;
+}
+
+/*.matrix{
+  /*background-color: #0a53be;
+  transform: matrix(0.7, -0.5, 0.5, 0.4, 0.5, 0.7);
+}*/
+
+.img-inicio{
+  display: flex;
+  padding: 30px;
+  height: 550px;
+  width: 550px;
+ 
+}
+.conteiner-textos-inicio{
+display: flex;
+/*flex-column**/
+}
+
+.img-texto{
+  width: 160px;
+}
+
+p-2{
+  display: flex;
+  justify-content: end;
+}
+
+.color-text{
+  display: flex;
+  color: aliceblue;
+  padding-top: 30px;
+  justify-content: flex-end;
+  padding-top: 55px;
+  padding-left: 50px;
+  padding-right: 23px;
+  
+}
+.p2-conteiner-logo-texto-inicio-img{
+  display: flex;
+  justify-content: flex-end;
+
+}
+
+.titulo-text{
+  padding-top: 81px;
+}
+
+.color-text-intro{
+  color: aliceblue;
+  display: flex;
+  flex-direction: column;
+  padding-left: 50px;
+  padding-right: 23px;
+}
+
+.button-inicio{
+  display: flex;
+  font-weight: 400;
+  font-size: 15px;
+  justify-content: space-evenly;
+}
+
+.button-primary{
+  background-color: #7E8CCD;
+  width: 180px;
+  height: 40px;
+  border: 30px;
+  box-shadow: 4px 5px 4px #04112B;
+  border-radius: 20px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #04112B;
+  font-weight: 400;
+  font-size: 15px;
+}
+
+.button-secondy{
+  background-color: #7E8CCD;
+  width: 180px;
+  height: 40px;
+  border: 30px;
+  box-shadow: 4px 5px 4px #04112B;
+  border-radius: 20px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #04112B;
+  font-weight: 400;
+  font-size: 15px;
+}
+
+.button-primary:hover{
+  background-color: #004667;
+  color: white;
+}
+
+.button-secondy:hover{
+  background-color: #004667;
+  color: white;
+}
+
+/**/
 .nossoServico{
     background: linear-gradient(180deg, #15204D 9.17%, #020E2C 36.73%);
 
