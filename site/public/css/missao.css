@@ -1,0 +1,38 @@
+
+
+.slide{
+    width: 100%;
+    height: 35vh;
+    background: linear-gradient(180deg, 
+    #020E2C 27.43%, 
+    #050505 97.64%);
+mix-blend-mode: normal;
+/* margin-top: 1rem; */
+}
+.style-position-carrossel{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.style-carousel{
+    display: flex;
+    width: 50%;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.title{
+    color: aliceblue;
+    padding: 22px;
+}
+
+.text{
+    color: rgb(207, 208, 209);
+    padding: 22px;
+}
+

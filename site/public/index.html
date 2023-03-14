@@ -10,99 +10,165 @@
 
 
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/missao.css">
 
 
-    <title>Home |</title >
+    <title>Home |</title>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid roxo">
-            <b><a class="navbar-brand" href="#"><img src="./assets/imgs/logoHome.png" alt="" width="80"></a></b>
-        
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse " id="navbarNavDropdown">
-            <ul class="navbar-nav">
-                <li class="nav-item"><a href="#topo" class="nav-link active text-light" aria-current="page" href="#">inicio</a></li>
-                <li class="nav-item"><a href="#servico-M" class="nav-link text-light" href="#">Serviços</a></li>
-                <li class="nav-item"><a href="#sobreNos" class="nav-link text-light" href="#">Sobre Nós</a></li>
-                <li class="nav-item"><a href="#Contato" class="nav-link text-light" href="#">Contato</a>
-                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Acesse</a>
-                  <ul class="dropdown-menu">
-                    <li><a href="./cadastro.html" class="dropdown-item" href="#">Cadastro</a></li>
-                    <li><a href="./login.html" class="dropdown-item" href="#">Login</a></li>
-                  </ul>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+            <b><a class="navbar-brand" href="#"><img src="./assets/imgs/logoHome.png" alt="" width="100"></a></b>
 
-      <main>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse " id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a href="#topo" class="nav-link active text-light" aria-current="page"
+                            href="#">inicio</a></li>
+                    <li class="nav-item"><a href="#servico-M" class="nav-link text-light" href="#">Serviços</a></li>
+                    <li class="nav-item"><a href="#sobreNos" class="nav-link text-light" href="#">Sobre Nós</a></li>
+                    <li class="nav-item"><a href="#Contato" class="nav-link text-light" href="#">Contato</a>
+                    <li class="nav-item dropdown"><a class="nav-link dropdown-toggle text-light" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false"> Acesse</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="./cadastro.html" class="dropdown-item" href="#">Cadastro</a></li>
+                            <li><a href="./login.html" class="dropdown-item" href="#">Login</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main>
         <div class="nossoServico">
-          <div id="topo" class=" conteiner-conteudos p-5 grid text-center d-inline-flex col-md-12">
-            <div class="matrix"><img src="/site/public/assets/imgs/home.png"class="img-inicio"alt=""/></div>
-              <div class=" conteiner-textos-inicio d-flex flex-column mb-3">
-                <div class="p-2">
-                  <img class="img-texto" src="/site/public/assets/imgs/logoHome.png" alt="" >
-                  <h5 class="color-text">Monitoramento de Totens</h5>
-                </div>
-                <div class="p-2">
-                  <h2 class="color-text titulo-text">
-                    Casos resolvidos com eficiência
-                  </h2>
-                </div>
-                <div class="p-2">
-                  <h6 class="color-text-intro">
-                    Vamos revelar a melhor estratégia para sua empresa.
-                    <p>
-                      Aqui é onde o seu texto começa.clicar e começar a escrever.
-                    </p>
-                  </h6>
-                </div>
-                <div class="button-inicio ">
-                  <button onclick="buttonServico()" type="button" class="button-primary">
-                    Serviços
-                  </button>
-                  <button onclick="buttonContato()" type="button" class="button-secondy">
-                    Contate-nos
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-      </main>
-      <!--nossos serviços e oq é monitoração-->
-       <div id="servico-M" class="nossoServico">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm divImagem">
-                    <img src="./assets/imgs/nossoServico.png" class="img-fluid imagem" alt="Nosso Servico">
-                </div>
-                <div class="col-sm divTexto">
-                    <h1 class="tituloBanner">Sobre nosso serviços</h1>
-                    <p class="textoNossoServico"> A Monitority trabalha com monitoração de totens para empresas de suporte de T.I de fast-food</p>
+            <div id="topo" class=" conteiner-conteudos p-5 grid text-center d-inline-flex col-md-12">
+                <div class="matrix"><img src="./assets/imgs/home.png" class="img-inicio" alt="" /></div>
+                <div class=" conteiner-textos-inicio d-flex flex-column mb-3">
+                    <div class="p-2">
+                        <img class="img-texto" src="./assets/imgs/logoHome.png" alt="">
+                        <h5 class="color-text">Monitoramento de Totens</h5>
+                    </div>
+                    <div class="p-2">
+                        <h2 class="color-text titulo-text">
+                            Casos resolvidos com eficiência
+                        </h2>
+                    </div>
+                    <div class="p-2">
+                        <h6 class="color-text-intro">
+                            Vamos revelar a melhor estratégia para sua empresa.
+                            <p>
+                                Aqui é onde o seu texto começa.clicar e começar a escrever.
+                            </p>
+                        </h6>
+                    </div>
+                    <div class="button-inicio ">
+                        <button onclick="buttonServico()" type="button" class="button-primary">
+                            Serviços
+                        </button>
+                        <button onclick="buttonContato()" type="button" class="button-secondy">
+                            Contate-nos
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm divTexto">
-                    <h1 class="tituloBanner">Sobre nosso serviços</h1>
-                    <p class="textoNossoServico"> A Monitority trabalha com monitoração de totens para empresas de suporte de T.I de fast-food</p>
+        <!--nossos serviços e oq é monitoração-->
+        <div id="servico-M" class="nossoServico">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm divImagem">
+                        <img src="./assets/imgs/nossoServico.png" class="img-fluid imagem" alt="Nosso Servico">
+                    </div>
+                    <div class="col-sm divTexto">
+                        <h1 class="tituloBanner">Sobre nosso serviços</h1>
+                        <p class="textoNossoServico"> A Monitority trabalha com monitoração de totens para empresas de
+                            suporte de T.I de fast-food</p>
+                    </div>
                 </div>
-                <div class="col-sm divImagem">
-                    <img src="./assets/imgs/monitoracao.png" class="img-fluid imagem" alt="Nosso Servico">
+            </div>
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm divTexto">
+                        <h1 class="tituloBanner">Sobre nosso serviços</h1>
+                        <p class="textoNossoServico"> A Monitority trabalha com monitoração de totens para empresas de
+                            suporte de T.I de fast-food</p>
+                    </div>
+                    <div class="col-sm divImagem">
+                        <img src="./assets/imgs/monitoracao.png" class="img-fluid imagem" alt="Nosso Servico">
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+
+
+        <div id="carouselExample" class="carousel slide">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+
+                    <div class="style-position-carrossel">
+                        <div class="w-50 text-center d-flex flex-column align-items-center">
+                            <h1 class="title">Nossa Missão</h1>
+                            <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam ipsa officia accusamus
+                                aspernatur
+                                mollitia nostrum enim suscipit neque, a aperiam asperiores eum minus quasi, molestias
+                                sequi
+                                iusto, architecto error sit.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+
+                    <div class="style-position-carrossel">
+                        <div class="style-carousel">
+                            <h1 class="title">Nossa Visão</h1>
+                            <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse voluptatibus rerum quam in
+                                aliquam
+                                ad
+                                ullam ex quibusdam ut. Aliquam repellat quos numquam nisi velit dignissimos harum neque
+                                placeat
+                                quam?
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+
+                    <div class="style-position-carrossel">
+                        <div class="style-carousel">
+                            <h1 class="title">Nossos Valores</h1>
+                            <p class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum iusto expedita numquam
+                                temporibus
+                                sed recusandae impedit nisi. Assumenda iure consequatur facere, cumque maxime molestiae
+                                laborum
+                                voluptatum aliquid voluptates, minus delectus.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </main>
 </body>
 
 </html>
