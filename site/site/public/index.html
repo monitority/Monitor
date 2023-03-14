@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- CSS Bootstrap -->
+
+
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/index.css">
+
+
+  <title>Home |</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid roxo">
+      <b><a class="navbar-brand" href="#">
+          <img src="./assets/imgs/logoHome.png" alt="" width="80"></a></b>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse " id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a href="#topo" class="nav-link active text-light" aria-current="page"
+              href="#">inicio</a></li>
+          <li class="nav-item"><a href="#servicos" class="nav-link text-light" href="#">Serviços</a></li>
+          <li class="nav-item"><a href="#sobreNos" class="nav-link text-light" href="#">Sobre Nós</a></li>
+          <li class="nav-item"><a href="#contatos" class="nav-link text-light" href="#">Contato</a>
+          <li class="nav-item dropdown"><a class="nav-link dropdown-toggle text-light" href="#" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false"> Acesse</a>
+            <ul class="dropdown-menu">
+              <li><a href="./cadastro.html" class="dropdown-item" href="#">Cadastro</a></li>
+              <li><a href="./login.html" class="dropdown-item" href="#">Login</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <div class=" nossoServico d-flex justify-content-center">
+      <div id="topo" class="vh-100 conteiner-conteudos p-5 grid text-center d-inline-flex col-md-12">
+        <div class="matrix w-50">
+          <img src="/site/public/assets/imgs/home.png" alt="" class="w-100" />
+        </div>
+        <div class=" conteiner-textos-inicio d-flex flex-column mb-3">
+          <div class="d-flex flex-column align-items-center">
+            <div class="w-75 d-flex flex-column align-items-end">
+            <img class="img-texto" src="/site/public/assets/imgs/logoHome.png" alt="">
+            <h5 class="color-text">Monitoramento de Totens</h5>
+            </div>
+          </div>
+          <div class="sem-margin">
+          <div class="p-2">
+            <h2 class="color-text titulo-text">
+              Casos resolvidos com eficiência
+            </h2>
+          </div>
+          <div class="p-2">
+            <p class="color-text-intro">
+              Vamos revelar a melhor estratégia para sua empresa.
+              Aqui é onde o seu texto começa clicar e começar a escrever.
+            </p>
+          </div>
+          </div>
+          <div class="button-inicio ">
+            <button type="button" class="button-primary">
+              <a href="#servicos">Serviços</a>
+            </button>
+            <button type="button" class="button-secondy">
+              <a href="#contatos">Contate-nos</a>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!--nossos serviços e oq é monitoração-->
+  <div id="servicos" class="nossoServico">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm divImagem">
+          <img src="./assets/imgs/nossoServico.png" class="img-fluid imagem" alt="Nosso Servico">
+        </div>
+        <div class="col-sm divTexto">
+          <h1 class="tituloBanner">Sobre nosso serviços</h1>
+          <p class="textoNossoServico"> A Monitority trabalha com monitoração de totens para empresas de suporte de T.I
+            de fast-food</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm divTexto">
+          <h1 class="tituloBanner">Sobre nosso serviços</h1>
+          <p class="textoNossoServico"> A Monitority trabalha com monitoração de totens para empresas de suporte de T.I
+            de fast-food</p>
+        </div>
+        <div class="col-sm divImagem">
+          <img src="./assets/imgs/monitoracao.png" class="img-fluid imagem" alt="Nosso Servico">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Nossos contatos -->
+  <div id="contatos"  class="vh-100 w-100 d-flex justify-content-center">
+    <div class="vh-100 w-50 d-flex justify-content-center align-items-center">
+      <img src="./assets/svg/contato.svg" class="w-75" alt="Nossos Contatos">
+    </div>
+
+    <div class="vh-100 w-50 d-flex flex-column justify-content-center">
+      <div class="h-50 d-flex align-items-center justify-content-center">
+        <div class="w-75 d-flex flex-column align-items-start">
+          <h2 class="text-white">Deixe a sua mensagem</h1>
+            <p class="fs-5 text-white">Aqui é onde o seu texto começa. Basta clicar e começar!</p>
+            <div class="input-group flex-nowrap">
+              <input type="text" class="form-control" placeholder="E-mail" aria-label="Username"
+                aria-describedby="addon-wrapping">
+            </div>
+            <button class="btn-contatos">Enviar</button>
+        </div>
+      </div>
+
+      <div class="h-50 d-flex align-items-center justify-content-center">
+        <div class="w-75 d-flex flex-column align-items-start">
+          <h2 class="text-white">Entre em contato</h1>
+            <p class="fs-5 text-white">Visite-nos</p>
+            <p class="fs-5 text-white">Rua Haddock Lobo, 595, Cerqueira César, São Paulo - SP, 01414-001</p>
+            <p class="fs-5 text-white">Entre em contato conosco: 11 00000-0000</p>
+            <p class="fs-5 text-white">E-mail: 231-2adsa-grupo9@bandtec.com.br</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
+
+<!-- JavaScript Bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+<script src="./js/funcao.js"></script>
