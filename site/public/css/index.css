@@ -51,6 +51,7 @@ body{
 
 .conteiner-textos-inicio{
 display: flex;
+flex-direction: column;
 /*flex-column**/
 }
 
@@ -58,8 +59,12 @@ display: flex;
   width: 160px;
 }
 
-
-
+.nossoServicoIndex{
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+}
 .p2-conteiner-logo-texto-inicio-img{
   display: flex;
   justify-content: flex-end;
@@ -70,14 +75,14 @@ display: flex;
 }
 
 .p-2 h2{
-  font-size: 3.6rem;
+  font-size: 4vw;
   font-weight: 700;
   text-align: start;
 }
 
 .p-2 p {
   text-align: start;
-  font-size: 1.2rem;
+  font-size: 1.5vw;
   font-weight: 400;
 }
 
@@ -90,34 +95,34 @@ display: flex;
 .button-inicio{
   display: flex;
   font-weight: 400;
-  font-size: 15px;
+  font-size: 1.5px;
   justify-content: space-evenly;
 }
 
 .button-primary{
   background-color: #7E8CCD;
-  width: 180px;
-  height: 40px;
+  width: 14vw;
+  height: 3vw;
   border: 30px;
   box-shadow: 4px 5px 4px #04112B;
-  border-radius: 20px;
+  border-radius: 2vw;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: #04112B;
   font-weight: 400;
-  font-size: 15px;
+  font-size: 1.3vw;
 }
 
 .button-secondy{
   background-color: #7E8CCD;
-  width: 180px;
-  height: 40px;
+  width: 14vw;
+  height: 3vw;
   border: 30px;
   box-shadow: 4px 5px 4px #04112B;
-  border-radius: 20px;
+  border-radius: 2vw;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: #04112B;
   font-weight: 400;
-  font-size: 15px;
+  font-size: 1.3vw;
 }
 
 .button-primary:hover{
@@ -152,17 +157,37 @@ display: flex;
 
 .tituloBanner{
     padding-bottom: 15px;
-
+    font-size: 3vw;
 }
 .textoNossoServico{
-  font-size: 1.45rem;
+  font-size: 1.5vw;
+}
+
+.media-none{
+  display: flex;
+  flex-direction: column;
+  align-items: end;
 }
 
 h1{
   font-weight: bold;
 }
-@media(max-width: 600px){
+@media(max-width: 1330px){
+/* Part1 */
+  .conteiner-textos-inicio{
+    display: flex;
+    justify-content: center;
+  }
+  .nossoServicoIndex{
+    height: auto;
+  }
   .imagem {
+    display: none;
+  }
+  .matrix{
+    display: none;
+  }
+  .media-none{
     display: none;
   }
   .divTexto{
@@ -170,7 +195,7 @@ h1{
     padding-bottom: 5%;
   }
   .textoNossoServico{
-    font-size: 1.5rem;
+    font-size: 1.5vw;
   }
 }
 
@@ -304,12 +329,61 @@ mix-blend-mode: normal;
 
 .title{
   color: aliceblue;
-  padding: 22px;
+  padding: 1vw;
+  font-size: 3vw;
+  font-weight: 700;
 }
 
 .text{
   color: rgb(207, 208, 209);
-  padding: 22px;
+  padding: 1.2vw;
+  font-size: 1.4vw;
+  font-weight: 400;
+}
+
+.mensagem-footer{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.mensagem-footer h2{
+  font-size: 3vw;
+  font-weight: 600;
+}
+
+.mensagem-footer p{
+  font-size: 1.5vw;
+}
+
+.div-image img{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  
+}
+.input-group{
+  flex-wrap: nowrap;
+}
+
+.btn-contatos{
+  font-size: 1.2vw;
+}
+
+.contatos{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.contatos h2{
+  font-size: 3vw;
+  font-weight: 600;
+}
+
+.contatos p{
+  font-size: 1.5vw;
 }
 /* medias query */
 @media (max-width: 768px) {
@@ -320,15 +394,7 @@ mix-blend-mode: normal;
       font-size: 1.4sem;
   }
 }
-
-@media screen and (max-width: 1640px){
-  .texto-secao-dois{
-      height: auto;
-  }
-  .titulo-e-barra{
-      height: auto;
-  }
-}  
+  
 @media screen and (max-width: 1640px){
   .texto-secao-dois{
       height: auto;
@@ -342,11 +408,15 @@ mix-blend-mode: normal;
 
 @media screen and (max-width: 1330px){
   .container-sobre-nos{
-      width: 90%;
+      width: 100%;
+      height: auto;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
+  }
+  .div-image{
+    display: none;
   }
   .row{
       display: flex;
@@ -377,11 +447,14 @@ mix-blend-mode: normal;
 
 @media screen and (max-width: 1064px){
   .container-sobre-nos{
-      width: 90%;
+      width: 100%;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
+  }
+  .nossoServicoIndex{
+    height: auto;
   }
   .row{
       display: flex;
@@ -412,11 +485,14 @@ mix-blend-mode: normal;
 
 @media screen and (max-width: 764px){
   .container-sobre-nos{
-      width: 90%;
+      width: 100%;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
+  }
+  .nossoServicoIndex{
+    height: auto;
   }
   .row{
       display: flex;
