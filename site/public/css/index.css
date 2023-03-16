@@ -128,11 +128,18 @@ flex-direction: column;
 .button-primary:hover{
   background-color: #004667;
   color: white;
+  transition: 0.3s;
 }
 
 .button-secondy:hover{
   background-color: #004667;
   color: white;
+  transition: 0.3s;
+}
+
+.dropdown-item:hover{
+  background-color:#cdcdcd ;
+  transition: 0.6s;
 }
 
 /**/
@@ -142,8 +149,32 @@ flex-direction: column;
 }
 
 .divImagem{
-    margin-left: 7%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
     
+}
+
+.vw-85 {
+  width: 80vw;
+}
+
+.w-80 {
+  width: 75%;
+}
+
+.lado-direito {
+  display: flex;
+  justify-content: end;
+}
+
+.lado-esquerdo {
+  display: flex;
+  justify-content: start;
+}
+
+.vh-50 {
+  height: 50vw;
 }
 
 .divTexto{
@@ -152,15 +183,16 @@ flex-direction: column;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin-left: 10%;
+    width: 30%;
+    /* margin-left: 10%; */
 }
 
 .tituloBanner{
     padding-bottom: 15px;
-    font-size: 3vw;
+    font-size: 2.4vw;
 }
 .textoNossoServico{
-  font-size: 1.5vw;
+  font-size: 1.3vw;
 }
 
 .media-none{
@@ -206,7 +238,7 @@ h1{
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 30vw;
+  height: 40vw;
   background: linear-gradient(180deg, #030303 0%, #020E2C 63.41%);
 }
 
@@ -330,14 +362,21 @@ mix-blend-mode: normal;
 .title{
   color: aliceblue;
   padding: 1vw;
-  font-size: 3vw;
+  font-size: 4vw;
   font-weight: 700;
 }
 
 .text{
   color: rgb(207, 208, 209);
   padding: 1.2vw;
-  font-size: 1.4vw;
+  font-size: 1.7vw;
+  font-weight: 400;
+}
+
+.text-white{
+  color: rgb(207, 208, 209);
+  padding: 1.2vw;
+  font-size: 1.7vw;
   font-weight: 400;
 }
 
@@ -369,6 +408,11 @@ mix-blend-mode: normal;
 
 .btn-contatos{
   font-size: 1.2vw;
+}
+
+.btn-contatos:hover{
+  background-color: #99BB00;
+  transition: 0.6s;
 }
 
 .contatos{
