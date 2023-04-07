@@ -129,7 +129,7 @@ function validarUsuario() {
 function validarCargo() {
   var cargo = inputCargo.value;
   /* Verifica se o usuario tem mais de 6 caractéres */
-  if (cargo.length < 3) {
+  if (cargo.length < 2) {
     inputCargo.classList.add("red");
     inputCargo.classList.remove("green");
   } else {
@@ -212,7 +212,7 @@ function validarEmail() {
 var validar_contato = false;
 function validarContato() {
   var contato = inputContato.value;
-  if (contato.length > 11) {
+  if (contato.length < 11) {
     // Valida números telefones celulares para contato
     inputContato.classList.add("red");
     inputContato.classList.remove("green");
@@ -222,75 +222,20 @@ function validarContato() {
     validar_contato = true;
   }
 }
-
-//Confirmar cadastro da empresa
-
-// function registrar_empresa() {
-//   alert("Empresa cadastrada com sucesso!");
-
-//   //nome da empresa
-//   var nome_empresa = inputEmpresa.value;
-//   titulo_div_empresa.innerHTML = nome_empresa;
-//   subtitulo_div_empresa.remove();
-//   inputEmpresa.remove();
-//   nome_empresa_cadastro.innerHTML = `Nome da Empresa`;
-//   nome_empresa_box.innerHTML += nome_empresa;
-
-//   //cnpj da empresa
-//   var cnpj_empresa = Number(inputCNPJ.value);
-//   inputCNPJ.remove();
-//   cnpj_empresa_box.innerHTML += cnpj_empresa;
-//   cnpj_empresa_cadastro.innerHTML = "CNPJ";
-
-//   //Logradouro da empresa
-//   var logradouro_empresa = inputLogradouro.value;
-//   inputLogradouro.remove();
-//   logradouro_empresa_box.innerHTML += logradouro_empresa;
-//   logradouro_empresa_cadastro.innerHTML = "Logradouro";
-
-//   //Cidade da empresa
-//   var cidade_empresa = inputCidade.value;
-//   inputCidade.remove();
-//   cidade_empresa_box.innerHTML += cidade_empresa;
-//   cidade_empresa_cadastro.innerHTML = "Cidade";
-
-//   //Estado da empresa
-//   var estado_empresa = inputUF.value;
-//   inputUF.remove();
-//   estado_empresa_box.innerHTML += estado_empresa;
-//   estado_empresa_cadastro.innerHTML = "UF";
-
-//   //Cep da empresa
-//   var cep_empresa = Number(inputCEP.value);
-//   inputCEP.remove();
-//   cep_empresa_box.innerHTML += cep_empresa;
-//   cep_empresa_cadastro.innerHTML = "CEP";
-
-//   //Bairro da empresa
-//   var bairro_empresa = inputBairro.value;
-//   inputBairro.remove();
-//   bairro_empresa_box.innerHTML += bairro_empresa;
-
-//   //Complemento da empresa
-//   var complemento_empresa = inputComplemento.value;
-//   inputComplemento.remove();
-//   complemento_empresa_box.innerHTML += complemento_empresa;
-
-//   btn_cadastrar_empresa.remove();
-//   document.getElementById("container_filho_empresa").style.marginLeft = "17vw";
-//   document.getElementById("titulo_2_empresa").style.marginLeft = "12vw";
-// }
 function botao_registro() {
   if (
-    validar_empresa &&
+    validar_nome &&
     validar_cnpj &&
+    validar_email &&
+    validar_senha &&
+    validar_empresa &&
     validar_logradouro &&
-    validar_cidade &&
-    validar_uf &&
+    validar_bairro  &&
     validar_cep &&
-    validar_bairro
+    validar_uf &&
+    validar_cidade 
   ) {
-    cadastrarEmpresa();
+    cadastrar();
 
   } else {
     Swal.fire({
@@ -366,3 +311,22 @@ function removerCard(idPerfil) {
         })
     }
   }
+
+function validar_autenticacao_login() {
+  if (validar_usuario && validar_senha) {
+    window.location.href = "perfil-dashboard-empresa.html";
+  } else {
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Autenticação inválida!',
+    })
+  }
+}
+
+
+
+function sumirMensagem() {
+  cardErro.style.display = "none"
+}
+
