@@ -1,24 +1,466 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- CSS Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <!-- CSS Bootstrap -->
 
-    
+  <!-- <<<<<<< HEAD
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/index.css">
+======= -->
 
-    <title>Home |</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/index.css">
+  <link rel="stylesheet" href="../css/equipe.css">
+  <link rel="icon" href="./assets/imgs/sobreNos.png">
+
+  <title>Home | Sejam bem-vindos!!!</title>
 </head>
+
 <body>
-    
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid roxo">
+      <b><a class="navbar-brand" href="#">
+          <img src="./assets/imgs/logoHome.png" alt="" width="80"></a></b>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse " id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a href="#topo" class="nav-link active text-light" aria-current="page"
+              href="#">inicio</a></li>
+          <li class="nav-item"><a href="#servicos" class="nav-link text-light" href="#">Serviços</a></li>
+          <li class="nav-item"><a href="#sobreNos" class="nav-link text-light" href="#">Sobre Nós</a></li>
+          <li class="nav-item"><a href="#contatos" class="nav-link text-light" href="#">Contato</a>
+          <li class="nav-item dropdown"><a class="nav-link dropdown-toggle text-light" href="#" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false"> Acesse</a>
+            <ul class="dropdown-menu">
+              <li><a href="./cadastro.html" class="dropdown-item" href="#">Cadastro</a></li>
+              <li><a href="./login.html" class="dropdown-item" href="#">Login</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </nav>
+
+  <main>
+    <div class=" nossoServicoIndex ">
+      <div id="topo" class="vh-100 conteiner-conteudos p-5 grid text-center d-inline-flex col-md-12">
+        <div class="matrix w-50">
+          <img src="./assets/imgs/home.png" alt="" class="w-100" />
+        </div>
+        <div class=" conteiner-textos-inicio  mb-3">
+          <div class="d-flex flex-column align-items-center">
+            <div class="w-75 media-none">
+              <img class="img-texto" src="./assets/imgs/logoHome.png" alt="">
+
+            </div>
+          </div>
+          <div class="sem-margin">
+            <div class="p-2">
+              <h2 class="color-text titulo-text">
+                Casos resolvidos com eficiência
+              </h2>
+            </div>
+            <div class="p-2">
+              <p class="color-text-intro">
+                Estamos aqui para fornecer a você uma solução confiável e eficiente de monitoramento de totens.
+              </p>
+            </div>
+          </div>
+          <div class="button-inicio ">
+            <button type="button" class="button-primary">
+              <a href="#servicos">Serviços</a>
+            </button>
+            <button type="button" class="button-secondy">
+              <a href="#contatos">Contate-nos</a>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!--nossos serviços e oq é monitoração-->
+  <div id="servicos" class="nossoServico  d-flex flex-column">
+    <div class="container-fluid vw-85 lado-esquerdo">
+      <div class="row d-flex justify-content-center w-80">
+        <div class="col-sm divImagem">
+          <img src="./assets/svg/indexHard.svg" class="img-fluid imagem" alt="Nosso Servico">
+        </div>
+        <div class="col-sm divTexto">
+          <h1 class="tituloBanner">Sobre nosso serviços</h1>
+          <p class="textoNossoServico"> Somos uma empresa especializada em fornecer soluções de monitoramento de totens
+            para empresas de TI que trabalham com totens em setores de fast-food. Com nossa tecnologia de ponta e equipe
+            altamente qualificada, estamos comprometidos em fornecer serviços de alta qualidade. </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid vw-85 lado-direito">
+      <div class="row d-flex justify-content-center w-80">
+        <div class="col-sm divTexto">
+          <h1 class="tituloBanner">O que é monitoração de totens?</h1>
+          <p class="textoNossoServico"> A monitoração de totens é um processo que consiste em coletar, analisar e
+            relatar informações sobre totens, que são dispositivos eletrônicos usados em uma variedade de setores e
+            negócios para fornecer informações ou serviços aos clientes. <br>
+            Com nossa plataforma, você pode visualizar relatórios de desempenho, configurar alertas de falhas e acessar
+            dados históricos para melhorar a eficiência do seu negócio. Além disso, nosso sistema é altamente
+            personalizável e pode ser adaptado às suas necessidades específicas. </p>
+        </div>
+        <div class="col-sm divImagem">
+          <img src="./assets/svg/servicos.svg" class="img-fluid imagem" alt="Nosso Servico">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Carrossel -->
+  <div class="vh-50">
+    <div id="carouselExample" class="carousel slide d-flex align-items-center h-100">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+
+          <div class="style-position-carrossel">
+            <div class="w-50 text-center d-flex flex-column align-items-center">
+              <h1 class="title">Nossa Missão</h1>
+              <p class="text">Fornecer soluções inovadoras e eficientes de monitoramento de totem para empresas de
+                suporte de TI, permitindo-lhes tomar decisões informadas e melhorar sua eficiência operacional. </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+
+          <div class="style-position-carrossel">
+            <div class="style-carousel">
+              <h1 class="title">Nossa Visão</h1>
+              <p class="text">Ser a principal referência em monitoramento de totem em todo o mundo, por meio de
+                tecnologia de ponta, atendimento excepcional ao cliente e compromisso com a excelência.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+
+          <div class="style-position-carrossel">
+            <div class="style-carousel">
+              <h1 class="title">Nossos Valores</h1>
+
+              <li class="text-white">Inovação: Buscamos constantemente novas formas de melhorar nossos serviços</li>
+              <li class="text-white">Confiança: Fornecer soluções confiáveis e precisas</li>
+              <li class="text-white">Excelência: Oferecer serviços de qualidade excepcional</li>
+              <li class="text-white">Compromisso: Estamos comprometidos em ajudar nossos clientes a alcançar seus
+                objetivos</li>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+  <!-- Sobre nós -->
+  <div class="container-fluid container-sobre-nos">
+    <div class="row">
+      <div class="col-md-6 col-sm-12 sobre-nos">
+        <div class="titulo-e-barra">
+          <h1>Sobre Nós</h1>
+          <div class="barra-1"></div>
+        </div>
+        <div class="texto-sobre-nos">
+          <p>A Monitority foi fundada em 2023 por
+            estudantes da faculdade São Paulo Tech School, com o objetivo de solucionar problemas e a
+            monitoração de componentes de sistemas operacionais, como totens para empresas de TI no ramo de
+            Fast-Food. </p>
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-12 texto-secao-dois">
+        <div class="texto-sobreposto">
+          <p> Com Solução (app cliente e app web) utilizando os conceitos do ITIL de Monitoramento de
+            Serviços, Gestão de Incidentes e Gestão de Problemas.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <!-- Nosso Time -->
+  <section id="id-secao-cards" class="secao-nosso-time">
+    <div class="nosso-time">
+      <h1>CONHEÇA NOSSO TIME</h1>
+    </div>
+    <div class="cards">
+      <div class="thecard">
+
+        <div class="thefront">
+          <div class="color-padding">
+            <img class="border-image1 " src="./assets/members-squad/picture-calebe.png">
+          </div>
+          <div class="nome">
+            <h1 class="color-nome">CALEBE MARQUES</h1>
+          </div>
+          <div class="icons">
+            <a href="https://github.com/Calebe-Marques"><img src="./assets/icons/github-lilas.png" alt="2"
+                width="30px"></a>
+            <a href="https://www.linkedin.com/in/calebe-marques-rebou%C3%A7as-20372922a/"><img
+                src="./assets/icons/linkedin-lilas.png" alt="2" width="30px"></a>
+            <a href="https://www.instagram.com/marquesrb_/"><img src="./assets/icons/instagram-lilas.png" alt="2px"
+                width="30px"></a>
+          </div>
+
+        </div>
+
+        <div class="theback color">
+          <div class="cor-texto-card">
+            <p>Olá, me chamo Calebe Marques e tenho 18 anos. Atualmente faço parte da empresa Monitority
+              trabalhando como <span class="area-atuacao">Dev Fullstack</span>. <br>Para saber mais sobre
+              mim, acompanhe minhas rede socias que estão logo abaixo:</p>
+          </div>
+          <div class="icons">
+            <a href="https://github.com/Calebe-Marques"><img src="./assets/icons/github-azul.png" alt="2"
+                width="30px"></a>
+            <a href="https://www.linkedin.com/in/calebe-marques-rebou%C3%A7as-20372922a/"><img
+                src="./assets/icons/linkedin-azul.png" alt="2" width="30px"></a>
+            <a href="https://www.instagram.com/marquesrb_/"> <img src="./assets/icons/instagram-azul.png" alt="2px"
+                width="30px"></a>
+          </div>
+        </div>
+      </div>
+      <div class="thecard">
+
+        <div class="thefront">
+          <div class="color-padding">
+            <img class="border-image1 " src="./assets/members-squad/picture-kenji.jpg">
+          </div>
+          <div class="nome">
+            <h1 class="color-nome">GABRIEL KENJI</h1>
+          </div>
+          <div class="icons">
+            <a href="https://github.com/GabrielKenjiTomariKohatu"><img src="./assets/icons/github-lilas.png" alt="2"
+                width="30px"></a>
+            <a href="https://www.linkedin.com/in/gabriel-kohatu-201218255"> <img src="./assets/icons/linkedin-lilas.png"
+                alt="2" width="30px"></a>
+            <a href="#"> <img src="./assets/icons/instagram-lilas.png" alt="2px" width="30px"></a>
+          </div>
+        </div>
+
+        <div class="theback color">
+          <div class="cor-texto-card">
+            <p>Olá, me chamo Gabriel Kohatu e tenho 19 anos. Atualmente faço parte da empresa Monitority
+              trabalhando como <span class="area-atuacao">Dev Fullstack</span>.<br>Para saber mais sobre
+              mim, acompanhe minhas redes sociais que estão logo abaixo </p>
+          </div>
+          <div class="icons">
+            <a href="https://github.com/Calebe-Marques"> <img src="./assets/icons/github-azul.png" alt="2"
+                width="30px"></a>
+            <a href="https://www.linkedin.com/in/gabriel-kohatu-201218255"> <img src="./assets/icons/linkedin-azul.png"
+                alt="2" width="30px"></a>
+            <a href="#"> <img src="./assets/icons/instagram-azul.png" alt="2px" width="30px"></a>
+          </div>
+        </div>
+      </div>
+      <div class="thecard">
+
+        <div class="thefront ">
+          <div class="color-padding">
+            <img class="border-image1 " src="./assets/members-squad/picture-giovanna.jpg">
+          </div>
+          <div class="nome">
+            <h1 class="color-nome">GIOVANNA BENICHEL</h1>
+          </div>
+          <div class="icons">
+            <a href="https://github.com/benichel"><img src="./assets/icons/github-lilas.png" alt="2" width="30px"></a>
+            <a href="https://www.linkedin.com/in/giovanna-benichel-89baa6230"><img
+                src="./assets/icons/linkedin-lilas.png" alt="2" width="30px"></a>
+            <a href="https://www.instagram.com/thebenichel/"><img src="./assets/icons/instagram-lilas.png" alt="2px"
+                width="30px"></a>
+          </div>
+
+        </div>
+
+        <div class="theback color">
+          <div class="cor-texto-card">
+            <p>Olá, me chamo Giovanna Benichel, tenho 23 anos. Atualmente, faço parte da super empresa
+              Monitority, atuando como <span class="area-atuacao">QA</span>.<br>Para saber mais sobre mim,
+              acompanhe minhas redes sociais logo abaixo:</p>
+          </div>
+          <div class="icons">
+            <a href="https://github.com/benichel"><img src="./assets/icons/github-azul.png" alt="2" width="30px"></a>
+            <a href="https://www.linkedin.com/in/giovanna-benichel-89baa6230"><img
+                src="./assets/icons/linkedin-azul.png" alt="2" width="30px"></a>
+            <a href="https://www.instagram.com/thebenichel/"><img src="./assets/icons/instagram-azul.png" alt="2px"
+                width="30px"></a>
+          </div>
+        </div>
+      </div>
+      <div class="thecard">
+
+        <div class="thefront ">
+          <div class="color-padding">
+            <img class="border-image1 " src="./assets/members-squad/picture-guilherme.png">
+          </div>
+          <div class="nome">
+            <h1 class="color-nome">GUILHERME COSTA</h1>
+          </div>
+          <div class="icons">
+            <a href="https://github.com/GuilhermeNPCosta"> <img src="./assets/icons/github-lilas.png" alt="2"
+                width="30px"></a>
+            <a href="https://www.linkedin.com/in/guilherme-costa-71208825b"><img src="./assets/icons/linkedin-lilas.png"
+                alt="2" width="30px"></a>
+            <a href="https://www.instagram.com/blank_111_000/"><img src="./assets/icons/instagram-lilas.png" alt="2px"
+                width="30px"></a>
+          </div>
+
+        </div>
+
+        <div class="theback color">
+          <div class="cor-texto-card">
+            <p>Olá, me chamo Guilherme Costa, tenho 20 anos. Atualmente, faço parte da empresa Monitority,
+              atuando na área de <span class="area-atuacao">Infraestrutura</span>. Para saber mais sobre
+              mim, acompanhe minhas redes sociais, que estão logo abaixo:</p>
+          </div>
+          <div class="icons">
+            <a href="https://github.com/GuilhermeNPCosta"> <img src="./assets/icons/github-azul.png" alt="2"
+                width="30px"></a>
+            <a href="https://www.linkedin.com/in/guilherme-costa-71208825b"><img src="./assets/icons/linkedin-azul.png"
+                alt="2" width="30px"></a>
+            <a href="https://www.instagram.com/blank_111_000/"><img src="./assets/icons/instagram-azul.png" alt="2px"
+                width="30px"></a>
+          </div>
+        </div>
+      </div>
+      <div class="thecard">
+
+        <div class="thefront ">
+          <div class="color-padding">
+            <img class="border-image1" src="./assets/members-squad/picture-lucas.jpeg">
+          </div>
+          <div class="nome">
+            <h1 class="color-nome">LUCAS AKIAMA</h1>
+          </div>
+          <div class="icons">
+            <a href="https://github.com/Gui-alme"><img src="./assets/icons/github-lilas.png" alt="2" width="30px"></a>
+            <a href="https://www.linkedin.com/in/lucas-brasiliano-43b8761a0/"><img
+                src="./assets/icons/linkedin-lilas.png" alt="2" width="30px"></a>
+            <a href="https://www.instagram.com/_limens/"><img src="./assets/icons/instagram-lilas.png" alt="2px"
+                width="30px"></a>
+          </div>
+        </div>
+
+        <div class="theback color">
+          <div class="cor-texto-card">
+            <p>Olá, me chamo Lucas Akiama e tenho 23 anos. Atualmente faço parte da empresa Monitority,
+              trabalhando como <span class="area-atuacao">Dev Backend</span>.<br> Para saber mais sobre
+              mim, acompanhe minhas rede sociais que estão logo abaixo:</p>
+          </div>
+
+          <div class="icons">
+            <a href="https://github.com/Gui-alme"><img src="./assets/icons/github-azul.png" alt="2" width="30px"></a>
+            <a href="https://www.linkedin.com/in/lucas-brasiliano-43b8761a0/"> <img
+                src="./assets/icons/linkedin-azul.png" alt="2" width="30px"></a>
+            <a href="https://www.instagram.com/_limens/"><img src="./assets/icons/instagram-azul.png" alt="2px"
+                width="30px"></a>
+          </div>
+        </div>
+      </div>
+      <div class="thecard">
+
+        <div class="thefront ">
+          <div class="color-padding">
+            <img class="border-image1 " src="./assets/members-squad/picture-thiago.png">
+          </div>
+          <div class="nome">
+            <h1 class="color-nome">THIAGO SERAFIM</h1>
+          </div>
+          <div class="icons">
+            <a href="https://github.com/ThiagoSerafim01"> <img src="./assets/icons/github-lilas.png" alt="2"
+                width="30px"></a>
+            <a href="https://www.linkedin.com/in/thiago-serafim-2144b7220"> <img src="./assets/icons/linkedin-lilas.png"
+                alt="2" width="30px"></a>
+            <a href="https://instagram.com/th.serafiim?igshid=YmMyMTA2M2Y="><img
+                src="./assets/icons/instagram-lilas.png" alt="2px" width="30px"></a>
+          </div>
+
+        </div>
+
+        <div class="theback color">
+          <div class="cor-texto-card">
+            <p>Olá, me chamo Thiago Serafim e tenho 19 anos de idade. Atualmente faço parte da empresa
+              Monitority trabalhando como <span class="area-atuacao">DevOps</span>.<br>Para saber mais
+              sobre mim, acompanhe minhas rede sociais que estão logo abaixo:</p>
+          </div>
+          <div class="icons">
+            <a href="https://github.com/ThiagoSerafim01"><img src="./assets/icons/github-azul.png" alt="2"
+                width="30px"></a>
+            <a href="https://www.linkedin.com/in/thiago-serafim-2144b7220"><img src="./assets/icons/linkedin-azul.png"
+                alt="2" width="30px"></a>
+            <a href="https://instagram.com/th.serafiim?igshid=YmMyMTA2M2Y="><img src="./assets/icons/instagram-azul.png"
+                alt="2px" width="30px"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Nossos contatos -->
+  <div id="contatos" class="vh-100 w-100 d-flex justify-content-center">
+    <div class="div-image vh-100 w-50 d-flex justify-content-center align-items-center">
+      <img src="./assets/svg/contato.svg" class="w-75" alt="Nossos Contatos">
+    </div>
+
+    <div class="vh-100 w-50 d-flex flex-column justify-content-center">
+      <div class="h-50 d-flex align-items-center justify-content-center">
+        <div class="w-75 mensagem-footer">
+          <h2 class="text-white">Deixe a sua mensagem</h1>
+            <p>Aqui é onde o seu texto começa. Basta clicar e começar!</p>
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="E-mail" aria-label="Username"
+                aria-describedby="addon-wrapping">
+            </div>
+            <button class="btn-contatos">Enviar</button>
+        </div>
+      </div>
+
+      <div class="h-50 d-flex align-items-center justify-content-center">
+        <div class="w-75 contatos">
+          <h2>Entre em contato</h1>
+            <p>Visite-nos</p>
+            <p>Rua Haddock Lobo, 595, Cerqueira César, São Paulo - SP, 01414-001</p>
+            <p>Entre em contato conosco: 11 00000-0000</p>
+            <p>E-mail: 231-2adsa-grupo9@bandtec.com.br</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
+
 </html>
 
 <!-- JavaScript Bootstrap -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 
 <script src="./js/funcao.js"></script>
-
