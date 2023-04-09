@@ -35,7 +35,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 10px;
+    width: 100%;
   }
   
   /* background:#2196f3; */
@@ -55,18 +56,23 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 579.7px;
+    min-height: 607.7px;
     height: 100%;
+    width: 50%;
   }
-  
+  .title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   
   .right-side {
     padding: 0px 0px 0px;
     background: #FFF;
     background-size: cover;
-    min-height: 514px;
+    min-height: 579.7px;
     height: 100%;
-  
+    width: 50%;
   }
   
   .right-side h3 {
@@ -90,13 +96,12 @@ body {
   }
   
   .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 5px;
   }
   
   .form-control {
-    box-shadow: none !important;
+    border-bottom: 0.5px solid #2196f3 !important;
     border-radius: 0px !important;
-    border-bottom: 1px solid #2196f3 !important;
     border-top: 1px !important;
     border-left: none !important;
     border-right: none !important;
@@ -122,11 +127,12 @@ body {
     padding: 10px 10px;
   }
   
-  label {
+  .tilte-form {
     display: inline-block;
     max-width: 100%;
     margin-bottom: 5px;
     font-weight: 700;
+    font-size: 1.0vw;
   }
 
   input::placeholder{
@@ -190,6 +196,7 @@ body {
     .right-side{
         width: 50%;
         height: auto;
+        
     }
   }
   

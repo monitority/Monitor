@@ -56,9 +56,16 @@
                     </li> -->
         <!-- <div class="adicionar" id="adicionar3"> --> 
         <li class="nav-item">
-          <a href="./cadastro_armazem.html" class="nav-link">
+          <a href="./telaCadastroEstabelecimento.html" class="nav-link">
             <!--Imagem do ICONE DE ADICIONAR -->
             <span class="icone"> <i class="uil uil-estate"></i> </span>
+            <span class="titulo"> Estabelecimento</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="./telaCadastroTotem.html" class="nav-link">
+            <!--Imagem do ICONE DE ADICIONAR -->
+            <span class="icone"> <i class="uil uil-server-connection"></i> </span>
             <span class="titulo"> Cadastrar Totem</span>
           </a>
         </li>
@@ -89,7 +96,7 @@
           <a href="./index.html" class="nav-link">
             <!-- Botão de Sair  -->
             <span class="icone"><i class="uil uil-signout"></i> </span>
-            <span class="titulo"> Sair </span>
+            <span class="titulo"> Home </span>
           </a>
         </li>
       </ul>
@@ -146,7 +153,7 @@
               <div class="estilo-box">
                 <p>Permissâo*</p>
                 <select class="input-empresa" name="select" id="inputFuncao" required onblur="validarFuncao()">
-                  <option value=null></option>
+                  <option value=none></option>
                   <option value="valor1">Administrador</option>
                   <option value="valor2" >Moderador</option>
                   <option value="valor3">Funcionário</option>
@@ -180,6 +187,7 @@
 </body>
 
 </html>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
 <script>
   b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 

@@ -12,6 +12,7 @@
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
     <link rel="stylesheet" href="./css/cadastro.css">
+    <link rel="stylesheet" href="./css/telaCadastroFunc.css">
     <link rel="icon" href="./assets/imgs/sobreNos.png">
     <script src="./js/perfil-validacao.js"></script>
 
@@ -20,73 +21,83 @@
 
 <body>
 
-    <div class="container">
+    <div class="container ">
         <!-- left-side bg-light -->
-        <div class="col-md-10 main">
+        <div class="col-md-10 main bg-body-secondary">
             <div class="col-md-6 left-side">
                 <img src="./assets/svg/register.svg" alt="" class="vh-75">
                 <br>
 
             </div><!--col-sm-6-->
             <div class="col-md-6 right-side bg-body-secondary">
-                <h3>Você já tem uma conta?</h3>
+                <h3 class="tilte">Você já tem uma conta?</h3>
 
                 <!--Form with header-->
                 <div class="form">
                     <div class="divisao d-flex justify-content-around">
                         <div class="divisao-column-1">
                             <div class="form-group ">
-                                <label for="form2">Nome</label>
-                                <input id="inputNome" type="text" id="form2" class="form-control input-lg primeiro" type="text" name=""
-                                    placeholder="Nome Completo" onblur="validarNome()" required>
+                                <label class="tilte-form" for="inputNome">Nome</label>
+                                <input class="form-control  input-empresa" id="inputNome" placeholder="Ex: Thiago Serafim" required
+                                onblur="validarNome()" />
                             </div>
                             <div class="form-group ">
-                                <label for="form2">CNPJ</label>
-                                <input id="inputCNPJ" type="text" id="form2" class="form-control input-lg primeiro" type="text" name=""
+                                <label class="tilte-form" for="inputSenha">Senha</label>
+                                <input class="form-control input-empresa" id="inputSenha" placeholder="Ex: Senha@123" type="password"
+                  onblur="validarSenha()" required />
+                            </div>
+                            <div class="form-group ">
+                                <label class="tilte-form" for="inputCNPJ">CNPJ</label>
+                                <input id="inputCNPJ" class="form-control input-lg primeiro"
                                     placeholder="Informe o CNPJ" onblur="validarCNPJ()" required>
 
                             </div>
                             <div class="form-group ">
-                                <label for="form2">E-mail</label>
-                                <input id="inputEmail" type="text" id="form2" class="form-control input-lg segundo" type="text" name=""
+                                <label class="tilte-form" for="inputEmail">E-mail</label>
+                                <input id="inputEmail" class="form-control input-lg segundo"
                                     placeholder="Digite seu E-mail" onblur="validarEmail()" required>
 
                             </div>
                             <div class="form-group ">
-                                <label for="form2">Tel.</label>
-                                <input id="inputContato" type="text" id="form2" class="form-control input-lg quarto" type="text" name=""
+                                <label class="tilte-form" for="inputContato">Tel.</label>
+                                <input id="inputContato" class="form-control input-lg quarto"
                                     placeholder="Digite seu Tel." onblur="validarContato()" required>
                             </div>
-                            <div class="form-group ">
-                                <label for="form2">Senha</label>
-                                <input id="inputSenha" type="password" id="form2" class="form-control input-lg segundo" type="text" name=""
-                                    placeholder="Digite sua senha" onblur="validarSenha()" required>
-
-                            </div>
-                        </div>
-                        <div class="divisao-column-1">
                             <div class="form-group">
-                                <label for="form4">Empresa</label>
-                                <input id="inputEmpresa" type="text" id="form4" S class="form-control input-lg terceiro"
+                                <label class="tilte-form" for="inputEmpresa">Empresa</label>
+                                <input id="inputEmpresa" class="form-control input-lg terceiro"
                                     placeholder="Nome da Empresa" onblur="validarEmpresa()" required>
                             </div>
+                            
+                        </div>
+                        <div class="divisao-column-1">
                             <div class="form-group ">
-                                <label for="form2">Logradouro</label>
-                                <input id="inputLogradouro" type="text" id="form2" class="form-control input-lg terceiro" type="text" name=""
+                                <label class="tilte-form" for="inputLogradouro">Logradouro</label>
+                                <input id="inputLogradouro" class="form-control input-lg terceiro"
                                     placeholder="Rua Haddock" onblur="validarLogradouro()" required>
                             </div>
                             <div class="form-group ">
-                                <label for="form2">Bairro</label>
-                                <input id="inputBairro" type="text" id="form2" class="form-control input-lg terceiro" type="text" name=""
+                                <label class="tilte-form" for="inputBairro">Bairro</label>
+                                <input id="inputBairro" class="form-control input-lg terceiro"
                                     placeholder="Ex: Consolação" onblur="validarBairro()" required>
                             </div>
                             <div class="form-group ">
-                                <label for="form2">CEP</label>
-                                <input id="inputCep" type="text" id="form2" class="form-control input-lg terceiro" type="text" name=""
-                                    placeholder="08-150-200" onblur="validarCEP()" required>
+                                <label class="tilte-form" for="inputCEP">CEP</label>
+                                <input class="form-control input-empresa" id="inputCEP" placeholder="Ex: 08150200" required
+                                 onblur="validarCEP()" />
                             </div>
                             <div class="form-group ">
-                                <label for="form2">UF</label>
+                                <label class="tilte-form" for="inputNumero">Número</label>
+                                <input id="inputNumero" class="form-control input-lg terceiro"
+                                    placeholder=" 173 " onblur="validarNumero()" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="tilte-form" for="inputCidade">Cidade</label>
+                                <input id="inputCidade" type="text" class="form-control input-lg terceiro"
+                                    placeholder="Nome da Empresa" onblur="validarCidade()" required>
+                            </div>
+                            <div class="form-group ">
+                                <label class="tilte-form" for="inputUF">UF</label>
                                 <select class="form-control select-lg terceiro " id="inputUF" name="estado" onclick="validarUF()">
                                     <option value="none"></option>
                                     <option value="AC">Acre</option>
@@ -131,7 +142,7 @@
                     </div>
 
                     <div class="inputBox">
-                        <span class="cadastrar">Já tem conta? Faça login clicando
+                        <span class="tilte-form">Já tem conta? Faça login clicando
                             <a href="./login.html"> aqui.</a></span>
                     </div>
 
