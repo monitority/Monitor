@@ -27,6 +27,7 @@ function listar(req, res) {
 function entrar(req, res) {
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
+    const tipoLogin = req.body.tipoLogin;
 
     if (email == undefined) {
         res.status(400).send("Seu email está undefined!");
@@ -34,7 +35,7 @@ function entrar(req, res) {
         res.status(400).send("Sua senha está indefinida!");
     } else {
         
-        usuarioModel.entrar(email, senha)
+        usuarioModel.entrar(email, senha, tipoLogin)
             .then(
                 function (resultado) {
                     console.log(`\nResultados encontrados: ${resultado.length}`);
@@ -63,8 +64,16 @@ function entrar(req, res) {
 function cadastrar(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     var nome = req.body.nomeServer;
+    var cnpj = req.body.cnpjServer;
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
+    var empresaNome = req.body.empresaNomeServer;
+    var contato = req.body.contatoServer;
+    var logradouro = req.body.logradouroServer;
+    var cidade = req.body.cidadeServer;
+    var estado = req.body.estadoServer;
+    var cep = req.body.cepServer;
+    var bairro = req.body.bairroServer;
 
     // Faça as validações dos valores
     if (nome == undefined) {
@@ -76,7 +85,7 @@ function cadastrar(req, res) {
     } else {
         
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(nome, email, senha)
+        usuarioModel.cadastrar(nome, cnpj,  email, senha, empresaNome, contato, logradouro, cidade, estado, cep, bairro)
             .then(
                 function (resultado) {
                     res.json(resultado);
