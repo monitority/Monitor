@@ -322,7 +322,7 @@
 
   function buscarDadoEstabelecimento() {
     var idEmpresa = sessionStorage.ID_EMPRESA;
-    fetch(`/estabelecimento/listarEstabelecimento/${idEmpresa}`)
+    fetch(`/estabelecimento/listar/${idEmpresa}`)
       .then(function (resposta) {
         console.log('estou na BuscarEstabelecimento()', resposta);
         if (resposta.ok) {
