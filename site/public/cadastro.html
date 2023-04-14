@@ -94,7 +94,7 @@
                             <div class="form-group">
                                 <label class="tilte-form" for="inputCidade">Cidade</label>
                                 <input id="inputCidade" type="text" class="form-control input-lg terceiro"
-                                    placeholder="Nome da Empresa" onblur="validarCidade()" required>
+                                    placeholder="Nome da Cidade" onblur="validarCidade()" required>
                             </div>
                             <div class="form-group ">
                                 <label class="tilte-form" for="inputUF">UF</label>
@@ -136,7 +136,7 @@
                     
 
                     <div class="text-xs-center">
-                        <button id="btn_cadastrar_empresa" class="btn btn-deep-purple" onclick="botao_registro()">
+                        <button id="btn_cadastrar_empresa" class="btn btn-deep-purple" onclick="cadastrar()">
                             CADASTRAR
                           </button> 
                     </div>
@@ -175,6 +175,7 @@
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
 function cadastrar() {
+    console.log("chego na função cadastrar")
   // aguardar();
   window.location.href = "login.html";
   //Recupere o valor da nova input pelo nome do id
@@ -190,9 +191,10 @@ function cadastrar() {
   var estadoVar = inputUF.value;
   var cepVar = inputCEP.value;
   var bairroVar = inputBairro.value;
+  var numeroVar = inputNumero.value;
 
   if (nomeVar == "" ||cnpjVar== "" || emailVar== "" || senhaVar == "" || empresaNomeVar == "" || contatoVar == "" || logradouroVar == "" ||
-        cidadeVar == "" || estadoVar == "" || cepVar == "" || bairroVar== "" ) {
+        cidadeVar == "" || estadoVar == "" || cepVar == "" || bairroVar== "" || numeroVar== "") {
       cardErro.style.display = "block"
       mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
 
@@ -224,6 +226,7 @@ function cadastrar() {
           estadoServer: estadoVar,
           cepServer: cepVar,
           bairroServer: bairroVar,
+          numeroServer: numeroVar
       })
   }).then(function (resposta) {
 

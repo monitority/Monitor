@@ -17,7 +17,7 @@ function entrar(email, senha, tipoLogin) {
     `;
     }else{
         var instrucao = `
-        SELECT * FROM emopres WHERE email = '${email}' AND senha = '${senha}';
+        SELECT * FROM empresa WHERE email = '${email}' AND senha = '${senha}';
     `;
     }
 
@@ -26,15 +26,14 @@ function entrar(email, senha, tipoLogin) {
 }
 
 // Coloque os mesmos parâmetros aqui. Vá para a var instrucao
-function cadastrar(nome, cnpj,  email, senha, empresaNome, contato, logradouro, cidade, estado, cep, bairro) {
+function cadastrar(nome, cnpj,  email, senha, empresaNome, contato, logradouro, cidade, estado, cep, bairro, numero) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", nome, email, senha);
     
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
     var instrucao = `
-     CALL inserirEmpresa('${nome}', '${empresaNome}', '${cnpj}',  '${email}', '${senha}', '${contato}',
-     '${cidade}','${logradouro}','${bairro},'${cep}','${estado}');
-     `;
+     CALL inserirEmpresa('${nome}', '${empresaNome}', '${cnpj}',  '${email}', '${senha}', '${contato}','${cidade}','${logradouro}','${bairro}', '${numero}','${cep}','${estado}');`;
+
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }

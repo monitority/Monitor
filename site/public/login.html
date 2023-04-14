@@ -33,14 +33,14 @@
                 <div class="form">
                     <div>
                         <label for="check_empresa">Empresa</label>
-                        <input type="radio" name="check" id="check_empresa" checked>
+                        <input type="radio" name="check" id="check_empresa">
                         <label for="check_usuario">Usuário</label>
                         <input type="radio" name="check" id="check_usuario">
                     </div>
                         
                     <div class="form-group ">
                         <label for="input_email">Email</label>
-                        <input type="text" id="input_emai" class="form-control input-lg"  type="text"
+                        <input type="text" id="input_email" class="form-control input-lg"  type="text"
                             name="" placeholder="Digite seu Email" onblur="validarUsuario()" required>
                     </div>
 
@@ -94,17 +94,17 @@
         function entrar() {
             //aguardar();
             let tipoLogin = '';
-            const tipoEmpresa = check_empresa.value;
-            const tipoUsuario = check_usuario.value;
+            const tipoEmpresa = document.getElementById("check_empresa");
+            const tipoUsuario = document.getElementById("check_usuario");
 
-            if(tipoEmpresa){
+            if(tipoEmpresa.checked){
                 tipoLogin = 'empresa'
-            }else{
+            }else if(tipoUsuario.checked){
                 tipoLogin = 'usuario'
             }
     
             var emailVar = input_email.value;
-            var senhaVar = input_senha.value;
+            var senhaVar = btoa(input_senha.value);
     
             if (emailVar == "" || senhaVar == "") {
                 cardErro.style.display = "block"
@@ -140,9 +140,11 @@
                         console.log(JSON.stringify(json));
     
                         sessionStorage.EMAIL_USUARIO = json.email;
-                        sessionStorage.NOME_USUARIO = json.nome;
+                        sessionStorage.NOME_USUARIO = json.nomeUsuario;
                         sessionStorage.ID_USUARIO = json.id;
-    
+                        sessionStorage.FK_EMPRESA = json.fkEmpresa;
+                        sessionStorage.ID_EMPRESA = json.idEmpresa;
+
                         setTimeout(function () {
                             window.location = "./dashboard/cards.html";
                         }, 1000); // apenas para exibir o loading

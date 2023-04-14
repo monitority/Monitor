@@ -1,4 +1,4 @@
--- CREATE DATABASE `Monitority`;
+CREATE DATABASE `Monitority`;
 -- drop database `Monitority`;
 USE `Monitority` ;
 
@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS `empresa` (
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `usuario` (
   `idUsuario` INT NOT NULL  AUTO_INCREMENT,
-  `nome` VARCHAR(45) NOT NULL,
+  `nomeUsuario` VARCHAR(45) NOT NULL,
   `senha` VARCHAR(45) NOT NULL,
   `email` VARCHAR(45) NOT NULL,
   `tel` VARCHAR(45) NOT NULL,
@@ -170,7 +170,7 @@ in Estado VARCHAR(45)
 )
 BEGIN
 START TRANSACTION;
-	 INSERT INTO endereco(`logradouro`,`cep`.`numero`,`cidade`,`bairro`,`estado`)values
+	 INSERT INTO endereco(`logradouro`,`cep`,`numero`,`cidade`,`bairro`,`estado`)values
      (inLogradouro,inCep,inNumero,inCidade,inBairro,inEstado);
 	select LAST_INSERT_ID() into @idEnd;
     Insert Into Empresa(`nomeUsuario`,`nomeEmpresa`,`cnpj`,`email`,`senha`,`contato`,`fkEndereco`)
@@ -178,9 +178,10 @@ START TRANSACTION;
 COMMIT;
 END//
 DELIMITER ;
+CALL inserirEmpresa('asdfasd asdf', 'testepf', '12312312312312',  'thiago@sptech.com', 'U2VuaGFAMTIz', '11949849509','sao paulo','asdfasdf','123','asdfasdf','04144000','PI');
  
  -- Como chamar a procedure e inserir os dados para as tabelas indicadas
- CALL inserirEmpresa('nomeUsuario','nomeEmpresa','cnpj','email','senha','contato','cidade','logradouro','bairro',12,'cep','estado');
+ -- CALL inserirEmpresa('nomeUsuario','nomeEmpresa','cnpj','email','senha','contato','cidade','logradouro','bairro',12,'cep','estado');
 
  DELIMITER 
 CREATE PROCEDURE inserirEstabelecimento (
@@ -191,10 +192,10 @@ in Bairro VARCHAR(70),
 in Numero INT,
 in Cep CHAR(9),
 in Estado VARCHAR(45),
-in memoriaRAMPorcMin FLOAT,
+in memoriaRAMPorcMax FLOAT,
 in cpuPorcMax FLOAT,
-in armazenamentoPorcMin FLOAT,
-in redePorcMin VARCHAR (45),
+in armazenamentoPorcMax FLOAT,
+in redePorcMax VARCHAR (45),
 in fkEmpresa INT
 )
 BEGIN
@@ -203,12 +204,12 @@ START TRANSACTION;
      (inLogradouro,inCep,inNumero,inCidade,inBairro,inEstado);
 	select LAST_INSERT_ID() into @idEnd;
     Insert Into metricaAviso ('memoriaRAMPorcMin','cpuPorcMax','armazenamentoPorcMin','redePorcMin')
-    values (inmemoriaRAMPorcMin, incpuPorcMax, inarmazenamentoPorcMin, inredePorcMin);
+    values (memoriaRAMPorcMax, cpuPorcMax, armazenamentoPorcMax, redePorcMax);
     select LAST_INSERT_ID() into @idMetrica;
     Insert Into Estabelecimentos(`nome`,`fkEmpresa`,`fkEndereco`,`fkMetricaAviso`)
-    values(inNomeEstabelecimento,infkEmpresa,@idEnd,@idMetrica);
+    values(NomeEstabelecimento, fkEmpresa, @idEnd, @idMetrica);
 COMMIT;
 END//
 DELIMITER ;
 
- CALL inserirEstabelecimentoCALL inserirEmpresa('${nome}', '${Cidade}', '${lougradouro}',  '${bairro','${Numero}' ,'${cep}', '${estado}','${memoriaRAMPorcMin}','${cpuPorcMax}','${armazenamentoPorcMin}','${redePorcMin}','${fkEmpresa}');
+-- CALL inserirEstabelecimento('${nome}', '${Cidade}', '${lougradouro}',  '${bairro','${Numero}' ,'${cep}', '${estado}','${memoriaRAMPorcMin}','${cpuPorcMax}','${armazenamentoPorcMin}','${redePorcMin}','${fkEmpresa}');
