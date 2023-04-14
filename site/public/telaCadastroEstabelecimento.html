@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Monitority - Cadastro Estabelecimento</title>
 
-  <link rel="stylesheet" href="./css/telaCadastroFunc.css">
+  <link rel="stylesheet" href="./css/telaCadastroEstabelecimento.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
@@ -143,15 +143,15 @@
                 <input class="input-empresa" id="inputCEP" placeholder="Ex: 08150200" required
                   onblur="validarCEP()" />
               </div>
-            </div>
-
-
-            <div class="container-filho-2">
               <div class="estilo-box">
                 <p>Cidade</p>
                 <input class="input-empresa" placeholder="Ex: São Paulo" id="inputCidade"
                   onblur="validarCidade()" />
               </div>
+            </div>
+
+
+            <div class="container-filho-2">
               <div id="estado_empresa_box" class="estilo-box">
                 <p id="estado_empresa_cadastro">UF</p>
                 <select class="select-estado" id="inputUF" name="estado" onclick="validarUF()">
@@ -192,7 +192,17 @@
                 onblur="validarNumero()" />
               </div>
               <div class="estilo-box">
-                <p>Metrica de Alerta (Em %)</p>
+                <p>Métrica de CPU (Em %)</p>
+                <input class="input-empresa" id="inputNumeroMetrica" placeholder="Ex: 80" required
+                  onblur="validarNumeroMetrica()" />
+              </div>
+              <div class="estilo-box">
+                <p>Métrica Memória RAM (Em %)</p>
+                <input class="input-empresa" id="inputNumeroMetrica" placeholder="Ex: 80" required
+                  onblur="validarNumeroMetrica()" />
+              </div>
+              <div class="estilo-box">
+                <p>Métrica de Disco (Em %)</p>
                 <input class="input-empresa" id="inputNumeroMetrica" placeholder="Ex: 80" required
                   onblur="validarNumeroMetrica()" />
               </div>
