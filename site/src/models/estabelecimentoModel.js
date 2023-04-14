@@ -33,9 +33,8 @@ function cadastrar(nome, fkEmpresa, fkEndereco, fkMetricaAviso) {
     
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
-    var instrucao = `
-     INSERT INTO estabelecimento (nome, fkEmpresa, fkEndereco, fkMetricaAviso) VALUES ('${nome}', '${fkEmpresa}', '${fkEndereco}', '${fkMetricaAviso}');
-     `;
+    var instrucao =  `CALL inserirEstabelecimentoCALL inserirEmpresa('${nome}', '${Cidade}', '${lougradouro}',  '${bairro}','${Numero}' ,'${cep}', '${estado}','${memoriaRAMPorcMin}','${cpuPorcMax}','${armazenamentoPorcMin}','${redePorcMin}','${fkEmpresa}');
+    `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }

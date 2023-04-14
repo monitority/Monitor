@@ -292,8 +292,9 @@
 
     var idEstabelecimento = sessionStorage.ID_ESTABELECIMENTO;
     var idEmpresa = sessionStorage.ID_EMPRESA;
+    //var campoAlteracao = VAMOS PEDIR AJUDA
 
-    fetch("/usuarios/updateEstabelecimento/", {
+    fetch("/estabelecimento/updateEstabelecimento/", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json"
@@ -344,13 +345,6 @@
               var publicacao = resposta[i];
 
               // criando e manipulando elementos do HTML via JavaScript
-
-              var tamanhoSenha = atob(publicacao.senha)
-              var visualSenha = ""
-
-              for(var a = 0; a < tamanhoSenha.length ; a++) {
-                visualSenha += '*'
-              }
 
               tabelaFuncionarios.innerHTML += `
                         
