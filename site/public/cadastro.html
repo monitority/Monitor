@@ -94,7 +94,7 @@
                             <div class="form-group">
                                 <label class="tilte-form" for="inputCidade">Cidade</label>
                                 <input id="inputCidade" type="text" class="form-control input-lg terceiro"
-                                    placeholder="Nome da Empresa" onblur="validarCidade()" required>
+                                    placeholder="Nome da Cidade" onblur="validarCidade()" required>
                             </div>
                             <div class="form-group ">
                                 <label class="tilte-form" for="inputUF">UF</label>
@@ -136,7 +136,7 @@
                     
 
                     <div class="text-xs-center">
-                        <button id="btn_cadastrar_empresa" class="btn btn-deep-purple" onclick="botao_registro()">
+                        <button id="btn_cadastrar_empresa" class="btn btn-deep-purple" onclick="cadastrar()">
                             CADASTRAR
                           </button> 
                     </div>
@@ -175,6 +175,7 @@
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
 function cadastrar() {
+    console.log("chego na função cadastrar")
   // aguardar();
   window.location.href = "login.html";
   //Recupere o valor da nova input pelo nome do id
@@ -186,21 +187,23 @@ function cadastrar() {
   var empresaNomeVar = inputEmpresa.value;
   var contatoVar = inputContato.value;
   var logradouroVar = inputLogradouro.value;
-  // var cidadeVar = inputCidade.value;
+  var cidadeVar = inputCidade.value;
   var estadoVar = inputUF.value;
   var cepVar = inputCEP.value;
   var bairroVar = inputBairro.value;
+  var numeroVar = inputNumero.value;
 
-  // if (userVar == "" || senhaVar == "" || nomeVar == "" || emailVar == "") {
-  //     cardErro.style.display = "block"
-  //     mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+  if (nomeVar == "" ||cnpjVar== "" || emailVar== "" || senhaVar == "" || empresaNomeVar == "" || contatoVar == "" || logradouroVar == "" ||
+        cidadeVar == "" || estadoVar == "" || cepVar == "" || bairroVar== "" || numeroVar== "") {
+      cardErro.style.display = "block"
+      mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
 
-  //     finalizarAguardar();
-  //     return false;
-  // }
-  // else {
-  //     setInterval(sumirMensagem, 5000)
-  // }
+ //     finalizarAguardar();
+      return false;
+  }
+  else {
+      setInterval(sumirMensagem, 5000)
+  }
 
   // Enviando o valor da nova input
   fetch("/usuarios/cadastrar", {
@@ -213,18 +216,17 @@ function cadastrar() {
           // Agora vá para o arquivo routes/usuario.js
           
           nomeServer: nomeVar,
-          senhaServer: senhaVar,
+          cnpjServer: cnpjVar,
           emailServer: emailVar,
-          contatoServer: contatoVar,
-          cnpjServer: cnpjVar,
+          senhaServer: senhaVar,
           empresaNomeServer: empresaNomeVar,
-          cnpjServer: cnpjVar,
+          contatoServer: contatoVar,
           logradouroServer: logradouroVar,
           cidadeServer: cidadeVar,
           estadoServer: estadoVar,
           cepServer: cepVar,
           bairroServer: bairroVar,
-          complementoVar: complementoVar,
+          numeroServer: numeroVar
       })
   }).then(function (resposta) {
 

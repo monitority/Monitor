@@ -259,7 +259,7 @@
       body: JSON.stringify({
         // crie um atributo que recebe o valor recuperado aqui
         // Agora vá para o arquivo routes/usuario.js
-        idEmpresa: sessionStorage.ID_EMPRESA,
+        idEmpresa: sessionStorage.FK_EMPRESA,
         empresaNomeServer: estabelecimentoNomeVar,
         logradouroServer: logradouroVar,
         bairroServer: bairroVar,
@@ -272,7 +272,7 @@
       }),
     })
       .then(function (resposta) {
-        console.log("resposta: ", resposta, sessionStorage.ID_EMPRESA);
+        console.log("resposta: ", resposta, sessionStorage.FK_EMPRESA);
         // Se sucesso, ele atualiza o id da empresa dentro da sessionStorage e atualiza a pág
         if (resposta.ok) {
           Swal.fire({
@@ -292,7 +292,7 @@
         }
       })
       .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta, sessionStorage.ID_EMPRESA}`);
+        console.log(`#ERRO: ${resposta, sessionStorage.FK_EMPRESA}`);
         // finalizarAguardar();
       });
 
@@ -302,8 +302,9 @@
 
     var idEstabelecimento = sessionStorage.ID_ESTABELECIMENTO;
     var idEmpresa = sessionStorage.ID_EMPRESA;
+    //var campoAlteracao = VAMOS PEDIR AJUDA
 
-    fetch("/usuarios/updateEstabelecimento/", {
+    fetch("/estabelecimento/updateEstabelecimento/", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json"
@@ -332,7 +333,7 @@
 
   function buscarDadoEstabelecimento() {
     var idEmpresa = sessionStorage.ID_EMPRESA;
-    fetch(`/estabelecimento/listarEstabelecimento/${idEmpresa}`)
+    fetch(`/estabelecimento/listar/${idEmpresa}`)
       .then(function (resposta) {
         console.log('estou na BuscarEstabelecimento()', resposta);
         if (resposta.ok) {
@@ -354,13 +355,6 @@
               var publicacao = resposta[i];
 
               // criando e manipulando elementos do HTML via JavaScript
-
-              var tamanhoSenha = atob(publicacao.senha)
-              var visualSenha = ""
-
-              for(var a = 0; a < tamanhoSenha.length ; a++) {
-                visualSenha += '*'
-              }
 
               tabelaFuncionarios.innerHTML += `
                         
