@@ -203,7 +203,7 @@ START TRANSACTION;
 	 INSERT INTO endereco(`logradouro`,`cep`.`numero`,`cidade`,`bairro`,`estado`)values
      (inLogradouro,inCep,inNumero,inCidade,inBairro,inEstado);
 	select LAST_INSERT_ID() into @idEnd;
-    Insert Into metricaAviso ('memoriaRAMPorcMin','cpuPorcMax','armazenamentoPorcMin','redePorcMin')
+    Insert Into metricaAviso ('memoriaRAMPorcMax','cpuPorcMax','armazenamentoPorcMax','redePorcMax')
     values (memoriaRAMPorcMax, cpuPorcMax, armazenamentoPorcMax, redePorcMax);
     select LAST_INSERT_ID() into @idMetrica;
     Insert Into Estabelecimentos(`nome`,`fkEmpresa`,`fkEndereco`,`fkMetricaAviso`)
