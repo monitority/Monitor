@@ -16,6 +16,8 @@
     <link rel="icon" href="./assets/imgs/sobreNos.png">
     <script src="./js/perfil-validacao.js"></script>
 
+    <script src="./js/cepAPI.js"></script>
+
     <title>Cadastre-se | Junte-se á nós!!!</title>
 </head>
 
@@ -72,6 +74,11 @@
                         </div>
                         <div class="divisao-column-1">
                             <div class="form-group ">
+                                <label class="tilte-form" for="inputCEP">CEP</label>
+                                <input class="form-control input-empresa" id="inputCEP" value="" placeholder="Ex: 08150200" required
+                                 onblur="pesquisacep(this.value),validarCEP();" onkeyup="cepMaskCode(event)" />
+                            </div>
+                            <div class="form-group ">
                                 <label class="tilte-form" for="inputLogradouro">Logradouro</label>
                                 <input id="inputLogradouro" class="form-control input-lg terceiro"
                                     placeholder="Rua Haddock" onblur="validarLogradouro()" required>
@@ -81,16 +88,6 @@
                                 <input id="inputBairro" class="form-control input-lg terceiro"
                                     placeholder="Ex: Consolação" onblur="validarBairro()" required>
                             </div>
-                            <div class="form-group ">
-                                <label class="tilte-form" for="inputCEP">CEP</label>
-                                <input class="form-control input-empresa" id="inputCEP" placeholder="Ex: 08150200"
-                                    required onblur="validarCEP()" />
-                            </div>
-                            <div class="form-group ">
-                                <label class="tilte-form" for="inputNumero">Número</label>
-                                <input id="inputNumero" class="form-control input-lg terceiro" placeholder=" 173 "
-                                    onblur="validarNumero()" required>
-                            </div>
                             <div class="form-group">
                                 <label class="tilte-form" for="inputCidade">Cidade</label>
                                 <input id="inputCidade" type="text" class="form-control input-lg terceiro"
@@ -98,39 +95,13 @@
                             </div>
                             <div class="form-group ">
                                 <label class="tilte-form" for="inputUF">UF</label>
-                                <select class="form-control select-lg terceiro " id="inputUF" name="estado"
-                                    onclick="validarUF()">
-                                    <option value="none"></option>
-                                    <option value="AC">Acre</option>
-                                    <option value="AL">Alagoas</option>
-                                    <option value="AP">Amapá</option>
-                                    <option value="AM">Amazonas</option>
-                                    <option value="BA">Bahia</option>
-                                    <option value="CE">Ceará</option>
-                                    <option value="DF">Distrito Federal</option>
-                                    <option value="ES">Espírito Santo</option>
-                                    <option value="GO">Goiás</option>
-                                    <option value="MA">Maranhão</option>
-                                    <option value="MT">Mato Grosso</option>
-                                    <option value="MS">Mato Grosso do Sul</option>
-                                    <option value="MG">Minas Gerais</option>
-                                    <option value="PA">Pará</option>
-                                    <option value="PB">Paraíba</option>
-                                    <option value="PR">Paraná</option>
-                                    <option value="PE">Pernambuco</option>
-                                    <option value="PI">Piauí</option>
-                                    <option value="RJ">Rio de Janeiro</option>
-                                    <option value="RN">Rio Grande do Norte</option>
-                                    <option value="RS">Rio Grande do Sul</option>
-                                    <option value="RO">Rondônia</option>
-                                    <option value="RR">Roraima</option>
-                                    <option value="SC">Santa Catarina</option>
-                                    <option value="SP">São Paulo</option>
-                                    <option value="SE">Sergipe</option>
-                                    <option value="TO">Tocantins</option>
-                                    <option value="EX">Estrangeiro</option>
-                                </select>
 
+                                <input class="form-control select-lg terceiro " id="inputUF" name="estado" onclick="validarUF()">
+                            </div>
+                            <div class="form-group ">
+                                <label class="tilte-form" for="inputNumero">Número</label>
+                                <input id="inputNumero" class="form-control input-lg terceiro"
+                                    placeholder=" 173 " onblur="validarNumero()" required>
                             </div>
                         </div>
                     </div>
@@ -167,7 +138,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
     crossorigin="anonymous"></script>
-<script src="./js/funcao.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
