@@ -86,7 +86,7 @@ var validar_cep = false;
 function validarCEP() {
   var CEP = inputCEP.value;
   /* Verifica se a cidade tem mais de 8 caractéres */
-  if (CEP.length != 8) {
+  if (CEP.length != 9) {
     inputCEP.classList.add("red");
     inputCEP.classList.remove("green");
   } else {
