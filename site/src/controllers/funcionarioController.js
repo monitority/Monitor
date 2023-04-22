@@ -1,4 +1,4 @@
-var usuarioModel = require("../models/funcionarioModel");
+var funcionarioModel = require("../models/funcionarioModel");
 
 var sessoes = [];
 
@@ -9,10 +9,10 @@ function cadastrarFuncionario(req, res) {
     var cargo = req.body.cargoServer;
     var email = req.body.emailServer;
     var contato = req.body.contatoServer;
-    var funcao = req.body.funcaoServer;
+    var permisao = req.body.permissaoServer;
     var idEmpresa = req.body.idEmpresa;
 
-    funcionarioModel.cadastrarFuncionario(nome, senha,  cargo, email, contato, funcao, idEmpresa)
+    funcionarioModel.cadastrarFuncionario(nome, senha,  cargo, email, contato, permisao, idEmpresa)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -31,5 +31,5 @@ function cadastrarFuncionario(req, res) {
 }
 
 module.exports = {
-    cadastrarFuncionario,
+    cadastrarFuncionario
 }

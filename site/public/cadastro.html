@@ -40,13 +40,13 @@
                         <div class="divisao-column-1">
                             <div class="form-group ">
                                 <label class="tilte-form" for="inputNome">Nome</label>
-                                <input class="form-control  input-empresa" id="inputNome" placeholder="Ex: Thiago Serafim" required
-                                onblur="validarNome()" />
+                                <input class="form-control  input-empresa" id="inputNome"
+                                    placeholder="Ex: Thiago Serafim" required onblur="validarNome()" />
                             </div>
                             <div class="form-group ">
                                 <label class="tilte-form" for="inputSenha">Senha</label>
-                                <input class="form-control input-empresa" id="inputSenha" placeholder="Ex: Senha@123" type="password"
-                  onblur="validarSenha()" required />
+                                <input class="form-control input-empresa" id="inputSenha" placeholder="Ex: Senha@123"
+                                    type="password" onblur="validarSenha()" required />
                             </div>
                             <div class="form-group ">
                                 <label class="tilte-form" for="inputCNPJ">CNPJ</label>
@@ -70,7 +70,7 @@
                                 <input id="inputEmpresa" class="form-control input-lg terceiro"
                                     placeholder="Nome da Empresa" onblur="validarEmpresa()" required>
                             </div>
-                            
+
                         </div>
                         <div class="divisao-column-1">
                             <div class="form-group ">
@@ -95,6 +95,7 @@
                             </div>
                             <div class="form-group ">
                                 <label class="tilte-form" for="inputUF">UF</label>
+
                                 <input class="form-control select-lg terceiro " id="inputUF" name="estado" onclick="validarUF()">
                             </div>
                             <div class="form-group ">
@@ -104,12 +105,12 @@
                             </div>
                         </div>
                     </div>
-                    
+
 
                     <div class="text-xs-center">
                         <button id="btn_cadastrar_empresa" class="btn btn-deep-purple" onclick="cadastrar()">
                             CADASTRAR
-                          </button> 
+                        </button>
                     </div>
 
                     <div class="inputBox">
@@ -125,7 +126,7 @@
 
             </div><!--col-sm-8-->
 
-        </div><!--container-->
+            </div><!--container-->
 
 
 </body>
@@ -144,119 +145,119 @@
 <script>
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
-function cadastrar() {
-    console.log("chego na função cadastrar")
-  // aguardar();
-  window.location.href = "login.html";
-  //Recupere o valor da nova input pelo nome do id
-  // Agora vá para o método fetch logo abaixo
-  var nomeVar = inputNome.value;
-  var cnpjVar = inputCNPJ.value;
-  var emailVar = inputEmail.value;
-  var senhaVar = btoa(inputSenha.value);
-  var empresaNomeVar = inputEmpresa.value;
-  var contatoVar = inputContato.value;
-  var logradouroVar = inputLogradouro.value;
-  var cidadeVar = inputCidade.value;
-  var estadoVar = inputUF.value;
-  var cepVar = inputCEP.value;
-  var bairroVar = inputBairro.value;
-  var numeroVar = inputNumero.value;
+    function cadastrar() {
+        console.log("chego na função cadastrar")
+        // aguardar();
+        window.location.href = "login.html";
+        //Recupere o valor da nova input pelo nome do id
+        // Agora vá para o método fetch logo abaixo
+        var nomeVar = inputNome.value;
+        var cnpjVar = inputCNPJ.value;
+        var emailVar = inputEmail.value;
+        var senhaVar = btoa(inputSenha.value);
+        var empresaNomeVar = inputEmpresa.value;
+        var contatoVar = inputContato.value;
+        var logradouroVar = inputLogradouro.value;
+        var cidadeVar = inputCidade.value;
+        var estadoVar = inputUF.value;
+        var cepVar = inputCEP.value;
+        var bairroVar = inputBairro.value;
+        var numeroVar = inputNumero.value;
 
-  if (nomeVar == "" ||cnpjVar== "" || emailVar== "" || senhaVar == "" || empresaNomeVar == "" || contatoVar == "" || logradouroVar == "" ||
-        cidadeVar == "" || estadoVar == "" || cepVar == "" || bairroVar== "" || numeroVar== "") {
-      cardErro.style.display = "block"
-      mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+        if (nomeVar == "" || cnpjVar == "" || emailVar == "" || senhaVar == "" || empresaNomeVar == "" || contatoVar == "" || logradouroVar == "" ||
+            cidadeVar == "" || estadoVar == "" || cepVar == "" || bairroVar == "" || numeroVar == "") {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
 
- //     finalizarAguardar();
-      return false;
-  }
-  else {
-      setInterval(sumirMensagem, 5000)
-  }
+            //     finalizarAguardar();
+            return false;
+        }
+        else {
+            setInterval(sumirMensagem, 5000)
+        }
 
-  // Enviando o valor da nova input
-  fetch("/usuarios/cadastrar", {
-      method: "POST",
-      headers: {
-          "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-          // crie um atributo que recebe o valor recuperado aqui
-          // Agora vá para o arquivo routes/usuario.js
-          
-          nomeServer: nomeVar,
-          cnpjServer: cnpjVar,
-          emailServer: emailVar,
-          senhaServer: senhaVar,
-          empresaNomeServer: empresaNomeVar,
-          contatoServer: contatoVar,
-          logradouroServer: logradouroVar,
-          cidadeServer: cidadeVar,
-          estadoServer: estadoVar,
-          cepServer: cepVar,
-          bairroServer: bairroVar,
-          numeroServer: numeroVar
-      })
-  }).then(function (resposta) {
+        // Enviando o valor da nova input
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
 
-      console.log("resposta: ", resposta);
+                nomeServer: nomeVar,
+                cnpjServer: cnpjVar,
+                emailServer: emailVar,
+                senhaServer: senhaVar,
+                empresaNomeServer: empresaNomeVar,
+                contatoServer: contatoVar,
+                logradouroServer: logradouroVar,
+                cidadeServer: cidadeVar,
+                estadoServer: estadoVar,
+                cepServer: cepVar,
+                bairroServer: bairroVar,
+                numeroServer: numeroVar
+            })
+        }).then(function (resposta) {
 
-      if (resposta.ok) {
-          setTimeout(() => {
-              window.location = "login.html";
-          }, "2000")
-          
-          limparFormulario();
-          // finalizarAguardar();
-      } else {
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'Houve um erro ao tentar realizar o cadastro!',
-        })
+            console.log("resposta: ", resposta);
 
-      }
-  }).catch(function (resposta) {
-      console.log(`#ERRO: ${resposta}`);
-      // finalizarAguardar();
-  });
+            if (resposta.ok) {
+                setTimeout(() => {
+                    window.location = "login.html";
+                }, "2000")
 
-  return false;
-}
+                limparFormulario();
+                // finalizarAguardar();
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Houve um erro ao tentar realizar o cadastro!',
+                })
 
-function validar_autenticacao_cadastro() {
-  if (
-    validar_nome &&
-    validar_cnpj &&
-    validar_email &&
-    validar_senha &&
-    validar_empresa &&
-    validar_logradouro &&
-    validar_bairro  &&
-    validar_cep &&
-    validar_uf &&
-    validar_cidade 
-    // validar_usuario &&
-  ) {
-    Swal.fire({
-      position: 'center',
-      icon: 'success',
-      title: 'Seu cadastro foi realizado com sucesso!',
-      showConfirmButton: false,
-      timer: 2000
-    })
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            // finalizarAguardar();
+        });
 
-    setInterval(() => cadastrar(), 2000);
-    // document.getElementById("btnCadastrar").disabled = false;
-    // window.location.href = "login.html";
-  } else {
-    Swal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: 'Autenticação inválida!',
-    })
-  }
-}
+        return false;
+    }
+
+    function validar_autenticacao_cadastro() {
+        if (
+            validar_nome &&
+            validar_cnpj &&
+            validar_email &&
+            validar_senha &&
+            validar_empresa &&
+            validar_logradouro &&
+            validar_bairro &&
+            validar_cep &&
+            validar_uf &&
+            validar_cidade
+            // validar_usuario &&
+        ) {
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Seu cadastro foi realizado com sucesso!',
+                showConfirmButton: false,
+                timer: 2000
+            })
+
+            setInterval(() => cadastrar(), 2000);
+            // document.getElementById("btnCadastrar").disabled = false;
+            // window.location.href = "login.html";
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Autenticação inválida!',
+            })
+        }
+    }
 
 </script>

@@ -171,10 +171,10 @@ in Estado VARCHAR(45)
 BEGIN
 START TRANSACTION;
 	 INSERT INTO endereco(`logradouro`,`cep`,`numero`,`cidade`,`bairro`,`estado`)values
-     (inLogradouro,inCep,inNumero,inCidade,inBairro,inEstado);
+     (Logradouro,Cep,Numero,Cidade,Bairro,Estado);
 	select LAST_INSERT_ID() into @idEnd;
     Insert Into Empresa(`nomeUsuario`,`nomeEmpresa`,`cnpj`,`email`,`senha`,`contato`,`fkEndereco`)
-    values(inNomeUsuario,inNomeEmpresa,inCnpj,inEmail,inSenha,inContato, @idEnd);
+    values(NomeUsuario,NomeEmpresa,Cnpj,Email,Senha,Contato, @idEnd);
 COMMIT;
 END//
 DELIMITER ;
@@ -184,7 +184,7 @@ CALL inserirEmpresa('asdfasd asdf', 'testepf', '12312312312312',  'thiago@sptech
  -- CALL inserirEmpresa('nomeUsuario','nomeEmpresa','cnpj','email','senha','contato','cidade','logradouro','bairro',12,'cep','estado');
 
  DELIMITER 
-CREATE PROCEDURE inserirEstabelecimento (
+CREATE PROCEDURE inserirEstabelecimento(
 in NomeEstabelecimento VARCHAR(100),
 in Cidade VARCHAR(60),
 in Logradouro VARCHAR(70),
@@ -201,15 +201,15 @@ in fkEmpresa INT
 BEGIN
 START TRANSACTION;
 	 INSERT INTO endereco(`logradouro`,`cep`.`numero`,`cidade`,`bairro`,`estado`)values
-     (inLogradouro,inCep,inNumero,inCidade,inBairro,inEstado);
+     (Logradouro,Cep,Numero,Cidade,Bairro,Estado);
 	select LAST_INSERT_ID() into @idEnd;
-    Insert Into metricaAviso ('memoriaRAMPorcMax','cpuPorcMax','armazenamentoPorcMax','redePorcMax')
+    Insert Into metricaAviso (`memoriaRAMPorcMax`,`cpuPorcMax`,`armazenamentoPorcMax`,`redePorcMax`)
     values (memoriaRAMPorcMax, cpuPorcMax, armazenamentoPorcMax, redePorcMax);
     select LAST_INSERT_ID() into @idMetrica;
     Insert Into Estabelecimentos(`nome`,`fkEmpresa`,`fkEndereco`,`fkMetricaAviso`)
     values(NomeEstabelecimento, fkEmpresa, @idEnd, @idMetrica);
 COMMIT;
-END//
+END
 DELIMITER ;
 
 -- CALL inserirEstabelecimento('${nome}', '${Cidade}', '${lougradouro}',  '${bairro','${Numero}' ,'${cep}', '${estado}','${memoriaRAMPorcMin}','${cpuPorcMax}','${armazenamentoPorcMin}','${redePorcMin}','${fkEmpresa}');
