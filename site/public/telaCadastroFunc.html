@@ -405,7 +405,7 @@
     var funcaoVar = inputFuncao.value;
 
 
-    fetch(`/funcionario/cadastrarFuncionario/${idEmpresa}`, {
+    fetch("/funcionario/cadastrarFuncionario", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -413,10 +413,10 @@
       body: JSON.stringify({
         // crie um atributo que recebe o valor recuperado aqui
         // Agora vá para o arquivo routes/funcionario.js
-        idEmpresa: sessionStorage.ID_EMPRESA,
-        cargoServer: cargoVar,
-        senhaServer: senhaVar,
+        idEmpresa: idEmpresa,
         nomeServer: nomeVar,
+        senhaServer: senhaVar,
+        cargoServer: cargoVar,
         emailServer: emailVar,
         contatoServer: contatoVar,
         funcaoServer: funcaoVar,
@@ -431,7 +431,7 @@
             title: 'Parabéns',
             text: 'Cadastro realizado com sucesso!',
           })
-
+          console.log("deu certo")
           setTimeout(() => { window.location.reload(); }, 2000);
         } else {
 
