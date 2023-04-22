@@ -32,7 +32,7 @@ function cadastrar(nome, cnpj,  email, senha, empresaNome, contato, logradouro, 
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
     var instrucao = `
-     CALL inserirEmpresa('${nome}', '${empresaNome}', '${cnpj}',  '${email}', '${senha}', '${contato}','${cidade}','${logradouro}','${bairro}', '${numero}','${cep}','${estado}');`;
+     CALL inserirEmpresa('${nome}', '${empresaNome}','${cnpj}','${email}', '${senha}', '${contato}','${cidade}','${logradouro}','${bairro}', '${numero}','${cep}','${estado}');`;
 
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);

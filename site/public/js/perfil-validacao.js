@@ -70,8 +70,8 @@ function validarFuncao() {
 var validar_cidade = false;
 function validarCidade() {
   var cidade = inputCidade.value;
-  /* Verifica se a cidade tem mais de 8 caractéres */
-  if (cidade.length < 30) {
+  /* Verifica se a cidade tem mais de 5 caractéres */
+  if (cidade.length < 5) {
     inputCidade.classList.add("red");
     inputCidade.classList.remove("green");
   } else {
@@ -111,19 +111,6 @@ function validarBairro() {
   }
 }
 
-//Validando o Complemento da Empresa
-function validarComplemento() {
-  var complemento = inputBairro.value;
-  //Verifica se o complemento da empresa tem mais que 4 caracteres
-  if (complemento.length < 4) {
-    inputComplemento.classList.add("red");
-    inputComplemento.classList.remove("green");
-  } else {
-    inputComplemento.classList.remove("red");
-    inputComplemento.classList.add("green");
-  }
-}
-/* Validando os campos do cadastro do funcionario */
 //Validando Nome de usuario
 var validar_usuario = false;
 function validarUsuario() {
@@ -320,34 +307,6 @@ function validarContato() {
     validar_contato = true;
   }
 }
-
-// var validar_cidade = false;
-// function validarCidade() {
-//   var cidade = inputCidade.value;
-//   /* Verifica se a cidade tem mais de 8 caractéres */
-//   if (cidade.length < 20) {
-//     inputCidade.classList.add("red");
-//     inputCidade.classList.remove("green");
-//   } else {
-//     inputCidade.classList.remove("red");
-//     inputCidade.classList.add("green");
-//     validar_cidade = true;
-//   }
-// }
-// validar_bairro = false;
-// function validarBairro() {
-//   var bairro = inputBairro.value;
-//   //Verifica se o bairro da empresa tem mais que 6 caracteres
-//   if (bairro.length < 3) {
-//     inputBairro.classList.add("red");
-//     inputBairro.classList.remove("green");
-//   } else {
-//     inputBairro.classList.remove("red");
-//     inputBairro.classList.add("green");
-//     validar_bairro = true;
-//   }
-// }
-
 var validar_numero = false;
 function validarNumero() {
   var numero = inputNumero.value;
