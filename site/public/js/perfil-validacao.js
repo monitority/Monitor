@@ -71,7 +71,7 @@ var validar_cidade = false;
 function validarCidade() {
   var cidade = inputCidade.value;
   /* Verifica se a cidade tem mais de 8 caractéres */
-  if (cidade.length < 8) {
+  if (cidade.length < 30) {
     inputCidade.classList.add("red");
     inputCidade.classList.remove("green");
   } else {
@@ -305,6 +305,7 @@ function validarEmail() {
     validar_email = true;
   }
 }
+
 //Validando Contato do Usuario
 var validar_contato = false;
 function validarContato() {
@@ -319,32 +320,33 @@ function validarContato() {
     validar_contato = true;
   }
 }
-var validar_cidade = false;
-function validarCidade() {
-  var cidade = inputCidade.value;
-  /* Verifica se a cidade tem mais de 8 caractéres */
-  if (cidade.length < 8) {
-    inputCidade.classList.add("red");
-    inputCidade.classList.remove("green");
-  } else {
-    inputCidade.classList.remove("red");
-    inputCidade.classList.add("green");
-    validar_cidade = true;
-  }
-}
-validar_bairro = false;
-function validarBairro() {
-  var bairro = inputBairro.value;
-  //Verifica se o bairro da empresa tem mais que 6 caracteres
-  if (bairro.length < 3) {
-    inputBairro.classList.add("red");
-    inputBairro.classList.remove("green");
-  } else {
-    inputBairro.classList.remove("red");
-    inputBairro.classList.add("green");
-    validar_bairro = true;
-  }
-}
+
+// var validar_cidade = false;
+// function validarCidade() {
+//   var cidade = inputCidade.value;
+//   /* Verifica se a cidade tem mais de 8 caractéres */
+//   if (cidade.length < 20) {
+//     inputCidade.classList.add("red");
+//     inputCidade.classList.remove("green");
+//   } else {
+//     inputCidade.classList.remove("red");
+//     inputCidade.classList.add("green");
+//     validar_cidade = true;
+//   }
+// }
+// validar_bairro = false;
+// function validarBairro() {
+//   var bairro = inputBairro.value;
+//   //Verifica se o bairro da empresa tem mais que 6 caracteres
+//   if (bairro.length < 3) {
+//     inputBairro.classList.add("red");
+//     inputBairro.classList.remove("green");
+//   } else {
+//     inputBairro.classList.remove("red");
+//     inputBairro.classList.add("green");
+//     validar_bairro = true;
+//   }
+// }
 
 var validar_numero = false;
 function validarNumero() {
@@ -358,6 +360,7 @@ function validarNumero() {
     validar_numero = true;
   }
 }
+
 var validar_numeroMetrica = false;
 function validarNumeroMetrica() {
   var numero = inputNumeroMetrica.value;
@@ -370,6 +373,7 @@ function validarNumeroMetrica() {
     validar_numeroMetrica = true;
   }
 }
+
 function botao_registro() {
   if (
     validar_nome &&

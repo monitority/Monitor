@@ -11,6 +11,7 @@ function validarUsuario() {
     validar_usuario = true;
   }
 }
+
 var validar_senha = false;
 function validarSenha() {
   var senha = form4.value;
