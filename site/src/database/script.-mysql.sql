@@ -50,14 +50,14 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `email` VARCHAR(45) NOT NULL,
   `tel` VARCHAR(45) NOT NULL,
   `cargo` VARCHAR(10) NOT NULL,
-  `permissao` CHAR(15) NOT NULL,
+  `permissao` VARCHAR(15) NOT NULL,
   `fkEmpresa` INT NOT NULL,
   PRIMARY KEY (`idUsuario`),
-  
-    FOREIGN KEY (`fkEmpresa`)
-    REFERENCES `empresa`(`idEmpresa`));
+  FOREIGN KEY (`fkEmpresa`) REFERENCES `empresa`(`idEmpresa`)
+  );
 
-
+select * from usuario;
+drop table usuario;
 -- Um totem tem somente uma configuração;
 -- -----------------------------------------------------
 -- Table `confiPC`;
@@ -106,7 +106,6 @@ CREATE TABLE IF NOT EXISTS `estabelecimento` (
   REFERENCES `metricaAviso`(`idMetricaAviso`)
   );
   
-
 -- Um totem tem só um estabelecimento;
 -- -----------------------------------------------------
 -- Table `totem`;
@@ -154,7 +153,7 @@ CREATE TABLE IF NOT EXISTS `dado` (
 
 -- Criação da procedure para a junção de mais de duas tabelas
 DELIMITER 
-CREATE PROCEDURE inserirEmpresa (
+CREATE DEFINER=`root`@`localhost` PROCEDURE `inserirEmpresa`(
 in NomeUsuario VARCHAR(100),
 in NomeEmpresa VARCHAR(30),
 in Cnpj VARCHAR(14),
@@ -176,40 +175,40 @@ START TRANSACTION;
     Insert Into Empresa(`nomeUsuario`,`nomeEmpresa`,`cnpj`,`email`,`senha`,`contato`,`fkEndereco`)
     values(NomeUsuario,NomeEmpresa,Cnpj,Email,Senha,Contato, @idEnd);
 COMMIT;
-END//
+END
 DELIMITER ;
-CALL inserirEmpresa('asdfasd asdf', 'testepf', '12312312312312',  'thiago@sptech.com', 'U2VuaGFAMTIz', '11949849509','sao paulo','asdfasdf','123','asdfasdf','04144000','PI');
+-- CALL inserirEmpresa('asdfasd asdf', 'testepf', '12312312312312',  'thiago@sptech.com', 'U2VuaGFAMTIz', '11949849509','sao paulo','asdfasdf','123','asdfasdf','04144000','PI');
  
  -- Como chamar a procedure e inserir os dados para as tabelas indicadas
  -- CALL inserirEmpresa('nomeUsuario','nomeEmpresa','cnpj','email','senha','contato','cidade','logradouro','bairro',12,'cep','estado');
 
  DELIMITER 
-CREATE PROCEDURE inserirEstabelecimento(
-in NomeEstabelecimento VARCHAR(100),
-in Cidade VARCHAR(60),
-in Logradouro VARCHAR(70),
-in Bairro VARCHAR(70), 
-in Numero INT,
-in Cep CHAR(9),
-in Estado VARCHAR(45),
-in memoriaRAMPorcMax FLOAT,
-in cpuPorcMax FLOAT,
-in armazenamentoPorcMax FLOAT,
-in redePorcMax VARCHAR (45),
-in fkEmpresa INT
+CREATE DEFINER=`aluno`@`localhost` PROCEDURE `inserirEstabelecimento`(
+	in NomeEstabelecimento VARCHAR(100),
+	in Cidade VARCHAR(60),
+	in Logradouro VARCHAR(70),
+	in Bairro VARCHAR(70), 
+	in Numero INT,
+	in Cep CHAR(9),
+	in Estado VARCHAR(45),
+	in memoriaRAMPorcMax FLOAT,
+	in cpuPorcMax FLOAT,
+	in armazenamentoPorcMax FLOAT,
+	in redePorcMax FLOAT,
+	in fkEmpresa INT
 )
 BEGIN
-START TRANSACTION;
-	 INSERT INTO endereco(`logradouro`,`cep`.`numero`,`cidade`,`bairro`,`estado`)values
-     (Logradouro,Cep,Numero,Cidade,Bairro,Estado);
-	select LAST_INSERT_ID() into @idEnd;
-    Insert Into metricaAviso (`memoriaRAMPorcMax`,`cpuPorcMax`,`armazenamentoPorcMax`,`redePorcMax`)
-    values (memoriaRAMPorcMax, cpuPorcMax, armazenamentoPorcMax, redePorcMax);
-    select LAST_INSERT_ID() into @idMetrica;
-    Insert Into Estabelecimentos(`nome`,`fkEmpresa`,`fkEndereco`,`fkMetricaAviso`)
-    values(NomeEstabelecimento, fkEmpresa, @idEnd, @idMetrica);
-COMMIT;
+	START TRANSACTION;
+	INSERT INTO endereco(`logradouro`,`cep`, `numero`,`cidade`,`bairro`,`estado`)
+	VALUES(Logradouro, Cep, Numero, Cidade, Bairro, Estado);
+	SELECT LAST_INSERT_ID() INTO @idEnd;
+	INSERT INTO metricaAviso (`memoriaRAMPorcMax`,`cpuPorcMax`,`armazenamentoPorcMax`,`redePorcMax`)
+	VALUES (memoriaRAMPorcMax, cpuPorcMax, armazenamentoPorcMax, redePorcMax);
+	SELECT LAST_INSERT_ID() INTO @idMetrica;
+	INSERT INTO Estabelecimento(`nome`,`fkEmpresa`,`fkEndereco`,`fkMetricaAviso`)
+	VALUES(NomeEstabelecimento, fkEmpresa, @idEnd, @idMetrica);
+	COMMIT;
 END
 DELIMITER ;
-
+-- CALL inserirEmpresa('Giovanna B', 'teste1', '12312312312312',  'gi@gmail.com', 'U2VuaGFAMTIz', '11949849509','Criciuma','asafds','asdv', '173','04144000','AL');
 -- CALL inserirEstabelecimento('${nome}', '${Cidade}', '${lougradouro}',  '${bairro','${Numero}' ,'${cep}', '${estado}','${memoriaRAMPorcMin}','${cpuPorcMax}','${armazenamentoPorcMin}','${redePorcMin}','${fkEmpresa}');
