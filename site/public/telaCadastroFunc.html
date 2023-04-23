@@ -155,9 +155,9 @@
                 <select class="input-empresa" name="select" id="inputFuncao"  
                 onblur="validarFuncao()" >
                   <option value=none></option>
-                  <option value="1">Administrador</option>
-                  <option value="2">Moderador</option>
-                  <option value="3">Funcionário</option>
+                  <option value="Administrador">Administrador</option>
+                  <option value="Gerente">Moderador</option>
+                  <option value="Técnico">Funcionário</option>
                 </select>
               </div>
             </div>
@@ -193,8 +193,17 @@
   b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
   function buscarDadoFuncionario() {
-    var idEmpresa = sessionStorage.ID_EMPRESA;
-    fetch(`/funcionario/listarFuncionario`)
+   var sessionIdEmpresa = sessionStorage.ID_EMPRESA;
+   var sessionFkEmpresa = sessionStorage.FK_EMPRESA;
+   var idEmpresa = 0;
+    if(sessionIdEmpresa > 0){
+      idEmpresa = sessionIdEmpresa;
+    }else if(sessionFkEmpresa > 0){
+      idEmpresa = sessionFkEmpresa;
+    }else{
+      console.log("id e fk empresa estão errado")
+    }
+    fetch(`/funcionario/listar/${idEmpresa}`)
       .then(function (resposta) {
         console.log('estou na Buscarfuncionario()', resposta);
         if (resposta.ok) {
@@ -237,7 +246,7 @@
                       </div>
                       <div class="estilo-atributos">
                         <h5>Nome Completo:</h5>
-                        <p>${publicacao.nome}</p>
+                        <p>${publicacao.nomeUsuario}</p>
                       </div>
                       <div class="estilo-atributos">
                         <h5>Cargo:</h5>
@@ -245,11 +254,11 @@
                       </div>
                       <div class="estilo-atributos">
                         <h5>Telefone:</h5>
-                        <p>${publicacao.telefone}</p>
+                        <p>${publicacao.tel}</p>
                       </div>
                       <div class="estilo-atributos">
-                        <h5>Função:</h5>
-                        <p>${publicacao.funcao}</p>
+                        <h5>Permissão:</h5>
+                        <p>${publicacao.permissao}</p>
                       </div>
                       <button class="removerCard" onclick="removerCard(${publicacao.idPerfil})">Remover</button>
                   </div>
@@ -257,7 +266,7 @@
             }
           });
         } else {
-          throw console.log('Estou na buscarDadosFuncionario()', JSON.stringify(resposta));
+          throw console.log('Estou na buscarDadosFuncionario() mas deu errado', JSON.stringify(resposta));
         }
       })
       .catch(function (resposta) {
@@ -277,7 +286,7 @@
     var permissaoVar = inputFuncao.value;
 
 
-    fetch("/usuarios/cadastrarfuncionario", {
+    fetch("/funcionario/cadastrarfuncionario", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

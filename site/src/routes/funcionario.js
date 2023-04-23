@@ -7,7 +7,8 @@ router.get("/", function (req, res) {
     funcionarioController.testar(req, res);
 });
 
-router.get("/listar", function (req, res) {
+router.get("/listar/:idEmpresa", function (req, res) {
+    console.log("estou na listar funcionario Router")
     funcionarioController.listar(req, res);
 });
 
@@ -16,8 +17,5 @@ router.post("/cadastrarfuncionario", function (req, res) {
     funcionarioController.cadastrarFuncionario(req, res);
 })
 
-router.post("/autenticar", function (req, res) {
-    funcionarioController.entrar(req, res);
-});
 
 module.exports = router;

@@ -163,17 +163,17 @@
               </div>
               <div class="estilo-box">
                 <p>Métrica de CPU (Em %)</p>
-                <input class="input-empresa" id="inputNumeroMetrica" placeholder="Ex: 80" required
+                <input class="input-empresa" id="inputNumeroMetricaCpu" placeholder="Ex: 80" required
                   onblur="validarNumeroMetrica()" />
               </div>
               <div class="estilo-box">
                 <p>Métrica Memória RAM (Em %)</p>
-                <input class="input-empresa" id="inputNumeroMetrica" placeholder="Ex: 80" required
+                <input class="input-empresa" id="inputNumeroMetricaRam" placeholder="Ex: 80" required
                   onblur="validarNumeroMetrica()" />
               </div>
               <div class="estilo-box">
                 <p>Métrica de Disco (Em %)</p>
-                <input class="input-empresa" id="inputNumeroMetrica" placeholder="Ex: 80" required
+                <input class="input-empresa" id="inputNumeroMetricaDisco" placeholder="Ex: 80" required
                   onblur="validarNumeroMetrica()" />
               </div>
             </div>
@@ -206,9 +206,11 @@
 </html>
 <script>
    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-
+   var sessionIdEmpresa = sessionStorage.ID_EMPRESA;
+   var sessionFkEmpresa = sessionStorage.FK_EMPRESA;
+   var idEmpresa = 0;
   function cadastrarEstabelecimento() {
-    var idEmpresa = sessionStorage.ID_EMPRESA
+
     //Recupere o valor da nova input pelo nome do id
     // Agora vá para o método fetch logo abaixo
     var estabelecimentoNomeVar = inputNome.value;
@@ -218,10 +220,20 @@
     var cidadeVar = inputCidade.value;
     var estadoVar = inputUF.value;
     var numeroVar = inputNumero.value;
-    var metricaNumeroVar = inputNumeroMetrica.value;
+    var metricaNumeroCpuVar = inputNumeroMetricaCpu.value;
+    var metricaNumeroRamVar = inputNumeroMetricaRam.value;
+    var metricaNumeroDiscoVar = inputNumeroMetricaDisco.value;
+    
 
+    if(sessionIdEmpresa > 0){
+      idEmpresa = sessionIdEmpresa;
+    }else if(sessionFkEmpresa > 0){
+      idEmpresa = sessionFkEmpresa;
+    }else{
+      console.log("id e fk empresa estão errado")
+    }
     // Enviando o valor da nova input
-    fetch(`/estabelecimento/cadastrarEstabelecimento/${idEmpresa}`, {
+    fetch("/estabelecimento/cadastrarEstabelecimento", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -229,7 +241,7 @@
       body: JSON.stringify({
         // crie um atributo que recebe o valor recuperado aqui
         // Agora vá para o arquivo routes/usuario.js
-        idEmpresa: sessionStorage.FK_EMPRESA,
+        fkEmpresa: idEmpresa,
         empresaNomeServer: estabelecimentoNomeVar,
         logradouroServer: logradouroVar,
         bairroServer: bairroVar,
@@ -237,12 +249,13 @@
         cidadeServer: cidadeVar,
         estadoServer: estadoVar,
         numeroServer: numeroVar,
-        metricaServer: metricaNumeroVar,
-       
+        metricaCpuServer: metricaNumeroCpuVar,
+        metricaRamServer: metricaNumeroRamVar,
+        metricaDiscoServer: metricaNumeroDiscoVar,
       }),
     })
       .then(function (resposta) {
-        console.log("resposta: ", resposta, sessionStorage.FK_EMPRESA);
+        console.log("resposta: ", resposta, idEmpresa);
         // Se sucesso, ele atualiza o id da empresa dentro da sessionStorage e atualiza a pág
         if (resposta.ok) {
           Swal.fire({
@@ -251,7 +264,7 @@
           text: 'Cadastro realizado com sucesso!',
           })
 
-          setTimeout(() => selectEstabelecimento(), 2000);
+          setTimeout(() => buscarDadoEstabelecimento(), 2000);
 
         } else {
           Swal.fire({
@@ -302,7 +315,13 @@
 
 
   function buscarDadoEstabelecimento() {
-    var idEmpresa = sessionStorage.ID_EMPRESA;
+    if(sessionIdEmpresa > 0){
+      idEmpresa = sessionIdEmpresa;
+    }else if(sessionFkEmpresa > 0){
+      idEmpresa = sessionFkEmpresa;
+    }else{
+      console.log("id e fk empresa estão errado")
+    }
     fetch(`/estabelecimento/listar/${idEmpresa}`)
       .then(function (resposta) {
         console.log('estou na BuscarEstabelecimento()', resposta);
@@ -320,7 +339,7 @@
             console.log("Dados recebidos: ", JSON.stringify(resposta));
 
             var tabelaFuncionarios = document.getElementById("tabela_funcionarios");
-            tabelaFuncionarios.innerHTML = "<h3>FUNCIONÁRIOS</h3>";
+            tabelaFuncionarios.innerHTML = "<h3>ESTABELECIMENTOS</h3>";
             for (let i = 0; i < resposta.length; i++) {
               var publicacao = resposta[i];
 
@@ -330,36 +349,32 @@
                         
               <div class="func" id="${i}">
                       <div class="estilo-atributos">
-                        <h5>Nome estabelecimento</h5>
+                        <h5>Nome estabelecimento:</h5>
                         <p>${publicacao.nome}</p>
                       </div>
                       <div class="estilo-atributos">
-                        <h5>Logradouro</h5>
+                        <h5>Logradouro:</h5>
                         <p>${publicacao.logradouro}</p>
                       </div>
                       <div class="estilo-atributos">
-                        <h5>Bairo</h5>
+                        <h5>Bairo:</h5>
                         <p>${publicacao.bairro}</p>
                       </div>
                       <div class="estilo-atributos">
-                        <h5>CEP</h5>
+                        <h5>CEP:</h5>
                         <p>${publicacao.cep}</p>
                       </div>
                       <div class="estilo-atributos">
-                        <h5>Cidade</h5>
+                        <h5>Cidade:</h5>
                         <p>${publicacao.cidade}</p>
                       </div>
                       <div class="estilo-atributos">
-                        <h5>UF</h5>
-                        <p>${publicacao.uf}</p>
+                        <h5>UF:</h5>
+                        <p>${publicacao.estado}</p>
                       </div>
                       <div class="estilo-atributos">
-                        <h5>Numero</h5>
+                        <h5>Numero:</h5>
                         <p>${publicacao.numero}</p>
-                      </div>
-                      <div class="estilo-atributos">
-                        <h5>Metrica</h5>
-                        <p>${publicacao.metrica}</p>
                       </div>
                       <button class="removerCard" onclick="removerCard(${publicacao.idEstabelecimento})">Remover</button>
                   </div>
