@@ -144,13 +144,22 @@
                         sessionStorage.ID_USUARIO = json.id;
                         sessionStorage.FK_EMPRESA = json.fkEmpresa;
                         sessionStorage.ID_EMPRESA = json.idEmpresa;
+                        sessionStorage.PERMISSAO = json.permissao;
+                        console.log("resposta permissao",json.permissao)
 
-                        setTimeout(function () {
-                            window.location = "./telaCadastroEstabelecimento.html";
+                        if(json.permissao == 'Técnico'){
+                            setTimeout(function () {
+                            window.location = "./lista.html";
                         }, 1000); // apenas para exibir o loading
+                        }else if (json.permissao == 'Gerente'){
+                            setTimeout(function () {
+                            window.location = "./dashboard-gerente.html";
+                        }, 1000); // apenas para exibir o loading
+                        }
+
+
     
                     });
-    
                 } else {
     
                     console.log("Houve um erro ao tentar realizar o login!");
