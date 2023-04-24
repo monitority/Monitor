@@ -212,3 +212,22 @@ END
 DELIMITER ;
 -- CALL inserirEmpresa('Giovanna B', 'teste1', '12312312312312',  'gi@gmail.com', 'U2VuaGFAMTIz', '11949849509','Criciuma','asafds','asdv', '173','04144000','AL');
 -- CALL inserirEstabelecimento('${nome}', '${Cidade}', '${lougradouro}',  '${bairro','${Numero}' ,'${cep}', '${estado}','${memoriaRAMPorcMin}','${cpuPorcMax}','${armazenamentoPorcMin}','${redePorcMin}','${fkEmpresa}');
+
+DELIMITER 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `inserirTotem`(
+in modelo VARCHAR(100),
+in processadorModelo VARCHAR(30),
+in placaMaeModelo VARCHAR(14),
+in memoriaRAMModelo VARCHAR(50),
+in armazenamentoModelo VARCHAR(60),
+in nomeEstabelecimento VARCHAR(15),
+)
+BEGIN
+START TRANSACTION;
+	 SELECT id FROM estabelecimento WHERE 
+	select LAST_INSERT_ID() into @idEnd;
+    Insert Into Empresa(`nomeUsuario`,`nomeEmpresa`,`cnpj`,`email`,`senha`,`contato`,`fkEndereco`)
+    values(NomeUsuario,NomeEmpresa,Cnpj,Email,Senha,Contato, @idEnd);
+COMMIT;
+END
+DELIMITER ;

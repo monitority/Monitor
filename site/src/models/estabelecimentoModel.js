@@ -34,7 +34,7 @@ function cadastrarEstabelecimento(fkEmpresa, nome, lougradouro, bairro, cep, cid
     
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
-    var instrucao =  `CALL inserirEstabelecimento('${nome}', '${cidade}', '${lougradouro}',  '${bairro}', ${numero}, '${cep}', '${estado}', ${cpuMax},${ramMax},${discoMax},70,${fkEmpresa});
+    var instrucao =  `EXEC inserirEstabelecimento'${nome}', '${cidade}', '${lougradouro}',  '${bairro}', ${numero}, '${cep}', '${estado}', ${cpuMax},${ramMax},${discoMax},70,${fkEmpresa};
 
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);

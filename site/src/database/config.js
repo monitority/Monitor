@@ -1,29 +1,29 @@
 var mysql = require("mysql2");
 var sql = require('mssql');
 
-// CONEXÃO DO SQL SERVER - AZURE (NUVEM)
-// var sqlServerConfig = {
-//     server: "SEU_SERVIDOR",
-//     database: "SEU_BANCO_DE_DADOS",
-//     user: "SEU_USUARIO",
-//     password: "SUA_SENHA",
-//     pool: {
-//         max: 10,
-//         min: 0,
-//         idleTimeoutMillis: 30000
-//     },
-//     options: {
-//         encrypt: true, // for azure
-//     }
-// }
+//CONEXÃO DO SQL SERVER - AZURE (NUVEM)
+var sqlServerConfig = {
+    server: "svr-projeto-monitority.database.windows.net",
+    database: "bd-projeto-monitority",
+    user: "admin-projeto-monitority",
+    password: "#Gfgrupo9",
+    pool: {
+        max: 10,
+        min: 0,
+        idleTimeoutMillis: 30000
+    },
+    options: {
+        encrypt: true, // for azure
+    }
+}
 
 // CONEXÃO DO MYSQL WORKBENCH (LOCAL)
-var mySqlConfig = {
-    host: "localhost",
-    database: "monitority",
-    user: "aluno",
-    password: "sptech",
-};
+// var mySqlConfig = {
+//     host: "localhost",
+//     database: "monitority",
+//     user: "aluno",
+//     password: "sptech",
+// };
 
 function executar(instrucao) {
     // VERIFICA A VARIÁVEL DE AMBIENTE SETADA EM app.js
