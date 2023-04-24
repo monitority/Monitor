@@ -1,0 +1,484 @@
+/*Padronização de todos os elementos*/
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Manrope", sans-serif;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: left;
+  height: auto;
+  background-color: #d5d9dc;
+}
+
+::-webkit-scrollbar {
+  width: 0.8vw;
+  height: 3px;
+}
+
+::-webkit-scrollbar-track-piece {
+  background-color: #3a3a3a;
+}
+
+::-webkit-scrollbar-thumb {
+  height: 50px;
+  background-color: #959595;
+  border-radius: 3px;
+}
+
+:root {
+  --Branco: #e4e4e4;
+  --VerdeClaro: #e0e0e0;
+  --HoverMenu: rgba(255, 255, 255, 0.25);
+  ;
+  --TextoPreto: #000;
+  --adicionar: #D4FADE;
+  --text-primary: #b6b6b6;
+  --text-secondary: #ececec;
+  --bg-primary: #23232e;
+  --bg-secondary: #141418;
+  --transition-speed: 600ms;
+}
+
+.navegacao {
+  position: fixed;
+  transition: width 600ms ease;
+  background: linear-gradient(180deg, #15204D 9.17%, #020E2C 36.73%);
+  overflow: auto;
+}
+
+.navbar-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+.nav-item {
+  width: 100%;
+}
+
+.nav-item:last-child {
+  margin-top: auto;
+}
+
+/* hover */
+
+.navegacao ul li:hover {
+  transform: translateY(-8px);
+  box-shadow: 0px 6px 2px 1px rgba(0, 0, 0, 0.2), inset 0px 0px 25px 5px rgba(0, 0, 0, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: 0.4s;
+  background: var(--HoverMenu);
+  filter: grayscale(0%) opacity(1);
+
+}
+
+.navegacao ul li a {
+  display: flex;
+  align-items: center;
+  height: 4rem;
+  color: var(--text-primary);
+  text-decoration: none;
+  filter: grayscale(100%) opacity(0.8);
+  transition: var(--transition-speed);
+  color: #ffffff;
+  margin-left: 2px;
+}
+
+.navegacao ul li a .icone {
+  display: flex;
+  align-items: center;
+  min-width: 60px;
+  height: 4rem;
+  line-height: 4rem;
+  text-align: center;
+  color: #ffffff;
+  margin-left: 2px;
+}
+
+.navegacao ul li a i {
+  font-size: 24px;
+  min-width: 60px;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  color: #eae7e7
+}
+
+.navegacao ul li a .titulo {
+  display: none;
+  margin-left: 0.9rem;
+}
+
+/* Small screens */
+
+/* Right */
+/* Right panel */
+.right-panel {
+  margin-left: 9vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Parte configurações */
+.container {
+  width: 58%;
+  height: 100%;
+  background-color: #020E2C;
+  box-shadow: 5px 6px 2px 1px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3%;
+  gap: 2vh;
+  margin-top: 10vh;
+}
+
+.config-titulo h1 {
+  display: flex;
+  color: #99BB00;
+  padding: 15px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.div_info {
+  height: 100%;
+  width: 80%;
+  border-top: 1px solid grey;
+  flex-direction: column;
+}
+
+.info_usuario {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 0 0 0;
+}
+
+.div_content {
+  font-size: 0.9rem;
+}
+
+.titulo-info {
+  font-weight: 900;
+  font-size: 1.3rem;
+  color: white;
+}
+
+.info {
+  color: white;
+}
+
+.btn_edit {
+  padding: 4px;
+  width: 25%;
+  background-color: #7b459f;
+  color: #FAFAFA;
+  border: none;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.btn_edit:hover {
+  background-color: #280043;
+  color: #ffffff;
+  transition: 0.4s;
+  border: 1px solid black;
+}
+
+.info_email {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 0 0 0;
+}
+
+.info_telefone {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 25px 0 0 0;
+}
+
+.div_inserir {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 2%;
+  font-weight: 600;
+}
+
+.btn_add_tel {
+  width: 15%;
+  height: 100%;
+  border: none;
+  background-color: green;
+  border-radius: 3px;
+  color: white;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: 0.3s;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.btn_add_tel:hover {
+  border: 1px solid black;
+  background-color: #004C05;
+  transition: 0.3s;
+  padding: 4px;
+}
+
+.input_telefone {
+  width: 25%;
+  height: 100%;
+  border-radius: 3px;
+  border: 1px solid grey;
+}
+
+.div-telefones {
+  width: 100%;
+}
+
+.div-content-telefone {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+}
+
+.icon-close {
+  width: 0.7vw;
+  height: 1.7vh;
+  cursor: pointer;
+}
+
+.div_senha_logout {
+  height: 10vh;
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-top: 1px solid grey;
+}
+
+.btn_logout {
+  width: 25%;
+  background-color: white;
+  border: 2px solid red;
+  color: black;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: 0.2s;
+  cursor: pointer;
+  padding: 4px;
+  margin: 10vh;
+
+}
+
+.btn_logout:hover {
+  background-color: rgb(252, 64, 64);
+  color: white;
+  transition: 0.2s;
+  border: 1px solid black;
+
+}
+
+.div_input {
+  height: 100%;
+  width: 70%;
+  display: flex;
+  align-items: center;
+  gap: 4%;
+}
+
+.input_user_pass_telefone {
+  height: 2.3vh;
+  width: 80%;
+}
+
+.btn_user_pass_telefone {
+  width: 50%;
+  height: 25%;
+  background-color: green;
+  border: none;
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: 0.3s;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn_user_pass_telefone:hover {
+  border: 1px solid black;
+  background-color: #004C05;
+  transition: 0.4s;
+}
+
+.btn_user_pass_telefone_remove {
+  width: 50%;
+  height: 25%;
+  background-color: rgb(255, 0, 0);
+  border: none;
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: 0.4s;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn_user_pass_telefone_remove:hover {
+  border: 1px solid black;
+  background-color: #8d0000;
+  transition: 0.3s;
+}
+
+.input_user_pass_telefone {
+  padding: 10px;
+}
+
+.btn_user_pass_telefone {
+  padding: 4px;
+}
+
+.btn_user_pass_telefone_remove {
+  padding: 4px;
+}
+
+/* Responsividade */
+
+@media(max-width: 1058px) {
+  .titulo-info {
+    font-size: 1.1rem;
+  }
+
+  .info {
+    font-size: 1.1rem;
+  }
+
+  .input_user_pass_telefone {
+    padding: 8px;
+    width: 80%;
+    font-size: 0.9rem;
+  }
+
+  .btn_user_pass_telefone {
+    padding: 1px;
+  }
+
+  .btn_user_pass_telefone_remove {
+    padding: 1px;
+  }
+}
+
+@media(max-width: 870px) {
+  .titulo-info {
+    font-size: 1rem;
+  }
+
+  .input_user_pass_telefone {
+    padding: 8px;
+    width: 80%;
+    font-size: 0.7rem;
+  }
+}
+
+@media(max-width: 860px) {
+  .info_usuario {
+    flex-direction: column;
+    font-size: 1.1rem;
+    padding: 5px;
+  }
+
+  .info_email {
+    flex-direction: column;
+    font-size: 1.1rem;
+  }
+
+  .info_telefone {
+    flex-direction: column;
+    font-size: 1.1rem;
+  }
+
+  .div_input {
+    flex-direction: column;
+  }
+
+  .btn_user_pass_telefone {
+    margin-top: 1vh;
+    margin-left: 1vh;
+  }
+
+  .btn_user_pass_telefone_remove {
+    margin-top: 1vh;
+    margin-left: 1vh;
+    padding: 2px;
+  }
+
+  .config-titulo h1 {
+    font-size: 1.8rem;
+  }
+}
+
+@media(max-width: 700px){
+
+  .container{
+    margin-bottom: 6vh;
+  }
+
+  .info_usuario {
+    font-size: 0.9rem;
+  }
+
+  .info_email {
+    font-size: 0.9rem;
+  }
+
+  .info_telefone {
+    font-size: 0.9rem;
+  }
+
+  .btn_user_pass_telefone {
+    font-size: 0.8rem;
+  }
+
+  .btn_user_pass_telefone_remove {
+    font-size: 0.8rem;
+  }
+}
+
+/* espaçamento no fim da página */
+.footer-space {
+  display: flex;
+  padding: 5%;
+  width: 100%;
+  margin-top:3%;
+}
