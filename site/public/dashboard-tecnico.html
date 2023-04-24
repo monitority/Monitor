@@ -90,11 +90,11 @@
 
         <!--Sessão de KPIs-->
         <div class="dashboard-kpis">
-            <div class="kpis bom">
+            <div class="kpis critico">
                 <p class="kpi-titulo ">KPI</p>
                 <p id="kpi_dado" class="kpi-dado"></p>
             </div>
-            <div class="kpis critico">
+            <div class="kpis bom">
                 <p class="kpi-titulo">KPI</p>
                 <p id="kpi_dado" class="kpi-dado"></p>
             </div>
@@ -102,9 +102,13 @@
                 <p class="kpi-titulo">KPI </p>
                 <p id="kpiComMenorPercentual" class="kpi-dado"></p>
             </div>
-            <div class="kpis critico">
-                <p class="kpi-titulo">KPI</p>
-                <p id="estadoPredominanteMes" class="kpi-dado"></p>
+            <div class="kpis">
+                <p class="kpi-titulo titulo-legenda"><b>Legenda</b></p>
+                <div class="dados-legenda-kpi">
+                    <span class="texto-legenda-kpi">Bom<ul class="linha-bom"></ul></span>
+                    <span class="texto-legenda-kpi">Alerta<ul class="linha-alerta"></ul></span>
+                    <span class="texto-legenda-kpi">Crítico<ul class="linha-critico"></ul></span>
+                </div>
             </div>
         </div>
 
@@ -216,6 +220,24 @@
                             </h4>
                             <p>239 GB</p>
                         </div>
+                        <div class="dados-disco">
+                            <h4>
+                                <b>Leitura disco</b>
+                            </h4>
+                            <p>428616</p>
+                        </div>
+                        <div class="dados-disco">
+                            <h4>
+                                <b>Escrita disco</b>
+                            </h4>
+                            <p>228874</p>
+                        </div>
+                        <div class="dados-disco">
+                            <h4>
+                                <b>Tempo Transf.</b>
+                            </h4>
+                            <p>18774747</p>
+                        </div>
                     </div>
                     <ul class="voltar-disco">
                         <li onclick="voltar()">
@@ -242,10 +264,23 @@
                     <div class="espacamento">
                         <div class="dados-rede">
                             <h4>
-                                <b>Capacidade</b>
+                                <b>Nome da rede</b>
                             </h4>
-                            <p>239 GB</p>
+                            <p>wlan 1</p>
                         </div>
+                        <div class="dados-rede">
+                            <h4>
+                                <b>Hostname</b>
+                            </h4>
+                            <p>DESKTOP-HLTHS7</p>
+                        </div>
+                        <div class="dados-rede">
+                            <h4>
+                                <b>Nome Domínio</b>
+                            </h4>
+                            <p>DESKTOP-HLTHS7</p>
+                        </div>
+                        
                     </div>
                     <ul class="voltar">
                         <li onclick="voltar()">
@@ -331,7 +366,7 @@
             <div class="sessoes sessao-graficos">
                 <div class="titulos-sessao1-grafico">
                     <div class="titulo-sessao1-grafico">
-                        <b>Incidentes semanais</b>
+                        <b>Capturas Acima da Métrica - Semanal</b>
                     </div>
                 </div>
                 <div class="graficos-container-sessoes">
@@ -341,7 +376,7 @@
 
     </main>
 
-    <footer>
+    <footer> 
         <!--Espaço vazio no fim do dashboard-->
         <div class="footer-space"></div>
     </footer>

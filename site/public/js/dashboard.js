@@ -19,21 +19,21 @@ const data_linha_percentual_atividade = {
     labels: labels_linha_percentual_atividade,
     datasets: [{
         label: 'CPU',
-        backgroundColor: 'rgb(54, 162, 235)',
-        borderColor: 'rgb(54, 162, 235)',
+        backgroundColor: '#7E8CCD',
+        borderColor: '#7E8CCD',
         data: [0, 1, 1, 3, 6, 1, 2, 5, 10, 1, 6, 7, 5],
     },
 
 {
     label: 'Memória',
-    backgroundColor: 'rgb(102, 248, 73)',
-    borderColor: 'rgb(102, 248, 73)',
+    backgroundColor: '#99BB00',
+    borderColor: '#99BB00',
     data: [11, 5, 8, 6, 2, 3, 4, 9, 1, 5, 10, 3],
 },
 {
     label: 'Disco',
-    backgroundColor: 'rgb(249, 131, 243)',
-    borderColor: 'rgb(249, 131, 243)',
+    backgroundColor: '#020E2C',
+    borderColor: '#020E2C',
     data: [3, 1, 5, 8, 2, 9, 7, 1, 2, 4, 4 , 10],
 }
 ]
@@ -63,13 +63,25 @@ const labels_barra_qtd_incidentes_semana = [
 const data_barra_qtd_incidentes_semana = {
     labels: labels_barra_qtd_incidentes_semana,
     datasets: [{
-        label: 'Quantidade de incidentes na semana',
+        label: 'CPU',
         backgroundColor: '#7E8CCD',
         borderColor: '#7E8CCD',
         data: [3, 5, 2, 4],
+    },
+    {
+        label: 'Memória RAM',
+        backgroundColor: '#99BB00',
+        borderColor: '#99BB00',
+        data: [2, 1, 4, 1],
+    },
+    {
+        label: 'Disco',
+        backgroundColor: '#020E2C',
+        borderColor: '#020E2C',
+        data: [5, 2, 3, 2], 
     }
     ]
-};
+}
 
 const config_barra_qtd_incidentes_semana = {
     type: 'bar',
