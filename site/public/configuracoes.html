@@ -65,6 +65,13 @@
             <span class="titulo"> Funcionario</span>
           </a>
         </li>
+        <li class="nav-item">
+          <a href="./lista.html" class="nav-link">
+            <!--Imagem do ICONE DE ADICIONAR -->
+            <span class="icone"> <i class="uil uil-bell"></i> </span>
+            <span class="titulo"> Notificações</span>
+          </a>
+        </li>
         <!-- </div> -->
         <li class="nav-item">
           <a href="configuracoes.html" class="nav-link">
@@ -100,8 +107,8 @@
       <div class="div_info">
         <div id="div_user" class="info_usuario">
           <div id="div_content_user" class="div_content">
-            <h4 class="titulo-info">Username</h4>
-            <h4 class="info">Username: <span id="span_user"></span></h4>
+            <h4 class="titulo-info">Email</h4>
+            <h4 class="info">Email: <span id="span_user"></span></h4>
           </div>
           <button onclick="alterar_user()" id="btn_edit_user" class="btn_edit">
             Editar
@@ -148,7 +155,7 @@
   iconePerfil.src = sessionStorage.PERFIL_IMAGEM;
   function dadosCliente() {
     if (sessionStorage.ID_PERFIL) {
-      fetch(`/usuarios?id=${sessionStorage.ID_PERFIL}`, {
+      fetch(`/usuarios?id=${sessionStorage.ID_USUARIO}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -160,8 +167,8 @@
               console.log(json);
 
               //username do Usuario
-              var username_usuario = json.username;
-              span_user.innerHTML = username_usuario;
+              var email_usuario = json.email;
+              span_user.innerHTML = email_usuario;
 
               //senha do usuario
 

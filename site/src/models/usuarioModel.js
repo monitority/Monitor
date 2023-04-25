@@ -38,8 +38,41 @@ function cadastrar(nome, cnpj,  email, senha, empresaNome, contato, logradouro, 
     return database.executar(instrucao);
 }
 
+//FUNCÃO QUE EXECUTA A ALTERAÇÃO DAS INFORMAÇÕES NO BANCO DE DADOS
+async function confirmar_user(username, idPerfil) {
+    console.log("ACESSEI O Perfil MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function alterar(): ")
+
+    var instrucao = `UPDATE Perfil SET Usuario.username = '${username}'
+    WHERE idPerfil = ${parseInt(idPerfil)}`;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return await database.executar(instrucao);
+}
+
+//FUNCÃO QUE EXECUTA A ALTERAÇÃO DAS INFORMAÇÕES NO BANCO DE DADOS
+async function confirmar_senha(senha, idPerfil) {
+    console.log("ACESSEI O Perfil MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function alterar(): ")
+
+    var instrucao = `UPDATE Perfil SET Usuario.senha = '${senha}'
+    WHERE idPerfil = ${parseInt(idPerfil)}`;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return await database.executar(instrucao);
+}
+
+//FUNCÃO QUE EXECUTA A ALTERAÇÃO DAS INFORMAÇÕES NO BANCO DE DADOS
+async function confirmar_telefone(telefone, idPerfil) {
+    console.log("ACESSEI O Perfil MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function alterar(): ")
+
+    var instrucao = `UPDATE Perfil SET Usuario.telefone = '${telefone}'
+    WHERE idPerfil = ${parseInt(idPerfil)}`;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return await database.executar(instrucao);
+}
+
 module.exports = {
     entrar,
     cadastrar,
     listar,
+    confirmar_telefone,
+    confirmar_senha,
+    confirmar_user,
 };
