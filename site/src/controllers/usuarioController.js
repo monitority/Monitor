@@ -27,6 +27,7 @@ function listar(req, res) {
 function entrar(req, res) {
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
+    const tipoLogin = req.body.tipoLogin;
 
     if (email == undefined) {
         res.status(400).send("Seu email está undefined!");
@@ -34,7 +35,7 @@ function entrar(req, res) {
         res.status(400).send("Sua senha está indefinida!");
     } else {
         
-        usuarioModel.entrar(email, senha)
+        usuarioModel.entrar(email, senha, tipoLogin)
             .then(
                 function (resultado) {
                     console.log(`\nResultados encontrados: ${resultado.length}`);
@@ -63,9 +64,17 @@ function entrar(req, res) {
 function cadastrar(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     var nome = req.body.nomeServer;
+    var cnpj = req.body.cnpjServer;
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
-
+    var empresaNome = req.body.empresaNomeServer;
+    var contato = req.body.contatoServer;
+    var logradouro = req.body.logradouroServer;
+    var cidade = req.body.cidadeServer;
+    var estado = req.body.estadoServer;
+    var cep = req.body.cepServer;
+    var bairro = req.body.bairroServer;
+    var numero = req.body.numeroServer
     // Faça as validações dos valores
     if (nome == undefined) {
         res.status(400).send("Seu nome está undefined!");
@@ -76,7 +85,7 @@ function cadastrar(req, res) {
     } else {
         
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(nome, email, senha)
+        usuarioModel.cadastrar(nome, cnpj,  email, senha, empresaNome, contato, logradouro, cidade, estado, cep, bairro , numero)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -94,9 +103,88 @@ function cadastrar(req, res) {
     }
 }
 
+// FUNÇÃO QUE PEGA OS VALORES SETADOS EM PERFIL-CONFIG
+function confirmar_user(req, res) {
+    var user = req.body.username;
+    var idPerfil = req.body.idPerfil;
+    if (user == undefined) {
+        res.status(400).send("Seu user está undefined!");
+    } else {
+        usuarioModel.confirmar_user(user, idPerfil)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar o cadastro! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+}
+
+// FUNÇÃO QUE PEGA OS VALORES SETADOS EM PERFIL-CONFIG
+function confirmar_senha(req, res) {
+    var senha = req.body.senha;
+    var idPerfil = req.body.idPerfil;
+    if (senha == undefined) {
+        res.status(400).send("Sua senha está undefined!");
+    } else {
+        usuarioModel.confirmar_senha(senha, idPerfil)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar o cadastro! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+}
+
+
+// FUNÇÃO QUE PEGA OS VALORES SETADOS EM PERFIL-CONFIG
+function confirmar_telefone(req, res) {
+    var telefone = req.body.telefone;
+    var idPerfil = req.body.idPerfil;
+    if (telefone == undefined) {
+        res.status(400).send("Seu telefone está undefined!");
+    } else {
+        usuarioModel.confirmar_telefone(telefone, idPerfil)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar o cadastro! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+}
+
 module.exports = {
     entrar,
     cadastrar,
     listar,
-    testar
+    testar,
+    confirmar_user,
+    confirmar_senha,
+    confirmar_telefone
 }

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estado Totens | Monitority</title>
+
+    <link rel="stylesheet" href="./css/telaCadastroFunc.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
+    <link rel="icon" href="./assets/imgs/sobreNos.png">
+    <link rel="stylesheet" href="./css/lista.css">
+    <script src="./js/lista.js"></script>
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
+</head>
+
+<body>
+    <!-- Div que contem a parte de navegação (parte verde do menu)-->
+    <div class="navegacao">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+              <!-- Foto De Perfil do USUARIO e o NOME do mesmo -->
+              <div class="fotoDePerfil">
+                <a href="#" class="nav-link">
+                  <!-- imagem do ICONE DA FOTO DE PERFIL-->
+                  <span class="icone"><i class="uil uil-user"></i> </span>
+                  <span class="titulo"><span id="b_usuario">usuário</span></span>
+                </a>
+              </div>
+            <li class="nav-item">
+              <a href="dashboard-tecnico.html" class="nav-link">
+                <!-- Imagem do ICONE DO planos-->
+                <span class="icone"> <i class="uil  uil-chart-line"></i> </span>
+                <span class="titulo"> Dashboard </span>
+              </a>
+            </li>
+            <!-- <li onclick="Adicionar()" id="adicionar2">
+                            <a href="#">
+        
+                                -Imagem do ICONE DE ADICIONAR 
+                                <span class="icone"> <i class="uil uil-plus"></i> </span>
+                                <span class="titulo"> Adicionar</span>
+                                <span class="icone2"><i class="uil uil-angle-down"></i></span>
+        
+                            </a>
+                        </li> -->
+            <!-- <div class="adicionar" id="adicionar3"> -->
+            <li class="nav-item">
+              <a href="./telaCadastroEstabelecimento.html" class="nav-link">
+                <!--Imagem do ICONE DE ADICIONAR -->
+                <span class="icone"> <i class="uil uil-estate"></i> </span>
+                <span class="titulo"> Estabelecimento</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="./telaCadastroTotem.html" class="nav-link">
+                <!--Imagem do ICONE DE ADICIONAR -->
+                <span class="icone"> <i class="uil uil-server-connection"></i> </span>
+                <span class="titulo"> Cadastrar Totem</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="./telaCadastroFunc.html" class="nav-link">
+                <!--Imagem do ICONE DE ADICIONAR -->
+                <span class="icone"> <i class="uil uil-user-plus"></i> </span>
+                <span class="titulo"> Funcionario</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="./lista.html" class="nav-link">
+                <!--Imagem do ICONE DE ADICIONAR -->
+                <span class="icone"> <i class="uil uil-bell"></i> </span>
+                <span class="titulo"> Notificações</span>
+              </a>
+            </li>
+            <!-- </div> -->
+            <li class="nav-item">
+              <a href="configuracoes.html" class="nav-link">
+                <!-- Imagem do ICONE DE CONFIGURAÇÕES -->
+                <span class="icone"><i class="uil uil-cog"></i></span>
+                <span class="titulo"> Configurações</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="https://chamadosgrupo9.auvo.com.br/Login#signin" class="nav-link">
+                <!-- Imagem do ICONE DE SUPORTE -->
+                <span class="icone"><i class="uil uil-comment-question"></i>
+                </span>
+                <span class="titulo"> Suporte</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="./index.html" class="nav-link">
+                <!-- Botão de Sair  -->
+                <span class="icone"><i class="uil uil-signout"></i> </span>
+                <span class="titulo"> Home </span>
+              </a>
+            </li>
+          </ul>
+    </div>
+
+    <!-- Sessão da lista -->
+    <main>
+        <section class="container-lista">
+            <div class="titulo-lista">
+                <h1>Mural de Totens com Problemas</h1>
+            </div>
+            <div class="container-filho-lista">
+                <div id="lista-totens" class="lista-totens">
+                    <div id="itemAlerta0" class="item-lista alerta">
+                        <h4>ID Totem: <b>001</b> </h4>
+                        <p>
+                            Status: <b>Alerta <img src="assets/icons/sinal-de-aviso.png" style="width: 18px;"></b>
+                        </p>
+                        <p>
+                            Estabelecimento: <b>McDonald's</b>
+                        </p>
+                        <h6>
+                            Data do problema: <b>11/03/2023</b>
+                        </h6>
+                    </div>
+                    <div id="itemCritico0" class="item-lista critico">
+                        <h4>ID Totem: <b>010</b></h4>
+                        <p>
+                            Status: <b>Crítico <img src="assets/icons/sinal-de-aviso-red.png" style="width: 18px;"></b>
+                        </p>
+                        <p>
+                            Estabelecimento: <b>McDonald's</b>
+                        </p>
+                        <h6>
+                            Data do problema: <b>25/04/2023</b>
+                        </h6>
+                    </div>
+                    <div id="itemAlerta1" class="item-lista alerta">
+                        <h4>ID Totem: <b>021</b> </h4>
+                        <p>
+                            Status: <b>Alerta <img src="assets/icons/sinal-de-aviso.png" style="width: 18px;"></b>
+                        </p>
+                        <p>
+                            Estabelecimento: <b>Coco Bambu</b>
+                        </p>
+                        <h6>
+                            Data do problema: <b>01/02/2023</b>
+                        </h6>
+                    </div>
+                    <div id="itemCritico1" class="item-lista critico">
+                        <h4>ID Totem: <b>012</b> </h4>
+                        <p>
+                            Status: <b>Crítico <img src="assets/icons/sinal-de-aviso-red.png" style="width: 18px;"></b>
+                        </p>
+                        <p>
+                            Estabelecimento: <b>Outback</b>
+                        </p>
+                        <h6>
+                            Data do problema: <b>30/01/2023</b>
+                        </h6>
+                    </div>
+                    <div id="itemAlerta2" class="item-lista alerta">
+                        <h4>ID Totem: <b>004</b> </h4>
+                        <p>
+                            Status: <b>Alerta <img src="assets/icons/sinal-de-aviso.png" style="width: 18px;"></b>
+                        </p>
+                        <p>
+                            Estabelecimento: <b>Outback</b>
+                        </p>
+                        <h6>
+                            Data do problema: <b>21/01/2023</b>
+                        </h6>
+                    </div>
+                    <div id="itemAlerta3" class="item-lista alerta">
+                        <h4>ID Totem: <b>007</b> </h4>
+                        <p>
+                            Status: <b>Alerta <img src="assets/icons/sinal-de-aviso.png" style="width: 18px;"> </b>
+                        </p>
+                        <p>
+                            Estabelecimento: <b>Burguer King</b>
+                        </p>
+                        <h6>
+                            Data do problema: <b>18/04/2023</b>
+                        </h6>
+                    </div>
+                    <div id="itemAlerta4" class="item-lista alerta">
+                        <h4>ID Totem: <b>008</b> </h4>
+                        <p>
+                            Status: <b>Alerta <img src="assets/icons/sinal-de-aviso.png" style="width: 18px;"></b>
+                        </p>
+                        <p>
+                            Estabelecimento: <b>Burguer Kings </b>
+                        </p>
+                        <h6>
+                            Data do problema: <b>21/03/2023</b>
+                        </h6>
+                    </div>
+                    <div id="itemCritico2" class="item-lista critico ultimo">
+                        <h4>ID Totem: <b>016</b> </h4>
+                        <p>
+                            Status: <b>Crítico <img src="assets/icons/sinal-de-aviso-red.png" style="width: 18px;"></b>
+                        </p>
+                        <p>
+                            Estabelecimento: <b>Girafas</b>
+                        </p>
+                        <h6>
+                            Data do problema: <b>10/01/2023</b>
+                        </h6>
+                    </div>
+                </div>
+                <div class="container-pai-status-legenda">
+                    <div class="container-status">
+                        <h1>Categorias</h1>
+                        <ul class="categorias">
+                            <li id="buttonAlerta" onclick="removerCritico()">
+                                <div class="container-categorias">
+                                    <div class="titulos-categorias">
+                                        Alerta
+                                    </div>
+                                    <div>
+                                        <img src="assets/icons/botao-de-seta-para-a-direita-do-teclado.png"
+                                            class="svg-seta" style="width: 11px;">
+                                    </div>
+                                </div>
+                            </li>
+                            <li id="buttonCritico" onclick="removerAlerta(),criarCritico()">
+                                <div class="container-categorias">
+                                    <div class="titulos-categorias">
+                                        Crítico
+                                    </div>
+                                    <div>
+                                        <img src="assets/icons/botao-de-seta-para-a-direita-do-teclado.png"
+                                            class="svg-seta" style="width: 11px;">
+                                    </div>
+                                </div>
+                            </li>
+                            <a href="./lista.html">
+                                <li>
+                                    <div class="container-categorias">
+                                        <div class="titulos-categorias">
+                                            Todos
+                                        </div>
+                                        <div>
+                                            <img src="assets/icons/botao-de-seta-para-a-direita-do-teclado.png"
+                                                class="svg-seta" style="width: 11px;">
+                                        </div>
+                                    </div>
+                                </li>
+                            </a>
+                        </ul>
+                    </div>
+                    <div class="container-legenda">
+                        <h1>Status Geral</h1>
+                        <div class="subcontainer-totens-problema">
+                            <h2>Total de totens com problemas</h2>
+                            <div class="dados-totens-problema">
+                                <b>Alerta - 5 Totens <img src="assets/icons/sinal-de-aviso.png"
+                                        style="width: 18px;"></b>
+                                <b>Crítico - 3 Totens <img src="assets/icons/sinal-de-aviso-red.png"
+                                        style="width: 18px;"></b>
+                            </div>
+                        </div>
+                        <div class="legenda">
+                            <h2>Legenda</h2>
+                            <div class="categorias-legenda">
+                                <b>Alerta <ul class="linha-alerta"></ul></b>
+                                <b>Crítico <ul class="linha-critico"></ul></b>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <!--Espaço vazio no fim do dashboard-->
+        <div class="footer-space"></div>
+    </footer>
+
+</body>
+
+</html>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+<script>
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    function filtroAlerta() {
+
+        let divsToRemove = document.getElementsByClassName("critico");
+        for (let i = divsToRemove.length - 1; i >= 0; i--) {
+            divsToRemove[i].remove();
+        }
+    }
+
+    function filtroCritico() {
+        let divsToRemove = document.getElementsByClassName("alerta");
+        for (let i = divsToRemove.length - 1; i >= 0; i--) {
+            divsToRemove[i].remove();
+        }
+    }
+</script>
+

@@ -14,7 +14,8 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
   <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
   <link rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
+    href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
+    
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
   <link rel="icon" href="./assets/imgs/sobreNos.png">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
@@ -38,7 +39,7 @@
             </a>
           </div>
         <li class="nav-item">
-          <a href="" class="nav-link">
+          <a href="dashboard-tecnico.html" class="nav-link">
             <!-- Imagem do ICONE DO planos-->
             <span class="icone"> <i class="uil  uil-chart-line"></i> </span>
             <span class="titulo"> Dashboard </span>
@@ -54,11 +55,18 @@
     
                         </a>
                     </li> -->
-        <!-- <div class="adicionar" id="adicionar3"> --> 
+        <!-- <div class="adicionar" id="adicionar3"> -->
         <li class="nav-item">
-          <a href="./cadastro_armazem.html" class="nav-link">
+          <a href="./telaCadastroEstabelecimento.html" class="nav-link">
             <!--Imagem do ICONE DE ADICIONAR -->
             <span class="icone"> <i class="uil uil-estate"></i> </span>
+            <span class="titulo"> Estabelecimento</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="./telaCadastroTotem.html" class="nav-link">
+            <!--Imagem do ICONE DE ADICIONAR -->
+            <span class="icone"> <i class="uil uil-server-connection"></i> </span>
             <span class="titulo"> Cadastrar Totem</span>
           </a>
         </li>
@@ -69,16 +77,23 @@
             <span class="titulo"> Funcionario</span>
           </a>
         </li>
+        <li class="nav-item">
+          <a href="./lista.html" class="nav-link">
+            <!--Imagem do ICONE DE ADICIONAR -->
+            <span class="icone"> <i class="uil uil-bell"></i> </span>
+            <span class="titulo"> Notificações</span>
+          </a>
+        </li>
         <!-- </div> -->
         <li class="nav-item">
-          <a href="" class="nav-link">
+          <a href="configuracoes.html" class="nav-link">
             <!-- Imagem do ICONE DE CONFIGURAÇÕES -->
             <span class="icone"><i class="uil uil-cog"></i></span>
             <span class="titulo"> Configurações</span>
           </a>
         </li>
         <li class="nav-item">
-          <a href="" class="nav-link">
+          <a href="https://chamadosgrupo9.auvo.com.br/Login#signin" class="nav-link">
             <!-- Imagem do ICONE DE SUPORTE -->
             <span class="icone"><i class="uil uil-comment-question"></i>
             </span>
@@ -89,7 +104,7 @@
           <a href="./index.html" class="nav-link">
             <!-- Botão de Sair  -->
             <span class="icone"><i class="uil uil-signout"></i> </span>
-            <span class="titulo"> Sair </span>
+            <span class="titulo"> Home </span>
           </a>
         </li>
       </ul>
@@ -118,38 +133,38 @@
                               </div>  -->
               <div class="estilo-box">
                 <p>Nome Completo*</p>
-                <input class="input-empresa" id="inputNome" placeholder="Ex: Thiago Serafim" required
-                  onblur="validarNome()" />
+                <input class="input-empresa" id="inputNome" placeholder="Ex: Thiago Serafim" 
+                  onblur="validarNome()" required />
               </div>
               <div class="estilo-box">
                 <p>Senha*</p>
-                <input class="input-empresa" id="inputSenha" placeholder="Ex: Senha@123" type="password"
+                <input class="input-empresa" id="inputSenha" placeholder="Ex: Senha@123" type="password" 
                   onblur="validarSenha()" required />
               </div>
               <div class="estilo-box">
                 <p>Telefone</p>
-                <input class="input-empresa" type="number" placeholder="Ex: 11966193319" id="inputContato"
-                  onkeyup="validarContato()" />
+                <input class="input-empresa" placeholder="Ex: 11966193319" id="inputContato" 
+                  onkeyup="validarContato()" required/>
               </div>
             </div>
             <div class="container-filho-2">
               <div class="estilo-box">
                 <p>E-mail*</p>
-                <input class="input-empresa" id="inputEmail" placeholder="Ex: xpto@sptech.school" required
-                  onblur="validarEmail()" />
+                <input class="input-empresa" id="inputEmail" placeholder="Ex: xpto@sptech.school" 
+                  onblur="validarEmail()" required/>
               </div>
               <div class="estilo-box">
                 <p>Cargo*</p>
-                <input class="input-empresa" id="inputCargo" placeholder="Ex: Suporte TI" required
-                  onblur="validarCargo()" />
+                <input class="input-empresa" id="inputCargo" placeholder="Ex: Suporte TI" 
+                  onblur="validarCargo()" required/>
               </div>
               <div class="estilo-box">
                 <p>Permissâo*</p>
-                <select class="input-empresa" name="select" id="inputFuncao" required onblur="validarFuncao()">
-                  <option value=null></option>
-                  <option value="valor1">Administrador</option>
-                  <option value="valor2" >Moderador</option>
-                  <option value="valor3">Funcionário</option>
+                <select class="input-empresa" name="select" id="inputFuncao"  
+                onblur="validarFuncao()" >
+                  <option value=none></option>
+                  <option value="Gerente">Gerente</option>
+                  <option value="Técnico">Técnico</option>
                 </select>
               </div>
             </div>
@@ -180,141 +195,22 @@
 </body>
 
 </html>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
 <script>
   b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
-  function buscarDadosEmpresa() {
-    var idEmpresa = sessionStorage.ID_EMPRESA;
-    if (sessionStorage.ID_EMPRESA) {
-      fetch(`/empresa/buscarDadosEmpresa/${idEmpresa}`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-        .then(function (resposta) {
-          if (resposta.ok) {
-            // resposta.json().then((json) => {
-
-            resposta.json().then(function (resposta) {
-              console.log("Dados recebidos: ", JSON.stringify(resposta));
-
-    // -------------- CONTAINER CADASTRO FUNC ----------------
-
-    var containerPai = document.createElement("div");
-    var containerFilho = document.createElement("div");
-    var containerFilho2 = document.createElement("div");
-    containerPai.className = "container-pai";
-    containerFilho.className = "container-filho";
-    containerFilho2.className = "container-filho-2"
-
-    containerGlobal.appendChild(containerPai);
-    containerPai.appendChild(containerFilho);
-    containerPai.appendChild(containerFilho2);
-
-    for (var i = 0; i < 3; i++) {
-
-      var divContainer = document.createElement("div");
-      var tituloContainer = document.createElement("p");
-      var inputContainer = document.createElement("input");
-
-      divContainer.className = "estilo-box";
-      inputContainer.className = "input-empresa"
-
-      if (i == 0) {
-        tituloContainer.innerHTML = `Nome Completo`;
-        inputContainer.id = "inputNome";
-        inputContainer.placeholder = "Ex: Thiago Serafim";
-        inputContainer.setAttribute("onblur", "validarUsuario()");
-        inputContainer.setAttribute("required", "required");
-      } else if(i == 1) {
-        tituloContainer.innerHTML = "Senha";
-        inputContainer.id = "inputSenha";
-        inputContainer.placeholder = "Ex: Senha@123";
-        inputContainer.setAttribute("onblur", "validarSenha()");
-        inputContainer.type = "password";
-        inputContainer.setAttribute("required", "required");
-      } else if(i == 2) {
-        tituloContainer.innerHTML = "Telefone";
-        inputContainer.id = "inputContato";
-        inputContainer.placeholder = "Ex: 11951762698";
-        inputContainer.setAttribute("onblur", "validarContato()");
-        inputContainer2.type = "number";
-        inputContainer.setAttribute("required", "required");
-      }
-
-      containerFilho.appendChild(divContainer);
-      divContainer.appendChild(tituloContainer);
-      divContainer.appendChild(inputContainer);
-    }
-
-    for(var a = 0; a < 3; a++) {
-        var divContainer2 = document.createElement("div");
-        var tituloContainer2 = document.createElement("p");
-        var inputContainer2 = document.createElement("input");
-
-        divContainer2.className = "estilo-box";
-      inputContainer2.className = "input-empresa";
-
-      if (a == 0) {
-        tituloContainer2.innerHTML = `E-mail*`;
-        inputContainer2.id = "inputEmail";
-        inputContainer2.placeholder = "Ex: xpto@sptech.school";
-        inputContainer2.setAttribute("onblur", "validarEmail()");
-        inputContainer2.setAttribute("required", "required");
-        divContainer2.appendChild(tituloContainer2);
-        divContainer2.appendChild(inputContainer2);
-      } else if(a == 1) {
-        tituloContainer2.innerHTML = "Cargo";
-        inputContainer2.id = "inputCargo";
-        inputContainer2.placeholder = "Ex: Suporte TI";
-        inputContainer2.setAttribute("onkeyup", "validarCargo()");
-        divContainer2.appendChild(tituloContainer2);
-        divContainer2.appendChild(inputContainer2);
-      } else if(a == 2) {
-        divContainer2.innerHTML += `<p>Função</p>
-        <select class="combo-funcao" id="inputFuncao">
-          <option value="Administrador">Administrador</option>
-          <option value="Usuário">Usuário</option>
-        </select>`
-      }
-    
-      containerFilho2.appendChild(divContainer2);
-      
-      
-    }
-
-    var buttonCadastro = document.createElement('button');
-    var divisoria2 = document.createElement("hr");
-    buttonCadastro.className = "botao-registro";
-    buttonCadastro.setAttribute("Onclick", "botao_registro_func()");
-    buttonCadastro.innerHTML = "CADASTRO";
-    containerGlobal.appendChild(buttonCadastro);
-    containerGlobal.appendChild(divisoria2)
-
-    var divTabelaFuncionario = document.createElement("div");
-    var tituloTabelaFunc = document.createElement("h3");
-    divTabelaFuncionario.className ="tabela-funcionarios"
-    divTabelaFuncionario.id = "tabela_funcionarios"
-    tituloTabelaFunc.innerHTML = "FUNCIONÁRIOS";
-
-    divTabelaFuncionario.appendChild(tituloTabelaFunc);
-    containerGlobal.appendChild(divTabelaFuncionario);
-  
-
-            });
-
-          }
-        })
-        .catch(function (resposta) {
-          console.log(`#ERRO: ${resposta}`);
-        });
-    }
-  }
-
   function buscarDadoFuncionario() {
-    var idEmpresa = sessionStorage.ID_EMPRESA;
-    fetch(`/funcionario/listarFuncionario/${idEmpresa}`)
+   var sessionIdEmpresa = sessionStorage.ID_EMPRESA;
+   var sessionFkEmpresa = sessionStorage.FK_EMPRESA;
+   var idEmpresa = 0;
+    if(sessionIdEmpresa > 0){
+      idEmpresa = sessionIdEmpresa;
+    }else if(sessionFkEmpresa > 0){
+      idEmpresa = sessionFkEmpresa;
+    }else{
+      console.log("id e fk empresa estão errado")
+    }
+    fetch(`/funcionario/listar/${idEmpresa}`)
       .then(function (resposta) {
         console.log('estou na Buscarfuncionario()', resposta);
         if (resposta.ok) {
@@ -357,7 +253,7 @@
                       </div>
                       <div class="estilo-atributos">
                         <h5>Nome Completo:</h5>
-                        <p>${publicacao.nome}</p>
+                        <p>${publicacao.nomeUsuario}</p>
                       </div>
                       <div class="estilo-atributos">
                         <h5>Cargo:</h5>
@@ -365,11 +261,11 @@
                       </div>
                       <div class="estilo-atributos">
                         <h5>Telefone:</h5>
-                        <p>${publicacao.telefone}</p>
+                        <p>${publicacao.tel}</p>
                       </div>
                       <div class="estilo-atributos">
-                        <h5>Função:</h5>
-                        <p>${publicacao.funcao}</p>
+                        <h5>Permissão:</h5>
+                        <p>${publicacao.permissao}</p>
                       </div>
                       <button class="removerCard" onclick="removerCard(${publicacao.idPerfil})">Remover</button>
                   </div>
@@ -377,7 +273,7 @@
             }
           });
         } else {
-          throw console.log('Estou na buscarDadosFuncionario()', JSON.stringify(resposta));
+          throw console.log('Estou na buscarDadosFuncionario() mas deu errado', JSON.stringify(resposta));
         }
       })
       .catch(function (resposta) {
@@ -394,10 +290,10 @@
     var contatoVar = inputContato.value;
     var emailVar = inputEmail.value;
     var cargoVar = inputCargo.value;
-    var funcaoVar = inputFuncao.value;
+    var permissaoVar = inputFuncao.value;
 
 
-    fetch(`/funcionario/cadastrarFuncionario/${idEmpresa}`, {
+    fetch("/funcionario/cadastrarfuncionario", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -405,36 +301,35 @@
       body: JSON.stringify({
         // crie um atributo que recebe o valor recuperado aqui
         // Agora vá para o arquivo routes/funcionario.js
-        idEmpresa: sessionStorage.ID_EMPRESA,
-        cargoServer: cargoVar,
-        senhaServer: senhaVar,
+        idEmpresa: idEmpresa,
         nomeServer: nomeVar,
+        senhaServer: senhaVar,
+        cargoServer: cargoVar,
         emailServer: emailVar,
         contatoServer: contatoVar,
-        funcaoServer: funcaoVar,
+        permissaoServer: permissaoVar,
       }),
+    }).then(function (resposta) {
+      console.log("resposta: ", resposta, sessionStorage.ID_EMPRESA);
+
+      if (resposta.ok) {
+        Swal.fire({
+          icon: 'success',
+          title: 'Parabéns',
+          text: 'Cadastro realizado com sucesso!',
+        })
+        console.log("deu certo")
+        setTimeout(() => buscarDadoFuncionario(), 1500);
+      } else {
+
+        Swal.fire({
+          icon: 'error',
+          title: 'Ops...',
+          text: 'Houve um erro ao tentar realizar o cadastro!!!!!',
+        })
+        console.log("respostaaaa: ", resposta, sessionStorage.ID_EMPRESA);
+      }
     })
-      .then(function (resposta) {
-        console.log("resposta: ", resposta, sessionStorage.ID_EMPRESA);
-
-        if (resposta.ok) {
-          Swal.fire({
-            icon: 'success',
-            title: 'Parabéns',
-            text: 'Cadastro realizado com sucesso!',
-          })
-
-          setTimeout(() => { window.location.reload(); }, 2000);
-        } else {
-
-          Swal.fire({
-            icon: 'error',
-            title: 'Ops...',
-            text: 'Houve um erro ao tentar realizar o cadastro!',
-          })
-          console.log("respostaaaa: ", resposta, sessionStorage.ID_EMPRESA);
-        }
-      })
       .catch(function (resposta) {
         console.log(`#ERRO: ${resposta}`);
       });
@@ -442,14 +337,14 @@
     return false;
   }
 
-  verificarFuncao()
-  verificarAdmin();
-  function verificarAdmin() {
-    if (sessionStorage.FUNCAO == "Administrador") {
-      buscarDadosEmpresa();
-    } else {
-      buscardadosEmpresa2();
-    }
-  }
+  // verificarFuncao()
+  // verificarAdmin();
+  // function verificarAdmin() {
+  //   if (sessionStorage.FUNCAO == "Administrador") {
+  //     buscarDadosEmpresa();
+  //   } else {
+  //     buscardadosEmpresa2();
+  //   }
+  // }
 
 </script>

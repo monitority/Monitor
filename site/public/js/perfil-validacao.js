@@ -54,12 +54,24 @@ function validarUF() {
     validar_uf = true;
   }
 }
+var validar_tipo = false;
+function validarFuncao() {
+  var tipo = inputFuncao.value;
+  if (tipo == "none") {
+    inputFuncao.classList.add("red");
+    inputFuncao.classList.remove("green");
+  } else {
+    inputFuncao.classList.remove("red");
+    inputFuncao.classList.add("green");
+    validar_tipo = true;
+  }
+}
 //Validando a cidade da empresa
 var validar_cidade = false;
 function validarCidade() {
   var cidade = inputCidade.value;
-  /* Verifica se a cidade tem mais de 8 caractéres */
-  if (cidade.length < 8) {
+  /* Verifica se a cidade tem mais de 5 caractéres */
+  if (cidade.length < 5) {
     inputCidade.classList.add("red");
     inputCidade.classList.remove("green");
   } else {
@@ -74,7 +86,7 @@ var validar_cep = false;
 function validarCEP() {
   var CEP = inputCEP.value;
   /* Verifica se a cidade tem mais de 8 caractéres */
-  if (CEP.length != 8) {
+  if (CEP.length != 9) {
     inputCEP.classList.add("red");
     inputCEP.classList.remove("green");
   } else {
@@ -99,19 +111,6 @@ function validarBairro() {
   }
 }
 
-//Validando o Complemento da Empresa
-function validarComplemento() {
-  var complemento = inputBairro.value;
-  //Verifica se o complemento da empresa tem mais que 4 caracteres
-  if (complemento.length < 4) {
-    inputComplemento.classList.add("red");
-    inputComplemento.classList.remove("green");
-  } else {
-    inputComplemento.classList.remove("red");
-    inputComplemento.classList.add("green");
-  }
-}
-/* Validando os campos do cadastro do funcionario */
 //Validando Nome de usuario
 var validar_usuario = false;
 function validarUsuario() {
@@ -189,6 +188,91 @@ function validarNome() {
   /* Junta os nomes novamente */
   nomeCompleto.join(" ");
 }
+var validar_nomeTotem = false;
+function validarNomeTotem() {
+  var nome = inputNomeTotem.value;
+  /* Devolve a quantidade de nomes em numeros Ex: Sherlock Homes -> vai retornar 2 */
+  if (nome.length <= 1) {
+    inputNomeTotem.classList.add("red");
+    inputNomeTotem.classList.remove("green");
+  } else {
+    inputNomeTotem.classList.remove("red");
+    inputNomeTotem.classList.add("green");
+    validar_nomeTotem = true;
+  }
+  /* Faz a substituição das primeiras letras dos nomes caso o usuário coloque a primeira leta do nome minuscula */
+  for (let i = 0; i < nome.length; i++) {
+    nome[i] =
+      nome[i][0].toUpperCase() + nome[i].substr(1);
+  }
+  /* Junta os nomes novamente */
+  nome.join(" ");
+}
+var validar_processador = false;
+function validarProcessador() {
+  var nome = inputProcessador.value;
+  /* Devolve a quantidade de nomes em numeros Ex: Sherlock Homes -> vai retornar 2 */
+  if (nome.length <= 1) {
+    inputProcessador.classList.add("red");
+    inputProcessador.classList.remove("green");
+  } else {
+    inputProcessador.classList.remove("red");
+    inputProcessador.classList.add("green");
+    validar_processador = true;
+  }
+  /* Faz a substituição das primeiras letras dos nomes caso o usuário coloque a primeira leta do nome minuscula */
+  for (let i = 0; i < nome.length; i++) {
+    nome[i] =
+      nome[i][0].toUpperCase() + nome[i].substr(1);
+  }
+  /* Junta os nomes novamente */
+  nome.join(" ");
+}
+var validar_placamae = false;
+function validarPlacaMae() {
+  var nome = inputPlacaMae.value;
+  /* Devolve a quantidade de nomes em numeros Ex: Sherlock Homes -> vai retornar 2 */
+  if (nome.length <= 3) {
+    inputPlacaMae.classList.add("red");
+    inputPlacaMae.classList.remove("green");
+  } else {
+    inputPlacaMae.classList.remove("red");
+    inputPlacaMae.classList.add("green");
+    validar_placamae = true;
+  }
+  /* Faz a substituição das primeiras letras dos nomes caso o usuário coloque a primeira leta do nome minuscula */
+  for (let i = 0; i < nome.length; i++) {
+    nome[i] =
+      nome[i][0].toUpperCase() + nome[i].substr(1);
+  }
+  /* Junta os nomes novamente */
+  nome.join(" ");
+}
+var validar_ram = false;
+function validarRam() {
+  var numero = inputRam.value;
+  if (numero > 0 && numero <= 128  ) {
+    inputRam.classList.remove("red");
+    inputRam.classList.add("green");
+  } else {
+    inputRam.classList.add("red");
+    inputRam.classList.remove("green");
+    validar_numeroMetrica = true;
+  }
+}
+var validar_armazenamento = false;
+function validarArmazenamento() {
+  var numero = inputArmazenamento.value;
+  if (numero > 120  ) {
+    inputArmazenamento.classList.remove("red");
+    inputArmazenamento.classList.add("green");
+  } else {
+    inputArmazenamento.classList.add("red");
+    inputArmazenamento.classList.remove("green");
+    validar_armazenamento = true;
+  }
+}
+
 //Validando Email do Usuario
 var validar_email = false;
 function validarEmail() {
@@ -208,6 +292,7 @@ function validarEmail() {
     validar_email = true;
   }
 }
+
 //Validando Contato do Usuario
 var validar_contato = false;
 function validarContato() {
@@ -222,6 +307,32 @@ function validarContato() {
     validar_contato = true;
   }
 }
+var validar_numero = false;
+function validarNumero() {
+  var numero = inputNumero.value;
+  if (numero < 1 ) {
+    inputNumero.classList.add("red");
+    inputNumero.classList.remove("green");
+  } else {
+    inputNumero.classList.remove("red");
+    inputNumero.classList.add("green");
+    validar_numero = true;
+  }
+}
+
+var validar_numeroMetrica = false;
+function validarNumeroMetrica() {
+  var numero = inputNumeroMetrica.value;
+  if (numero > 0 && numero <= 100  ) {
+    inputNumeroMetrica.classList.remove("red");
+    inputNumeroMetrica.classList.add("green");
+  } else {
+    inputNumeroMetrica.classList.add("red");
+    inputNumeroMetrica.classList.remove("green");
+    validar_numeroMetrica = true;
+  }
+}
+
 function botao_registro() {
   if (
     validar_nome &&
