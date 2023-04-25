@@ -37,16 +37,23 @@
                     </a>
                 </div>
             <li class="nav-item">
-                <a href="dashboard.html" class="nav-link">
+                <a href="dashboard-tecnico.html" class="nav-link">
                     <!-- Imagem do ICONE DO planos-->
                     <span class="icone"> <i class="uil  uil-chart-line"></i> </span>
                     <span class="titulo"> Dashboard </span>
                 </a>
             </li>
             <li class="nav-item">
+                <a href="./telaCadastroEstabelecimento.html" class="nav-link">
+                  <!--Imagem do ICONE DE ADICIONAR -->
+                  <span class="icone"> <i class="uil uil-estate"></i> </span>
+                  <span class="titulo"> Estabelecimento</span>
+                </a>
+              </li>
+            <li class="nav-item">
                 <a href="./cadastro_armazem.html" class="nav-link">
                     <!--Imagem do ICONE DE ADICIONAR -->
-                    <span class="icone"> <i class="uil uil-estate"></i> </span>
+                    <span class="icone"> <i class="uil uil-server-connection"></i> </span>
                     <span class="titulo"> Cadastrar Totem</span>
                 </a>
             </li>
@@ -57,6 +64,13 @@
                     <span class="titulo"> Funcionario</span>
                 </a>
             </li>
+            <li class="nav-item">
+                <a href="./lista.html" class="nav-link">
+                  <!--Imagem do ICONE DE ADICIONAR -->
+                  <span class="icone"> <i class="uil uil-bell"></i> </span>
+                  <span class="titulo"> Notificações</span>
+                </a>
+              </li>
             <!-- </div> -->
             <li class="nav-item">
                 <a href="configuracoes.html" class="nav-link">
@@ -258,6 +272,7 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
 <script src="./js/dashboard.js"></script>
 <script>
+
     function criarAlerta() {
 
         let divListaTotem = document.getElementById('lista-totens');
@@ -390,4 +405,7 @@
             }
         }
     }
+
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
 </script>

@@ -38,16 +38,23 @@
             </a>
           </div>
         <li class="nav-item">
-          <a href="" class="nav-link">
+          <a href="dashboard-tecnico.html" class="nav-link">
             <!-- Imagem do ICONE DO planos-->
             <span class="icone"> <i class="uil  uil-chart-line"></i> </span>
             <span class="titulo"> Dashboard </span>
           </a>
         </li>
         <li class="nav-item">
-          <a href="./cadastro_armazem.html" class="nav-link">
+          <a href="./telaCadastroEstabelecimento.html" class="nav-link">
             <!--Imagem do ICONE DE ADICIONAR -->
             <span class="icone"> <i class="uil uil-estate"></i> </span>
+            <span class="titulo"> Estabelecimento</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="telaCadastroTotem.html" class="nav-link">
+            <!--Imagem do ICONE DE ADICIONAR -->
+            <span class="icone"> <i class="uil uil-server-connection"></i> </span>
             <span class="titulo"> Cadastrar Totem</span>
           </a>
         </li>
@@ -58,16 +65,23 @@
             <span class="titulo"> Funcionario</span>
           </a>
         </li>
+        <li class="nav-item">
+          <a href="./lista.html" class="nav-link">
+            <!--Imagem do ICONE DE ADICIONAR -->
+            <span class="icone"> <i class="uil uil-bell"></i> </span>
+            <span class="titulo"> Notificações</span>
+          </a>
+        </li>
         <!-- </div> -->
         <li class="nav-item">
-          <a href="" class="nav-link">
+          <a href="configuracoes.html" class="nav-link">
             <!-- Imagem do ICONE DE CONFIGURAÇÕES -->
             <span class="icone"><i class="uil uil-cog"></i></span>
             <span class="titulo"> Configurações</span>
           </a>
         </li>
         <li class="nav-item">
-          <a href="" class="nav-link">
+          <a href="https://chamadosgrupo9.auvo.com.br/Login#signin" class="nav-link">
             <!-- Imagem do ICONE DE SUPORTE -->
             <span class="icone"><i class="uil uil-comment-question"></i>
             </span>
@@ -93,8 +107,8 @@
       <div class="div_info">
         <div id="div_user" class="info_usuario">
           <div id="div_content_user" class="div_content">
-            <h4 class="titulo-info">Username</h4>
-            <h4 class="info">Username: <span id="span_user"></span></h4>
+            <h4 class="titulo-info">Email</h4>
+            <h4 class="info">Email: <span id="span_user"></span></h4>
           </div>
           <button onclick="alterar_user()" id="btn_edit_user" class="btn_edit">
             Editar
@@ -141,7 +155,7 @@
   iconePerfil.src = sessionStorage.PERFIL_IMAGEM;
   function dadosCliente() {
     if (sessionStorage.ID_PERFIL) {
-      fetch(`/usuarios?id=${sessionStorage.ID_PERFIL}`, {
+      fetch(`/usuarios?id=${sessionStorage.ID_USUARIO}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -153,8 +167,8 @@
               console.log(json);
 
               //username do Usuario
-              var username_usuario = json.username;
-              span_user.innerHTML = username_usuario;
+              var email_usuario = json.email;
+              span_user.innerHTML = email_usuario;
 
               //senha do usuario
 

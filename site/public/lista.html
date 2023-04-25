@@ -27,59 +27,84 @@
     <div class="navegacao">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <!-- Foto De Perfil do USUARIO e o NOME do mesmo -->
-                <div class="fotoDePerfil">
-                    <a href="#" class="nav-link">
-                        <!-- imagem do ICONE DA FOTO DE PERFIL-->
-                        <span class="icone"><i class="uil uil-user"></i> </span>
-                        <span class="titulo"><span id="b_usuario">usuário</span></span>
-                    </a>
-                </div>
-            <li class="nav-item">
-                <a href="dashboard.html" class="nav-link">
-                    <!-- Imagem do ICONE DO planos-->
-                    <span class="icone"> <i class="uil  uil-chart-line"></i> </span>
-                    <span class="titulo"> Dashboard </span>
+              <!-- Foto De Perfil do USUARIO e o NOME do mesmo -->
+              <div class="fotoDePerfil">
+                <a href="#" class="nav-link">
+                  <!-- imagem do ICONE DA FOTO DE PERFIL-->
+                  <span class="icone"><i class="uil uil-user"></i> </span>
+                  <span class="titulo"><span id="b_usuario">usuário</span></span>
                 </a>
+              </div>
+            <li class="nav-item">
+              <a href="dashboard-tecnico.html" class="nav-link">
+                <!-- Imagem do ICONE DO planos-->
+                <span class="icone"> <i class="uil  uil-chart-line"></i> </span>
+                <span class="titulo"> Dashboard </span>
+              </a>
+            </li>
+            <!-- <li onclick="Adicionar()" id="adicionar2">
+                            <a href="#">
+        
+                                -Imagem do ICONE DE ADICIONAR 
+                                <span class="icone"> <i class="uil uil-plus"></i> </span>
+                                <span class="titulo"> Adicionar</span>
+                                <span class="icone2"><i class="uil uil-angle-down"></i></span>
+        
+                            </a>
+                        </li> -->
+            <!-- <div class="adicionar" id="adicionar3"> -->
+            <li class="nav-item">
+              <a href="./telaCadastroEstabelecimento.html" class="nav-link">
+                <!--Imagem do ICONE DE ADICIONAR -->
+                <span class="icone"> <i class="uil uil-estate"></i> </span>
+                <span class="titulo"> Estabelecimento</span>
+              </a>
             </li>
             <li class="nav-item">
-                <a href="./cadastro_armazem.html" class="nav-link">
-                    <!--Imagem do ICONE DE ADICIONAR -->
-                    <span class="icone"> <i class="uil uil-estate"></i> </span>
-                    <span class="titulo"> Cadastrar Totem</span>
-                </a>
+              <a href="./telaCadastroTotem.html" class="nav-link">
+                <!--Imagem do ICONE DE ADICIONAR -->
+                <span class="icone"> <i class="uil uil-server-connection"></i> </span>
+                <span class="titulo"> Cadastrar Totem</span>
+              </a>
             </li>
             <li class="nav-item">
-                <a href="./telaCadastroFunc.html" class="nav-link">
-                    <!--Imagem do ICONE DE ADICIONAR -->
-                    <span class="icone"> <i class="uil uil-user-plus"></i> </span>
-                    <span class="titulo"> Funcionario</span>
-                </a>
+              <a href="./telaCadastroFunc.html" class="nav-link">
+                <!--Imagem do ICONE DE ADICIONAR -->
+                <span class="icone"> <i class="uil uil-user-plus"></i> </span>
+                <span class="titulo"> Funcionario</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="./lista.html" class="nav-link">
+                <!--Imagem do ICONE DE ADICIONAR -->
+                <span class="icone"> <i class="uil uil-bell"></i> </span>
+                <span class="titulo"> Notificações</span>
+              </a>
             </li>
             <!-- </div> -->
             <li class="nav-item">
-                <a href="configuracoes.html" class="nav-link">
-                    <!-- Imagem do ICONE DE CONFIGURAÇÕES -->
-                    <span class="icone"><i class="uil uil-cog"></i></span>
-                    <span class="titulo"> Configurações</span>
-                </a>
+              <a href="configuracoes.html" class="nav-link">
+                <!-- Imagem do ICONE DE CONFIGURAÇÕES -->
+                <span class="icone"><i class="uil uil-cog"></i></span>
+                <span class="titulo"> Configurações</span>
+              </a>
             </li>
             <li class="nav-item">
-                <a href="" class="nav-link">
-                    <!-- Imagem do ICONE DE SUPORTE -->
-                    <span class="icone"><i class="uil uil-comment-question"></i>
-                    </span>
-                    <span class="titulo"> Suporte</span>
-                </a>
+              <a href="https://chamadosgrupo9.auvo.com.br/Login#signin" class="nav-link">
+                <!-- Imagem do ICONE DE SUPORTE -->
+                <span class="icone"><i class="uil uil-comment-question"></i>
+                </span>
+                <span class="titulo"> Suporte</span>
+              </a>
             </li>
             <li class="nav-item">
-                <a href="./index.html" class="nav-link">
-                    <!-- Botão de Sair  -->
-                    <span class="icone"><i class="uil uil-signout"></i> </span>
-                    <span class="titulo"> Sair </span>
-                </a>
+              <a href="./index.html" class="nav-link">
+                <!-- Botão de Sair  -->
+                <span class="icone"><i class="uil uil-signout"></i> </span>
+                <span class="titulo"> Home </span>
+              </a>
             </li>
-        </ul>
+          </ul>
     </div>
 
     <!-- Sessão da lista -->
@@ -262,4 +287,25 @@
 
 </html>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+<script>
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    function filtroAlerta() {
+
+        let divsToRemove = document.getElementsByClassName("critico");
+        for (let i = divsToRemove.length - 1; i >= 0; i--) {
+            divsToRemove[i].remove();
+        }
+    }
+
+    function filtroCritico() {
+        let divsToRemove = document.getElementsByClassName("alerta");
+        for (let i = divsToRemove.length - 1; i >= 0; i--) {
+            divsToRemove[i].remove();
+        }
+    }
+</script>
+

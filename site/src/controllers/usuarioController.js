@@ -103,9 +103,88 @@ function cadastrar(req, res) {
     }
 }
 
+// FUNÇÃO QUE PEGA OS VALORES SETADOS EM PERFIL-CONFIG
+function confirmar_user(req, res) {
+    var user = req.body.username;
+    var idPerfil = req.body.idPerfil;
+    if (user == undefined) {
+        res.status(400).send("Seu user está undefined!");
+    } else {
+        usuarioModel.confirmar_user(user, idPerfil)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar o cadastro! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+}
+
+// FUNÇÃO QUE PEGA OS VALORES SETADOS EM PERFIL-CONFIG
+function confirmar_senha(req, res) {
+    var senha = req.body.senha;
+    var idPerfil = req.body.idPerfil;
+    if (senha == undefined) {
+        res.status(400).send("Sua senha está undefined!");
+    } else {
+        usuarioModel.confirmar_senha(senha, idPerfil)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar o cadastro! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+}
+
+
+// FUNÇÃO QUE PEGA OS VALORES SETADOS EM PERFIL-CONFIG
+function confirmar_telefone(req, res) {
+    var telefone = req.body.telefone;
+    var idPerfil = req.body.idPerfil;
+    if (telefone == undefined) {
+        res.status(400).send("Seu telefone está undefined!");
+    } else {
+        usuarioModel.confirmar_telefone(telefone, idPerfil)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar o cadastro! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+}
+
 module.exports = {
     entrar,
     cadastrar,
     listar,
-    testar
+    testar,
+    confirmar_user,
+    confirmar_senha,
+    confirmar_telefone
 }
