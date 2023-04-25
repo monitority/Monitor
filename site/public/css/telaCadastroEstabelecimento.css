@@ -59,6 +59,10 @@ main{
   width: 100%;
 }
 
+.nav-item:last-child {
+  margin-top: auto;
+}
+
 /* hover */
 
 .navegacao ul li:hover {

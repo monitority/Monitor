@@ -72,7 +72,7 @@
         <li class="nav-item">
           <a href="./telaCadastroFunc.html" class="nav-link">
             <!--Imagem do ICONE DE ADICIONAR -->
-            <span class="icone"> <i class="uil uil-bell"></i> </span>
+            <span class="icone"> <i class="uil uil-user-plus"></i> </span>
             <span class="titulo"> Funcionario</span>
           </a>
         </li>
@@ -135,39 +135,7 @@
                 <input class="input-empresa" id="inputNome" placeholder="Ex: Xpto Lanche" required
                   onblur="validarNome()" />
               </div>
-              <div class="estilo-box">
-                <p>Logradouro</p>
-                <input class="input-empresa" id="inputLogradouro" placeholder="Ex: Av Paulista" type="text"
-                  onblur="validarLogradouro()" required />
-              </div>
-              <div class="estilo-box">
-                <p>Bairro</p>
-                <input class="input-empresa" placeholder="Ex: Consolação" id="inputBairro"
-                  onblur="validarBairro()" />
-              </div>
-              <div class="estilo-box">
-                <p>CEP</p>
-                <input class="input-empresa" id="inputCEP" placeholder="Ex: 08150200" required
-                onblur="pesquisacep(this.value),validarCEP();" onkeyup="cepMaskCode(event)" />
-              </div>
-              <div class="estilo-box">
-                <p>Cidade</p>
-                <input class="input-empresa" placeholder="Ex: São Paulo" id="inputCidade"
-                  onblur="validarCidade()" />
-              </div>
-            </div>
-
-
-            <div class="container-filho-2">
-              <div id="estado_empresa_box" class="estilo-box">
-                <p id="estado_empresa_cadastro">UF</p>
-                <input class="select-estado" id="inputUF" name="estado" onclick="validarUF()">
-              </div>
-              <div class="estilo-box">
-                <p>Numero</p>
-                <input class="input-empresa"  placeholder="Ex: 172" id="inputNumero" required
-                onblur="validarNumero()" />
-              </div>
+              
               <div class="estilo-box">
                 <p>Métrica de CPU (Em %)</p>
                 <input class="input-empresa" id="inputNumeroMetricaCpu" placeholder="Ex: 80" required
@@ -182,6 +150,40 @@
                 <p>Métrica de Disco (Em %)</p>
                 <input class="input-empresa" id="inputNumeroMetricaDisco" placeholder="Ex: 80" required
                   onblur="validarNumeroMetrica()" />
+              </div>
+              <div class="estilo-box">
+                <p>Numero</p>
+                <input class="input-empresa"  placeholder="Ex: 172" id="inputNumero" required
+                onblur="validarNumero()" />
+              </div>
+            </div>
+
+
+            <div class="container-filho-2">
+              
+              <div class="estilo-box">
+                <p>CEP</p>
+                <input class="input-empresa" id="inputCEP" placeholder="Ex: 08150200" required
+                onblur="pesquisacep(this.value),validarCEP();" onkeyup="cepMaskCode(event)" />
+              </div>
+              <div class="estilo-box">
+                <p>Bairro</p>
+                <input class="input-empresa" placeholder="Ex: Consolação" id="inputBairro"
+                  onblur="validarBairro()" />
+              </div>
+              <div class="estilo-box">
+                <p>Logradouro</p>
+                <input class="input-empresa" id="inputLogradouro" placeholder="Ex: Av Paulista" type="text"
+                  onblur="validarLogradouro()" required />
+              </div>
+              <div class="estilo-box">
+                <p>Cidade</p>
+                <input class="input-empresa" placeholder="Ex: São Paulo" id="inputCidade"
+                  onblur="validarCidade()" />
+              </div>
+              <div id="estado_empresa_box" class="estilo-box">
+                <p id="estado_empresa_cadastro">UF</p>
+                <input class="select-estado" id="inputUF" name="estado" onclick="validarUF()">
               </div>
             </div>
           </div>
