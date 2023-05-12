@@ -45,11 +45,11 @@
             </li>
             <li class="nav-item">
                 <a href="./telaCadastroEstabelecimento.html" class="nav-link">
-                  <!--Imagem do ICONE DE ADICIONAR -->
-                  <span class="icone"> <i class="uil uil-estate"></i> </span>
-                  <span class="titulo"> Estabelecimento</span>
+                    <!--Imagem do ICONE DE ADICIONAR -->
+                    <span class="icone"> <i class="uil uil-estate"></i> </span>
+                    <span class="titulo"> Estabelecimento</span>
                 </a>
-              </li>
+            </li>
             <li class="nav-item">
                 <a href="./cadastro_armazem.html" class="nav-link">
                     <!--Imagem do ICONE DE ADICIONAR -->
@@ -66,11 +66,11 @@
             </li>
             <li class="nav-item">
                 <a href="./lista.html" class="nav-link">
-                  <!--Imagem do ICONE DE ADICIONAR -->
-                  <span class="icone"> <i class="uil uil-bell"></i> </span>
-                  <span class="titulo"> Notificações</span>
+                    <!--Imagem do ICONE DE ADICIONAR -->
+                    <span class="icone"> <i class="uil uil-bell"></i> </span>
+                    <span class="titulo"> Notificações</span>
                 </a>
-              </li>
+            </li>
             <!-- </div> -->
             <li class="nav-item">
                 <a href="configuracoes.html" class="nav-link">
@@ -131,78 +131,51 @@
     <section class="container-lista">
         <div class="container-filho-lista">
             <div id="lista-totens" class="lista-totens">
-                <div id="itemAlerta0" class="item-lista alerta">
-                    <h4>ID Estabelecimento: <b>001</b> </h4>
-                    <p>
-                        Status: <b>Alerta <img src="assets/icons/sinal-de-aviso.png" style="width: 18px;"></b>
-                    </p>
-                    <p>
-                        Estabelecimento: <b>McDonald's</b>
-                    </p>
+                <div class="func" id="${i}">
+                    <div class="estilo-atributos">
+                        <h5>Estabelecimento:</h5>
+                        <p>${publicacao.nome}</p>
+                    </div>
+                    <div class="estilo-atributos">
+                        <h5>Modelo totem</h5>
+                        <p>asdavsavasdv</p>
+                    </div>
+                    <div class="estilo-atributos">
+                        <h5>Problema</h5>
+                        <p>Ram, cpu</p>
+                    </div>
+                    <div>
+                        <span>Desginar funcionario:</span>
+                        <select name="" id="">
+                            <option value="">Func1</option>
+                            <option value="">func2</option>
+                        </select>
+                    </div>
+                    <button class="removerCard" onclick="atribuir(${publicacao.idEstabelecimento})">Atribuir</button>
                 </div>
-                <div id="itemCritico0" class="item-lista critico">
-                    <h4>ID Estabelecimento: <b>002</b></h4>
-                    <p>
-                        Status: <b>Crítico <img src="assets/icons/sinal-de-aviso-red.png" style="width: 18px;"></b>
-                    </p>
-                    <p>
-                        Estabelecimento: <b>McDonald's</b>
-                    </p>
+                <div class="func" id="${i}">
+                    <div class="estilo-atributos">
+                        <h5>Estabelecimento:</h5>
+                        <p>${publicacao.nome}</p>
+                    </div>
+                    <div class="estilo-atributos">
+                        <h5>Modelo totem</h5>
+                        <p>asdavsavasdv</p>
+                    </div>
+                    <div class="estilo-atributos">
+                        <h5>Problema</h5>
+                        <p>Ram, cpu</p>
+                    </div>
+                    <div>
+                        <span>Desginar funcionario:</span>
+                        <select name="" id="">
+                            <option value="">Func1</option>
+                            <option value="">func2</option>
+                        </select>
+                    </div>
+                    <button class="removerCard" onclick="atribuir(${publicacao.idEstabelecimento})">Atribuir</button>
                 </div>
-                <div id="itemAlerta1" class="item-lista alerta">
-                    <h4>ID Estabelecimento: <b>003</b> </h4>
-                    <p>
-                        Status: <b>Alerta <img src="assets/icons/sinal-de-aviso.png" style="width: 18px;"></b>
-                    </p>
-                    <p>
-                        Estabelecimento: <b>Coco Bambu</b>
-                    </p>
-                </div>
-                <div id="itemCritico1" class="item-lista critico">
-                    <h4>ID Estabelecimento: <b>004</b> </h4>
-                    <p>
-                        Status: <b>Crítico <img src="assets/icons/sinal-de-aviso-red.png" style="width: 18px;"></b>
-                    </p>
-                    <p>
-                        Estabelecimento: <b>Outback</b>
-                    </p>
-                </div>
-                <div id="itemAlerta2" class="item-lista alerta">
-                    <h4>ID Estabelecimento: <b>005</b> </h4>
-                    <p>
-                        Status: <b>Alerta <img src="assets/icons/sinal-de-aviso.png" style="width: 18px;"></b>
-                    </p>
-                    <p>
-                        Estabelecimento: <b>Outback</b>
-                    </p>
-                </div>
-                <div id="itemAlerta3" class="item-lista alerta">
-                    <h4>ID Estabelecimento: <b>006</b> </h4>
-                    <p>
-                        Status: <b>Alerta <img src="assets/icons/sinal-de-aviso.png" style="width: 18px;"> </b>
-                    </p>
-                    <p>
-                        Estabelecimento: <b>Burguer King</b>
-                    </p>
-                </div>
-                <div id="itemAlerta4" class="item-lista alerta">
-                    <h4>ID Estabelecimento: <b>007</b> </h4>
-                    <p>
-                        Status: <b>Alerta <img src="assets/icons/sinal-de-aviso.png" style="width: 18px;"></b>
-                    </p>
-                    <p>
-                        Estabelecimento: <b>Burguer Kings </b>
-                    </p>
-                </div>
-                <div id="itemCritico2" class="item-lista critico ultimo">
-                    <h4>ID Estabelecimento: <b>008</b> </h4>
-                    <p>
-                        Status: <b>Crítico <img src="assets/icons/sinal-de-aviso-red.png" style="width: 18px;"></b>
-                    </p>
-                    <p>
-                        Estabelecimento: <b>Girafas</b>
-                    </p>
-                </div>
+
             </div>
             <div class="container-pai-status-legenda">
                 <div class="container-status">
@@ -214,8 +187,8 @@
                                     Alerta
                                 </div>
                                 <div>
-                                    <img src="assets/icons/botao-de-seta-para-a-direita-do-teclado.png"
-                                        class="svg-seta" style="width: 11px;">
+                                    <img src="assets/icons/botao-de-seta-para-a-direita-do-teclado.png" class="svg-seta"
+                                        style="width: 11px;">
                                 </div>
                             </div>
                         </li>
@@ -225,8 +198,8 @@
                                     Crítico
                                 </div>
                                 <div>
-                                    <img src="assets/icons/botao-de-seta-para-a-direita-do-teclado.png"
-                                        class="svg-seta" style="width: 11px;">
+                                    <img src="assets/icons/botao-de-seta-para-a-direita-do-teclado.png" class="svg-seta"
+                                        style="width: 11px;">
                                 </div>
                             </div>
                         </li>
@@ -272,8 +245,66 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
 <script src="./js/dashboard.js"></script>
 <script>
+    function listarEstabelcimentos() {
+        fetch(`/estabelecimento/listar/${idEmpresa}`)
+            .then(function (resposta) {
+                console.log('estou na BuscarEstabelecimento()', resposta);
+                if (resposta.ok) {
+                    if (resposta.status == 204) {
+                        var tabelaFuncionarios = document.getElementById("tabela_funcionarios");
+                        var mensagem = document.createElement("span");
+                        mensagem.classList.add('mensagem');
+                        mensagem.innerHTML = "Nenhum resultado encontrado.";
+                        tabelaFuncionarios.appendChild(mensagem);
+                        throw "Nenhum resultado encontrado!!";
+                    }
 
-    function criarAlerta() {
+                    resposta.json().then(function (resposta) {
+                        console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                        var tabelaFuncionarios = document.getElementById("lista-totens");
+                        tabelaFuncionarios.innerHTML = "<h3>ESTABELECIMENTOS</h3>";
+                        for (let i = 0; i < resposta.length; i++) {
+                            var publicacao = resposta[i];
+
+                            // criando e manipulando elementos do HTML via JavaScript
+
+                            tabelaFuncionarios.innerHTML += `       
+                                <div class="func" id="${i}">
+                                    <div class="estilo-atributos">
+                                        <h5>Estabelecimento:</h5>
+                                        <p>${publicacao.nome}</p>
+                                    </div>
+                                    <div class="estilo-atributos">
+                                        <h5>Modelo totem</h5>
+                                        <p>${publicacao.modelo}</p>
+                                    </div>
+                                    <div class="estilo-atributos">
+                                        <h5>Problema</h5>
+                                        <p>${probema}</p>
+                                    </div>
+                                    <div>
+                                        <span>Desginar funcionario:</span>
+                                        <select name="" id="">
+                                            <option value="">Func1</option>
+                                            <option value="">func2</option>
+                                        </select>
+                                    </div>
+                                    <button class="removerCard" onclick="atribuir(${publicacao.idEstabelecimento})">Atribuir</button>
+                                </div>
+                                `;
+                        }
+                    });
+                } else {
+                    throw console.log('Estou na buscarDadosFuncionario()', JSON.stringify(resposta));
+                }
+            })
+            .catch(function (resposta) {
+                console.log(resposta);
+            });
+
+    }
+
 
         let divListaTotem = document.getElementById('lista-totens');
         for (var i = 0; i < 5; i++) {
@@ -335,70 +366,6 @@
                     </p>
                     <p>
                         Estabelecimento: <b>Burguer Kings </b>
-                    </p>
-                </div>
-        `
-            }
-        }
-    }
-
-    function removerCritico() {
-
-        for (var i = 0; i < 3; i++) {
-            let divsToRemove = document.getElementById(`itemCritico${i}`);
-            divsToRemove.remove();
-
-        }
-    }
-
-    function removerAlerta() {
-        for (var i = 0; i < 5; i++) {
-            let divsToRemove = document.getElementById(`itemAlerta${i}`);
-            divsToRemove.remove();
-        }
-    }
-
-
-    function criarCritico() {
-        let divListaTotem = document.getElementById('lista-totens');
-        var buttonAlerta = document.getElementById('buttonAlerta');
-
-        buttonAlerta.setAttribute("Onclick", "removerCritico(), criarAlerta()");
-        for (var i = 0; i < 3; i++) {
-
-            if (i == 0) {
-                divListaTotem.innerHTML += ` 
-                <div id="itemCritico0" class="item-lista critico">
-                    <h4>ID Estabelecimento: <b>002</b></h4>
-                    <p>
-                        Status: <b>Crítico <img src="assets/icons/sinal-de-aviso-red.png" style="width: 18px;"></b>
-                    </p>
-                    <p>
-                        Estabelecimento: <b>McDonald's</b>
-                    </p>
-                </div>
-`
-            } else if (i == 1) {
-                divListaTotem.innerHTML += ` 
-                <div id="itemCritico1" class="item-lista critico">
-                    <h4>ID Estabelecimento: <b>004</b> </h4>
-                    <p>
-                        Status: <b>Crítico <img src="assets/icons/sinal-de-aviso-red.png" style="width: 18px;"></b>
-                    </p>
-                    <p>
-                        Estabelecimento: <b>Outback</b>
-                    </p>
-                </div>
-        `
-            } else if (i == 2) {
-                divListaTotem.innerHTML += ` 
-                <div id="itemCritico2" class="item-lista critico ultimo">
-                    <h4>ID Estabelecimento: <b>008</b> </h4>
-                    <p>
-                        Status: <b>Crítico <img src="assets/icons/sinal-de-aviso-red.png" style="width: 18px;"></b>
-                    </p>
-                    <p>
-                        Estabelecimento: <b>Girafas</b>
                     </p>
                 </div>
         `
