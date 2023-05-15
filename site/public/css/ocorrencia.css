@@ -1,0 +1,48 @@
+.main-ocorrencia{
+    display: flex;
+    flex-direction: column;
+}
+
+.lista-ocorrencia{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    padding: 35px;
+}
+
+.lista-coluna-ocorrecia{
+    width: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.coluna-lista{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    list-style: none;
+}
+.itens-lista{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 5vw;
+    margin-right: 5vw;
+}
+
+.card{
+    border-radius: 10px;
+    border-color: rgb(0, 102, 197);
+    padding: 5px;
+}
+
+.espaco-coluna{
+    width: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
