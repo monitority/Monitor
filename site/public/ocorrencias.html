@@ -102,20 +102,42 @@
         <div class="titulo-lista">
             <h1>Ocorrências</h1>
         </div>
-        <div class="lista-ocorrencia">
-            <ul class="coluna-lista">
-                <li class="lista-coluna-ocorrecia">Estabelecimento</li>
-                <li class="lista-coluna-ocorrecia">Problema</li>
-                <li class="lista-coluna-ocorrecia">Status</li>
-                <li class="lista-coluna-ocorrecia">Responsável</li>
-            </ul>
-        </div>
-        <div id="div_lista_ocorrencia">
-            <div class="itens-lista card">
-                <div class="espaco-coluna">Mc</div>
-                <div class="espaco-coluna">Ram</div>
-                <div class="espaco-coluna">concluído</div>
-                <div class="espaco-coluna">Lucas</div>
+
+        <div class="painel-ocorrencias">
+
+            <div class="header-colunas">
+                <div class="lista-ocorrencia">
+                    <ul class="coluna-lista">
+                        <li class="lista-coluna-ocorrecia">Estabelecimento</li>
+                        <li class="lista-coluna-ocorrecia">Problema</li>
+                        <li class="lista-coluna-ocorrecia">Status</li>
+                        <li class="lista-coluna-ocorrecia">Responsável</li>
+                    </ul>
+                </div>
+                <div class="filtro-ocorrencia">
+                    <select name="" id="" class="filtro-ocorrencia">
+                        <option value="">Todos</option>
+                        <option value="">Abertos</option>
+                        <option value="">Concluído</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="ocorrencias">
+                <div id="div_lista_ocorrencia" class="div-lista">
+                    <div class="itens-lista card">
+                        <div class="espaco-coluna">Mc</div>
+                        <div class="espaco-coluna">Ram</div>
+                        <div class="espaco-coluna">concluído</div>
+                        <div class="espaco-coluna">Lucas</div>
+                    </div>
+                    <div class="itens-lista card">
+                        <div class="espaco-coluna">Mc</div>
+                        <div class="espaco-coluna">Ram</div>
+                        <div class="espaco-coluna">concluído</div>
+                        <div class="espaco-coluna">Lucas</div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -164,10 +186,10 @@
                         
                             
                                 <div class="itens-lista card">
-                                    <div class="espaco-coluna">Mc</div>
-                                    <div class="espaco-coluna">Ram</div>
-                                    <div class="espaco-coluna">concluído</div>
-                                    <div class="espaco-coluna">Lucas</div>
+                                    <div class="espaco-coluna">${publicacao.nomeEstabelecimento}</div>
+                                    <div class="espaco-coluna">${publicacao.problema}</div>
+                                    <div class="espaco-coluna">${publicacao.status}</div>
+                                    <div class="espaco-coluna">${publicacao.reponsavel}</div>
                                 </div>
                             
                             `;

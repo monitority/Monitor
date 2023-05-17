@@ -3,10 +3,12 @@
     flex-direction: column;
 }
 
+.painel-ocorrencias{
+    width: 90%;
+}
 .lista-ocorrencia{
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    flex-direction: row;
     width: 100%;
     padding: 35px;
 }
@@ -18,13 +20,28 @@
     justify-content: center;
 }
 
+.header-colunas{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+}
 .coluna-lista{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    margin-left: 5vw;
-    margin-right: 5vw;
+    justify-content: center;
+    align-items: center;
     list-style: none;
+    width: 100%;
+}
+
+.filtro-ocorrencia{
+
+}
+
+.div-lista{
+    width: 95%;
+
 }
 .itens-lista{
     display: flex;
@@ -32,17 +49,23 @@
     justify-content: space-between;
     margin-left: 5vw;
     margin-right: 5vw;
+    margin-bottom: 4vh;
+    
 }
 
+.ocorrencias{
+    display: flex;
+    width: 100%;
+}
 .card{
     border-radius: 10px;
     border-color: rgb(0, 102, 197);
     padding: 5px;
 }
-
 .espaco-coluna{
     width: 25%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
