@@ -141,9 +141,13 @@
                   onblur="validarArmazenamento()" />
               </div>
               <div class="estilo-box">
+                <p>Serial Id</p>
+                  <input type="text" class="input-empresa" id="inputSerial" placeholder="Ex: 01220574">
+              </div>
+              <div class="estilo-box">
                 <p>Sistema Operacional</p>
                 <select class="input-empresa" name="select" id="inputSo" required onblur="validarFuncao()">
-                  <option value=none></option>
+                  <option value=none>Selecione um Sistema Operacional</option>
                   <option value="Linux">Linux</option>
                   <option value="Windows">Windows</option>
                   <option value="Android">Android</option>
@@ -151,6 +155,7 @@
                 </select>
               </div>
               <div class="estilo-box">
+                <p>Estabelecimento</p>
                 <select class="input-empresa" id="inputEstabelecimento">
                   <option value="">Selecione um Estabelecimento</option>
                 </select>
@@ -245,6 +250,7 @@ function buscarDadoEstabelecimento() {
     var ramVar = inputRam.value;
     var armazenamentoVar = inputArmazenamento.value;
     var soVar = inputSo.value;
+    var idSerial = inputSerial.value;
 
 
     fetch(`/totem/cadastrarTotem`, {
@@ -262,6 +268,7 @@ function buscarDadoEstabelecimento() {
         ramServer: ramVar,
         armazenamentoServer: armazenamentoVar,
         soServer: soVar,
+        serialServer: idSerial
       }),
     })
       .then(function (resposta) {
