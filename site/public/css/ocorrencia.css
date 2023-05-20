@@ -18,6 +18,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 25px;
 }
 
 .header-colunas{
@@ -33,17 +34,14 @@
     align-items: center;
     list-style: none;
     width: 100%;
-}
-
-.filtro-ocorrencia{
-
+    margin-left: 5vw;
+    margin-right: 5vw;
 }
 
 .div-lista{
     width: 95%;
-
 }
-.itens-lista{
+.itens-lista-ocorrencia{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -57,15 +55,18 @@
     display: flex;
     width: 100%;
 }
-.card{
-    border-radius: 10px;
-    border-color: rgb(0, 102, 197);
-    padding: 5px;
+.card-ocorrencia{
+    border: 5px solid rgb(42, 165, 42);
+    border-radius: 15px;   
+    padding: 7px;
+    background-color: whitesmoke;
+    
 }
 .espaco-coluna{
     width: 25%;
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 20px;
 }
 
