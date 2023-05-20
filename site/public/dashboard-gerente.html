@@ -37,16 +37,23 @@
                     </a>
                 </div>
             <li class="nav-item">
-                <a href="dashboard.html" class="nav-link">
+                <a href="dashboard-tecnico.html" class="nav-link">
                     <!-- Imagem do ICONE DO planos-->
                     <span class="icone"> <i class="uil  uil-chart-line"></i> </span>
                     <span class="titulo"> Dashboard </span>
                 </a>
             </li>
             <li class="nav-item">
+                <a href="./telaCadastroEstabelecimento.html" class="nav-link">
+                  <!--Imagem do ICONE DE ADICIONAR -->
+                  <span class="icone"> <i class="uil uil-estate"></i> </span>
+                  <span class="titulo"> Estabelecimento</span>
+                </a>
+              </li>
+            <li class="nav-item">
                 <a href="./cadastro_armazem.html" class="nav-link">
                     <!--Imagem do ICONE DE ADICIONAR -->
-                    <span class="icone"> <i class="uil uil-estate"></i> </span>
+                    <span class="icone"> <i class="uil uil-server-connection"></i> </span>
                     <span class="titulo"> Cadastrar Totem</span>
                 </a>
             </li>
@@ -57,6 +64,13 @@
                     <span class="titulo"> Funcionario</span>
                 </a>
             </li>
+            <li class="nav-item">
+                <a href="./lista.html" class="nav-link">
+                  <!--Imagem do ICONE DE ADICIONAR -->
+                  <span class="icone"> <i class="uil uil-bell"></i> </span>
+                  <span class="titulo"> Notificações</span>
+                </a>
+              </li>
             <!-- </div> -->
             <li class="nav-item">
                 <a href="configuracoes.html" class="nav-link">
@@ -111,143 +125,143 @@
                 </div>
             </div>
         </div>
-            
+
     </main>
-    
-        <section class="container-lista">
-            <div class="container-filho-lista">
-                <div class="lista-totens">
-                    <div id="itemAlerta" class="item-lista alerta">
-                        <h4>ID Totem: <b>01111</b> </h4>
-                        <p>
-                            Status: <b>Alerta <img src="assets/icons/sinal-de-aviso.png" style="width: 18px;"></b>
-                        </p>
-                        <h6>
-                            Data do problema: <b>11/03/2023</b>
-                        </h6>
-                    </div>
-                    <div id="itemCritico" class="item-lista critico">
-                        <h4>ID Totem: <b>02211</b></h4>
-                        <p>
-                            Status: <b>Crítico <img src="assets/icons/sinal-de-aviso-red.png" style="width: 18px;"></b>
-                        </p>
-                        <h6>
-                            Data do problema: <b>11/03/2023</b>
-                        </h6>
-                    </div>
-                    <div id="itemAlerta" class="item-lista alerta">
-                        <h4>ID Totem: <b>03411</b> </h4>
-                        <p>
-                            Status: <b>Alerta <img src="assets/icons/sinal-de-aviso.png" style="width: 18px;"></b>
-                        </p>
-                        <h6>
-                            Data do problema: <b>11/03/2023</b>
-                        </h6>
-                    </div>
-                    <div id="itemCritico" class="item-lista critico">
-                        <h4>ID Totem: <b>05311</b> </h4>
-                        <p>
-                            Status: <b>Crítico <img src="assets/icons/sinal-de-aviso-red.png" style="width: 18px;"></b>
-                        </p>
-                        <h6>
-                            Data do problema: <b>11/03/2023</b>
-                        </h6>
-                    </div>
-                    <div id="itemAlerta" class="item-lista alerta">
-                        <h4>ID Totem: <b>04911</b> </h4>
-                        <p>
-                            Status: <b>Alerta <img src="assets/icons/sinal-de-aviso.png" style="width: 18px;"></b>
-                        </p>
-                        <h6>
-                            Data do problema: <b>11/03/2023</b>
-                        </h6>
-                    </div>
-                    <div id="itemAlerta" class="item-lista alerta">
-                        <h4>ID Totem: <b>15411</b> </h4>
-                        <p>
-                            Status: <b>Alerta <img src="assets/icons/sinal-de-aviso.png" style="width: 18px;"> </b>
-                        </p>
-                        <h6>
-                            Data do problema: <b>11/03/2023</b>
-                        </h6>
-                    </div>
-                    <div id="itemAlerta" class="item-lista alerta">
-                        <h4>ID Totem: <b>01311</b> </h4>
-                        <p>
-                            Status: <b>Alerta <img src="assets/icons/sinal-de-aviso.png" style="width: 18px;"></b>
-                        </p>
-                        <h6>
-                            Data do problema: <b>11/03/2023</b>
-                        </h6>
-                    </div>
-                    <div id="itemCritico" class="item-lista critico ultimo">
-                        <h4>ID Totem: <b>01311</b> </h4>
-                        <p>
-                            Status: <b>Crítico <img src="assets/icons/sinal-de-aviso-red.png" style="width: 18px;"></b>
-                        </p>
-                        <h6>
-                            Data do problema: <b>11/03/2023</b>
-                        </h6>
-                    </div>
+
+    <section class="container-lista">
+        <div class="container-filho-lista">
+            <div id="lista-totens" class="lista-totens">
+                <div id="itemAlerta0" class="item-lista alerta">
+                    <h4>ID Estabelecimento: <b>001</b> </h4>
+                    <p>
+                        Status: <b>Alerta <img src="assets/icons/sinal-de-aviso.png" style="width: 18px;"></b>
+                    </p>
+                    <p>
+                        Estabelecimento: <b>McDonald's</b>
+                    </p>
                 </div>
-                <div class="container-pai-status-legenda">
-                    <div class="container-status">
-                        <h1>Categorias</h1>
-                        <ul class="categorias">
-                            <li onclick="filtroAlerta()">
-                                <div class="container-categorias">
-                                    <div class="titulos-categorias">
-                                        Alerta
-                                    </div>
-                                    <div>
-                                        <img src="assets/icons/botao-de-seta-para-a-direita-do-teclado.png"
-                                            class="svg-seta" style="width: 11px;">
-                                    </div>
+                <div id="itemCritico0" class="item-lista critico">
+                    <h4>ID Estabelecimento: <b>002</b></h4>
+                    <p>
+                        Status: <b>Crítico <img src="assets/icons/sinal-de-aviso-red.png" style="width: 18px;"></b>
+                    </p>
+                    <p>
+                        Estabelecimento: <b>McDonald's</b>
+                    </p>
+                </div>
+                <div id="itemAlerta1" class="item-lista alerta">
+                    <h4>ID Estabelecimento: <b>003</b> </h4>
+                    <p>
+                        Status: <b>Alerta <img src="assets/icons/sinal-de-aviso.png" style="width: 18px;"></b>
+                    </p>
+                    <p>
+                        Estabelecimento: <b>Coco Bambu</b>
+                    </p>
+                </div>
+                <div id="itemCritico1" class="item-lista critico">
+                    <h4>ID Estabelecimento: <b>004</b> </h4>
+                    <p>
+                        Status: <b>Crítico <img src="assets/icons/sinal-de-aviso-red.png" style="width: 18px;"></b>
+                    </p>
+                    <p>
+                        Estabelecimento: <b>Outback</b>
+                    </p>
+                </div>
+                <div id="itemAlerta2" class="item-lista alerta">
+                    <h4>ID Estabelecimento: <b>005</b> </h4>
+                    <p>
+                        Status: <b>Alerta <img src="assets/icons/sinal-de-aviso.png" style="width: 18px;"></b>
+                    </p>
+                    <p>
+                        Estabelecimento: <b>Outback</b>
+                    </p>
+                </div>
+                <div id="itemAlerta3" class="item-lista alerta">
+                    <h4>ID Estabelecimento: <b>006</b> </h4>
+                    <p>
+                        Status: <b>Alerta <img src="assets/icons/sinal-de-aviso.png" style="width: 18px;"> </b>
+                    </p>
+                    <p>
+                        Estabelecimento: <b>Burguer King</b>
+                    </p>
+                </div>
+                <div id="itemAlerta4" class="item-lista alerta">
+                    <h4>ID Estabelecimento: <b>007</b> </h4>
+                    <p>
+                        Status: <b>Alerta <img src="assets/icons/sinal-de-aviso.png" style="width: 18px;"></b>
+                    </p>
+                    <p>
+                        Estabelecimento: <b>Burguer Kings </b>
+                    </p>
+                </div>
+                <div id="itemCritico2" class="item-lista critico ultimo">
+                    <h4>ID Estabelecimento: <b>008</b> </h4>
+                    <p>
+                        Status: <b>Crítico <img src="assets/icons/sinal-de-aviso-red.png" style="width: 18px;"></b>
+                    </p>
+                    <p>
+                        Estabelecimento: <b>Girafas</b>
+                    </p>
+                </div>
+            </div>
+            <div class="container-pai-status-legenda">
+                <div class="container-status">
+                    <h1>Categorias</h1>
+                    <ul class="categorias">
+                        <li id="buttonAlerta" onclick="removerCritico()">
+                            <div class="container-categorias">
+                                <div class="titulos-categorias">
+                                    Alerta
                                 </div>
-                            </li>
-                            <li onclick="filtroCritico()">
-                                <div class="container-categorias">
-                                    <div class="titulos-categorias">
-                                        Crítico
-                                    </div>
-                                    <div>
-                                        <img src="assets/icons/botao-de-seta-para-a-direita-do-teclado.png"
-                                            class="svg-seta" style="width: 11px;">
-                                    </div>
+                                <div>
+                                    <img src="assets/icons/botao-de-seta-para-a-direita-do-teclado.png"
+                                        class="svg-seta" style="width: 11px;">
                                 </div>
-                            </li>
-                            <a href="./lista.html">
-                                <li>
-                                    <div class="container-categorias">
-                                        <div class="titulos-categorias">
-                                            Todos
-                                        </div>
-                                        <div>
-                                            <img src="assets/icons/botao-de-seta-para-a-direita-do-teclado.png"
-                                                class="svg-seta" style="width: 11px;">
-                                        </div>
-                                    </div>
-                                </li>
-                            </a>
-                    </div>
-                    <div class="container-legenda">
-                        <h1>Status Geral</h1>
-                        <div class="subcontainer-totens-problema">
-                            <h2>Total de totens com problemas</h2>
-                            <div class="dados-totens-problema">
-                                <b>Alerta - 5 Totens <img src="assets/icons/sinal-de-aviso.png"
-                                        style="width: 18px;"></b>
-                                <b>Crítico - 3 Totens <img src="assets/icons/sinal-de-aviso-red.png"
-                                        style="width: 18px;"></b>
                             </div>
+                        </li>
+                        <li id="buttonCritico" onclick="removerAlerta(),criarCritico()">
+                            <div class="container-categorias">
+                                <div class="titulos-categorias">
+                                    Crítico
+                                </div>
+                                <div>
+                                    <img src="assets/icons/botao-de-seta-para-a-direita-do-teclado.png"
+                                        class="svg-seta" style="width: 11px;">
+                                </div>
+                            </div>
+                        </li>
+                        <a href="./lista.html">
+                            <li>
+                                <div class="container-categorias">
+                                    <div class="titulos-categorias">
+                                        Todos
+                                    </div>
+                                    <div>
+                                        <img src="assets/icons/botao-de-seta-para-a-direita-do-teclado.png"
+                                            class="svg-seta" style="width: 11px;">
+                                    </div>
+                                </div>
+                            </li>
+                        </a>
+                    </ul>
+                </div>
+                <div class="container-legenda">
+                    <h1>Status Geral</h1>
+                    <div class="subcontainer-totens-problema">
+                        <h2>Total de totens com problemas</h2>
+                        <div class="dados-totens-problema">
+                            <b>Alerta - 5 Totens <img src="assets/icons/sinal-de-aviso.png" style="width: 18px;"></b>
+                            <b>Crítico - 3 Totens <img src="assets/icons/sinal-de-aviso-red.png"
+                                    style="width: 18px;"></b>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-    
-    <footer> 
+
+    <footer>
         <!--Espaço vazio no fim do dashboard-->
         <div class="footer-space"></div>
     </footer>
@@ -257,3 +271,141 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
 <script src="./js/dashboard.js"></script>
+<script>
+
+    function criarAlerta() {
+
+        let divListaTotem = document.getElementById('lista-totens');
+        for (var i = 0; i < 5; i++) {
+
+            if (i == 0) {
+                divListaTotem.innerHTML += ` 
+                <div id="itemAlerta0" class="item-lista alerta">
+                    <h4>ID Estabelecimento: <b>001</b> </h4>
+                    <p>
+                        Status: <b>Alerta <img src="assets/icons/sinal-de-aviso.png" style="width: 18px;"></b>
+                    </p>
+                    <p>
+                        Estabelecimento: <b>McDonald's</b>
+                    </p>
+                </div>
+`
+            } else if (i == 1) {
+                divListaTotem.innerHTML += ` 
+                <div id="itemAlerta1" class="item-lista alerta">
+                    <h4>ID Estabelecimento: <b>003</b> </h4>
+                    <p>
+                        Status: <b>Alerta <img src="assets/icons/sinal-de-aviso.png" style="width: 18px;"></b>
+                    </p>
+                    <p>
+                        Estabelecimento: <b>Coco Bambu</b>
+                    </p>
+                </div>
+        `
+            } else if (i == 2) {
+                divListaTotem.innerHTML += ` 
+                <div id="itemAlerta2" class="item-lista alerta">
+                    <h4>ID Estabelecimento: <b>005</b> </h4>
+                    <p>
+                        Status: <b>Alerta <img src="assets/icons/sinal-de-aviso.png" style="width: 18px;"></b>
+                    </p>
+                    <p>
+                        Estabelecimento: <b>Outback</b>
+                    </p>
+                </div>
+        `
+            } else if (i == 3) {
+                divListaTotem.innerHTML += ` 
+                <div id="itemAlerta3" class="item-lista alerta">
+                    <h4>ID Estabelecimento: <b>006</b> </h4>
+                    <p>
+                        Status: <b>Alerta <img src="assets/icons/sinal-de-aviso.png" style="width: 18px;"> </b>
+                    </p>
+                    <p>
+                        Estabelecimento: <b>Burguer King</b>
+                    </p>
+                </div>
+        `
+            } else if (i == 4) {
+                divListaTotem.innerHTML += ` 
+                <div id="itemAlerta4" class="item-lista alerta">
+                    <h4>ID Estabelecimento: <b>007</b> </h4>
+                    <p>
+                        Status: <b>Alerta <img src="assets/icons/sinal-de-aviso.png" style="width: 18px;"></b>
+                    </p>
+                    <p>
+                        Estabelecimento: <b>Burguer Kings </b>
+                    </p>
+                </div>
+        `
+            }
+        }
+    }
+
+    function removerCritico() {
+
+        for (var i = 0; i < 3; i++) {
+            let divsToRemove = document.getElementById(`itemCritico${i}`);
+            divsToRemove.remove();
+
+        }
+    }
+
+    function removerAlerta() {
+        for (var i = 0; i < 5; i++) {
+            let divsToRemove = document.getElementById(`itemAlerta${i}`);
+            divsToRemove.remove();
+        }
+    }
+
+
+    function criarCritico() {
+        let divListaTotem = document.getElementById('lista-totens');
+        var buttonAlerta = document.getElementById('buttonAlerta');
+
+        buttonAlerta.setAttribute("Onclick", "removerCritico(), criarAlerta()");
+        for (var i = 0; i < 3; i++) {
+
+            if (i == 0) {
+                divListaTotem.innerHTML += ` 
+                <div id="itemCritico0" class="item-lista critico">
+                    <h4>ID Estabelecimento: <b>002</b></h4>
+                    <p>
+                        Status: <b>Crítico <img src="assets/icons/sinal-de-aviso-red.png" style="width: 18px;"></b>
+                    </p>
+                    <p>
+                        Estabelecimento: <b>McDonald's</b>
+                    </p>
+                </div>
+`
+            } else if (i == 1) {
+                divListaTotem.innerHTML += ` 
+                <div id="itemCritico1" class="item-lista critico">
+                    <h4>ID Estabelecimento: <b>004</b> </h4>
+                    <p>
+                        Status: <b>Crítico <img src="assets/icons/sinal-de-aviso-red.png" style="width: 18px;"></b>
+                    </p>
+                    <p>
+                        Estabelecimento: <b>Outback</b>
+                    </p>
+                </div>
+        `
+            } else if (i == 2) {
+                divListaTotem.innerHTML += ` 
+                <div id="itemCritico2" class="item-lista critico ultimo">
+                    <h4>ID Estabelecimento: <b>008</b> </h4>
+                    <p>
+                        Status: <b>Crítico <img src="assets/icons/sinal-de-aviso-red.png" style="width: 18px;"></b>
+                    </p>
+                    <p>
+                        Estabelecimento: <b>Girafas</b>
+                    </p>
+                </div>
+        `
+            }
+        }
+    }
+
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
+</script>

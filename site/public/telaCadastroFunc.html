@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
   <link rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
+    
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
   <link rel="icon" href="./assets/imgs/sobreNos.png">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
@@ -38,7 +39,7 @@
             </a>
           </div>
         <li class="nav-item">
-          <a href="" class="nav-link">
+          <a href="dashboard-tecnico.html" class="nav-link">
             <!-- Imagem do ICONE DO planos-->
             <span class="icone"> <i class="uil  uil-chart-line"></i> </span>
             <span class="titulo"> Dashboard </span>
@@ -76,9 +77,16 @@
             <span class="titulo"> Funcionario</span>
           </a>
         </li>
+        <li class="nav-item">
+          <a href="./lista.html" class="nav-link">
+            <!--Imagem do ICONE DE ADICIONAR -->
+            <span class="icone"> <i class="uil uil-bell"></i> </span>
+            <span class="titulo"> Notificações</span>
+          </a>
+        </li>
         <!-- </div> -->
         <li class="nav-item">
-          <a href="" class="nav-link">
+          <a href="configuracoes.html" class="nav-link">
             <!-- Imagem do ICONE DE CONFIGURAÇÕES -->
             <span class="icone"><i class="uil uil-cog"></i></span>
             <span class="titulo"> Configurações</span>
@@ -155,9 +163,8 @@
                 <select class="input-empresa" name="select" id="inputFuncao"  
                 onblur="validarFuncao()" >
                   <option value=none></option>
-                  <option value="Administrador">Administrador</option>
-                  <option value="Gerente">Moderador</option>
-                  <option value="Técnico">Funcionário</option>
+                  <option value="Gerente">Gerente</option>
+                  <option value="Técnico">Técnico</option>
                 </select>
               </div>
             </div>
@@ -312,7 +319,7 @@
           text: 'Cadastro realizado com sucesso!',
         })
         console.log("deu certo")
-        
+        setTimeout(() => buscarDadoFuncionario(), 1500);
       } else {
 
         Swal.fire({

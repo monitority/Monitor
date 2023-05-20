@@ -38,7 +38,7 @@
             </a>
           </div>
         <li class="nav-item">
-          <a href="" class="nav-link">
+          <a href="dashboard-tecnico.html" class="nav-link">
             <!-- Imagem do ICONE DO planos-->
             <span class="icone"> <i class="uil  uil-chart-line"></i> </span>
             <span class="titulo"> Dashboard </span>
@@ -76,9 +76,16 @@
             <span class="titulo"> Funcionario</span>
           </a>
         </li>
+        <li class="nav-item">
+          <a href="./lista.html" class="nav-link">
+            <!--Imagem do ICONE DE ADICIONAR -->
+            <span class="icone"> <i class="uil uil-bell"></i> </span>
+            <span class="titulo"> Notificações</span>
+          </a>
+        </li>
         <!-- </div> -->
         <li class="nav-item">
-          <a href="" class="nav-link">
+          <a href="configuracoes.html" class="nav-link">
             <!-- Imagem do ICONE DE CONFIGURAÇÕES -->
             <span class="icone"><i class="uil uil-cog"></i></span>
             <span class="titulo"> Configurações</span>
@@ -153,7 +160,6 @@
                 <input class="select-estado" id="inputUF" name="estado" onclick="validarUF()">
               </div>             
             </div>
-
 
             <div class="container-filho-2">
               <div class="estilo-box">
@@ -272,7 +278,7 @@
           text: 'Cadastro realizado com sucesso!',
           })
 
-          setTimeout(() => buscarDadoEstabelecimento(), 2000);
+          setTimeout(() => buscarDadoEstabelecimento(), 1500);
 
         } else {
           Swal.fire({
