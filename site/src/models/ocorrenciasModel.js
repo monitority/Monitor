@@ -1,23 +1,23 @@
 var database = require("../database/config")
 
-function listar(fkEmpresa, filtro) {
+function listar(fkEmpresa) {
     console.log("ACESSEI O OCORRENCIA MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor do seu BD está rodando corretamente. \n\n function listar()");
-
+    let filtro = 3;
     if (filtro === 'todos') {
-        var instrucao = `SELECT e.nome, o.status, u.nome FROM ocorrencia o
-                        JOIN estabelecimento e ON o.fkEstabelecimento = e.idEstabelecimento
-                        JOIN usuario u ON o.fkUsuario = u.idUsuario
-                        WHERE o.fkEmpresa = ${fkEmpresa} AND o.status = '${filtro}'`;
-    } else if (filtro === 'concluidos') {
-        var instrucao = `SELECT e.nome, o.status, u.nome FROM ocorrencia o
+        var instrucao = `SELECT e.nome, o.problema, o.statusOcorrencia, u.nomeUsuario FROM [dbo].[ocorrencias] o
         JOIN estabelecimento e ON o.fkEstabelecimento = e.idEstabelecimento
         JOIN usuario u ON o.fkUsuario = u.idUsuario
-        WHERE o.fkEmpresa = ${fkEmpresa} AND o.status = '${filtro}'`;
-    } else if (filtro === 'abertos') {
-        var instrucao = `SELECT e.nome, o.status, u.nome FROM ocorrencia o
+        WHERE o.fkEmpresa = ${fkEmpresa}`;
+    } else if (filtro === 'concluído') {
+        var instrucao = `SELECT e.nome, o.problema, o.statusOcorrencia, u.nomeUsuario FROM [dbo].[ocorrencias] o
         JOIN estabelecimento e ON o.fkEstabelecimento = e.idEstabelecimento
         JOIN usuario u ON o.fkUsuario = u.idUsuario
-        WHERE o.fkEmpresa = ${fkEmpresa} AND o.status = '${filtro}'`;
+        WHERE o.fkEmpresa = ${fkEmpresa} AND o.statusOcorrencia = 'concluído'`;
+    } else if (filtro === 'aberto') {
+        var instrucao = `SELECT e.nome, o.problema, o.statusOcorrencia, u.nomeUsuario FROM [dbo].[ocorrencias] o
+        JOIN estabelecimento e ON o.fkEstabelecimento = e.idEstabelecimento
+        JOIN usuario u ON o.fkUsuario = u.idUsuario
+        WHERE o.fkEmpresa = ${fkEmpresa} AND o.statusOcorrencia = 'aberto'`;
 
         console.log("Executando a instrução SQL: \n" + instrucao);
         return database.executar(instrucao);

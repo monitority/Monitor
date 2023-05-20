@@ -24,7 +24,7 @@
 </head>
 
 <body onload="listarOcorrencia()">
-    
+
     <!-- Div que contem a parte de navegação (parte verde do menu)-->
     <div class="navegacao">
         <ul class="navbar-nav">
@@ -42,6 +42,13 @@
                     <!-- Imagem do ICONE DO planos-->
                     <span class="icone"> <i class="uil  uil-chart-line"></i> </span>
                     <span class="titulo"> Dashboard </span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="ocorrencias.html" class="nav-link">
+                    <!-- Imagem do ICONE DO planos-->
+                    <span class="icone"> <i class="uil  uil-clipboard"></i> </span>
+                    <span class="titulo"> Ocorrências </span>
                 </a>
             </li>
             <li class="nav-item">
@@ -117,28 +124,12 @@
                 <div class="filtro-ocorrencia">
                     <select name="" id="select_filtro" class="filtro-ocorrencia" onchange="listarOcorrencia()">
                         <option value="todos">Todos</option>
-                        <option value="abertos">Abertos</option>
-                        <option value="concluidos">Concluído</option>
+                        <option value="aberto">Abertos</option>
+                        <option value="concluído">Concluído</option>
                     </select>
                 </div>
             </div>
 
-            <div class="ocorrencias">
-                <div id="div_lista_ocorrencia" class="div-lista">
-                    <div class="itens-lista-ocorrencia card-ocorrencia">
-                        <div class="espaco-coluna">Mc</div>
-                        <div class="espaco-coluna">Ram</div>
-                        <div class="espaco-coluna">concluído</div>
-                        <div class="espaco-coluna">Lucas</div>
-                    </div>
-                    <div class="itens-lista-ocorrencia card-ocorrencia">
-                        <div class="espaco-coluna">Mc</div>
-                        <div class="espaco-coluna">Ram</div>
-                        <div class="espaco-coluna">concluído</div>
-                        <div class="espaco-coluna">Lucas</div>
-                    </div>
-                </div>
-            </div>
         </div>
 
     </main>
@@ -152,8 +143,13 @@
 </html>
 
 <script>
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    var sessionIdEmpresa = sessionStorage.ID_EMPRESA;
+    var sessionFkEmpresa = sessionStorage.FK_EMPRESA;
+    var idEmpresa = 0;
+    
     function listarOcorrencia() {
-        let filtro = document.getElementById("select_filtro")
+        let filtro = document.getElementById("select_filtro").value
         if (sessionIdEmpresa > 0) {
             idEmpresa = sessionIdEmpresa;
         } else if (sessionFkEmpresa > 0) {
@@ -161,9 +157,9 @@
         } else {
             console.log("id e fk empresa estão errado")
         }
-        fetch(`/ocorrencia/listar/${idEmpresa}/${filtro}`)
+        fetch(`/ocorrencia/listar/${idEmpresa}`)
             .then(function (resposta) {
-                console.log('estou na BuscarEstabelecimento()', resposta);
+                console.log('estou na listarOcorrencia()', resposta);
                 if (resposta.ok) {
                     if (resposta.status == 204) {
                         var tabelaFuncionarios = document.getElementById("div_lista_ocorrencia");
@@ -181,8 +177,8 @@
                         tabelaOcorrecia.innerHTML = '';
                         for (let i = 0; i < resposta.length; i++) {
                             var publicacao = resposta[i];
-                            const cor = "red"
-                            if(publicacao.status == "concluido"){
+                            let cor = "red"
+                            if (publicacao.status == "concluido") {
                                 cor = "green";
                             }
                             // criando e manipulando elementos do HTML via JavaScript
@@ -199,7 +195,7 @@
                         }
                     });
                 } else {
-                    throw console.log('Estou na buscarDadosFuncionario()', JSON.stringify(resposta));
+                    throw console.log('Estou na listarOcorrenciasErro()', JSON.stringify(resposta));
                 }
             })
             .catch(function (resposta) {

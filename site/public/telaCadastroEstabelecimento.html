@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
   <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
   <link rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
+    href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
   <link rel="icon" href="./assets/imgs/sobreNos.png">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
@@ -54,7 +54,14 @@
     
                         </a>
                     </li> -->
-        <!-- <div class="adicionar" id="adicionar3"> --> 
+        <!-- <div class="adicionar" id="adicionar3"> -->
+        <li class="nav-item">
+          <a href="ocorrencias.html" class="nav-link">
+            <!-- Imagem do ICONE DO planos-->
+            <span class="icone"> <i class="uil  uil-clipboard"></i> </span>
+            <span class="titulo"> Ocorrências </span>
+          </a>
+        </li>
         <li class="nav-item">
           <a href="./telaCadastroEstabelecimento.html" class="nav-link">
             <!--Imagem do ICONE DE ADICIONAR -->
@@ -135,7 +142,7 @@
                 <input class="input-empresa" id="inputNome" placeholder="Ex: Xpto Lanche" required
                   onblur="validarNome()" />
               </div>
-              
+
               <div class="estilo-box">
                 <p>Métrica de CPU (Em %)</p>
                 <input class="input-empresa" id="inputNumeroMetricaCpu" placeholder="Ex: 80" required
@@ -153,23 +160,21 @@
               </div>
               <div class="estilo-box">
                 <p>Numero</p>
-                <input class="input-empresa"  placeholder="Ex: 172" id="inputNumero" required
-                onblur="validarNumero()" />
+                <input class="input-empresa" placeholder="Ex: 172" id="inputNumero" required onblur="validarNumero()" />
               </div>
             </div>
 
 
             <div class="container-filho-2">
-              
+
               <div class="estilo-box">
                 <p>CEP</p>
                 <input class="input-empresa" id="inputCEP" placeholder="Ex: 08150200" required
-                onblur="pesquisacep(this.value),validarCEP();" onkeyup="cepMaskCode(event)" />
+                  onblur="pesquisacep(this.value),validarCEP();" onkeyup="cepMaskCode(event)" />
               </div>
               <div class="estilo-box">
                 <p>Bairro</p>
-                <input class="input-empresa" placeholder="Ex: Consolação" id="inputBairro"
-                  onblur="validarBairro()" />
+                <input class="input-empresa" placeholder="Ex: Consolação" id="inputBairro" onblur="validarBairro()" />
               </div>
               <div class="estilo-box">
                 <p>Logradouro</p>
@@ -178,8 +183,7 @@
               </div>
               <div class="estilo-box">
                 <p>Cidade</p>
-                <input class="input-empresa" placeholder="Ex: São Paulo" id="inputCidade"
-                  onblur="validarCidade()" />
+                <input class="input-empresa" placeholder="Ex: São Paulo" id="inputCidade" onblur="validarCidade()" />
               </div>
               <div id="estado_empresa_box" class="estilo-box">
                 <p id="estado_empresa_cadastro">UF</p>
@@ -214,10 +218,10 @@
 
 </html>
 <script>
-   b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-   var sessionIdEmpresa = sessionStorage.ID_EMPRESA;
-   var sessionFkEmpresa = sessionStorage.FK_EMPRESA;
-   var idEmpresa = 0;
+  b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+  var sessionIdEmpresa = sessionStorage.ID_EMPRESA;
+  var sessionFkEmpresa = sessionStorage.FK_EMPRESA;
+  var idEmpresa = 0;
   function cadastrarEstabelecimento() {
 
     //Recupere o valor da nova input pelo nome do id
@@ -232,13 +236,13 @@
     var metricaNumeroCpuVar = inputNumeroMetricaCpu.value;
     var metricaNumeroRamVar = inputNumeroMetricaRam.value;
     var metricaNumeroDiscoVar = inputNumeroMetricaDisco.value;
-    
 
-    if(sessionIdEmpresa > 0){
+
+    if (sessionIdEmpresa > 0) {
       idEmpresa = sessionIdEmpresa;
-    }else if(sessionFkEmpresa > 0){
+    } else if (sessionFkEmpresa > 0) {
       idEmpresa = sessionFkEmpresa;
-    }else{
+    } else {
       console.log("id e fk empresa estão errado")
     }
     // Enviando o valor da nova input
@@ -268,9 +272,9 @@
         // Se sucesso, ele atualiza o id da empresa dentro da sessionStorage e atualiza a pág
         if (resposta.ok) {
           Swal.fire({
-          icon: 'success',
-          title: 'Parabéns',
-          text: 'Cadastro realizado com sucesso!',
+            icon: 'success',
+            title: 'Parabéns',
+            text: 'Cadastro realizado com sucesso!',
           })
 
           setTimeout(() => buscarDadoEstabelecimento(), 1500);
@@ -312,7 +316,7 @@
           icon: 'error',
           title: 'Ops...',
           text: 'Deu 404!',
-          })
+        })
       } else {
         throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
       }
@@ -324,11 +328,11 @@
 
 
   function buscarDadoEstabelecimento() {
-    if(sessionIdEmpresa > 0){
+    if (sessionIdEmpresa > 0) {
       idEmpresa = sessionIdEmpresa;
-    }else if(sessionFkEmpresa > 0){
+    } else if (sessionFkEmpresa > 0) {
       idEmpresa = sessionFkEmpresa;
-    }else{
+    } else {
       console.log("id e fk empresa estão errado")
     }
     fetch(`/estabelecimento/listar/${idEmpresa}`)

@@ -1,4 +1,4 @@
-var ocorrenciaModel = require("../models/estabelecimentoModel");
+var ocorrenciaModel = require("../models/ocorrenciasModel");
 
 var sessoes = [];
 
@@ -9,8 +9,8 @@ function testar(req, res) {
 
 function listar(req, res) {
     var fkEmpresa = req.params.fkEmpresa;
-    let filtro = req.params.filtro;
-    ocorrenciaModel.listar(fkEmpresa, filtro)
+    
+    ocorrenciaModel.listar(fkEmpresa)
         .then(function (resultado) {
             if (resultado.length > 0) {
                 res.status(200).json(resultado);

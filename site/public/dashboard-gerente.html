@@ -44,6 +44,13 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a href="ocorrencias.html" class="nav-link">
+                    <!-- Imagem do ICONE DO planos-->
+                    <span class="icone"> <i class="uil  uil-clipboard"></i> </span>
+                    <span class="titulo"> Ocorrências </span>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a href="./telaCadastroEstabelecimento.html" class="nav-link">
                     <!--Imagem do ICONE DE ADICIONAR -->
                     <span class="icone"> <i class="uil uil-estate"></i> </span>
@@ -245,6 +252,7 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
 <script src="./js/dashboard.js"></script>
 <script>
+    
     function listarEstabelcimentos() {
         fetch(`/estabelecimento/listar/${idEmpresa}`)
             .then(function (resposta) {
@@ -303,74 +311,6 @@
                 console.log(resposta);
             });
 
-    }
-
-
-        let divListaTotem = document.getElementById('lista-totens');
-        for (var i = 0; i < 5; i++) {
-
-            if (i == 0) {
-                divListaTotem.innerHTML += ` 
-                <div id="itemAlerta0" class="item-lista alerta">
-                    <h4>ID Estabelecimento: <b>001</b> </h4>
-                    <p>
-                        Status: <b>Alerta <img src="assets/icons/sinal-de-aviso.png" style="width: 18px;"></b>
-                    </p>
-                    <p>
-                        Estabelecimento: <b>McDonald's</b>
-                    </p>
-                </div>
-`
-            } else if (i == 1) {
-                divListaTotem.innerHTML += ` 
-                <div id="itemAlerta1" class="item-lista alerta">
-                    <h4>ID Estabelecimento: <b>003</b> </h4>
-                    <p>
-                        Status: <b>Alerta <img src="assets/icons/sinal-de-aviso.png" style="width: 18px;"></b>
-                    </p>
-                    <p>
-                        Estabelecimento: <b>Coco Bambu</b>
-                    </p>
-                </div>
-        `
-            } else if (i == 2) {
-                divListaTotem.innerHTML += ` 
-                <div id="itemAlerta2" class="item-lista alerta">
-                    <h4>ID Estabelecimento: <b>005</b> </h4>
-                    <p>
-                        Status: <b>Alerta <img src="assets/icons/sinal-de-aviso.png" style="width: 18px;"></b>
-                    </p>
-                    <p>
-                        Estabelecimento: <b>Outback</b>
-                    </p>
-                </div>
-        `
-            } else if (i == 3) {
-                divListaTotem.innerHTML += ` 
-                <div id="itemAlerta3" class="item-lista alerta">
-                    <h4>ID Estabelecimento: <b>006</b> </h4>
-                    <p>
-                        Status: <b>Alerta <img src="assets/icons/sinal-de-aviso.png" style="width: 18px;"> </b>
-                    </p>
-                    <p>
-                        Estabelecimento: <b>Burguer King</b>
-                    </p>
-                </div>
-        `
-            } else if (i == 4) {
-                divListaTotem.innerHTML += ` 
-                <div id="itemAlerta4" class="item-lista alerta">
-                    <h4>ID Estabelecimento: <b>007</b> </h4>
-                    <p>
-                        Status: <b>Alerta <img src="assets/icons/sinal-de-aviso.png" style="width: 18px;"></b>
-                    </p>
-                    <p>
-                        Estabelecimento: <b>Burguer Kings </b>
-                    </p>
-                </div>
-        `
-            }
-        }
     }
 
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
