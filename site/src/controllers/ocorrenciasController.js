@@ -8,9 +8,10 @@ function testar(req, res) {
 }
 
 function listar(req, res) {
-    var fkEmpresa = req.params.fkEmpresa;
-    
-    ocorrenciaModel.listar(fkEmpresa)
+    console.log("estou na listar de ocorrenciasController")
+    var fkEmpresa = req.params.idEmpresa;
+    var filtro = req.params.filtro;
+    ocorrenciaModel.listar(fkEmpresa, filtro)
         .then(function (resultado) {
             if (resultado.length > 0) {
                 res.status(200).json(resultado);

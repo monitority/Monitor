@@ -123,10 +123,14 @@
                 </div>
                 <div class="filtro-ocorrencia">
                     <select name="" id="select_filtro" class="filtro-ocorrencia" onchange="listarOcorrencia()">
-                        <option value="todos">Todos</option>
-                        <option value="aberto">Abertos</option>
-                        <option value="concluído">Concluído</option>
+                        <option value='todos'>Todos</option>
+                        <option value='aberto'>Abertos</option>
+                        <option value='concluído'>Concluído</option>
                     </select>
+                </div>
+            </div>
+            <div class="ocorrencias">
+                <div id="div_lista_ocorrencia" class="div-lista">
                 </div>
             </div>
 
@@ -147,7 +151,7 @@
     var sessionIdEmpresa = sessionStorage.ID_EMPRESA;
     var sessionFkEmpresa = sessionStorage.FK_EMPRESA;
     var idEmpresa = 0;
-    
+
     function listarOcorrencia() {
         let filtro = document.getElementById("select_filtro").value
         if (sessionIdEmpresa > 0) {
@@ -157,7 +161,7 @@
         } else {
             console.log("id e fk empresa estão errado")
         }
-        fetch(`/ocorrencia/listar/${idEmpresa}`)
+        fetch(`/ocorrencia/listar/${idEmpresa}/${filtro}`)
             .then(function (resposta) {
                 console.log('estou na listarOcorrencia()', resposta);
                 if (resposta.ok) {
@@ -173,22 +177,22 @@
                     resposta.json().then(function (resposta) {
                         console.log("Dados recebidos: ", JSON.stringify(resposta));
 
-                        var tabelaOcorrecia = document.getElementById("div_lista_ocorrencia");
-                        tabelaOcorrecia.innerHTML = '';
+                        var tabelaOcorrencia = document.getElementById("div_lista_ocorrencia");
+                        tabelaOcorrencia.innerHTML = '';
                         for (let i = 0; i < resposta.length; i++) {
                             var publicacao = resposta[i];
                             let cor = "red"
-                            if (publicacao.status == "concluido") {
+                            if (publicacao.statusOcorrencia == "concluído") {
                                 cor = "green";
                             }
                             // criando e manipulando elementos do HTML via JavaScript
 
                             tabelaOcorrencia.innerHTML += `       
                                 <div class="itens-lista-ocorrencia card-ocorrencia" style="border: 5px solid ${cor}">
-                                    <div class="espaco-coluna">${publicacao.nomeEstabelecimento}</div>
+                                    <div class="espaco-coluna">${publicacao.nome}</div>
                                     <div class="espaco-coluna">${publicacao.problema}</div>
-                                    <div class="espaco-coluna">${publicacao.status}</div>
-                                    <div class="espaco-coluna">${publicacao.reponsavel}</div>
+                                    <div class="espaco-coluna">${publicacao.statusOcorrencia}</div>
+                                    <div class="espaco-coluna">${publicacao.nomeUsuario}</div>
                                 </div>
                             
                             `;
