@@ -79,7 +79,8 @@ function cadastrarEstabelecimento(req, res) {
     var cpuMax = req.body.metricaCpuServer;
     var ramMax = req.body.metricaRamServer;
     var discoMax = req.body.metricaDiscoServer;
-    console.log(fkEmpresa, nome, lougradouro, bairro, cep, cidade, estado, numero, cpuMax, ramMax, discoMax)
+    var prioridade = req.body.prioridadeServer;
+    console.log(fkEmpresa, nome, lougradouro, bairro, cep, cidade, estado, numero, cpuMax, ramMax, discoMax, prioridade)
     // Faça as validações dos valores
     if (nome == undefined) {
         res.status(400).send("Seu nome está undefined!");
@@ -92,7 +93,7 @@ function cadastrarEstabelecimento(req, res) {
     } else {
         
         // Passe os valores como parâmetro e vá para o arquivo EstabelecimentoModel.js
-        estabelecimentoModel.cadastrarEstabelecimento( fkEmpresa, nome, lougradouro, bairro, cep, cidade, estado, numero, cpuMax, ramMax, discoMax)
+        estabelecimentoModel.cadastrarEstabelecimento( fkEmpresa, nome, lougradouro, bairro, cep, cidade, estado, numero, cpuMax, ramMax, discoMax, prioridade)
             .then(
                 function (resultado) {
                     res.json(resultado);
