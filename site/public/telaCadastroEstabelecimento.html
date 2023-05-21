@@ -218,10 +218,10 @@
 
 </html>
 <script>
-   b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-   var sessionIdEmpresa = sessionStorage.ID_EMPRESA;
-   var sessionFkEmpresa = sessionStorage.FK_EMPRESA;
-   var idEmpresa = 0;
+  b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+  var sessionIdEmpresa = sessionStorage.ID_EMPRESA;
+  var sessionFkEmpresa = sessionStorage.FK_EMPRESA;
+  var idEmpresa = 0;
   function cadastrarEstabelecimento() {
 
     //Recupere o valor da nova input pelo nome do id
@@ -238,11 +238,12 @@
     var metricaNumeroDiscoVar = inputNumeroMetricaDisco.value;
     var prioridadeVar = comboPrioridade.value
 
-    if(sessionIdEmpresa > 0){
+
+    if (sessionIdEmpresa > 0) {
       idEmpresa = sessionIdEmpresa;
-    }else if(sessionFkEmpresa > 0){
+    } else if (sessionFkEmpresa > 0) {
       idEmpresa = sessionFkEmpresa;
-    }else{
+    } else {
       console.log("id e fk empresa estão errado")
     }
     // Enviando o valor da nova input
@@ -273,9 +274,9 @@
         // Se sucesso, ele atualiza o id da empresa dentro da sessionStorage e atualiza a pág
         if (resposta.ok) {
           Swal.fire({
-          icon: 'success',
-          title: 'Parabéns',
-          text: 'Cadastro realizado com sucesso!',
+            icon: 'success',
+            title: 'Parabéns',
+            text: 'Cadastro realizado com sucesso!',
           })
 
           setTimeout(() => buscarDadoEstabelecimento(), 1500);
@@ -317,7 +318,7 @@
           icon: 'error',
           title: 'Ops...',
           text: 'Deu 404!',
-          })
+        })
       } else {
         throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
       }
@@ -329,11 +330,11 @@
 
 
   function buscarDadoEstabelecimento() {
-    if(sessionIdEmpresa > 0){
+    if (sessionIdEmpresa > 0) {
       idEmpresa = sessionIdEmpresa;
-    }else if(sessionFkEmpresa > 0){
+    } else if (sessionFkEmpresa > 0) {
       idEmpresa = sessionFkEmpresa;
-    }else{
+    } else {
       console.log("id e fk empresa estão errado")
     }
     fetch(`/estabelecimento/listar/${idEmpresa}`)
