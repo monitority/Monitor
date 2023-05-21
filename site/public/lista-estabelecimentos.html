@@ -104,21 +104,8 @@
 
         <section class="container-pai-lista">
             <div class="container-lista">
-                <div class="lista">
-                    <div class="container-card">
-                        <div class="card-lista">
-                            <div class="titulo-card">
-                                <img src="assets/icons/restaurant (3).png" style="width: 62px;">
-                                <h2><b>Girafas</b></h2>
-                            </div>
-                            <ul class="dados-card">
-                                <li class="dados"><b>Endereço: </b>Av.Rebouças, 1345</li>
-                                <li class="dados"><b>Estado: </b> Em aberto</li>
-                                <li class="dados"><b>Problema: </b></li>
-                                <li class="dados"><b>Quantidade de Totens: </b>5</li>
-                            </ul>
-                        </div>
-                    </div>
+                <div class="lista" id="lista_container_estabelecimento">
+                   
                 </div>
             </div>
         </section>
@@ -133,20 +120,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
 <script>
-    // <div class="container-card">
-    //     <div class="card-lista">
-    //         <div class="titulo-card">
-    //             <img src="assets/icons/restaurant (3).png" style="width: 62px;">
-    //                 <h2><b>Girafas</b></h2>
-    //         </div>
-    //         <ul class="dados-card">
-    //             <li class="dados"><b>Endereço: </b>Av.Rebouças, 1345</li>
-    //             <li class="dados"><b>Estado: </b> Em aberto</li>
-    //             <li class="dados"><b>Problema: </b></li>
-    //             <li class="dados"><b>Quantidade de Totens: </b>5</li>
-    //         </ul>
-    //     </div>
-    // </div>
+
     listarEstabelecimentosPorUsuario()
 
     function listarEstabelecimentosPorUsuario() {
@@ -162,30 +136,49 @@
                         let dados = resposta[i]
 
                         let divContainerCard = document.createElement("div");
-                        let divCardLista = document.createElement("div")
-                        let divTituloCard = document.createElement("div")
-                        let imgTitulo = document.createElement("img")
-                        let h2Titulo = document.createElement("h2")
-                        let ulDadosCard = document.createElement("ul")
-                        let liEndereco = document.createElement("li")
-                        let liEstado = document.createElement("li")
-                        let liProblema = document.createElement("li")
-                        let liQuantidadeDeTotens = document.createElement("li")
+                        let divCardLista = document.createElement("div");
+                        let divTituloCard = document.createElement("div");
+                        let imgTitulo = document.createElement("img");
+                        let h2Titulo = document.createElement("h2");
+                        let ulDadosCard = document.createElement("ul");
+                        let liEndereco = document.createElement("li");
+                        let liEstado = document.createElement("li");
+                        let liProblema = document.createElement("li");
+                        let liQuantidadeDeTotens = document.createElement("li");
+                        let liQuantidadeOcorrencias = document.createElement("li");
+                        let listaEstabelecimento = document.getElementById("lista_container_estabelecimento");
 
-                        h2Titulo.innerHTML= "<b>" + dados.nome + "</b>";
-                        liEndereco.innerHTML="<b>Endereço: </b>"+ dados.logradouro + ", " + dados.numero;
-                        liEndereco.innerHTML="<b>Estado: </b>" + dados.statusOcorrencia;
-                        liEndereco.innerHTML="<b>Problema: </b>" + dados.problema;
-                        liQuantidadeDeTotens.innerHTML ="<b>Quantidade de Totens: </b>";
+                        imgTitulo.src = 'assets/icons/restaurant (3).png';
+                        h2Titulo.innerHTML = "<b>" + dados.nome + "</b>";
+                        liEndereco.innerHTML = "<b>Endereço: </b>" + dados.logradouro + ", " + dados.numero;
+                        liEstado.innerHTML = "<b>Estado: </b>" + dados.statusOcorrencia;
+                        liProblema.innerHTML = "<b>Problema: </b>" + dados.problema;
+                        liQuantidadeDeTotens.innerHTML = "<b>Quantidade de Totens: </b>";
+                        liQuantidadeOcorrencias.innerHTML = "<b>Quantidade de ocorrencias: </b>";
+
 
                         divContainerCard.className = "container-card";
                         divCardLista.className = "card-lista";
                         divTituloCard.className = "titulo-card";
                         ulDadosCard.className = "dados-card";
-                        liEndereco.className = "dados"
-                        liEstado.className = "dados"
-                        liProblema.className = "dados"
-                        liQuantidadeDeTotens.className = "dados"
+                        liEndereco.className = "dados";
+                        liEstado.className = "dados";
+                        liProblema.className = "dados";
+                        liQuantidadeDeTotens.className = "dados";
+                        liQuantidadeOcorrencias.className = "dados";
+                        imgTitulo.style.width = "62px";
+
+                        divContainerCard.appendChild(divCardLista);
+                        divCardLista.appendChild(divTituloCard);
+                        divTituloCard.appendChild(imgTitulo);
+                        divTituloCard.appendChild(h2Titulo);
+                        divCardLista.appendChild(ulDadosCard);
+                        ulDadosCard.appendChild(liEndereco);
+                        ulDadosCard.appendChild(liEstado);
+                        ulDadosCard.appendChild(liProblema);
+                        ulDadosCard.appendChild(liQuantidadeDeTotens);
+                        ulDadosCard.appendChild(liQuantidadeOcorrencias);
+                        listaEstabelecimento.appendChild(divContainerCard);
                     }
                 });
             } else {
