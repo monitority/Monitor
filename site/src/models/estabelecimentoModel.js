@@ -17,13 +17,51 @@ function listarEstabelecimentosPorUsuario(fkUsuario){
         o.problema,
         o.fkEstabelecimento,
         o.fkUsuario,
+        o.idOcorrencias,
         e.nome,
+        e.idEstabelecimento,
         en.logradouro,
         en.numero from [dbo].[ocorrencias] as o
         join [dbo].[estabelecimento] as e 
         on o.fkEstabelecimento = e.idEstabelecimento
         join [dbo].[endereco] as en on idEndereco = e.fkEndereco
-        join [dbo].[usuario] as u on o.fkUsuario = u.idUsuario where o.fkUsuario = 3
+        join [dbo].[usuario] as u on o.fkUsuario = u.idUsuario where o.fkUsuario = 3;
+    `
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function updateStatusConcluido(idOcorrencias) {
+    console.log("ACESSEI O ESTABELECIMENTO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarEstabelecimentosPorUsuario()");
+    let instrucao = `
+    update ocorrencias set statusOcorrencia = 'Concluido' where idOcorrencias = ${idOcorrencias};
+    `
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function updateStatusAberto(idOcorrencias) {
+    console.log("ACESSEI O ESTABELECIMENTO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarEstabelecimentosPorUsuario()");
+    let instrucao = `
+    update ocorrencias set statusOcorrencia = 'Aberto' where idOcorrencias = ${idOcorrencias};
+    `
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function qtdTotens(fkEstabelecimento) {
+    console.log("ACESSEI O ESTABELECIMENTO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarEstabelecimentosPorUsuario()");
+    let instrucao = `
+    select COUNT(idTotem) AS quantidadeTotems from totem where fkEstabelecimento = ${fkEstabelecimento};
+    `
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function qtdOcorrencias(fkEstabelecimento) {
+    console.log("ACESSEI O ESTABELECIMENTO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarEstabelecimentosPorUsuario()");
+    let instrucao = `
+    select COUNT(idOcorrencias) AS quantidadeOcorrencias from ocorrencias where fkEstabelecimento = ${fkEstabelecimento};
     `
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -62,8 +100,12 @@ function cadastrarEstabelecimento(fkEmpresa, nome, lougradouro, bairro, cep, cid
 
 module.exports = {
     listar,
+    qtdTotens,
     listarEstabelecimentosPorUsuario,
     excluirEstabelecimento,
     atualizarEstabelecimento,
     cadastrarEstabelecimento,
+    qtdOcorrencias,
+    updateStatusConcluido,
+    updateStatusAberto,
 };

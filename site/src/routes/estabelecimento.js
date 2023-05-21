@@ -15,6 +15,22 @@ router.get("/listarEstabelecimentosPorUsuario/:fkUsuario", function (req, res){
     estabelecimentoController.listarEstabelecimentosPorUsuario(req, res);
 });
 
+router.get("/qtdTotens/:idEstabelecimento", function (req, res){
+    estabelecimentoController.qtdTotens(req, res);
+});
+
+router.get("/qtdOcorrencias/:idEstabelecimento", function (req, res){
+    estabelecimentoController.qtdOcorrencias(req, res);
+});
+
+router.get("/updateStatusConcluido/:idOcorrencias", function (req, res){
+    estabelecimentoController.updateStatusConcluido(req, res);
+});
+
+router.get("/updateStatusAberto/:idOcorrencias", function (req, res){
+    estabelecimentoController.updateStatusAberto(req, res);
+});
+
 router.delete("/excluir/:idEstabelecimento", function (req, res) {
     estabelecimentoController.excluirEstabelecimento(req, res);
 });

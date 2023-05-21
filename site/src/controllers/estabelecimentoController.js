@@ -25,9 +25,81 @@ function listar(req, res) {
         );
 }
 
-function listarEstabelecimentosPorUsuario(req, res){
+function listarEstabelecimentosPorUsuario(req, res) {
     let fkUsuario = req.params.fkUsuario;
     estabelecimentoModel.listarEstabelecimentosPorUsuario(fkUsuario)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+function qtdTotens(req, res) {
+    let idEstabelecimento = req.params.idEstabelecimento;
+    estabelecimentoModel.qtdTotens(idEstabelecimento)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+function qtdOcorrencias(req, res) {
+    let idEstabelecimento = req.params.idEstabelecimento;
+    estabelecimentoModel.qtdOcorrencias(idEstabelecimento)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+function updateStatusConcluido(req, res) {
+    let idOcorrencias = req.params.Ocorrencias;
+    estabelecimentoModel.updateStatusConcluido(idOcorrencias)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+function updateStatusAberto(req, res) {
+    let idOcorrencias = req.params.Ocorrencias;
+    estabelecimentoModel.updateStatusAberto(idOcorrencias)
         .then(function (resultado) {
             if (resultado.length > 0) {
                 res.status(200).json(resultado);
@@ -105,12 +177,12 @@ function cadastrarEstabelecimento(req, res) {
         res.status(400).send("A Empresa está undefined!");
     } else if (cpuMax == undefined) {
         res.status(400).send("O Endereço está undefined!");
-    } else if(ramMax == undefined){
+    } else if (ramMax == undefined) {
         res.status(400).send("A métrica está undefined!");
     } else {
-        
+
         // Passe os valores como parâmetro e vá para o arquivo EstabelecimentoModel.js
-        estabelecimentoModel.cadastrarEstabelecimento( fkEmpresa, nome, lougradouro, bairro, cep, cidade, estado, numero, cpuMax, ramMax, discoMax)
+        estabelecimentoModel.cadastrarEstabelecimento(fkEmpresa, nome, lougradouro, bairro, cep, cidade, estado, numero, cpuMax, ramMax, discoMax)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -132,6 +204,10 @@ module.exports = {
     listar,
     listarEstabelecimentosPorUsuario,
     testar,
+    qtdOcorrencias,
+    qtdTotens,
+    updateStatusConcluido,
+    updateStatusAberto,
     excluirEstabelecimento,
     atualizarEstabelecimento,
     cadastrarEstabelecimento,

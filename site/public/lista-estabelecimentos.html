@@ -105,7 +105,7 @@
         <section class="container-pai-lista">
             <div class="container-lista">
                 <div class="lista" id="lista_container_estabelecimento">
-                   
+
                 </div>
             </div>
         </section>
@@ -153,9 +153,17 @@
                         liEndereco.innerHTML = "<b>Endereço: </b>" + dados.logradouro + ", " + dados.numero;
                         liEstado.innerHTML = "<b>Estado: </b>" + dados.statusOcorrencia;
                         liProblema.innerHTML = "<b>Problema: </b>" + dados.problema;
-                        liQuantidadeDeTotens.innerHTML = "<b>Quantidade de Totens: </b>";
                         liQuantidadeOcorrencias.innerHTML = "<b>Quantidade de ocorrencias: </b>";
-
+                        qtdTotens(dados.idEstabelecimento).then(function (quantidadeTotens) {
+                            liQuantidadeDeTotens.innerHTML = "<b>Quantidade de Totens: </b>" + quantidadeTotens;
+                        }).catch(function (erro) {
+                            console.error(erro);
+                        });
+                        qtdOcorrencias(dados.idEstabelecimento).then(function (quantidadeOcorrencias) {
+                            liQuantidadeOcorrencias.innerHTML = "<b>Quantidade de ocorrencias: </b>" + quantidadeOcorrencias;
+                        }).catch(function (erro) {
+                            console.error(erro);
+                        });
 
                         divContainerCard.className = "container-card";
                         divCardLista.className = "card-lista";
@@ -188,4 +196,81 @@
             console.error(resposta);
         });
     }
+
+    function qtdTotens(idEstabelecimento) {
+        return new Promise(function (resolve, reject) {
+            fetch(`/estabelecimento/qtdTotens/${idEstabelecimento}`).then(function (resposta) {
+                if (resposta.ok) {
+                    resposta.json().then(function (dados) {
+                        console.log("Dados recebidos: ", JSON.stringify(dados));
+                        resolve(dados[0].quantidadeTotems);
+                    }).catch(function (erro) {
+                        reject(erro);
+                    });
+                } else {
+                    reject('Houve um erro na API!');
+                }
+            }).catch(function (resposta) {
+                reject(resposta);
+            });
+        });
+    }
+
+    function qtdOcorrencias(idEstabelecimento) {
+        return new Promise(function (resolve, reject) {
+            fetch(`/estabelecimento/qtdOcorrencias/${idEstabelecimento}`).then(function (resposta) {
+                if (resposta.ok) {
+                    resposta.json().then(function (dados) {
+                        console.log("Dados recebidos: ", JSON.stringify(dados));
+                        resolve(dados[0].quantidadeOcorrencias);
+                    }).catch(function (erro) {
+                        reject(erro);
+                    });
+                } else {
+                    reject('Houve um erro na API!');
+                }
+            }).catch(function (resposta) {
+                reject(resposta);
+            });
+        });
+    }
+
+    function updateStatusConcluido(idOcorrencias) {
+        return new Promise(function (resolve, reject) {
+            fetch(`/estabelecimento/updateStatusConcluido/${idOcorrencias}`).then(function (resposta) {
+                if (resposta.ok) {
+                    resposta.json().then(function (dados) {
+                        console.log("Dados recebidos: ", JSON.stringify(dados));
+                        resolve(dados[0].idOcorrencias);
+                    }).catch(function (erro) {
+                        reject(erro);
+                    });
+                } else {
+                    reject('Houve um erro na API!');
+                }
+            }).catch(function (resposta) {
+                reject(resposta);
+            });
+        });
+    }
+
+    function updateStatusAberto(idOcorrencias) {
+        return new Promise(function (resolve, reject) {
+            fetch(`/estabelecimento/updateStatusAberto/${idOcorrencias}`).then(function (resposta) {
+                if (resposta.ok) {
+                    resposta.json().then(function (dados) {
+                        console.log("Dados recebidos: ", JSON.stringify(dados));
+                        resolve(dados[0].idOcorrencias);
+                    }).catch(function (erro) {
+                        reject(erro);
+                    });
+                } else {
+                    reject('Houve um erro na API!');
+                }
+            }).catch(function (resposta) {
+                reject(resposta);
+            });
+        });
+    }
+
 </script>
