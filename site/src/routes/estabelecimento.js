@@ -11,6 +11,10 @@ router.get("/listar/:fkEmpresa", function (req, res) {
     estabelecimentoController.listar(req, res);
 });
 
+router.get("/listarEstabelecimentosPorUsuario/:fkUsuario", function (req, res){
+    estabelecimentoController.listarEstabelecimentosPorUsuario(req, res);
+});
+
 router.delete("/excluir/:idEstabelecimento", function (req, res) {
     estabelecimentoController.excluirEstabelecimento(req, res);
 });

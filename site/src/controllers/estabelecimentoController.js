@@ -25,6 +25,24 @@ function listar(req, res) {
         );
 }
 
+function listarEstabelecimentosPorUsuario(req, res){
+    let fkUsuario = req.params.fkUsuario;
+    estabelecimentoModel.listarEstabelecimentosPorUsuario(fkUsuario)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
 function excluirEstabelecimento(req, res) {
     var idEstabelecimento = req.body.idEstabelecimentoServer;
     estabelecimentoModel.excluirEstabelecimento(idEstabelecimento)
@@ -112,6 +130,7 @@ function cadastrarEstabelecimento(req, res) {
 
 module.exports = {
     listar,
+    listarEstabelecimentosPorUsuario,
     testar,
     excluirEstabelecimento,
     atualizarEstabelecimento,

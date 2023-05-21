@@ -10,6 +10,25 @@ function listar(fkEmpresa) {
     return database.executar(instrucao);
 }
 
+function listarEstabelecimentosPorUsuario(fkUsuario){
+    console.log("ACESSEI O ESTABELECIMENTO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarEstabelecimentosPorUsuario()");
+    let instrucao = `
+    select o.statusOcorrencia,
+        o.problema,
+        o.fkEstabelecimento,
+        o.fkUsuario,
+        e.nome,
+        en.logradouro,
+        en.numero from [dbo].[ocorrencias] as o
+        join [dbo].[estabelecimento] as e 
+        on o.fkEstabelecimento = e.idEstabelecimento
+        join [dbo].[endereco] as en on idEndereco = e.fkEndereco
+        join [dbo].[usuario] as u on o.fkUsuario = u.idUsuario where o.fkUsuario = 3
+    `
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 function excluirEstabelecimento(idEstabelecimento) {
     console.log("ACESSEI O ESTABELECIMENTO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function excluirEstabelecimento()");
     var instrucao = `
@@ -43,6 +62,7 @@ function cadastrarEstabelecimento(fkEmpresa, nome, lougradouro, bairro, cep, cid
 
 module.exports = {
     listar,
+    listarEstabelecimentosPorUsuario,
     excluirEstabelecimento,
     atualizarEstabelecimento,
     cadastrarEstabelecimento,
