@@ -178,11 +178,6 @@
                   onblur="validarNumeroMetrica()" />
               </div>
               <div class="estilo-box">
-                <p>Métrica de Disco (Em %)</p>
-                <input class="input-empresa" id="inputNumeroMetricaDisco" placeholder="Ex: 80" required
-                  onblur="validarNumeroMetrica()" />
-              </div>
-              <div class="estilo-box">
                 <p>Prioridade</p>
                 <select name="" id="comboPrioridade">
                   <option value="normal">Normal</option>
@@ -235,7 +230,6 @@
     var numeroVar = inputNumero.value;
     var metricaNumeroCpuVar = inputNumeroMetricaCpu.value;
     var metricaNumeroRamVar = inputNumeroMetricaRam.value;
-    var metricaNumeroDiscoVar = inputNumeroMetricaDisco.value;
     var prioridadeVar = comboPrioridade.value
 
 
@@ -265,7 +259,6 @@
         numeroServer: numeroVar,
         metricaCpuServer: metricaNumeroCpuVar,
         metricaRamServer: metricaNumeroRamVar,
-        metricaDiscoServer: metricaNumeroDiscoVar,
         prioridadeServer: comboPrioridade,
       }),
     })

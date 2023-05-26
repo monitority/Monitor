@@ -138,7 +138,7 @@
     <section class="container-lista">
         <div class="container-filho-lista">
             <div id="lista-totens" class="lista-totens">
-                <div class="func" id="${i}">
+                <div class="card-lista-problemas" id="${i}">
                     <div class="estilo-atributos">
                         <h5>Estabelecimento:</h5>
                         <input type="text" id="nomeEstabelecimento">
@@ -229,9 +229,19 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
 <script src="./js/dashboard.js"></script>
 <script>
-    fkEmpresa = sessionStorage.FK_EMPRESA
-    function listarEstabelcimentos() {
-        fetch(`/estabelecimento/listar/${idEmpresa}`)
+    var sessionIdEmpresa = sessionStorage.ID_EMPRESA;
+    var sessionFkEmpresa = sessionStorage.FK_EMPRESA;
+    var idEmpresa = 0;
+
+    function listarEstabelecimentosComProblema() {
+        if (sessionIdEmpresa > 0) {
+            idEmpresa = sessionIdEmpresa;
+        } else if (sessionFkEmpresa > 0) {
+            idEmpresa = sessionFkEmpresa;
+        } else {
+            console.log("id e fk empresa estão errados");
+        }
+        fetch(`/ocorrencia/listarEstabelecimentos/${idEmpresa}`)
             .then(function (resposta) {
                 console.log('estou na BuscarEstabelecimento()', resposta);
                 if (resposta.ok) {
@@ -251,9 +261,7 @@
                         tabelaFuncionarios.innerHTML = "<h3>ESTABELECIMENTOS</h3>";
                         for (let i = 0; i < resposta.length; i++) {
                             var publicacao = resposta[i];
-
                             // criando e manipulando elementos do HTML via JavaScript
-
                             tabelaFuncionarios.innerHTML += `       
                                 <div class="func" id="${i}">
                                     <div class="estilo-atributos">

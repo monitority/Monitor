@@ -20,7 +20,7 @@ function listar(fkEmpresa, filtro) {
         JOIN usuario u ON o.fkUsuario = u.idUsuario
         WHERE o.fkEmpresa = ${fkEmpresa} AND o.statusOcorrencia = '${filtro}'`;
     }
-    
+
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
