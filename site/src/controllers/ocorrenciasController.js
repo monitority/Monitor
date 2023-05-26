@@ -67,34 +67,27 @@ function atualizarEstabelecimento(req, res) {
         );
 }
 
-function cadastrarEstabelecimento(req, res) {
-    console.log("to na estabelecimento controller")
+function cadastrarOcorrencia(req, res) {
+    console.log("to na ocorrencia controller")
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    var problema = req.body.problema;
     var fkEmpresa = req.body.fkEmpresa;
-    var nome = req.body.empresaNomeServer;
-    var lougradouro = req.body.logradouroServer;
-    var bairro = req.body.bairroServer;
-    var cep = req.body.cepServer;
-    var cidade = req.body.cidadeServer;
-    var estado = req.body.estadoServer;
-    var numero = req.body.numeroServer;
-    var cpuMax = req.body.metricaCpuServer;
-    var ramMax = req.body.metricaRamServer;
-    var discoMax = req.body.metricaDiscoServer;
-    console.log(fkEmpresa, nome, lougradouro, bairro, cep, cidade, estado, numero, cpuMax, ramMax, discoMax)
+    var fkFunc = req.body.fkFunc;
+    var fkEstabelecimento = req.body.fkEstabelecimento;
+    console.log(problema + fkFunc + fkEmpresa + fkEstabelecimento)
     // Faça as validações dos valores
-    if (nome == undefined) {
+    if (problema == undefined) {
         res.status(400).send("Seu nome está undefined!");
-    } else if (cep == undefined) {
+    } else if (fkEmpresa == undefined) {
         res.status(400).send("A Empresa está undefined!");
-    } else if (cpuMax == undefined) {
+    } else if (fkFunc == undefined) {
         res.status(400).send("O Endereço está undefined!");
-    } else if(ramMax == undefined){
+    } else if(fkEstabelecimento == undefined){
         res.status(400).send("A métrica está undefined!");
     } else {
         
         // Passe os valores como parâmetro e vá para o arquivo EstabelecimentoModel.js
-        estabelecimentoModel.cadastrarEstabelecimento( fkEmpresa, nome, lougradouro, bairro, cep, cidade, estado, numero, cpuMax, ramMax, discoMax)
+        ocorrenciaModel.cadastrarOcorrencia(problema, fkFunc, fkEmpresa, fkEstabelecimento)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -117,5 +110,5 @@ module.exports = {
     testar,
     excluirEstabelecimento,
     atualizarEstabelecimento,
-    cadastrarEstabelecimento,
+    cadastrarOcorrencia,
 }

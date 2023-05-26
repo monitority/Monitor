@@ -22,8 +22,9 @@ router.put("/atualizar/:idTotem", function (req, res) {
 });
 
 //Recebendo os dados do html e direcionando para a função cadastrar de ocorrenciaController.js
-router.post("/cadastrarTotem", function (req, res) {
-    ocorrenciasController.cadastrarTotem(req, res);
+router.post("/cadastrarOcorrencia", function (req, res) {
+    console.log("estou na rota para cadastrar ocorrência")
+    ocorrenciasController.cadastrarOcorrencia(req, res);
 });
 
 
