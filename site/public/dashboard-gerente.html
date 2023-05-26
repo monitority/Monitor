@@ -141,48 +141,25 @@
                 <div class="func" id="${i}">
                     <div class="estilo-atributos">
                         <h5>Estabelecimento:</h5>
-                        <p>${publicacao.nome}</p>
+                        <input type="text" id="nomeEstabelecimento">
                     </div>
                     <div class="estilo-atributos">
                         <h5>Modelo totem</h5>
-                        <p>asdavsavasdv</p>
+                        <p>XPTO</p>
                     </div>
                     <div class="estilo-atributos">
                         <h5>Problema</h5>
-                        <p>Ram, cpu</p>
+                        <input type="text" id="problema">
                     </div>
                     <div>
                         <span>Desginar funcionario:</span>
-                        <select name="" id="">
-                            <option value="">Func1</option>
+                        <select name="" id="select_func">
+                            <option value="teste Ocorrencia">testeOcorrencia</option>
                             <option value="">func2</option>
                         </select>
                     </div>
-                    <button class="removerCard" onclick="atribuir(${publicacao.idEstabelecimento})">Atribuir</button>
+                    <button class="removerCard" onclick="atribuirFuncOcorrencia('ram', 2, 3)">Atribuir</button>
                 </div>
-                <div class="func" id="${i}">
-                    <div class="estilo-atributos">
-                        <h5>Estabelecimento:</h5>
-                        <p>${publicacao.nome}</p>
-                    </div>
-                    <div class="estilo-atributos">
-                        <h5>Modelo totem</h5>
-                        <p>asdavsavasdv</p>
-                    </div>
-                    <div class="estilo-atributos">
-                        <h5>Problema</h5>
-                        <p>Ram, cpu</p>
-                    </div>
-                    <div>
-                        <span>Desginar funcionario:</span>
-                        <select name="" id="">
-                            <option value="">Func1</option>
-                            <option value="">func2</option>
-                        </select>
-                    </div>
-                    <button class="removerCard" onclick="atribuir(${publicacao.idEstabelecimento})">Atribuir</button>
-                </div>
-
             </div>
             <div class="container-pai-status-legenda">
                 <div class="container-status">
@@ -252,7 +229,7 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
 <script src="./js/dashboard.js"></script>
 <script>
-    
+    fkEmpresa = sessionStorage.FK_EMPRESA
     function listarEstabelcimentos() {
         fetch(`/estabelecimento/listar/${idEmpresa}`)
             .then(function (resposta) {
@@ -293,12 +270,12 @@
                                     </div>
                                     <div>
                                         <span>Desginar funcionario:</span>
-                                        <select name="" id="">
+                                        <select name="" id="select_func">
                                             <option value="">Func1</option>
                                             <option value="">func2</option>
                                         </select>
                                     </div>
-                                    <button class="removerCard" onclick="atribuir(${publicacao.idEstabelecimento})">Atribuir</button>
+                                    <button class="removerCard" onclick="atribuirFuncOcorrencia(${problema},${publicacao.idEstabelecimento}, ${publicacao.idUsuario}, ${fkEmpresa})">Atribuir</button>
                                 </div>
                                 `;
                         }
@@ -310,7 +287,90 @@
             .catch(function (resposta) {
                 console.log(resposta);
             });
+    }
 
+
+    function listarFuncOcorrencia(publicacao) {
+        fetch(`/ocorrencia/listarFunc/${idEmpresa}/${publicacao.qtdOcorrencia}`)
+            .then(resposta => resposta.json())
+            .then(function (estabelecimentos) {
+                console.log('estou na listarEstabelecimentos para a combo box', estabelecimentos);
+                if (estabelecimentos.length === 0) {
+                    var tabelaFuncionarios = document.getElementById("tabela_funcionarios");
+                    var mensagem = document.createElement("span");
+                    mensagem.classList.add('mensagem');
+                    mensagem.innerHTML = "Nenhum resultado encontrado.";
+                    tabelaFuncionarios.appendChild(mensagem);
+                    throw "Nenhum resultado encontrado!!";
+                }
+
+                console.log("Dados recebidos!!!!!: ", JSON.stringify(func));
+                var comboFunc = document.getElementById("select_func");
+
+                for (var i = 0; i < func.length; i++) {
+                    var option = document.createElement('option');
+                    option.value = func[i].idUsuario; // Substitua 'id_estabelecimento' pelo nome da coluna que contém o valor da opção
+                    option.text = func[i].nome; // Substitua 'nome' pelo nome da coluna que contém o texto da opção
+                    comboEstabelecimento.appendChild(option);
+                }
+            })
+            .catch(function (erro) {
+                console.log(erro);
+            });
+    }
+
+    function atribuirFuncOcorrencia(problema, fkEstabelecimento, fkfunc) {
+        console.log("FK FUNC" + fkfunc)
+        if (sessionStorage.ID_EMPRESA > 0) {
+      idEmpresa = sessionStorage.ID_EMPRESA;
+    } else if (sessionStorage.FK_EMPRESA > 0) {
+      idEmpresa = sessionStorage.FK_EMPRESA;
+    } else {
+      console.log("id e fk empresa estão errado")
+    }
+    console.log(problema + fkEstabelecimento + fkfunc + idEmpresa)
+
+        fetch(`/ocorrencia/cadastrarOcorrencia`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/funcionario.js
+                problema: problema,
+                fkEstabelecimento: fkEstabelecimento,
+                fkEmpresa: idEmpresa,
+                fkFunc: fkfunc
+            }),
+            
+        })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Parabéns',
+                        text: 'Ocorrência Atribuida',
+                    })
+
+                    setTimeout(() => { window.location.reload(); }, 2000);
+                } else {
+
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Ops...',
+                        text: 'Houve um erro ao tentar atribuir ocorrência!',
+                    })
+                    console.log("respostaaaa: ", resposta);
+                }
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+
+        return false;
     }
 
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
