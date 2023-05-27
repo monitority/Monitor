@@ -26,7 +26,7 @@ function listarEstabelecimentosPorUsuario(fkUsuario, selectFiltro) {
         join [dbo].[estabelecimento] as e 
         on o.fkEstabelecimento = e.idEstabelecimento
         join [dbo].[endereco] as en on en.idEndereco = e.fkEndereco
-        join [dbo].[usuario] as u on o.fkUsuario = u.idUsuario where o.fkUsuario = 5;
+        join [dbo].[usuario] as u on o.fkUsuario = u.idUsuario where o.fkUsuario = ${fkUsuario};
     `
     } else if (selectFiltro == "select-aberto") {
         var instrucao = `

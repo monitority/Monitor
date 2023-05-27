@@ -124,7 +124,7 @@
 <script>
 
     function listarEstabelecimentosPorUsuario() {
-        let fkUsuario = 3;
+        let fkUsuario = 5;
         let filtroSelects = document.getElementById("select_filtro").value;
         lista_container_estabelecimento.innerHTML = "";
         fetch(`/estabelecimento/listarEstabelecimentosPorUsuario/${fkUsuario}/${filtroSelects}`).then(function (resposta) {
@@ -190,10 +190,10 @@
                         divContainerButtons.className = "container-buttons"
                         btnConcluir.className = "btnConcluir";
 
-                        if(dados.statusOcorrencia == "concluído"){
+                        if(dados.statusOcorrencia == "Concluído"){
                             divCardLista.classList.remove('card-lista-aberto');
                             divCardLista.classList.add('card-lista-concluido');
-                        }else if(dados.statusOcorrencia == "aberto"){
+                        }else if(dados.statusOcorrencia == "Aberto"){
                             divCardLista.classList.remove('card-lista-concluido');
                             divCardLista.classList.add('card-lista-aberto');
                         }
@@ -241,7 +241,6 @@
     }
 
     function redirecionamentoTotem(idEstabelecimento) {
-        console.log("esta aqui")
         console.log(idEstabelecimento)
         sessionStorage.setItem("id_estabelecimento_totem", idEstabelecimento);
         window.location.href = "./dashboard-tecnico.html";
