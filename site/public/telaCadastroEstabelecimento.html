@@ -170,18 +170,18 @@
               <div class="estilo-box">
                 <p>Métrica de CPU (Em %)</p>
                 <input class="input-empresa" id="inputNumeroMetricaCpu" placeholder="Ex: 80" required
-                  onblur="validarNumeroMetrica()" />
+                   />
               </div>
               <div class="estilo-box">
                 <p>Métrica Memória RAM (Em %)</p>
                 <input class="input-empresa" id="inputNumeroMetricaRam" placeholder="Ex: 80" required
-                  onblur="validarNumeroMetrica()" />
+                   />
               </div>
               <div class="estilo-box">
                 <p>Prioridade</p>
                 <select name="" id="comboPrioridade">
-                  <option value="normal">Normal</option>
-                  <option value="vip">Vip</option>
+                  <option value="Normal">Normal</option>
+                  <option value="Vip">Vip</option>
                 </select>
               </div>
             </div>
@@ -230,7 +230,7 @@
     var numeroVar = inputNumero.value;
     var metricaNumeroCpuVar = inputNumeroMetricaCpu.value;
     var metricaNumeroRamVar = inputNumeroMetricaRam.value;
-    var prioridadeVar = comboPrioridade.value
+    var prioridadeVar = document.getElementById("comboPrioridade").value
 
 
     if (sessionIdEmpresa > 0) {
@@ -259,7 +259,7 @@
         numeroServer: numeroVar,
         metricaCpuServer: metricaNumeroCpuVar,
         metricaRamServer: metricaNumeroRamVar,
-        prioridadeServer: comboPrioridade,
+        prioridadeServer: prioridadeVar,
       }),
     })
       .then(function (resposta) {
@@ -383,6 +383,10 @@
                       <div class="estilo-atributos">
                         <h5>Numero:</h5>
                         <p>${publicacao.numero}</p>
+                      </div>
+                      <div class="estilo-atributos">
+                        <h5>Prioridade do Estabelecimento:</h5>
+                        <p>${publicacao.prioridade}</p>
                       </div>
                       <button class="removerCard" onclick="removerCard(${publicacao.idEstabelecimento})">Remover</button>
                   </div>

@@ -31,6 +31,10 @@ router.post("/cadastrarOcorrencia", function (req, res) {
     ocorrenciasController.cadastrarOcorrencia(req, res);
 });
 
+router.get("/listarFunc/:idEmpresa/:idEstabelecimento/:prioridade", function (req, res) {
+    console.log("to na rota de listar ocorrencia")
+    ocorrenciasController.listarFunc(req, res);
+});
 
 
 

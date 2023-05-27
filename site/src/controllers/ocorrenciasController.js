@@ -30,7 +30,7 @@ function listar(req, res) {
 function listarEstabelecimentosProblema(req, res){
     console.log("estou na listar de ocorrenciasController, na listarEstabelecimentosProblema() ")
     var fkEmpresa = req.params.idEmpresa;
-    ocorrenciaModel.listar(fkEmpresa, filtro)
+    ocorrenciaModel.listarEstabelecimentosProblema(fkEmpresa)
         .then(function (resultado) {
             if (resultado.length > 0) {
                 res.status(200).json(resultado);
@@ -84,10 +84,31 @@ function cadastrarOcorrencia(req, res) {
     }
 }
 
+    function listarFunc(req, res){
+        console.log("estou na listar de ocorrenciasController, na listarFunc() ")
+        var fkEmpresa = req.params.idEmpresa;
+        var fkEstabelecimento = req.params.idEstabelecimento
+        var prioridade = req.params.prioridade
+        ocorrenciaModel.listarFunc(fkEmpresa, fkEstabelecimento, prioridade)
+            .then(function (resultado) {
+                if (resultado.length > 0) {
+                    res.status(200).json(resultado);
+                } else {
+                    res.status(204).send("Nenhum resultado encontrado!")
+                }
+            }).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+
 module.exports = {
     listar,
     testar,
-    excluirEstabelecimento,
-    atualizarEstabelecimento,
+    listarEstabelecimentosProblema,
     cadastrarOcorrencia,
+    listarFunc,
 }

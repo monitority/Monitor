@@ -22,7 +22,7 @@
     <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
 </head>
 
-<body>
+<body onload="listarEstabelecimentosComProblema()">
 
     <!-- Div que contem a parte de navegação (parte verde do menu)-->
     <div class="navegacao">
@@ -107,7 +107,7 @@
     <!-- Sesão dos gráficos -->
     <main>
         <div class="titulo-lista">
-            <h1>Mural de Estabelecimentos</h1>
+            <h1>Novos Problemas</h1>
         </div>
         <!--Sessão de KPIs-->
         <div class="dashboard-kpis">
@@ -138,28 +138,6 @@
     <section class="container-lista">
         <div class="container-filho-lista">
             <div id="lista-totens" class="lista-totens">
-                <div class="card-lista-problemas" id="${i}">
-                    <div class="estilo-atributos">
-                        <h5>Estabelecimento:</h5>
-                        <input type="text" id="nomeEstabelecimento">
-                    </div>
-                    <div class="estilo-atributos">
-                        <h5>Modelo totem</h5>
-                        <p>XPTO</p>
-                    </div>
-                    <div class="estilo-atributos">
-                        <h5>Problema</h5>
-                        <input type="text" id="problema">
-                    </div>
-                    <div>
-                        <span>Desginar funcionario:</span>
-                        <select name="" id="select_func">
-                            <option value="teste Ocorrencia">testeOcorrencia</option>
-                            <option value="">func2</option>
-                        </select>
-                    </div>
-                    <button class="removerCard" onclick="atribuirFuncOcorrencia('ram', 2, 3)">Atribuir</button>
-                </div>
             </div>
             <div class="container-pai-status-legenda">
                 <div class="container-status">
@@ -258,34 +236,45 @@
                         console.log("Dados recebidos: ", JSON.stringify(resposta));
 
                         var tabelaFuncionarios = document.getElementById("lista-totens");
-                        tabelaFuncionarios.innerHTML = "<h3>ESTABELECIMENTOS</h3>";
+                        tabelaFuncionarios.innerHTML = "<h3>Novas Ocorrências</h3>";
                         for (let i = 0; i < resposta.length; i++) {
                             var publicacao = resposta[i];
+                            var problema
+                            if (publicacao.tipo_excedido_RAM == "Ram" && publicacao.tipo_excedido_CPU == "CPU") {
+                                problema = "Ram, CPU"
+                            } else if (publicacao.tipo_excedido_RAM == "Ram") {
+                                problema = "Ram"
+                            } else if (publicacao.tipo_excedido_CPU == "CPU") {
+                                problema = "CPU"
+                            }
                             // criando e manipulando elementos do HTML via JavaScript
                             tabelaFuncionarios.innerHTML += `       
-                                <div class="func" id="${i}">
+                                <div class="card-lista-problemas">
                                     <div class="estilo-atributos">
                                         <h5>Estabelecimento:</h5>
                                         <p>${publicacao.nome}</p>
                                     </div>
                                     <div class="estilo-atributos">
-                                        <h5>Modelo totem</h5>
+                                        <h5>Modelo totem:</h5>
                                         <p>${publicacao.modelo}</p>
                                     </div>
                                     <div class="estilo-atributos">
-                                        <h5>Problema</h5>
-                                        <p>${probema}</p>
+                                        <h5>Problema:</h5>
+                                        <p>${problema}</p>
+                                    </div>
+                                    <div class="estilo-atributos">
+                                        <h5>Prioridade do Estabelecimento:</h5>
+                                        <p>${publicacao.prioridade}</p>
                                     </div>
                                     <div>
                                         <span>Desginar funcionario:</span>
                                         <select name="" id="select_func">
-                                            <option value="">Func1</option>
-                                            <option value="">func2</option>
                                         </select>
                                     </div>
-                                    <button class="removerCard" onclick="atribuirFuncOcorrencia(${problema},${publicacao.idEstabelecimento}, ${publicacao.idUsuario}, ${fkEmpresa})">Atribuir</button>
+                                    <button class="removerCard" onclick="atribuirFuncOcorrencia(${problema},${publicacao.idEstabelecimento}, ${publicacao.idUsuario}, ${idEmpresa})">Atribuir</button>
                                 </div>
                                 `;
+                            listarFuncOcorrencia(publicacao.idEstabelecimento, publicacao.prioridade)
                         }
                     });
                 } else {
@@ -295,15 +284,16 @@
             .catch(function (resposta) {
                 console.log(resposta);
             });
+
     }
 
 
-    function listarFuncOcorrencia(publicacao) {
-        fetch(`/ocorrencia/listarFunc/${idEmpresa}/${publicacao.qtdOcorrencia}`)
+    function listarFuncOcorrencia(idEstabelecimento, prioridade) {
+        fetch(`/ocorrencia/listarFunc/${idEmpresa}/${idEstabelecimento}/${prioridade}`)
             .then(resposta => resposta.json())
-            .then(function (estabelecimentos) {
-                console.log('estou na listarEstabelecimentos para a combo box', estabelecimentos);
-                if (estabelecimentos.length === 0) {
+            .then(function (func) {
+                console.log('estou na listarEstabelecimentos para a combo box', func);
+                if (func.length === 0) {
                     var tabelaFuncionarios = document.getElementById("tabela_funcionarios");
                     var mensagem = document.createElement("span");
                     mensagem.classList.add('mensagem');
@@ -318,8 +308,8 @@
                 for (var i = 0; i < func.length; i++) {
                     var option = document.createElement('option');
                     option.value = func[i].idUsuario; // Substitua 'id_estabelecimento' pelo nome da coluna que contém o valor da opção
-                    option.text = func[i].nome; // Substitua 'nome' pelo nome da coluna que contém o texto da opção
-                    comboEstabelecimento.appendChild(option);
+                    option.text = `${func[i].nomeUsuario}, ${func[i].cargo}`; // Substitua 'nome' pelo nome da coluna que contém o texto da opção
+                    comboFunc.appendChild(option);
                 }
             })
             .catch(function (erro) {
@@ -330,13 +320,13 @@
     function atribuirFuncOcorrencia(problema, fkEstabelecimento, fkfunc) {
         console.log("FK FUNC" + fkfunc)
         if (sessionStorage.ID_EMPRESA > 0) {
-      idEmpresa = sessionStorage.ID_EMPRESA;
-    } else if (sessionStorage.FK_EMPRESA > 0) {
-      idEmpresa = sessionStorage.FK_EMPRESA;
-    } else {
-      console.log("id e fk empresa estão errado")
-    }
-    console.log(problema + fkEstabelecimento + fkfunc + idEmpresa)
+            idEmpresa = sessionStorage.ID_EMPRESA;
+        } else if (sessionStorage.FK_EMPRESA > 0) {
+            idEmpresa = sessionStorage.FK_EMPRESA;
+        } else {
+            console.log("id e fk empresa estão errado")
+        }
+        console.log(problema + fkEstabelecimento + fkfunc + idEmpresa)
 
         fetch(`/ocorrencia/cadastrarOcorrencia`, {
             method: "POST",
@@ -351,7 +341,7 @@
                 fkEmpresa: idEmpresa,
                 fkFunc: fkfunc
             }),
-            
+
         })
             .then(function (resposta) {
                 console.log("resposta: ", resposta);
