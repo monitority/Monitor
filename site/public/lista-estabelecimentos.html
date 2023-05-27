@@ -163,7 +163,7 @@
                         liQuantidadeOcorrencias.innerHTML = "<b>Quantidade de ocorrencias: </b>";
                         btnConcluir.innerHTML = "Concluir";
                         imgDashboard.src = 'assets/icons/dashboard.png'
-                        divContainerButtons.innerHTML = `<a href='#'><img class="img-dashboard" src="assets/icons/dashboard.png"></a>` 
+                        divContainerButtons.innerHTML = `<button class="botão-link" onclick="redirecionamentoTotem(${dados.idEstabelecimento})"><img class="img-dashboard" src="assets/icons/dashboard.png"></button>` 
 
                         qtdTotens(dados.idEstabelecimento).then(function (quantidadeTotens) {
                             liQuantidadeDeTotens.innerHTML = "<b>Quantidade de Totens: </b>" + quantidadeTotens;
@@ -238,6 +238,13 @@
                 reject(resposta);
             });
         });
+    }
+
+    function redirecionamentoTotem(idEstabelecimento) {
+        console.log("esta aqui")
+        console.log(idEstabelecimento)
+        sessionStorage.setItem("id_estabelecimento_totem", idEstabelecimento);
+        window.location.href = "./dashboard-tecnico.html";
     }
 
     function qtdOcorrencias(idEstabelecimento) {

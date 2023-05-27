@@ -283,6 +283,12 @@ main{
   width: 40%;
 }
 
+.botão-link {
+  width: auto;
+  height: 39px;
+  border-radius: 7px;
+}
+
 .btnConcluir{
   width: 100%;
   height: 78%;
