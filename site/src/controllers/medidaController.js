@@ -41,8 +41,27 @@ function buscarMedidasEmTempoReal(req, res) {
     });
 }
 
+function listarDadosTotem(req, res) {
+    let idEstabelecimento = req.params.idEstabelecimento;
+    console.log(idEstabelecimento)
+    console.log(`Buscando totens`);
+
+    medidaModel.listarDadosTotem(idEstabelecimento).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar os totens.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
 module.exports = {
     buscarUltimasMedidas,
-    buscarMedidasEmTempoReal
+    buscarMedidasEmTempoReal,
+    listarDadosTotem,
 
 }
