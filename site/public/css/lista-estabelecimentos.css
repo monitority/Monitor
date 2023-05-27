@@ -244,7 +244,6 @@ main{
 .titulo-card{
   display: flex;
   justify-content:center;
-  align-items: center;
   width: 100%;
   margin-top: 2vh;
 }
@@ -288,9 +287,6 @@ main{
   width: auto;
   height: 39px;
   border-radius: 7px;
-  cursor: pointer;
-  border:solid 3px var(--lilas);
-  margin-bottom: 1vh;
 }
 
 .btnConcluir{
@@ -302,7 +298,6 @@ main{
   margin-bottom: 1vh;
   margin-left: 0.7vw;
   border: 2px solid #99BB00;
-  font-size: 1.1rem;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
 
