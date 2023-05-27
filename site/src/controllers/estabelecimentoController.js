@@ -27,7 +27,9 @@ function listar(req, res) {
 
 function listarEstabelecimentosPorUsuario(req, res) {
     let fkUsuario = req.params.fkUsuario;
-    estabelecimentoModel.listarEstabelecimentosPorUsuario(fkUsuario)
+    let selectFiltro = req.params.filtroSelects;
+    console.log(selectFiltro)
+    estabelecimentoModel.listarEstabelecimentosPorUsuario(fkUsuario, selectFiltro)
         .then(function (resultado) {
             if (resultado.length > 0) {
                 res.status(200).json(resultado);
@@ -80,7 +82,10 @@ function qtdOcorrencias(req, res) {
 }
 
 function updateStatusConcluido(req, res) {
-    let idOcorrencias = req.params.Ocorrencias;
+    console.log("controlls update Status")
+    
+    var idOcorrencias = req.body.idOcorrencias;
+
     estabelecimentoModel.updateStatusConcluido(idOcorrencias)
         .then(function (resultado) {
             if (resultado.length > 0) {

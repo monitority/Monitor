@@ -10,9 +10,10 @@ function listar(fkEmpresa) {
     return database.executar(instrucao);
 }
 
-function listarEstabelecimentosPorUsuario(fkUsuario){
+function listarEstabelecimentosPorUsuario(fkUsuario, selectFiltro) {
     console.log("ACESSEI O ESTABELECIMENTO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarEstabelecimentosPorUsuario()");
-    let instrucao = `
+    if (selectFiltro == "select-todos") {
+        var instrucao = `
     select o.statusOcorrencia,
         o.problema,
         o.fkEstabelecimento,
@@ -24,9 +25,42 @@ function listarEstabelecimentosPorUsuario(fkUsuario){
         en.numero from [dbo].[ocorrencias] as o
         join [dbo].[estabelecimento] as e 
         on o.fkEstabelecimento = e.idEstabelecimento
-        join [dbo].[endereco] as en on idEndereco = e.fkEndereco
-        join [dbo].[usuario] as u on o.fkUsuario = u.idUsuario where o.fkUsuario = 3;
+        join [dbo].[endereco] as en on en.idEndereco = e.fkEndereco
+        join [dbo].[usuario] as u on o.fkUsuario = u.idUsuario where o.fkUsuario = ${fkUsuario};
     `
+    } else if (selectFiltro == "select-aberto") {
+        var instrucao = `
+        select o.statusOcorrencia,
+            o.problema,
+            o.fkEstabelecimento,
+            o.fkUsuario,
+            o.idOcorrencias,
+            e.nome,
+            e.idEstabelecimento,
+            en.logradouro,
+            en.numero from [dbo].[ocorrencias] as o
+            join [dbo].[estabelecimento] as e 
+            on o.fkEstabelecimento = e.idEstabelecimento
+            join [dbo].[endereco] as en on en.idEndereco = e.fkEndereco
+            join [dbo].[usuario] as u on o.fkUsuario = u.idUsuario where o.fkUsuario = ${fkUsuario} AND o.statusOcorrencia = 'Aberto';
+        `
+    }else if(selectFiltro == "select-concluido"){
+        var instrucao = `
+        select o.statusOcorrencia,
+            o.problema,
+            o.fkEstabelecimento,
+            o.fkUsuario,
+            o.idOcorrencias,
+            e.nome,
+            e.idEstabelecimento,
+            en.logradouro,
+            en.numero from [dbo].[ocorrencias] as o
+            join [dbo].[estabelecimento] as e 
+            on o.fkEstabelecimento = e.idEstabelecimento
+            join [dbo].[endereco] as en on en.idEndereco = e.fkEndereco
+            join [dbo].[usuario] as u on o.fkUsuario = u.idUsuario where o.fkUsuario = ${fkUsuario} AND o.statusOcorrencia = 'Concluído';
+        `
+    }
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
@@ -34,7 +68,7 @@ function listarEstabelecimentosPorUsuario(fkUsuario){
 function updateStatusConcluido(idOcorrencias) {
     console.log("ACESSEI O ESTABELECIMENTO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarEstabelecimentosPorUsuario()");
     let instrucao = `
-    update ocorrencias set statusOcorrencia = 'Concluido' where idOcorrencias = ${idOcorrencias};
+    update ocorrencias set statusOcorrencia = 'Concluído' where idOcorrencias = ${idOcorrencias};
     `
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -88,10 +122,10 @@ function atualizarEstabelecimento(idEstabelecimento, nome, fkEndereco, fkMetrica
 // Coloque os mesmos parâmetros aqui. Vá para a var instrucao
 function cadastrarEstabelecimento(fkEmpresa, nome, lougradouro, bairro, cep, cidade, estado, numero, cpuMax, ramMax, discoMax) {
     console.log("ACESSEI O ESTABELECIMENTO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", fkEmpresa, nome, lougradouro, bairro, cep, cidade, estado, numero, cpuMax, ramMax, discoMax);
-    
+
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
-    var instrucao =  `EXEC inserirEstabelecimento'${nome}', '${cidade}', '${lougradouro}',  '${bairro}', ${numero}, '${cep}', '${estado}', ${cpuMax},${ramMax},${discoMax},70,${fkEmpresa};
+    var instrucao = `EXEC inserirEstabelecimento'${nome}', '${cidade}', '${lougradouro}',  '${bairro}', ${numero}, '${cep}', '${estado}', ${cpuMax},${ramMax},${discoMax},70,${fkEmpresa};
 
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);

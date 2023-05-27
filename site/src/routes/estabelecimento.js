@@ -11,7 +11,7 @@ router.get("/listar/:fkEmpresa", function (req, res) {
     estabelecimentoController.listar(req, res);
 });
 
-router.get("/listarEstabelecimentosPorUsuario/:fkUsuario", function (req, res){
+router.get("/listarEstabelecimentosPorUsuario/:fkUsuario/:filtroSelects", function (req, res){
     estabelecimentoController.listarEstabelecimentosPorUsuario(req, res);
 });
 
@@ -23,11 +23,11 @@ router.get("/qtdOcorrencias/:idEstabelecimento", function (req, res){
     estabelecimentoController.qtdOcorrencias(req, res);
 });
 
-router.get("/updateStatusConcluido/:idOcorrencias", function (req, res){
+router.put("/updateStatusConcluido", function (req, res){
     estabelecimentoController.updateStatusConcluido(req, res);
 });
 
-router.get("/updateStatusAberto/:idOcorrencias", function (req, res){
+router.put("/updateStatusAberto/:idOcorrencias", function (req, res){
     estabelecimentoController.updateStatusAberto(req, res);
 });
 
