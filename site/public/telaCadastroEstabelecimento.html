@@ -21,93 +21,91 @@
   <!-- <script src="./js/funcao.js"></script> -->
   <script src="./js/perfil-validacao.js"></script>
   <script src="./js/cepAPI.js"></script>
+  <script src="./js/filtro_login.js"></script>
 </head>
 
-<body onload="buscarDadoEstabelecimento()">
+<body onload="buscarDadoEstabelecimento(), navBar()">
   <main>
     <!-- Div que contem a parte de navegação (parte verde do menu)-->
     <div class="navegacao">
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <!-- Foto De Perfil do USUARIO e o NOME do mesmo -->
-          <div class="fotoDePerfil">
-            <a href="#" class="nav-link">
-              <!-- imagem do ICONE DA FOTO DE PERFIL-->
-              <span class="icone"><i class="uil uil-user"></i> </span>
-              <span class="titulo"><span id="b_usuario">usuário</span></span>
-            </a>
-          </div>
-        <li class="nav-item">
-          <a href="dashboard-tecnico.html" class="nav-link">
-            <!-- Imagem do ICONE DO planos-->
-            <span class="icone"> <i class="uil  uil-chart-line"></i> </span>
-            <span class="titulo"> Dashboard </span>
-          </a>
-        </li>
-        <!-- <li onclick="Adicionar()" id="adicionar2">
-                        <a href="#">
-    
-                            -Imagem do ICONE DE ADICIONAR 
-                            <span class="icone"> <i class="uil uil-plus"></i> </span>
-                            <span class="titulo"> Adicionar</span>
-                            <span class="icone2"><i class="uil uil-angle-down"></i></span>
-    
-                        </a>
-                    </li> -->
-        <!-- <div class="adicionar" id="adicionar3"> --> 
-        <li class="nav-item">
-          <a href="./telaCadastroEstabelecimento.html" class="nav-link">
-            <!--Imagem do ICONE DE ADICIONAR -->
-            <span class="icone"> <i class="uil uil-estate"></i> </span>
-            <span class="titulo"> Estabelecimento</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="./telaCadastroTotem.html" class="nav-link">
-            <!--Imagem do ICONE DE ADICIONAR -->
-            <span class="icone"> <i class="uil uil-server-connection"></i> </span>
-            <span class="titulo"> Cadastrar Totem</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="./telaCadastroFunc.html" class="nav-link">
-            <!--Imagem do ICONE DE ADICIONAR -->
-            <span class="icone"> <i class="uil uil-user-plus"></i> </span>
-            <span class="titulo"> Funcionario</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="./lista.html" class="nav-link">
-            <!--Imagem do ICONE DE ADICIONAR -->
-            <span class="icone"> <i class="uil uil-bell"></i> </span>
-            <span class="titulo"> Notificações</span>
-          </a>
-        </li>
-        <!-- </div> -->
-        <li class="nav-item">
-          <a href="configuracoes.html" class="nav-link">
-            <!-- Imagem do ICONE DE CONFIGURAÇÕES -->
-            <span class="icone"><i class="uil uil-cog"></i></span>
-            <span class="titulo"> Configurações</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="https://chamadosgrupo9.auvo.com.br/Login#signin" class="nav-link">
-            <!-- Imagem do ICONE DE SUPORTE -->
-            <span class="icone"><i class="uil uil-comment-question"></i>
-            </span>
-            <span class="titulo"> Suporte</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="./index.html" class="nav-link">
-            <!-- Botão de Sair  -->
-            <span class="icone"><i class="uil uil-signout"></i> </span>
-            <span class="titulo"> Home </span>
-          </a>
-        </li>
+          <li class="nav-item">
+              <!-- Foto De Perfil do USUARIO e o NOME do mesmo -->
+              <div class="fotoDePerfil">
+                  <a href="#" class="nav-link">
+                      <!-- imagem do ICONE DA FOTO DE PERFIL-->
+                      <span class="icone"><i class="uil uil-user"></i> </span>
+                      <span class="titulo"><span id="b_usuario">usuário</span></span>
+                  </a>
+              </div>
+          <li class="nav-item" id="nav_dashboard">
+              <a href="dashboard-tecnico.html" class="nav-link">
+                  <!-- Imagem do ICONE DO planos-->
+                  <span class="icone"> <i class="uil  uil-chart-line"></i> </span>
+                  <span class="titulo"> Dashboard </span>
+              </a>
+          </li>
+          <li class="nav-item" id="nav_painel">
+              <a href="./dashboard-gerente.html" class="nav-link">
+                  <!--Imagem do ICONE DE ADICIONAR -->
+                  <span class="icone"> <i class="uil uil-bell"></i> </span>
+                  <span class="titulo"> Painel</span>
+              </a>
+          </li>
+          <li class="nav-item" id="nav_ocorrencia">
+              <a href="ocorrencias.html" class="nav-link">
+                  <!-- Imagem do ICONE DO planos-->
+                  <span class="icone"> <i class="uil  uil-clipboard"></i> </span>
+                  <span class="titulo"> Ocorrências </span>
+              </a>
+          </li>
+          <li class="nav-item" id="nav_estabelecimento">
+              <a href="./telaCadastroEstabelecimento.html" class="nav-link">
+                  <!--Imagem do ICONE DE ADICIONAR -->
+                  <span class="icone"> <i class="uil uil-estate"></i> </span>
+                  <span class="titulo"> Estabelecimento</span>
+              </a>
+          </li>
+          <li class="nav-item" id="nav_totem">
+              <a href="./telaCadastroTotem.html" class="nav-link">
+                  <!--Imagem do ICONE DE ADICIONAR -->
+                  <span class="icone"> <i class="uil uil-server-connection"></i> </span>
+                  <span class="titulo"> Cadastrar Totem</span>
+              </a>
+          </li>
+          <li class="nav-item" id="nav_func">
+              <a href="./telaCadastroFunc.html" class="nav-link">
+                  <!--Imagem do ICONE DE ADICIONAR -->
+                  <span class="icone"> <i class="uil uil-user-plus"></i> </span>
+                  <span class="titulo"> Funcionario</span>
+              </a>
+          </li>
+          <!-- </div> -->
+          <li class="nav-item" >
+              <a href="configuracoes.html" class="nav-link">
+                  <!-- Imagem do ICONE DE CONFIGURAÇÕES -->
+                  <span class="icone"><i class="uil uil-cog"></i></span>
+                  <span class="titulo"> Configurações</span>
+              </a>
+          </li>
+          <li class="nav-item">
+              <a href="" class="nav-link">
+                  <!-- Imagem do ICONE DE SUPORTE -->
+                  <span class="icone"><i class="uil uil-comment-question"></i>
+                  </span>
+                  <span class="titulo"> Suporte</span>
+              </a>
+          </li>
+          <li class="nav-item">
+              <a href="./index.html" class="nav-link">
+                  <!-- Botão de Sair  -->
+                  <span class="icone"><i class="uil uil-signout"></i> </span>
+                  <span class="titulo"> Sair </span>
+              </a>
+          </li>
       </ul>
-    </div>
+  </div>
+
     <!-- Right Panel -->
     <div id="right-panel" class="right-panel">
       <div class="animated fadeIn">

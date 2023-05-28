@@ -62,11 +62,10 @@ main{
     display: grid;
     position: absolute;
     height: 20vh;
-    width: 79%;
-    margin-left: 12%;
+    width: 45%;
     margin-top: 40vh;
     justify-content: center;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns:  1fr 1fr;
 }
 
 .dashboard-kpis p{

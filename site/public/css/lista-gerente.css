@@ -168,7 +168,7 @@ main {
   width: 50%;
   height: 15%;
   margin-top: 3%;
-  margin-left: 18%;
+  margin-left: 25%;
   justify-content: center;
   flex-direction: column;
   align-items: center;
@@ -177,6 +177,7 @@ main {
   border-radius: 15px;
   box-shadow: 5px 6px 2px 1px rgba(0, 0, 0, 0.1); */
   padding-bottom: 3%;
+  margin-right: -2%;
 }
 
 .item-lista {
@@ -242,7 +243,7 @@ main {
   height: 50%;
   justify-content: center;
   flex-direction: column;
-  margin-top: 6%;
+  margin-top: 8%;
 }
 
 .container-status {
@@ -251,7 +252,7 @@ main {
   height: 100%;
   align-items: center;
   flex-direction: column;
-  background-color: #020E2C;
+  background-color: #fdfdfd;
   border-radius: 15px;
   box-shadow: 5px 6px 2px 1px rgba(0, 0, 0, 0.1);
 }
@@ -433,4 +434,33 @@ main {
   padding: 5%;
   width: 100%;
   margin-top: 5%;
+}
+
+.lista-funcionario-ocorrencia{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 3vh;
+}
+
+.result-lista-func{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 2vh;
+}
+
+.elemento-lista-ocorrencia{
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.h1-titulo-lista-func-ocorrencia{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }

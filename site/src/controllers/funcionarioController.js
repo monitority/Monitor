@@ -5,7 +5,9 @@ var sessoes = [];
 function listar(req, res) {
     console.log("estou na listarFuncionario controller")
     var idEmpresa = req.params.idEmpresa;
-    funcionarioModel.listar(idEmpresa)
+    var filtro = req.params.n;
+    
+    funcionarioModel.listar(idEmpresa, filtro)
         .then(function (resultado) {
             if (resultado.length > 0) {
                 res.status(200).json(resultado);

@@ -20,9 +20,9 @@
     <link rel="stylesheet" href="./css/dashboard-gerente.css">
     <link rel="stylesheet" href="./css/lista-gerente.css">
     <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
+    <script src="./js/filtro_login.js"></script>
 </head>
-
-<body onload="listarEstabelecimentosComProblema()">
+<body onload="listarEstabelecimentosComProblema(), navBar()">
 
     <!-- Div que contem a parte de navegação (parte verde do menu)-->
     <div class="navegacao">
@@ -36,50 +36,50 @@
                         <span class="titulo"><span id="b_usuario">usuário</span></span>
                     </a>
                 </div>
-            <li class="nav-item">
+            <li class="nav-item" id="nav_dashboard">
                 <a href="dashboard-tecnico.html" class="nav-link">
                     <!-- Imagem do ICONE DO planos-->
                     <span class="icone"> <i class="uil  uil-chart-line"></i> </span>
                     <span class="titulo"> Dashboard </span>
                 </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" id="nav_painel">
+                <a href="./lista.html" class="nav-link">
+                    <!--Imagem do ICONE DE ADICIONAR -->
+                    <span class="icone"> <i class="uil uil-bell"></i> </span>
+                    <span class="titulo"> Painel</span>
+                </a>
+            </li>
+            <li class="nav-item" id="nav_ocorrencia">
                 <a href="ocorrencias.html" class="nav-link">
                     <!-- Imagem do ICONE DO planos-->
                     <span class="icone"> <i class="uil  uil-clipboard"></i> </span>
                     <span class="titulo"> Ocorrências </span>
                 </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" id="nav_estabelecimento">
                 <a href="./telaCadastroEstabelecimento.html" class="nav-link">
                     <!--Imagem do ICONE DE ADICIONAR -->
                     <span class="icone"> <i class="uil uil-estate"></i> </span>
                     <span class="titulo"> Estabelecimento</span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a href="./cadastro_armazem.html" class="nav-link">
+            <li class="nav-item" id="nav_totem">
+                <a href="./telaCadastroTotem.html" class="nav-link">
                     <!--Imagem do ICONE DE ADICIONAR -->
                     <span class="icone"> <i class="uil uil-server-connection"></i> </span>
                     <span class="titulo"> Cadastrar Totem</span>
                 </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" id="nav_func">
                 <a href="./telaCadastroFunc.html" class="nav-link">
                     <!--Imagem do ICONE DE ADICIONAR -->
                     <span class="icone"> <i class="uil uil-user-plus"></i> </span>
                     <span class="titulo"> Funcionario</span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a href="./lista.html" class="nav-link">
-                    <!--Imagem do ICONE DE ADICIONAR -->
-                    <span class="icone"> <i class="uil uil-bell"></i> </span>
-                    <span class="titulo"> Notificações</span>
-                </a>
-            </li>
             <!-- </div> -->
-            <li class="nav-item">
+            <li class="nav-item" >
                 <a href="configuracoes.html" class="nav-link">
                     <!-- Imagem do ICONE DE CONFIGURAÇÕES -->
                     <span class="icone"><i class="uil uil-cog"></i></span>
@@ -111,76 +111,52 @@
         </div>
         <!--Sessão de KPIs-->
         <div class="dashboard-kpis">
-            <div class="kpis critico">
-                <p class="kpi-titulo "><b>Estabelecimentos acima das métricas: CPU (%)</b></p>
-                <p id="kpi_dado" class="kpi-dado">25%</p>
-            </div>
-            <div class="kpis bom">
-                <p class="kpi-titulo"><b>Máquinas acima das métricas: M.RAM (%)</b></p>
-                <p id="kpi_dado" class="kpi-dado">5%</p>
-            </div>
-            <div class="kpis alerta">
-                <p class="kpi-titulo"><b>Percentual de ocupação Disco: (%)</b></p>
-                <p id="kpiComMenorPercentual" class="kpi-dado">10%</p>
+            <div class="kpis">
+                <p class="kpi-titulo "><b>% Estabelecimentos com Novas Ocorrências</b></p>
+                <p id="kpi_porc_nova_ocorrencia" class="kpi-dado">0</p>
             </div>
             <div class="kpis">
+                <p class="kpi-titulo"><b>Quantidade de Novas Ocorrências</b></p>
+                <p id="kpi_qtd_ocorrencia" class="kpi-dado">0</p>
+            </div>
+            <!-- <div class="kpis">
+                <p class="kpi-titulo"><b>Percentual de ocupação Disco: (%)</b></p>
+                <p id="kpiComMenorPercentual" class="kpi-dado">10%</p>
+            </div> -->
+            <!-- <div class="kpis">
                 <p class="kpi-titulo titulo-legenda"><b>Legenda</b></p>
                 <div class="dados-legenda-kpi">
                     <span class="texto-legenda-kpi">Bom<ul class="linha-bom"></ul></span>
                     <span class="texto-legenda-kpi">Alerta<ul class="linha-alerta"></ul></span>
                     <span class="texto-legenda-kpi">Crítico<ul class="linha-critico"></ul></span>
-                </div>
+                </div>-->
             </div>
         </div>
 
     </main>
 
-    <section class="container-lista">
+     <section class="container-lista">
         <div class="container-filho-lista">
             <div id="lista-totens" class="lista-totens">
             </div>
             <div class="container-pai-status-legenda">
                 <div class="container-status">
-                    <h1>Categorias</h1>
-                    <ul class="categorias">
-                        <li id="buttonAlerta" onclick="removerCritico()">
-                            <div class="container-categorias">
-                                <div class="titulos-categorias">
-                                    Alerta
-                                </div>
-                                <div>
-                                    <img src="assets/icons/botao-de-seta-para-a-direita-do-teclado.png" class="svg-seta"
-                                        style="width: 11px;">
-                                </div>
-                            </div>
-                        </li>
-                        <li id="buttonCritico" onclick="removerAlerta(),criarCritico()">
-                            <div class="container-categorias">
-                                <div class="titulos-categorias">
-                                    Crítico
-                                </div>
-                                <div>
-                                    <img src="assets/icons/botao-de-seta-para-a-direita-do-teclado.png" class="svg-seta"
-                                        style="width: 11px;">
-                                </div>
-                            </div>
-                        </li>
-                        <a href="./lista.html">
-                            <li>
-                                <div class="container-categorias">
-                                    <div class="titulos-categorias">
-                                        Todos
-                                    </div>
-                                    <div>
-                                        <img src="assets/icons/botao-de-seta-para-a-direita-do-teclado.png"
-                                            class="svg-seta" style="width: 11px;">
-                                    </div>
-                                </div>
-                            </li>
-                        </a>
-                    </ul>
+                    <h1 class="h1-titulo-lista-func-ocorrencia">
+                        <span>Lista de Funcionários</span> 
+                        <span>com ocorrência</span>
+                    </h1>
+                    <div class="lista-funcionario-ocorrencia">
+                        <div class="result-lista-func">
+                            <span class="elemento-lista-ocorrencia"><b> Nome</b></span>
+                            <span class="elemento-lista-ocorrencia"><b> N° de Ocorrências</b></span>
+                            
+                        </div>
+                        <div id="listaFunc">
+                        </div>
+                    </div>
+                    
                 </div>
-                <div class="container-legenda">
+                <!-- <div class="container-legenda">
                     <h1>Status Geral</h1>
                     <div class="subcontainer-totens-problema">
                         <h2>Total de totens com problemas</h2>
@@ -190,7 +166,7 @@
                                     style="width: 18px;"></b>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>
@@ -203,7 +179,6 @@
 </body>
 
 </html>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
 <script src="./js/dashboard.js"></script>
 <script>
@@ -212,6 +187,7 @@
     var idEmpresa = 0;
 
     function listarEstabelecimentosComProblema() {
+        
         if (sessionIdEmpresa > 0) {
             idEmpresa = sessionIdEmpresa;
         } else if (sessionFkEmpresa > 0) {
@@ -219,6 +195,9 @@
         } else {
             console.log("id e fk empresa estão errados");
         }
+        
+        listarFunc()
+
         fetch(`/ocorrencia/listarEstabelecimentos/${idEmpresa}`)
             .then(function (resposta) {
                 console.log('estou na BuscarEstabelecimento()', resposta);
@@ -271,11 +250,13 @@
                                         <select name="" id="select_func">
                                         </select>
                                     </div>
-                                    <button class="removerCard" onclick="atribuirFuncOcorrencia(${problema},${publicacao.idEstabelecimento}, ${publicacao.idUsuario}, ${idEmpresa})">Atribuir</button>
+                                    <button class="removerCard" onclick="atribuirFuncionarioOcorrencia('${problema}',${publicacao.idEstabelecimento}, ${publicacao.idTotem})">Atribuir</button>
                                 </div>
                                 `;
                             listarFuncOcorrencia(publicacao.idEstabelecimento, publicacao.prioridade)
                         }
+                        kpiNovaOcorrencia(resposta.length, idEmpresa)
+                        kpi_qtd_ocorrencia.innerHTML = resposta.length
                     });
                 } else {
                     throw console.log('Estou na buscarDadosFuncionario()', JSON.stringify(resposta));
@@ -285,7 +266,45 @@
                 console.log(resposta);
             });
 
+            
+            
+
     }
+
+    function listarFunc(){
+       fetch(`/funcionario/listar/${idEmpresa}/2`)
+      .then(function (resposta) {
+        console.log('estou na Buscarfuncionario()', resposta);
+        if (resposta.ok) {
+          if (resposta.status == 204) {
+            throw "Nenhum resultado encontrado!!";
+          }
+
+          resposta.json().then(function (resposta) {
+            console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+            var tabelaFuncionarios = document.getElementById("listaFunc");
+            for (let i = 0; i < resposta.length; i++) {
+              var publicacao = resposta[i];
+
+              // criando e manipulando elementos do HTML via JavaScript
+
+              tabelaFuncionarios.innerHTML += `
+                            <div class="result-lista-func">
+                                <span class="elemento-lista-ocorrencia">${publicacao.nome_usuario}</span>
+                                <span class="elemento-lista-ocorrencia">${publicacao.numero_ocorrencias}</span>
+                            </div>
+                    `;
+            }
+          });
+        } else {
+          throw console.log('Estou na buscarDadosFuncionario() mas deu errado', JSON.stringify(resposta));
+        }
+      })
+      .catch(function (resposta) {
+        console.log(resposta);
+      });
+  }
 
 
     function listarFuncOcorrencia(idEstabelecimento, prioridade) {
@@ -317,8 +336,7 @@
             });
     }
 
-    function atribuirFuncOcorrencia(problema, fkEstabelecimento, fkfunc) {
-        console.log("FK FUNC" + fkfunc)
+    function atribuirFuncionarioOcorrencia(problema, fkEstabelecimento, idTotem) {
         if (sessionStorage.ID_EMPRESA > 0) {
             idEmpresa = sessionStorage.ID_EMPRESA;
         } else if (sessionStorage.FK_EMPRESA > 0) {
@@ -326,7 +344,9 @@
         } else {
             console.log("id e fk empresa estão errado")
         }
-        console.log(problema + fkEstabelecimento + fkfunc + idEmpresa)
+
+        var fkfunc = document.getElementById("select_func").value
+        console.log(problema + fkEstabelecimento + fkfunc + idEmpresa + idTotem) 
 
         fetch(`/ocorrencia/cadastrarOcorrencia`, {
             method: "POST",
@@ -339,7 +359,8 @@
                 problema: problema,
                 fkEstabelecimento: fkEstabelecimento,
                 fkEmpresa: idEmpresa,
-                fkFunc: fkfunc
+                fkFunc: fkfunc,
+                fkTotem: idTotem
             }),
 
         })
@@ -371,6 +392,32 @@
         return false;
     }
 
+    function kpiNovaOcorrencia(qtdNovaOcorrenca, idEmpresa){
+        fetch(`/estabelecimento/listar/${idEmpresa}`)
+            .then(resposta => resposta.json())
+            .then(function (func) {
+                console.log('estou na listarEstabelecimentos para a kpi', func);
+                if (func.length === 0) {
+                    var tabelaFuncionarios = document.getElementById("tabela_funcionarios");
+                    var mensagem = document.createElement("span");
+                    mensagem.classList.add('mensagem');
+                    mensagem.innerHTML = "Nenhum resultado encontrado.";
+                    tabelaFuncionarios.appendChild(mensagem);
+                    throw "Nenhum resultado encontrado!!";
+                }
+
+                console.log("Dados recebidos!!!!!: ", JSON.stringify(func));
+                    let qtdEstabelecimentos = func.length
+                    let totalEmPorcentagem = qtdEstabelecimentos 
+                    kpi_porc_nova_ocorrencia.innerHTML = (qtdNovaOcorrenca / qtdEstabelecimentos) * 100 + " %"
+                    
+
+            })
+            .catch(function (erro) {
+                console.log(erro);
+            });
+
+    }
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
 </script>

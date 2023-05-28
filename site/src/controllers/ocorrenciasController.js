@@ -53,7 +53,8 @@ function cadastrarOcorrencia(req, res) {
     var fkEmpresa = req.body.fkEmpresa;
     var fkFunc = req.body.fkFunc;
     var fkEstabelecimento = req.body.fkEstabelecimento;
-    console.log(problema + fkFunc + fkEmpresa + fkEstabelecimento)
+    var fkTotem = req.body.fkTotem;
+    console.log(problema + fkFunc + fkEmpresa + fkEstabelecimento + fkTotem)
     // Faça as validações dos valores
     if (problema == undefined) {
         res.status(400).send("Seu nome está undefined!");
@@ -66,7 +67,7 @@ function cadastrarOcorrencia(req, res) {
     } else {
         
         // Passe os valores como parâmetro e vá para o arquivo EstabelecimentoModel.js
-        ocorrenciaModel.cadastrarOcorrencia(problema, fkFunc, fkEmpresa, fkEstabelecimento)
+        ocorrenciaModel.cadastrarOcorrencia(problema, fkFunc, fkEmpresa, fkEstabelecimento, fkTotem)
             .then(
                 function (resultado) {
                     res.json(resultado);

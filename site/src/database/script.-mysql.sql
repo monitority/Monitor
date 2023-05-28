@@ -113,14 +113,16 @@ CREATE TABLE IF NOT EXISTS `estabelecimento` (
 CREATE TABLE IF NOT EXISTS `totem` (
   `idTotem` INT NOT NULL  AUTO_INCREMENT,
   `modelo` VARCHAR(45) NOT NULL,
+  `processadorModelo` VARCHAR(45) NOT NULL,
+  `placaMaeModelo` VARCHAR(45) NOT NULL,
+  `memoriaRAMModelo` VARCHAR(45) NOT NULL,
+  `armazenamentoModelo` VARCHAR(45) NOT NULL,
+  `sistemaOperacional` varchar(45) not null,
+  `serialTotem` varchar(45) not null,
   `fkEstabelecimento` INT NOT NULL,
-  `fkConfigPC` INT NOT NULL,
-  PRIMARY KEY (`idTotem`),
-  
+    PRIMARY KEY (`idTotem`),
     FOREIGN KEY (`fkEstabelecimento`)
     REFERENCES `estabelecimento` (`idEstabelecimento`),
-    FOREIGN KEY (`fkConfigPC`)
-    REFERENCES `configPC`(`idConfigPC`)
     );
 
 -- Um totem tem vários dados;
