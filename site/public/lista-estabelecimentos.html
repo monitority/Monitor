@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitority | Dashboard</title>
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
+    <link rel="icon" href="./assets/imgs/sobreNos.png">
+    <link rel="stylesheet" href="./css/lista-estabelecimentos.css">
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
+</head>
+
+<body onload="listarEstabelecimentosPorUsuario()">
+
+    <!-- Div que contem a parte de navegação (parte verde do menu)-->
+    <div class="navegacao">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <!-- Foto De Perfil do USUARIO e o NOME do mesmo -->
+                <div class="fotoDePerfil">
+                    <a href="#" class="nav-link">
+                        <!-- imagem do ICONE DA FOTO DE PERFIL-->
+                        <span class="icone"><i class="uil uil-user"></i> </span>
+                        <span class="titulo"><span id="b_usuario">usuário</span></span>
+                    </a>
+                </div>
+            <li class="nav-item">
+                <a href="dashboard-tecnico.html" class="nav-link">
+                    <!-- Imagem do ICONE DO planos-->
+                    <span class="icone"> <i class="uil  uil-chart-line"></i> </span>
+                    <span class="titulo"> Dashboard </span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="./telaCadastroEstabelecimento.html" class="nav-link">
+                    <!--Imagem do ICONE DE ADICIONAR -->
+                    <span class="icone"> <i class="uil uil-estate"></i> </span>
+                    <span class="titulo"> Estabelecimento</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="./cadastro_armazem.html" class="nav-link">
+                    <!--Imagem do ICONE DE ADICIONAR -->
+                    <span class="icone"> <i class="uil uil-server-connection"></i> </span>
+                    <span class="titulo"> Cadastrar Totem</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="./telaCadastroFunc.html" class="nav-link">
+                    <!--Imagem do ICONE DE ADICIONAR -->
+                    <span class="icone"> <i class="uil uil-user-plus"></i> </span>
+                    <span class="titulo"> Funcionario</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="./lista.html" class="nav-link">
+                    <!--Imagem do ICONE DE ADICIONAR -->
+                    <span class="icone"> <i class="uil uil-bell"></i> </span>
+                    <span class="titulo"> Notificações</span>
+                </a>
+            </li>
+            <!-- </div> -->
+            <li class="nav-item">
+                <a href="configuracoes.html" class="nav-link">
+                    <!-- Imagem do ICONE DE CONFIGURAÇÕES -->
+                    <span class="icone"><i class="uil uil-cog"></i></span>
+                    <span class="titulo"> Configurações</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="" class="nav-link">
+                    <!-- Imagem do ICONE DE SUPORTE -->
+                    <span class="icone"><i class="uil uil-comment-question"></i>
+                    </span>
+                    <span class="titulo"> Suporte</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="./index.html" class="nav-link">
+                    <!-- Botão de Sair  -->
+                    <span class="icone"><i class="uil uil-signout"></i> </span>
+                    <span class="titulo"> Sair </span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Titulo -->
+    <main>
+        <div class="titulo-lista">
+            <h1>Estabelecimentos</h1>
+        </div>
+
+        <section class="container-pai-lista">
+            <div class="container-lista">
+                <select id="select_filtro" class="select-estado-estabelecimento" onchange="listarEstabelecimentosPorUsuario()">
+                    <option value="select-todos">Todos</option>
+                    <option value="select-aberto">Em aberto</option>
+                    <option value="select-concluido">Concluídos</option>
+                </select>
+                <div class="lista" id="lista_container_estabelecimento">
+                </div>
+            </div>
+        </section>
+    </main>
+    <img src="">
+
+</body>
+
+</html>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+<script>
+
+    function listarEstabelecimentosPorUsuario() {
+        let fkUsuario = 5;
+        let filtroSelects = document.getElementById("select_filtro").value;
+        lista_container_estabelecimento.innerHTML = "";
+        fetch(`/estabelecimento/listarEstabelecimentosPorUsuario/${fkUsuario}/${filtroSelects}`).then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    throw "Nenhum resultado encontrado!!";
+                }
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+                    
+                    for (let i = 0; i < resposta.length; i++) {
+                        let dados = resposta[i]
+
+                        let divContainerCard = document.createElement("div");
+                        let divCardLista = document.createElement("div");
+                        let divTituloCard = document.createElement("div");
+                        let imgTitulo = document.createElement("img");
+                        let h2Titulo = document.createElement("h2");
+                        let ulDadosCard = document.createElement("ul");
+                        let liEndereco = document.createElement("li");
+                        let liEstado = document.createElement("li");
+                        let liProblema = document.createElement("li");
+                        let liQuantidadeDeTotens = document.createElement("li");
+                        let liQuantidadeOcorrencias = document.createElement("li");
+                        let listaEstabelecimento = document.getElementById("lista_container_estabelecimento");
+                        let divContainerButtons = document.createElement("div")
+                        let imgDashboard = document.createElement("img")
+                        let btnConcluir = document.createElement("button");
+                        btnConcluir.setAttribute("onclick", `updateStatusConcluido(${dados.idOcorrencias})`)
+
+                        imgTitulo.src = 'assets/icons/restaurant (3).png';
+                        h2Titulo.innerHTML = "<b>" + dados.nome + "</b>";
+                        liEndereco.innerHTML = "<b>Endereço: </b>" + dados.logradouro + ", " + dados.numero;
+                        liEstado.innerHTML = "<b>Estado: </b>" + dados.statusOcorrencia;
+                        liProblema.innerHTML = "<b>Problema: </b>" + dados.problema;
+                        liQuantidadeOcorrencias.innerHTML = "<b>Quantidade de ocorrencias: </b>";
+                        btnConcluir.innerHTML = "Concluir";
+                        imgDashboard.src = 'assets/icons/dashboard.png'
+                        divContainerButtons.innerHTML = `<button class="botão-link" onclick="redirecionamentoTotem(${dados.idEstabelecimento})"><img class="img-dashboard" src="assets/icons/dashboard.png"></button>` 
+
+                        qtdTotens(dados.idEstabelecimento).then(function (quantidadeTotens) {
+                            liQuantidadeDeTotens.innerHTML = "<b>Quantidade de Totens: </b>" + quantidadeTotens;
+                        }).catch(function (erro) {
+                            console.error(erro);
+                        });
+                        qtdOcorrencias(dados.idEstabelecimento).then(function (quantidadeOcorrencias) {
+                            liQuantidadeOcorrencias.innerHTML = "<b>Quantidade de ocorrencias: </b>" + quantidadeOcorrencias;
+                        }).catch(function (erro) {
+                            console.error(erro);
+                        });
+
+                        divContainerCard.className = "container-card";
+                        divCardLista.className = "card-lista-concluido";
+                        divTituloCard.className = "titulo-card";
+                        ulDadosCard.className = "dados-card";
+                        liEndereco.className = "dados";
+                        liEstado.className = "dados";
+                        liProblema.className = "dados";
+                        liQuantidadeDeTotens.className = "dados";
+                        liQuantidadeOcorrencias.className = "dados";
+                        imgTitulo.style.width = "62px";
+                        imgTitulo.style.marginRight = "1vw"
+                        divContainerButtons.className = "container-buttons"
+                        btnConcluir.className = "btnConcluir";
+
+                        if(dados.statusOcorrencia == "Concluído"){
+                            divCardLista.classList.remove('card-lista-aberto');
+                            divCardLista.classList.add('card-lista-concluido');
+                        }else if(dados.statusOcorrencia == "Aberto"){
+                            divCardLista.classList.remove('card-lista-concluido');
+                            divCardLista.classList.add('card-lista-aberto');
+                        }
+
+                        divContainerCard.appendChild(divCardLista);
+                        divCardLista.appendChild(divTituloCard);
+                        divTituloCard.appendChild(imgTitulo);
+                        divTituloCard.appendChild(h2Titulo);
+                        divCardLista.appendChild(ulDadosCard);
+                        ulDadosCard.appendChild(liEndereco);
+                        ulDadosCard.appendChild(liEstado);
+                        ulDadosCard.appendChild(liProblema);
+                        ulDadosCard.appendChild(liQuantidadeDeTotens);
+                        ulDadosCard.appendChild(liQuantidadeOcorrencias);
+                        divCardLista.appendChild(divContainerButtons);
+                        divContainerButtons.appendChild(btnConcluir);
+                        listaEstabelecimento.appendChild(divContainerCard);
+                    }
+                });
+            } else {
+                throw ('Houve um erro na API!');
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+        });
+    }
+
+    function qtdTotens(idEstabelecimento) {
+        return new Promise(function (resolve, reject) {
+            fetch(`/estabelecimento/qtdTotens/${idEstabelecimento}`).then(function (resposta) {
+                if (resposta.ok) {
+                    resposta.json().then(function (dados) {
+                        console.log("Dados recebidos: ", JSON.stringify(dados));
+                        resolve(dados[0].quantidadeTotems);
+                    }).catch(function (erro) {
+                        reject(erro);
+                    });
+                } else {
+                    reject('Houve um erro na API!');
+                }
+            }).catch(function (resposta) {
+                reject(resposta);
+            });
+        });
+    }
+
+    function redirecionamentoTotem(idEstabelecimento) {
+
+        sessionStorage.setItem("id_estabelecimento_totem", idEstabelecimento);
+        window.location.href = "./dashboard-tecnico.html";
+    }
+
+    function qtdOcorrencias(idEstabelecimento) {
+        return new Promise(function (resolve, reject) {
+            fetch(`/estabelecimento/qtdOcorrencias/${idEstabelecimento}`).then(function (resposta) {
+                if (resposta.ok) {
+                    resposta.json().then(function (dados) {
+                        console.log("Dados recebidos: ", JSON.stringify(dados));
+                        resolve(dados[0].quantidadeOcorrencias);
+                    }).catch(function (erro) {
+                        reject(erro);
+                    });
+                } else {
+                    reject('Houve um erro na API!');
+                }
+            }).catch(function (resposta) {
+                reject(resposta);
+            });
+        });
+    }
+
+    function updateStatusConcluido(idOcorrencias) {
+        fetch(`/estabelecimento/updateStatusConcluido`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                idOcorrencias: idOcorrencias
+            })
+        }).then(function (resposta) {
+
+            if (resposta.ok) {
+                window.alert("Estado atualizado com sucesso pelo usuario! ");
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
+            } else {
+                throw ("Houve um erro ao tentar realizar a atualização! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+        listarEstabelecimentosPorUsuario();
+    }
+</script>

@@ -16,6 +16,7 @@ var estabelecimentoRouter = require("./src/routes/estabelecimento");
 var funcionarioRouter = require("./src/routes/funcionario");
 var totemRouter = require("./src/routes/totem");
 var ocorrenciaRouter = require("./src/routes/ocorrencia");
+var kpiRouter = require("./src/routes/kpis");
 
 
 app.use(express.json());
@@ -31,7 +32,8 @@ app.use("/medidas", medidasRouter);
 app.use("/estabelecimento", estabelecimentoRouter);
 app.use("/funcionario", funcionarioRouter);
 app.use("/totem", totemRouter);
-app.use("/ocorrencia", ocorrenciaRouter)
+app.use("/ocorrencia", ocorrenciaRouter);
+app.use("/kpi", kpiRouter);
 
 app.listen(PORTA, function () {
     console.log(`Servidor do seu site já está rodando! Acesse o caminho a seguir para visualizar: http://localhost:${PORTA} \n
