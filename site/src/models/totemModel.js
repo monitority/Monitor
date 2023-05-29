@@ -18,8 +18,8 @@ function excluirTotem(idTotem) {
     return database.executar(instrucao);
 }
 
-function atualizarTotem(idTotem, nome, fkEndereco, fkMetricaAviso) {
-    console.log("ACESSEI O Totem MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function atualizarTotem()");
+function atualizar(idUpdate, novoDado, tabela) {
+    console.log("ACESSEI O Totem MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function atualizar() QUE ATUALIZA TODOS AS TABELAS" + ` idUpadate: ${idUpdate}, Novo dado ${novoDado}, ${tabela} `);
     var instrucao = `
         UPDATE Totem SET nome = '${nome}', fkEndereco = '${fkEndereco}', fkMetricaAviso = '${fkMetricaAviso}' WHERE idTotem = '${idTotem}';
     `;

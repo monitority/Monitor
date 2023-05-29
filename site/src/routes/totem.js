@@ -15,8 +15,8 @@ router.delete("/excluir/:idTotem", function (req, res) {
     totemController.excluirTotem(req, res);
 });
 
-router.put("/atualizar/:idTotem", function (req, res) {
-    totemController.atualizarTotem(req, res);
+router.put("/update/:tabela/:idUpdate/:novoDado", function (req, res) {
+    totemController.atualizar(req, res);
 });
 
 //Recebendo os dados do html e direcionando para a função cadastrar de totemController.js

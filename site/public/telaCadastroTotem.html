@@ -17,10 +17,12 @@
     href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
   <link rel="icon" href="./assets/imgs/sobreNos.png">
+  <link rel="stylesheet" href="./css/update.css">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
   <!-- <script src="./js/funcao.js"></script> -->
   <script src="./js/perfil-validacao.js"></script>
   <script src="./js/filtro_login.js"></script>
+  <script src="./js/modalUpdate.js"></script>
 </head>
 
 <body onload="buscarDadoTotem(), navBar()">
@@ -28,82 +30,82 @@
     <!-- Div que contem a parte de navegação (parte verde do menu)-->
     <div class="navegacao">
       <ul class="navbar-nav">
-          <li class="nav-item">
-              <!-- Foto De Perfil do USUARIO e o NOME do mesmo -->
-              <div class="fotoDePerfil">
-                  <a href="#" class="nav-link">
-                      <!-- imagem do ICONE DA FOTO DE PERFIL-->
-                      <span class="icone"><i class="uil uil-user"></i> </span>
-                      <span class="titulo"><span id="b_usuario">usuário</span></span>
-                  </a>
-              </div>
-          <li class="nav-item" id="nav_dashboard">
-              <a href="dashboard-tecnico.html" class="nav-link">
-                  <!-- Imagem do ICONE DO planos-->
-                  <span class="icone"> <i class="uil  uil-chart-line"></i> </span>
-                  <span class="titulo"> Dashboard </span>
-              </a>
-          </li>
-          <li class="nav-item" id="nav_painel">
-              <a href="./lista.html" class="nav-link">
-                  <!--Imagem do ICONE DE ADICIONAR -->
-                  <span class="icone"> <i class="uil uil-bell"></i> </span>
-                  <span class="titulo"> Painel</span>
-              </a>
-          </li>
-          <li class="nav-item" id="nav_ocorrencia">
-              <a href="ocorrencias.html" class="nav-link">
-                  <!-- Imagem do ICONE DO planos-->
-                  <span class="icone"> <i class="uil  uil-clipboard"></i> </span>
-                  <span class="titulo"> Ocorrências </span>
-              </a>
-          </li>
-          <li class="nav-item" id="nav_estabelecimento">
-              <a href="./telaCadastroEstabelecimento.html" class="nav-link">
-                  <!--Imagem do ICONE DE ADICIONAR -->
-                  <span class="icone"> <i class="uil uil-estate"></i> </span>
-                  <span class="titulo"> Estabelecimento</span>
-              </a>
-          </li>
-          <li class="nav-item" id="nav_totem">
-              <a href="./telaCadastroTotem.html" class="nav-link">
-                  <!--Imagem do ICONE DE ADICIONAR -->
-                  <span class="icone"> <i class="uil uil-server-connection"></i> </span>
-                  <span class="titulo"> Cadastrar Totem</span>
-              </a>
-          </li>
-          <li class="nav-item" id="nav_func">
-              <a href="./telaCadastroFunc.html" class="nav-link">
-                  <!--Imagem do ICONE DE ADICIONAR -->
-                  <span class="icone"> <i class="uil uil-user-plus"></i> </span>
-                  <span class="titulo"> Funcionario</span>
-              </a>
-          </li>
-          <!-- </div> -->
-          <li class="nav-item" >
-              <a href="configuracoes.html" class="nav-link">
-                  <!-- Imagem do ICONE DE CONFIGURAÇÕES -->
-                  <span class="icone"><i class="uil uil-cog"></i></span>
-                  <span class="titulo"> Configurações</span>
-              </a>
-          </li>
-          <li class="nav-item">
-              <a href="" class="nav-link">
-                  <!-- Imagem do ICONE DE SUPORTE -->
-                  <span class="icone"><i class="uil uil-comment-question"></i>
-                  </span>
-                  <span class="titulo"> Suporte</span>
-              </a>
-          </li>
-          <li class="nav-item">
-              <a href="./index.html" class="nav-link">
-                  <!-- Botão de Sair  -->
-                  <span class="icone"><i class="uil uil-signout"></i> </span>
-                  <span class="titulo"> Sair </span>
-              </a>
-          </li>
+        <li class="nav-item">
+          <!-- Foto De Perfil do USUARIO e o NOME do mesmo -->
+          <div class="fotoDePerfil">
+            <a href="#" class="nav-link">
+              <!-- imagem do ICONE DA FOTO DE PERFIL-->
+              <span class="icone"><i class="uil uil-user"></i> </span>
+              <span class="titulo"><span id="b_usuario">usuário</span></span>
+            </a>
+          </div>
+        <li class="nav-item" id="nav_dashboard">
+          <a href="dashboard-tecnico.html" class="nav-link">
+            <!-- Imagem do ICONE DO planos-->
+            <span class="icone"> <i class="uil  uil-chart-line"></i> </span>
+            <span class="titulo"> Dashboard </span>
+          </a>
+        </li>
+        <li class="nav-item" id="nav_painel">
+          <a href="./lista.html" class="nav-link">
+            <!--Imagem do ICONE DE ADICIONAR -->
+            <span class="icone"> <i class="uil uil-bell"></i> </span>
+            <span class="titulo"> Painel</span>
+          </a>
+        </li>
+        <li class="nav-item" id="nav_ocorrencia">
+          <a href="ocorrencias.html" class="nav-link">
+            <!-- Imagem do ICONE DO planos-->
+            <span class="icone"> <i class="uil  uil-clipboard"></i> </span>
+            <span class="titulo"> Ocorrências </span>
+          </a>
+        </li>
+        <li class="nav-item" id="nav_estabelecimento">
+          <a href="./telaCadastroEstabelecimento.html" class="nav-link">
+            <!--Imagem do ICONE DE ADICIONAR -->
+            <span class="icone"> <i class="uil uil-estate"></i> </span>
+            <span class="titulo"> Estabelecimento</span>
+          </a>
+        </li>
+        <li class="nav-item" id="nav_totem">
+          <a href="./telaCadastroTotem.html" class="nav-link">
+            <!--Imagem do ICONE DE ADICIONAR -->
+            <span class="icone"> <i class="uil uil-server-connection"></i> </span>
+            <span class="titulo"> Cadastrar Totem</span>
+          </a>
+        </li>
+        <li class="nav-item" id="nav_func">
+          <a href="./telaCadastroFunc.html" class="nav-link">
+            <!--Imagem do ICONE DE ADICIONAR -->
+            <span class="icone"> <i class="uil uil-user-plus"></i> </span>
+            <span class="titulo"> Funcionario</span>
+          </a>
+        </li>
+        <!-- </div> -->
+        <li class="nav-item">
+          <a href="configuracoes.html" class="nav-link">
+            <!-- Imagem do ICONE DE CONFIGURAÇÕES -->
+            <span class="icone"><i class="uil uil-cog"></i></span>
+            <span class="titulo"> Configurações</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="" class="nav-link">
+            <!-- Imagem do ICONE DE SUPORTE -->
+            <span class="icone"><i class="uil uil-comment-question"></i>
+            </span>
+            <span class="titulo"> Suporte</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="./index.html" class="nav-link">
+            <!-- Botão de Sair  -->
+            <span class="icone"><i class="uil uil-signout"></i> </span>
+            <span class="titulo"> Sair </span>
+          </a>
+        </li>
       </ul>
-  </div>
+    </div>
 
     <!-- Right Panel -->
     <div id="right-panel" class="right-panel">
@@ -146,7 +148,7 @@
               </div>
               <div class="estilo-box">
                 <p>Serial Id</p>
-                  <input type="text" class="input-empresa" id="inputSerial" placeholder="Ex: 01220574">
+                <input type="text" class="input-empresa" id="inputSerial" placeholder="Ex: 01220574">
               </div>
               <div class="estilo-box">
                 <p>Sistema Operacional</p>
@@ -189,6 +191,61 @@
       src="https://static.zdassets.com/ekr/snippet.js?key=2f1c47af-6ca3-4ce8-9188-958944ef0eb5"> </script>
     <!-- End of securithelp Zendesk Widget script -->
 </body>
+<div id="my_modal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <div class="modal-direita">
+        <h2>Editar Totem</h2>
+      </div>
+      <div class="logo-header">
+        <img src="./assets/imgs/logoHome.png" alt="" class="img-modal">
+      </div>
+      <div class="modal-esquerda">
+        <span class="close">&times;</span>
+      </div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-meio">
+        <div class="lado-direito-modal">
+          <div class="containerInput">
+            <input class="input-margin" placeholder="Modelo" id="input_modelo">
+          </div>
+          <div class="containerInput">
+            <input class="input-margin" placeholder="Processador" id="input_processador">
+            
+          </div>
+          <div class="containerInput">
+            <input class="input-margin" placeholder="Placa Mãe" id="input_plca_mae">
+          </div>
+        </div>
+        <div class="lado-esquerdo-modal">
+          <div class="containerInput">
+            <input class="input-margin" placeholder="Ram" id="input_Ram">
+        </div>
+        <div class="containerInput">
+          <input class="input-margin" placeholder="Armazenamento em Disco" id="input_armazenamento">
+        </div>
+        <div class="containerInput">
+          <select class="input-margin" name="select" id="input_so">
+            <option value="">Selecione um SO</option>
+            <option value="Linux">Linux</option>
+            <option value="Windows">Windows</option>
+            <option value="Android">Android</option>
+            <option value="Mac">Mac</option>
+          </select>
+        </select>
+      </div><!-- Container input-->
+    </div>
+  </div>
+      <div class="botao">
+        <button onclick="closeModal(), atualizarDados( 'totem',[{modelo: input_modelo.value, input_processador.value, input_plca_mae.value, input_Ram.value, input_Ram.value, input_armazenamento.value, input_so.value}])">Confirmar</button>
+      </div>
+    </div>
+    <div class="modal-footer">
+
+    </div>
+  </div>
+</div>
 
 </html>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
@@ -202,48 +259,46 @@
   var sessionFkEmpresa = sessionStorage.FK_EMPRESA;
   var idEmpresa = 0;
 
-function buscarDadoEstabelecimento() {
+  function buscarDadoEstabelecimento() {
+    if (sessionIdEmpresa > 0) {
+      idEmpresa = sessionIdEmpresa;
+    } else if (sessionFkEmpresa > 0) {
+      idEmpresa = sessionFkEmpresa;
+    } else {
+      console.log("id e fk empresa estão errados");
+    }
 
-  
-  if (sessionIdEmpresa > 0) {
-    idEmpresa = sessionIdEmpresa;
-  } else if (sessionFkEmpresa > 0) {
-    idEmpresa = sessionFkEmpresa;
-  } else {
-    console.log("id e fk empresa estão errados");
-  }
-  
-  fetch(`/totem/listarEstabelecimentos/${idEmpresa}`)
-    .then(resposta => resposta.json())
-    .then(function (estabelecimentos) {
-      console.log('estou na listarEstabelecimentos para a combo box', estabelecimentos);
-      if (estabelecimentos.length === 0) {
-        var tabelaFuncionarios = document.getElementById("tabela_funcionarios");
-        var mensagem = document.createElement("span");
-        mensagem.classList.add('mensagem');
-        mensagem.innerHTML = "Nenhum resultado encontrado.";
-        tabelaFuncionarios.appendChild(mensagem);
-        throw "Nenhum resultado encontrado!!";
-      }
+    fetch(`/totem/listarEstabelecimentos/${idEmpresa}`)
+      .then(resposta => resposta.json())
+      .then(function (estabelecimentos) {
+        console.log('estou na listarEstabelecimentos para a combo box', estabelecimentos);
+        if (estabelecimentos.length === 0) {
+          var tabelaFuncionarios = document.getElementById("tabela_funcionarios");
+          var mensagem = document.createElement("span");
+          mensagem.classList.add('mensagem');
+          mensagem.innerHTML = "Nenhum resultado encontrado.";
+          tabelaFuncionarios.appendChild(mensagem);
+          throw "Nenhum resultado encontrado!!";
+        }
 
-      console.log("Dados recebidos!!!!!: ", JSON.stringify(estabelecimentos));
-      var comboEstabelecimento = document.getElementById("inputEstabelecimento");
+        console.log("Dados recebidos!!!!!: ", JSON.stringify(estabelecimentos));
+        var comboEstabelecimento = document.getElementById("inputEstabelecimento");
 
-      for (var i = 0; i < estabelecimentos.length; i++) {
-        var option = document.createElement('option');
-        option.value = estabelecimentos[i].idEstabelecimento; // Substitua 'id_estabelecimento' pelo nome da coluna que contém o valor da opção
-        option.text = estabelecimentos[i].nome; // Substitua 'nome' pelo nome da coluna que contém o texto da opção
-        comboEstabelecimento.appendChild(option);
-      }
-    })
-    .catch(function (erro) {
-      console.log(erro);
-    });
+        for (var i = 0; i < estabelecimentos.length; i++) {
+          var option = document.createElement('option');
+          option.value = estabelecimentos[i].idEstabelecimento; // Substitua 'id_estabelecimento' pelo nome da coluna que contém o valor da opção
+          option.text = estabelecimentos[i].nome; // Substitua 'nome' pelo nome da coluna que contém o texto da opção
+          comboEstabelecimento.appendChild(option);
+        }
+      })
+      .catch(function (erro) {
+        console.log(erro);
+      });
     buscarDadoTotem();
-}
+  }
 
-  
-  
+
+
   function cadastrarTotem() {
     var fkEstabelecimento = inputEstabelecimento.value
     //Recupere o valor da nova input pelo nome do id
@@ -305,12 +360,12 @@ function buscarDadoEstabelecimento() {
 
   function buscarDadoTotem() {
     if (sessionIdEmpresa > 0) {
-    idEmpresa = sessionIdEmpresa;
-  } else if (sessionFkEmpresa > 0) {
-    idEmpresa = sessionFkEmpresa;
-  } else {
-    console.log("id e fk empresa estão errados");
-  }
+      idEmpresa = sessionIdEmpresa;
+    } else if (sessionFkEmpresa > 0) {
+      idEmpresa = sessionFkEmpresa;
+    } else {
+      console.log("id e fk empresa estão errados");
+    }
     fetch(`/totem/listar/${idEmpresa}`)
       .then(function (resposta) {
         console.log('estou na buscarDadoTotem', resposta);
@@ -336,7 +391,7 @@ function buscarDadoEstabelecimento() {
 
               tabelaFuncionarios.innerHTML += `
                         
-              <div class="func" id="${i}">
+              <div class="func" id="${publicacao.idTotem}">
                       <div class="estilo-atributos">
                         <h5>Modelo:</h5>
                         <p>${publicacao.modelo}</p>
@@ -365,7 +420,10 @@ function buscarDadoEstabelecimento() {
                         <h5>Estabelecimento:</h5>
                         <p>${publicacao.nome}</p>
                       </div>
-                      <button class="removerCard" onclick="removerCard(${publicacao.idTotem})">Remover</button>
+                      <div class="btns-cards">
+                          <button class="removerCard" onclick="removerCard(${publicacao.idTotem})">Remover</button>
+                          <button onclick="openModal(${publicacao.idTotem})" class="removerCard">Editar</button>
+                      </div>    
                   </div>
                     `;
             }

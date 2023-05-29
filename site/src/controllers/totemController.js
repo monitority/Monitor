@@ -43,13 +43,12 @@ function excluirTotem(req, res) {
         );
 }
 
-function atualizarTotem(req, res) {
-    var idtotem = req.body.idtotemServer;
-    var nome = req.body.nomeServer;
-    var fkEndereco = req.body.fkEnderecoServer;
-    var fkMetricaAviso = req.body.fkMetricaAvisoServer;
+function atualizar(req, res) {
+    var idUpdate = req.params.idUpdate;
+    var novoDado = req.params.novoDado;
+    var tabela = req.params.tabela
 
-    totemModel.atualizartotem(idtotem, nome, fkEndereco, fkMetricaAviso)
+    totemModel.atualizar(idUpdate, novoDado, tabela)
         .then(function (resultado) {
             if (resultado.length > 0) {
                 res.status(200).json(resultado);
@@ -134,7 +133,7 @@ module.exports = {
     listar,
     testar,
     excluirTotem,
-    atualizarTotem,
+    atualizar,
     cadastrarTotem,
     buscarDadosEstabelecimentos,
 }
