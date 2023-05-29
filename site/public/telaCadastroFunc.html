@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
   <link rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
-    
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
   <link rel="icon" href="./assets/imgs/sobreNos.png">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
@@ -29,93 +29,82 @@
     <!-- Div que contem a parte de navegação (parte verde do menu)-->
     <div class="navegacao">
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <!-- Foto De Perfil do USUARIO e o NOME do mesmo -->
-          <div class="fotoDePerfil">
-            <a href="#" class="nav-link">
-              <!-- imagem do ICONE DA FOTO DE PERFIL-->
-              <span class="icone"><i class="uil uil-user"></i> </span>
-              <span class="titulo"><span id="b_usuario">usuário</span></span>
-            </a>
-          </div>
-        <li class="nav-item">
-          <a href="dashboard-tecnico.html" class="nav-link">
-            <!-- Imagem do ICONE DO planos-->
-            <span class="icone"> <i class="uil  uil-chart-line"></i> </span>
-            <span class="titulo"> Dashboard </span>
-          </a>
-        </li>
-        <!-- <li onclick="Adicionar()" id="adicionar2">
-                        <a href="#">
-    
-                            -Imagem do ICONE DE ADICIONAR 
-                            <span class="icone"> <i class="uil uil-plus"></i> </span>
-                            <span class="titulo"> Adicionar</span>
-                            <span class="icone2"><i class="uil uil-angle-down"></i></span>
-    
-                        </a>
-                    </li> -->
-        <!-- <div class="adicionar" id="adicionar3"> -->
           <li class="nav-item">
-            <a href="ocorrencias.html" class="nav-link">
-                <!-- Imagem do ICONE DO planos-->
-                <span class="icone"> <i class="uil  uil-clipboard"></i> </span>
-                <span class="titulo"> Ocorrências </span>
-            </a>
-        </li>
-        <li class="nav-item">
-          <a href="./telaCadastroEstabelecimento.html" class="nav-link">
-            <!--Imagem do ICONE DE ADICIONAR -->
-            <span class="icone"> <i class="uil uil-estate"></i> </span>
-            <span class="titulo"> Estabelecimento</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="./telaCadastroTotem.html" class="nav-link">
-            <!--Imagem do ICONE DE ADICIONAR -->
-            <span class="icone"> <i class="uil uil-server-connection"></i> </span>
-            <span class="titulo"> Cadastrar Totem</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="./telaCadastroFunc.html" class="nav-link">
-            <!--Imagem do ICONE DE ADICIONAR -->
-            <span class="icone"> <i class="uil uil-user-plus"></i> </span>
-            <span class="titulo"> Funcionario</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="./lista.html" class="nav-link">
-            <!--Imagem do ICONE DE ADICIONAR -->
-            <span class="icone"> <i class="uil uil-bell"></i> </span>
-            <span class="titulo"> Notificações</span>
-          </a>
-        </li>
-        <!-- </div> -->
-        <li class="nav-item">
-          <a href="configuracoes.html" class="nav-link">
-            <!-- Imagem do ICONE DE CONFIGURAÇÕES -->
-            <span class="icone"><i class="uil uil-cog"></i></span>
-            <span class="titulo"> Configurações</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="https://chamadosgrupo9.auvo.com.br/Login#signin" class="nav-link">
-            <!-- Imagem do ICONE DE SUPORTE -->
-            <span class="icone"><i class="uil uil-comment-question"></i>
-            </span>
-            <span class="titulo"> Suporte</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="./index.html" class="nav-link">
-            <!-- Botão de Sair  -->
-            <span class="icone"><i class="uil uil-signout"></i> </span>
-            <span class="titulo"> Home </span>
-          </a>
-        </li>
+              <!-- Foto De Perfil do USUARIO e o NOME do mesmo -->
+              <div class="fotoDePerfil">
+                  <a href="#" class="nav-link">
+                      <!-- imagem do ICONE DA FOTO DE PERFIL-->
+                      <span class="icone"><i class="uil uil-user"></i> </span>
+                      <span class="titulo"><span id="b_usuario">usuário</span></span>
+                  </a>
+              </div>
+          <li class="nav-item" id="nav_dashboard">
+              <a href="dashboard-tecnico.html" class="nav-link">
+                  <!-- Imagem do ICONE DO planos-->
+                  <span class="icone"> <i class="uil  uil-chart-line"></i> </span>
+                  <span class="titulo"> Dashboard </span>
+              </a>
+          </li>
+          <li class="nav-item" id="nav_painel">
+              <a href="./dashboard-gerente.html" class="nav-link">
+                  <!--Imagem do ICONE DE ADICIONAR -->
+                  <span class="icone"> <i class="uil uil-bell"></i> </span>
+                  <span class="titulo"> Painel</span>
+              </a>
+          </li>
+          <li class="nav-item" id="nav_ocorrencia">
+              <a href="ocorrencias.html" class="nav-link">
+                  <!-- Imagem do ICONE DO planos-->
+                  <span class="icone"> <i class="uil  uil-clipboard"></i> </span>
+                  <span class="titulo"> Ocorrências </span>
+              </a>
+          </li>
+          <li class="nav-item" id="nav_estabelecimento">
+              <a href="./telaCadastroEstabelecimento.html" class="nav-link">
+                  <!--Imagem do ICONE DE ADICIONAR -->
+                  <span class="icone"> <i class="uil uil-estate"></i> </span>
+                  <span class="titulo"> Estabelecimento</span>
+              </a>
+          </li>
+          <li class="nav-item" id="nav_totem">
+              <a href="./telaCadastroTotem.html" class="nav-link">
+                  <!--Imagem do ICONE DE ADICIONAR -->
+                  <span class="icone"> <i class="uil uil-server-connection"></i> </span>
+                  <span class="titulo"> Cadastrar Totem</span>
+              </a>
+          </li>
+          <li class="nav-item" id="nav_func">
+              <a href="./telaCadastroFunc.html" class="nav-link">
+                  <!--Imagem do ICONE DE ADICIONAR -->
+                  <span class="icone"> <i class="uil uil-user-plus"></i> </span>
+                  <span class="titulo"> Funcionario</span>
+              </a>
+          </li>
+          <!-- </div> -->
+          <li class="nav-item" >
+              <a href="configuracoes.html" class="nav-link">
+                  <!-- Imagem do ICONE DE CONFIGURAÇÕES -->
+                  <span class="icone"><i class="uil uil-cog"></i></span>
+                  <span class="titulo"> Configurações</span>
+              </a>
+          </li>
+          <li class="nav-item">
+              <a href="" class="nav-link">
+                  <!-- Imagem do ICONE DE SUPORTE -->
+                  <span class="icone"><i class="uil uil-comment-question"></i>
+                  </span>
+                  <span class="titulo"> Suporte</span>
+              </a>
+          </li>
+          <li class="nav-item">
+              <a href="./index.html" class="nav-link">
+                  <!-- Botão de Sair  -->
+                  <span class="icone"><i class="uil uil-signout"></i> </span>
+                  <span class="titulo"> Sair </span>
+              </a>
+          </li>
       </ul>
-    </div>
+  </div>
     <!-- Right Panel -->
     <div id="right-panel" class="right-panel">
       <div class="animated fadeIn">
@@ -140,35 +129,38 @@
                               </div>  -->
               <div class="estilo-box">
                 <p>Nome Completo*</p>
-                <input class="input-empresa" id="inputNome" placeholder="Ex: Thiago Serafim" 
-                  onblur="validarNome()" required />
+                <input class="input-empresa" id="inputNome" placeholder="Ex: Thiago Serafim" onblur="validarNome()"
+                  required />
               </div>
               <div class="estilo-box">
                 <p>Senha*</p>
-                <input class="input-empresa" id="inputSenha" placeholder="Ex: Senha@123" type="password" 
+                <input class="input-empresa" id="inputSenha" placeholder="Ex: Senha@123" type="password"
                   onblur="validarSenha()" required />
               </div>
               <div class="estilo-box">
                 <p>Telefone</p>
-                <input class="input-empresa" placeholder="Ex: 11966193319" id="inputContato" 
-                  onkeyup="validarContato()" required/>
+                <input class="input-empresa" placeholder="Ex: 11966193319" id="inputContato" onkeyup="validarContato()"
+                  required />
               </div>
             </div>
             <div class="container-filho-2">
               <div class="estilo-box">
                 <p>E-mail*</p>
-                <input class="input-empresa" id="inputEmail" placeholder="Ex: xpto@sptech.school" 
-                  onblur="validarEmail()" required/>
+                <input class="input-empresa" id="inputEmail" placeholder="Ex: xpto@sptech.school"
+                  onblur="validarEmail()" required />
               </div>
               <div class="estilo-box">
-                <p>Cargo*</p>
-                <input class="input-empresa" id="inputCargo" placeholder="Ex: Suporte TI" 
-                  onblur="validarCargo()" required/>
+                <p>Cargo</p>
+                <select class="input-empresa" name="select" id="inputCargo">
+                  <option value="Senior">Gerente</option>
+                  <option value="Senior">Senior</option>
+                  <option value="Pleno">Pleno</option>
+                  <option value="Junior">Junior</option>
+                </select>
               </div>
               <div class="estilo-box">
                 <p>Permissâo*</p>
-                <select class="input-empresa" name="select" id="inputFuncao"  
-                onblur="validarFuncao()" >
+                <select class="input-empresa" name="select" id="inputFuncao" onblur="validarFuncao()">
                   <option value=none></option>
                   <option value="Gerente">Gerente</option>
                   <option value="Técnico">Técnico</option>
@@ -205,19 +197,22 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
 <script>
   b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    var sessionIdEmpresa = sessionStorage.ID_EMPRESA;
+    var sessionFkEmpresa = sessionStorage.FK_EMPRESA;
+    var idEmpresa = 0;
 
   function buscarDadoFuncionario() {
-   var sessionIdEmpresa = sessionStorage.ID_EMPRESA;
-   var sessionFkEmpresa = sessionStorage.FK_EMPRESA;
-   var idEmpresa = 0;
-    if(sessionIdEmpresa > 0){
+    var sessionIdEmpresa = sessionStorage.ID_EMPRESA;
+    var sessionFkEmpresa = sessionStorage.FK_EMPRESA;
+    var idEmpresa = 0;
+    if (sessionIdEmpresa > 0) {
       idEmpresa = sessionIdEmpresa;
-    }else if(sessionFkEmpresa > 0){
+    } else if (sessionFkEmpresa > 0) {
       idEmpresa = sessionFkEmpresa;
-    }else{
+    } else {
       console.log("id e fk empresa estão errado")
     }
-    fetch(`/funcionario/listar/${idEmpresa}`)
+    fetch(`/funcionario/listar/${idEmpresa}/1`)
       .then(function (resposta) {
         console.log('estou na Buscarfuncionario()', resposta);
         if (resposta.ok) {
@@ -289,7 +284,13 @@
   }
 
   function cadastrarFuncionario() {
-    var idEmpresa = sessionStorage.ID_EMPRESA
+    if (sessionIdEmpresa > 0) {
+            idEmpresa = sessionIdEmpresa;
+        } else if (sessionFkEmpresa > 0) {
+            idEmpresa = sessionFkEmpresa;
+        } else {
+            console.log("id e fk empresa estão errados");
+        }
     //Recupere o valor da nova input pelo nome do id
     // Agora vá para o método fetch logo abaixo
     var nomeVar = inputNome.value;

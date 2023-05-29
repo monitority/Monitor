@@ -113,14 +113,16 @@ CREATE TABLE IF NOT EXISTS `estabelecimento` (
 CREATE TABLE IF NOT EXISTS `totem` (
   `idTotem` INT NOT NULL  AUTO_INCREMENT,
   `modelo` VARCHAR(45) NOT NULL,
+  `processadorModelo` VARCHAR(45) NOT NULL,
+  `placaMaeModelo` VARCHAR(45) NOT NULL,
+  `memoriaRAMModelo` VARCHAR(45) NOT NULL,
+  `armazenamentoModelo` VARCHAR(45) NOT NULL,
+  `sistemaOperacional` varchar(45) not null,
+  `serialTotem` varchar(45) not null,
   `fkEstabelecimento` INT NOT NULL,
-  `fkConfigPC` INT NOT NULL,
-  PRIMARY KEY (`idTotem`),
-  
+    PRIMARY KEY (`idTotem`),
     FOREIGN KEY (`fkEstabelecimento`)
     REFERENCES `estabelecimento` (`idEstabelecimento`),
-    FOREIGN KEY (`fkConfigPC`)
-    REFERENCES `configPC`(`idConfigPC`)
     );
 
 -- Um totem tem vários dados;
@@ -182,34 +184,47 @@ DELIMITER ;
  -- Como chamar a procedure e inserir os dados para as tabelas indicadas
  -- CALL inserirEmpresa('nomeUsuario','nomeEmpresa','cnpj','email','senha','contato','cidade','logradouro','bairro',12,'cep','estado');
 
- DELIMITER 
-CREATE DEFINER=`aluno`@`localhost` PROCEDURE `inserirEstabelecimento`(
-	in NomeEstabelecimento VARCHAR(100),
-	in Cidade VARCHAR(60),
-	in Logradouro VARCHAR(70),
-	in Bairro VARCHAR(70), 
-	in Numero INT,
-	in Cep CHAR(9),
-	in Estado VARCHAR(45),
-	in memoriaRAMPorcMax FLOAT,
-	in cpuPorcMax FLOAT,
-	in armazenamentoPorcMax FLOAT,
-	in redePorcMax FLOAT,
-	in fkEmpresa INT
+ALTER PROCEDURE inserirEstabelecimento
+(
+	@NomeEstabelecimento VARCHAR(100),
+	@Cidade VARCHAR(60),
+	@Logradouro VARCHAR(70),
+	@Bairro VARCHAR(70), 
+	@Numero INT,
+	@Cep CHAR(9),
+	@Estado VARCHAR(45),
+	@memoriaRAMPorcMax FLOAT,
+	@cpuPorcMax FLOAT,
+	@fkEmpresa INT,
+	@prioridade VARCHAR(45)
 )
+AS
 BEGIN
-	START TRANSACTION;
-	INSERT INTO endereco(`logradouro`,`cep`, `numero`,`cidade`,`bairro`,`estado`)
-	VALUES(Logradouro, Cep, Numero, Cidade, Bairro, Estado);
-	SELECT LAST_INSERT_ID() INTO @idEnd;
-	INSERT INTO metricaAviso (`memoriaRAMPorcMax`,`cpuPorcMax`,`armazenamentoPorcMax`,`redePorcMax`)
-	VALUES (memoriaRAMPorcMax, cpuPorcMax, armazenamentoPorcMax, redePorcMax);
-	SELECT LAST_INSERT_ID() INTO @idMetrica;
-	INSERT INTO Estabelecimento(`nome`,`fkEmpresa`,`fkEndereco`,`fkMetricaAviso`)
-	VALUES(NomeEstabelecimento, fkEmpresa, @idEnd, @idMetrica);
+	-- Declaração das variáveis
+	DECLARE @idEnd INT;
+	DECLARE @idMetrica INT;
+	
+	BEGIN TRANSACTION;
+	
+	-- Inserção na tabela 'endereco'
+	INSERT INTO endereco (logradouro, cep, numero, cidade, bairro, estado)
+	VALUES (@Logradouro, @Cep, @Numero, @Cidade, @Bairro, @Estado);
+	
+	SET @idEnd = SCOPE_IDENTITY();
+	
+	-- Inserção na tabela 'metricaAviso'
+	INSERT INTO metricaAviso (memoriaRAMPorcMax, cpuPorcMax)
+	VALUES (@memoriaRAMPorcMax, @cpuPorcMax);
+	
+	SET @idMetrica = SCOPE_IDENTITY();
+	
+	-- Inserção na tabela 'Estabelecimento'
+	INSERT INTO Estabelecimento (nome, fkEmpresa, fkEndereco, fkMetricaAviso, prioridade)
+	VALUES (@NomeEstabelecimento, @fkEmpresa, @idEnd, @idMetrica, @prioridade);
+	
 	COMMIT;
-END
-DELIMITER ;
+END;
+
 -- CALL inserirEmpresa('Giovanna B', 'teste1', '12312312312312',  'gi@gmail.com', 'U2VuaGFAMTIz', '11949849509','Criciuma','asafds','asdv', '173','04144000','AL');
 -- CALL inserirEstabelecimento('${nome}', '${Cidade}', '${lougradouro}',  '${bairro','${Numero}' ,'${cep}', '${estado}','${memoriaRAMPorcMin}','${cpuPorcMax}','${armazenamentoPorcMin}','${redePorcMin}','${fkEmpresa}');
 

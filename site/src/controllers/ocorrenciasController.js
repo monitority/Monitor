@@ -27,31 +27,10 @@ function listar(req, res) {
         );
 }
 
-function excluirEstabelecimento(req, res) {
-    var idEstabelecimento = req.body.idEstabelecimentoServer;
-    estabelecimentoModel.excluirEstabelecimento(idEstabelecimento)
-        .then(function (resultado) {
-            if (resultado.length > 0) {
-                res.status(200).json(resultado);
-            } else {
-                res.status(204).send("Nenhum resultado encontrado!")
-            }
-        }).catch(
-            function (erro) {
-                console.log(erro);
-                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
-                res.status(500).json(erro.sqlMessage);
-            }
-        );
-}
-
-function atualizarEstabelecimento(req, res) {
-    var idEstabelecimento = req.body.idEstabelecimentoServer;
-    var nome = req.body.nomeServer;
-    var fkEndereco = req.body.fkEnderecoServer;
-    var fkMetricaAviso = req.body.fkMetricaAvisoServer;
-
-    estabelecimentoModel.atualizarEstabelecimento(idEstabelecimento, nome, fkEndereco, fkMetricaAviso)
+function listarEstabelecimentosProblema(req, res){
+    console.log("estou na listar de ocorrenciasController, na listarEstabelecimentosProblema() ")
+    var fkEmpresa = req.params.idEmpresa;
+    ocorrenciaModel.listarEstabelecimentosProblema(fkEmpresa)
         .then(function (resultado) {
             if (resultado.length > 0) {
                 res.status(200).json(resultado);
@@ -74,7 +53,8 @@ function cadastrarOcorrencia(req, res) {
     var fkEmpresa = req.body.fkEmpresa;
     var fkFunc = req.body.fkFunc;
     var fkEstabelecimento = req.body.fkEstabelecimento;
-    console.log(problema + fkFunc + fkEmpresa + fkEstabelecimento)
+    var fkTotem = req.body.fkTotem;
+    console.log(problema + fkFunc + fkEmpresa + fkEstabelecimento + fkTotem)
     // Faça as validações dos valores
     if (problema == undefined) {
         res.status(400).send("Seu nome está undefined!");
@@ -87,7 +67,7 @@ function cadastrarOcorrencia(req, res) {
     } else {
         
         // Passe os valores como parâmetro e vá para o arquivo EstabelecimentoModel.js
-        ocorrenciaModel.cadastrarOcorrencia(problema, fkFunc, fkEmpresa, fkEstabelecimento)
+        ocorrenciaModel.cadastrarOcorrencia(problema, fkFunc, fkEmpresa, fkEstabelecimento, fkTotem)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -105,10 +85,31 @@ function cadastrarOcorrencia(req, res) {
     }
 }
 
+    function listarFunc(req, res){
+        console.log("estou na listar de ocorrenciasController, na listarFunc() ")
+        var fkEmpresa = req.params.idEmpresa;
+        var fkEstabelecimento = req.params.idEstabelecimento
+        var prioridade = req.params.prioridade
+        ocorrenciaModel.listarFunc(fkEmpresa, fkEstabelecimento, prioridade)
+            .then(function (resultado) {
+                if (resultado.length > 0) {
+                    res.status(200).json(resultado);
+                } else {
+                    res.status(204).send("Nenhum resultado encontrado!")
+                }
+            }).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+
 module.exports = {
     listar,
     testar,
-    excluirEstabelecimento,
-    atualizarEstabelecimento,
+    listarEstabelecimentosProblema,
     cadastrarOcorrencia,
+    listarFunc,
 }
