@@ -31,18 +31,11 @@ router.post("/cadastrarEstabelecimento", function (req, res) {
     
 });
 
+router.get("/dados/:id", function (req, res) {
+    usuarioController.dadosUser(req, res);
+})
 // ROTAS CRIADAS PARA OS EVENTOS DE ALTERAR O USUARIO
-router.put("/confirmar_user/:user", function (req, res) {
-    usuarioController.confirmar_user(req, res);
-})
-
-// ROTAS CRIADAS PARA OS EVENTOS DE ALTERAR A SENHA
-router.put("/confirmar_senha/:user", function (req, res) {
-    usuarioController.confirmar_senha(req, res);
-})
-
-// ROTAS CRIADAS PARA OS EVENTOS DE ALTERAR O TELEFONE
-router.put("/confirmar_telefone/:user", function (req, res) {
-    usuarioController.confirmar_telefone(req, res);
+router.put("/update/:user/:tipoDado", function (req, res) {
+    usuarioController.updateDados(req, res);
 })
 module.exports = router;

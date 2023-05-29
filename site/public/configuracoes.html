@@ -24,7 +24,7 @@
   <script src="./js/filtro_login.js"></script>
 </head>
 
-<body onload="navBar()">
+<body onload="dadosCliente(), navBar()">
         <!-- Div que contem a parte de navegação (parte verde do menu)-->
         <div class="navegacao">
           <ul class="navbar-nav">
@@ -157,12 +157,9 @@
 <script src="./js/perfil-validacao.js"></script>
 <script src="./js/configs.js"></script>
 <script>
-  b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-  exibir_foto.src = sessionStorage.PERFIL_IMAGEM;
-  iconePerfil.src = sessionStorage.PERFIL_IMAGEM;
+
   function dadosCliente() {
-    if (sessionStorage.ID_PERFIL) {
-      fetch(`/usuarios?id=${sessionStorage.ID_USUARIO}`, {
+      fetch(`/usuarios/dados/${sessionStorage.ID_USUARIO}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -172,26 +169,27 @@
           if (resposta.ok) {
             resposta.json().then((json) => {
               console.log(json);
-
+              get = (json)
+              
               //username do Usuario
-              var email_usuario = json.email;
+              var email_usuario = get[0].email;
               span_user.innerHTML = email_usuario;
 
               //senha do usuario
 
-              var tamanhoSenha = atob(json.senha)
+              var tamanhoSenha = atob(get[0].senha)
               var visualSenha = ""
 
               for(var a = 0; a < tamanhoSenha.length ; a++) {
                 visualSenha += '*'
               }
 
-              var senha_usuario = json.senha;
+              var senha_usuario = atob(get[0].senha);
               span_senha.innerHTML = visualSenha;
 
               //telefone do usuario
 
-              var telefone_usuario = json.telefone;
+              var telefone_usuario = get[0].tel;
               span_telefone.innerHTML = telefone_usuario;
               
             });
@@ -200,9 +198,7 @@
         .catch(function (resposta){
           console.log(`#ERRO: ${resposta}`);
         });
-      }
+      
     }
 
-    // Busca os dados do cliente assim que a página carrega
-    dadosCliente();
 </script>
