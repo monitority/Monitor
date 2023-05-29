@@ -55,6 +55,34 @@ function buscarMedidasEmTempoReal(idTotem) {
     return database.executar(instrucaoSql);
 }
 
+function buscarUltimasMedidasBarra(fkEstabelecimento) {
+
+    instrucaoSql = ''
+
+    if (process.env.AMBIENTE_PROCESSO == "producao") {
+        console.log("aqui no Azure")
+        instrucaoSql = `SELECT TOP 5 
+        DATEPART(ISO_WEEK, dataOcorrencia) AS semana, COUNT(idOcorrencias) AS numero_ocorrencias, problema
+        FROM ocorrencias
+        WHERE fkEstabelecimento = ${fkEstabelecimento}
+        GROUP BY DATEPART(ISO_WEEK, dataOcorrencia), problema
+        ORDER BY semana`;
+    } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
+        instrucaoSql = `SELECT DATEPART(ISO_WEEK, dataOcorrencia) AS semana, COUNT(idOcorrencias) AS numero_ocorrencias, problema
+        FROM ocorrencias
+        WHERE fkEmpresa = ${fkEstabelecimento}
+        GROUP BY DATEPART(ISO_WEEK, dataOcorrencia), problema
+        ORDER BY semana`;
+    } else {
+        console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
+        return
+    }
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+
 function dadosMonitoramento(idTotem) {
 
     instrucaoSql = ''
@@ -123,4 +151,5 @@ module.exports = {
     buscarMedidasEmTempoReal,
     listarDadosTotem,
     dadosMonitoramento,
+    buscarUltimasMedidasBarra,
 }

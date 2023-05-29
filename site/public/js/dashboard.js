@@ -53,43 +53,43 @@
 
 /*Script do gráfico de barras que indica o fluxo do giro dos produtos no mercado, por semana*/
 
-const labels_barra_qtd_incidentes_semana = [
-    'Semana 1',
-    'Semana 2',
-    'Semana 3',
-    'Semana 4',
-];
+// const labels_barra_qtd_incidentes_semana = [
+//     'Semana 1',
+//     'Semana 2',
+//     'Semana 3',
+//     'Semana 4',
+// ];
 
-const data_barra_qtd_incidentes_semana = {
-    labels: labels_barra_qtd_incidentes_semana,
-    datasets: [{
-        label: 'CPU',
-        backgroundColor: '#7E8CCD',
-        borderColor: '#7E8CCD',
-        data: [3, 5, 2, 4],
-    },
-    {
-        label: 'Memória RAM',
-        backgroundColor: '#99BB00',
-        borderColor: '#99BB00',
-        data: [2, 1, 4, 1],
-    },
-    {
-        label: 'Disco',
-        backgroundColor: '#020E2C',
-        borderColor: '#020E2C',
-        data: [5, 2, 3, 2], 
-    }
-    ]
-}
+// const data_barra_qtd_incidentes_semana = {
+//     labels: labels_barra_qtd_incidentes_semana,
+//     datasets: [{
+//         label: 'CPU',
+//         backgroundColor: '#7E8CCD',
+//         borderColor: '#7E8CCD',
+//         data: [3, 5, 2, 4],
+//     },
+//     {
+//         label: 'Memória RAM',
+//         backgroundColor: '#99BB00',
+//         borderColor: '#99BB00',
+//         data: [2, 1, 4, 1],
+//     },
+//     {
+//         label: 'Disco',
+//         backgroundColor: '#020E2C',
+//         borderColor: '#020E2C',
+//         data: [5, 2, 3, 2], 
+//     }
+//     ]
+// }
 
-const config_barra_qtd_incidentes_semana = {
-    type: 'bar',
-    data: data_barra_qtd_incidentes_semana,
-    options: {}
-};
+// const config_barra_qtd_incidentes_semana = {
+//     type: 'bar',
+//     data: data_barra_qtd_incidentes_semana,
+//     options: {}
+// };
 
-const grafico_barra_qtd_incidentes_semana = new Chart(
-    document.getElementById('barra_fluxo_incidentes_semana'),
-    config_barra_qtd_incidentes_semana
-);
+// const grafico_barra_qtd_incidentes_semana = new Chart(
+//     document.getElementById('barra_fluxo_incidentes_semana'),
+//     config_barra_qtd_incidentes_semana
+// );

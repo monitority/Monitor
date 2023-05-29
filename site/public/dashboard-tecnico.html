@@ -79,7 +79,7 @@
                 </a>
             </li>
             <!-- </div> -->
-            <li class="nav-item" >
+            <li class="nav-item">
                 <a href="configuracoes.html" class="nav-link">
                     <!-- Imagem do ICONE DE CONFIGURAÇÕES -->
                     <span class="icone"><i class="uil uil-cog"></i></span>
@@ -143,17 +143,17 @@
                 <div class="lista-dados-cpu">
                     <div class="espacamento">
                         <div class="dados-cpu" id="utilizacaoCpu">
-                           
+
                         </div>
-                        
+
                         <div class="dados-cpu" id="processosCpu">
-                            
+
                         </div>
                         <div class="dados-cpu" id="threadsCpu">
-                          
+
                         </div>
                         <div class="dados-cpu" id="velocidadeCpu">
-                          
+
                         </div>
                     </div>
                     <ul class="voltar-cpu">
@@ -180,14 +180,14 @@
                 <div class="lista-dados-memoria">
                     <div class="espacamento">
                         <div class="dados-memoria" id="totalMemoria">
-                           
+
                         </div>
                         <div class="dados-memoria" id="memoriaDisponivel">
-                            
+
                         </div>
-                
+
                         <div class="dados-memoria" id="memoriaEmUso">
-                           
+
                         </div>
                     </div>
                     <ul class="voltar">
@@ -214,16 +214,16 @@
                 <div class="lista-dados-disco">
                     <div class="espacamento-disco">
                         <div class="dados-disco" id="totalDisco">
-                            
+
                         </div>
                         <div class="dados-disco" id="leituraDisco">
-                           
+
                         </div>
                         <div class="dados-disco" id="escritaDisco">
-                           
+
                         </div>
                         <div class="dados-disco" id="tempoTransferencia">
-                           
+
                         </div>
                     </div>
                     <ul class="voltar-disco">
@@ -250,13 +250,13 @@
                 <div class="lista-dados-rede">
                     <div class="espacamento">
                         <div class="dados-rede" id="nomeRede">
-                            
+
                         </div>
                         <div class="dados-rede" id="hostName">
-                            
+
                         </div>
                         <div class="dados-rede" id="nomeDominio">
-                           
+
                         </div>
 
                     </div>
@@ -418,6 +418,7 @@
 
     function listarDadosTotem() {
         var idEstabelecimento = sessionStorage.getItem("id_estabelecimento_totem");
+        obterDadosGraficoBarra(idEstabelecimento);
         console.log(sessionStorage.getItem("id_estabelecimento_totem"))
         fetch(`/medidas/listarDadosTotem/${idEstabelecimento}`)
             .then(response => response.json())
@@ -534,10 +535,11 @@
             chart = new Chart(document.getElementById(`linha_percentual_atividade`), config);
         }
 
-        
+
         setTimeout(() => atualizarGrafico(idTotem, dados, chart), 2000);
-    
+
     }
+
     function dadosMonitoramento(idTotem) {
         fetch(`/medidas/dadosMonitoramento/${idTotem}`).then(function (resposta) {
             if (resposta.ok) {
@@ -556,7 +558,7 @@
                     totalMemoria.innerHTML = `<h4><b>Total</b></h4><p>${resposta[0].memTotal}</p>`
                     memoriaDisponivel.innerHTML = `<h4><b>Disponível</b></h4><p>${resposta[0].menDisp}</p>`
                     memoriaEmUso.innerHTML = `<h4><b>Em uso</b></h4><p>${resposta[0].menUso}</p>`
-                    
+
                     totalDisco.innerHTML = `<h4><b>Capacidade</b></h4><p>${resposta[0].tamDisco}</p>`
                     leituraDisco.innerHTML = `<h4><b>Leitura disco</b></h4><p>${resposta[0].leiDisco}</p>`
                     escritaDisco.innerHTML = `<h4><b>Escrita disco</b></h4><p>${resposta[0].escDisco}</p>`
@@ -565,7 +567,7 @@
                     nomeRede.innerHTML = `<h4><b>Nome da rede</b></h4><p>${resposta[0].nomRede}</p>`
                     hostName.innerHTML = `<h4><b>Hostname</b></h4><p>${resposta[0].hostNameRede}</p>`
                     nomeDominio.innerHTML = `<h4><b>Nome Domínio</b></h4><p>${resposta[0].NomeDominio}</p>`
-                   
+
                 });
             } else {
                 throw ('Houve um erro na API!');
@@ -609,7 +611,7 @@
 
                         chart.update();
                     }
-                    
+
                     dadosMonitoramento(idTotem);
 
                     // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
@@ -687,4 +689,96 @@
             }
         });
     }
+
+    function obterDadosGraficoBarra(fkEstabelecimento) {
+
+        let proximaAtualizacao;
+
+        if (proximaAtualizacao != undefined) {
+            clearTimeout(proximaAtualizacao);
+        }
+
+        fetch(`/medidas/ultimasBarra/${fkEstabelecimento}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    // ...
+
+                    plotarGraficoBarra(resposta, fkEstabelecimento);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+
+    function plotarGraficoBarra(resposta, fkEstabelecimento) {
+
+
+        console.log('iniciando plotagem do gráfico...');
+
+        let labels = [];
+
+        let dados = {
+            labels: labels,
+            datasets: [{
+                label: 'CPU',
+                data: [],
+                fill: false,
+                backgroundColor: '#020E2C',
+                borderColor: '#020E2C',
+                tension: 0.1
+            },
+            {
+                label: 'Memória',
+                data: [],
+                fill: false,
+                backgroundColor: '#99BB00',
+                borderColor: '#99BB00',
+                tension: 0.1
+            }]
+        };
+
+        console.log('----------------------------------------------')
+        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+        console.log(resposta)
+
+        // Inserindo valores recebidos em estrutura para plotar o gráfico
+        for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+            labels.push(registro.semana);
+            dados.datasets[0].data.push(registro.numero_ocorrencias);
+            dados.datasets[1].data.push(registro.problema);
+        }
+
+        console.log('----------------------------------------------')
+        console.log('O gráfico será plotado com os respectivos valores:')
+        console.log('Labels:')
+        console.log(labels)
+        console.log('Dados:')
+        console.log(dados.datasets)
+        console.log('----------------------------------------------')
+
+        // Criando estrutura para plotar gráfico - config
+        const config = {
+            type: 'bar',
+            data: dados,
+        };
+
+
+        // Adicionando gráfico criado em div na tela
+        if (chart) {
+            chart.data = dados;
+            chart.update();
+        } else {
+            chart = new Chart(document.getElementById(`barra_fluxo_incidentes_semana`), config);
+        }
+
+
+        setTimeout(() => atualizarGraficoBarra(fkEstabelecimento, dados, chart), 2000);
+
+    }
+
 </script>
