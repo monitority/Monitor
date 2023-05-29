@@ -34,18 +34,70 @@ function buscarMedidasEmTempoReal(idTotem) {
         instrucaoSql = `select top 1
         processadorPorc as processador, 
         memoriaPorc as memoria,  
-                        CONVERT(varchar, dataHora, 108) as momento_grafico, 
-                        from Dados where fkTotem = ${idTotem}
+        CONVERT(varchar, dataHora, 108) as momento_grafico, 
+        from Dados where fkTotem = ${idTotem}
         order by id desc`;
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-        instrucaoSql = `select 
-        dht11_temperatura as temperatura, 
-        dht11_umidade as umidade,
-                        DATE_FORMAT(momento,'%H:%i:%s') as momento_grafico, 
-                        fk_aquario 
-                        from medida where fk_aquario = ${idTotem} 
-                    order by id desc limit 1`;
+        instrucaoSql = `select
+        processadorPorc as processador, 
+        memoriaPorc as memoria,  
+        DATE_FORMAT( dataHora,'%H:%i:%s') as momento_grafico, 
+        from Dados where fkTotem = ${idTotem}
+        order by id desc limit 1
+       `;
+    } else {
+        console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
+        return
+    }
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function dadosMonitoramento(idTotem) {
+
+    instrucaoSql = ''
+
+    if (process.env.AMBIENTE_PROCESSO == "producao") {
+        instrucaoSql = `select top 1
+        processadorPorc as processador, 
+        cpuhz as cpuVelocidade,
+        totalProcessos as processos,
+        threadsCpu as threads,
+        memoriaTotal as memTotal,
+        memoriaDisponivel as menDisp,
+        memoriaEmUso as menUso,
+        TamanhoDisco as tamDisco,
+        LeituraDisco as leiDisco,
+        EscritaDisco as escDisco,
+        TempoTransferencia as tempoTrans,
+        NomeRede as nomRede,
+        Hostname as hostNameRede,
+        NomeDeDominio as NomeDominio 
+        from Dados where fkTotem = ${idTotem}
+        order by id desc`;
+
+    } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
+        instrucaoSql = `select
+        processadorPorc as processador, 
+        cpuhz as cpuVelocidade,
+        totalProcessos as processos,
+        threadsCpu as threads,
+        memoriaTotal as memTotal,
+        memoriaDisponivel as menDisp,
+        memoriaEmUso as menUso,
+        TamanhoDisco as tamDisco,
+        LeituraDisco as leiDisco,
+        EscritaDisco as escDisco,
+        TempoTransferencia as tempoTrans,
+        NomeRede as nomRede,
+        Hostname as hostNameRede,
+        NomeDeDominio as NomeDominio  
+        DATE_FORMAT( dataHora,'%H:%i:%s') as momento_grafico, 
+        from Dados where fkTotem = ${idTotem}
+        order by id desc limit 1
+       `;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
         return
@@ -70,4 +122,5 @@ module.exports = {
     buscarUltimasMedidas,
     buscarMedidasEmTempoReal,
     listarDadosTotem,
+    dadosMonitoramento,
 }

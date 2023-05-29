@@ -15,4 +15,8 @@ router.get("/listarDadosTotem/:idEstabelecimento", function (req, res) {
     medidaController.listarDadosTotem(req, res);
 });
 
+router.get("/dadosMonitoramento/:idTotem", function (req, res) {
+    medidaController.dadosMonitoramento(req, res);
+});
+
 module.exports = router;

@@ -124,7 +124,7 @@
 <script>
 
     function listarEstabelecimentosPorUsuario() {
-        let fkUsuario = 3;
+        let fkUsuario = 5;
         let filtroSelects = document.getElementById("select_filtro").value;
         lista_container_estabelecimento.innerHTML = "";
         fetch(`/estabelecimento/listarEstabelecimentosPorUsuario/${fkUsuario}/${filtroSelects}`).then(function (resposta) {
@@ -241,8 +241,7 @@
     }
 
     function redirecionamentoTotem(idEstabelecimento) {
-        console.log("esta aqui")
-        console.log(idEstabelecimento)
+
         sessionStorage.setItem("id_estabelecimento_totem", idEstabelecimento);
         window.location.href = "./dashboard-tecnico.html";
     }
