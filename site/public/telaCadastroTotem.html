@@ -25,7 +25,7 @@
   <script src="./js/modalUpdate.js"></script>
 </head>
 
-<body onload="buscarDadoTotem(), navBar()">
+<body onload=" navBar(), buscarDadoTotem()">
   <main>
     <!-- Div que contem a parte de navegação (parte verde do menu)-->
     <div class="navegacao">
@@ -39,13 +39,6 @@
               <span class="titulo"><span id="b_usuario">usuário</span></span>
             </a>
           </div>
-        <li class="nav-item" id="nav_dashboard">
-          <a href="dashboard-tecnico.html" class="nav-link">
-            <!-- Imagem do ICONE DO planos-->
-            <span class="icone"> <i class="uil  uil-chart-line"></i> </span>
-            <span class="titulo"> Dashboard </span>
-          </a>
-        </li>
         <li class="nav-item" id="nav_painel">
           <a href="./lista.html" class="nav-link">
             <!--Imagem do ICONE DE ADICIONAR -->
@@ -457,7 +450,7 @@
                         <p>${publicacao.nome}</p>
                       </div>
                       <div class="btns-cards">
-                          <button class="removerCard" onclick="removerCard(${publicacao.idTotem})">Remover</button>
+                          <button class="removerCard" onclick="removerCardTotem(${publicacao.idTotem})">Remover</button>
                           <button onclick="openModal(${publicacao.idTotem})" class="removerCard">Editar</button>
                       </div>    
                   </div>
@@ -472,6 +465,28 @@
         console.log(resposta);
       });
   }
+
+  function removerCardTotem(idtotem){
+    console.log(" apagar totem - ID" + idtotem);
+        fetch(`/totem/excluir/${idtotem}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function (resposta) {
+
+            if (resposta.ok) {
+                buscarDadoTotem()
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
+            } else {
+                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    }
+
 
 
 </script>

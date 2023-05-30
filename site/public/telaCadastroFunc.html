@@ -333,7 +333,7 @@
                         <p>${publicacao.permissao}</p>
                       </div>
                       <div class="btns-cards">
-                        <button class="removerCard" onclick="removerCard(${publicacao.idUsuario})">Remover</button>   
+                        <button class="removerCard" onclick="removerCardFunc(${publicacao.idUsuario})">Remover</button>   
                         <button class="removerCard" onclick="openModal(${publicacao.idUsuario})" >Editar</button>
                       </div>                  
                   </div>
@@ -458,5 +458,24 @@
   //     buscardadosEmpresa2();
   //   }
   // }
+  function removerCardFunc(idfunc){
+    console.log(" apagar idfunc - ID" + idfunc);
+        fetch(`/funcionario/excluir/${idfunc}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function (resposta) {
 
+            if (resposta.ok) {
+              buscarDadoFuncionario()
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
+            } else {
+                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    }
 </script>

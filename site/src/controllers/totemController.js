@@ -26,21 +26,21 @@ function listar(req, res) {
 }
 
 function excluirTotem(req, res) {
-    var idtotem = req.body.idtotemServer;
-    totemModel.excluirtotem(idtotem)
-        .then(function (resultado) {
-            if (resultado.length > 0) {
-                res.status(200).json(resultado);
-            } else {
-                res.status(204).send("Nenhum resultado encontrado!")
-            }
-        }).catch(
-            function (erro) {
-                console.log(erro);
-                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
-                res.status(500).json(erro.sqlMessage);
-            }
-        );
+    var idtotem = req.params.idTotem
+    console.log('O ID para excluir: ' + idtotem )
+    totemModel.excluirTotem(idtotem)
+    .then(
+        function (resultado) {
+            res.json(resultado);
+        }
+    )
+    .catch(
+        function (erro) {
+            console.log(erro);
+            console.log("Houve um erro ao deletar o post: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        }
+    );
 }
 
 function atualizar(req, res) {

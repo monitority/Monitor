@@ -12,6 +12,10 @@ router.get("/listar/:idEmpresa/:n", function (req, res) {
     funcionarioController.listar(req, res);
 });
 
+router.delete("/excluir/:idFunc", function (req, res) {
+    funcionarioController.excluirFunc(req, res);
+});
+
 //Recebendo os dados do html e direcionando para a função cadastrar de funcionarioController.js
 router.post("/cadastrarfuncionario", function (req, res) {
     funcionarioController.cadastrarFuncionario(req, res);
