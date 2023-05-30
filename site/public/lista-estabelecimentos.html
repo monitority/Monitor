@@ -35,6 +35,13 @@
                         <span class="titulo"><span id="b_usuario">usuário</span></span>
                     </a>
                 </div>
+            <li class="nav-item" id="nav_listaEstabelecimentos">
+                <a href="lista-estabelecimentos.html" class="nav-link">
+                    <!-- Imagem do ICONE DO planos-->
+                    <span class="icone"> <i class="uil  uil-align-justify"></i> </span>
+                    <span class="titulo"> Lista Estabelecimentos </span>
+                </a>
+            </li>
             <li class="nav-item">
                 <a href="dashboard-tecnico.html" class="nav-link">
                     <!-- Imagem do ICONE DO planos-->
@@ -104,7 +111,8 @@
 
         <section class="container-pai-lista">
             <div class="container-lista">
-                <select id="select_filtro" class="select-estado-estabelecimento" onchange="listarEstabelecimentosPorUsuario()">
+                <select id="select_filtro" class="select-estado-estabelecimento"
+                    onchange="listarEstabelecimentosPorUsuario()">
                     <option value="select-todos">Todos</option>
                     <option value="select-aberto">Em aberto</option>
                     <option value="select-concluido">Concluídos</option>
@@ -134,7 +142,7 @@
                 }
                 resposta.json().then(function (resposta) {
                     console.log("Dados recebidos: ", JSON.stringify(resposta));
-                    
+
                     for (let i = 0; i < resposta.length; i++) {
                         let dados = resposta[i]
 
@@ -163,7 +171,7 @@
                         liQuantidadeOcorrencias.innerHTML = "<b>Quantidade de ocorrencias: </b>";
                         btnConcluir.innerHTML = "Concluir";
                         imgDashboard.src = 'assets/icons/dashboard.png'
-                        divContainerButtons.innerHTML = `<button class="botão-link" onclick="redirecionamentoTotem(${dados.idEstabelecimento})"><img class="img-dashboard" src="assets/icons/dashboard.png"></button>` 
+                        divContainerButtons.innerHTML = `<button class="botão-link" onclick="redirecionamentoTotem(${dados.idEstabelecimento})"><img class="img-dashboard" src="assets/icons/dashboard.png"></button>`
 
                         qtdTotens(dados.idEstabelecimento).then(function (quantidadeTotens) {
                             liQuantidadeDeTotens.innerHTML = "<b>Quantidade de Totens: </b>" + quantidadeTotens;
@@ -190,10 +198,10 @@
                         divContainerButtons.className = "container-buttons"
                         btnConcluir.className = "btnConcluir";
 
-                        if(dados.statusOcorrencia == "Concluído"){
+                        if (dados.statusOcorrencia == "Concluído") {
                             divCardLista.classList.remove('card-lista-aberto');
                             divCardLista.classList.add('card-lista-concluido');
-                        }else if(dados.statusOcorrencia == "Aberto"){
+                        } else if (dados.statusOcorrencia == "Aberto") {
 
                             divCardLista.classList.remove('card-lista-concluido');
                             divCardLista.classList.add('card-lista-aberto');
