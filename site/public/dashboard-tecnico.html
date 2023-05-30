@@ -112,13 +112,13 @@
 
         <!--Sessão de KPIs-->
         <div class="dashboard-kpis">
-            <div class="kpis critico" >
+            <div class="kpis " id="kpiPercentualCpu">
                 <p class="kpi-titulo "><b>Pico de percentual - CPU (%)</b></p>
-                    <p class="kpi-dado" id="kpiPercentualCpu"></p>
+                <p class="kpi-dado" id="kpiDadoCpu"></p>
             </div>
-            <div class="kpis bom">
+            <div class="kpis " id="kpiPercentualRam">
                 <p class="kpi-titulo"><b>Pico de percentual - M.RAM (%)</b></p>
-                <p id="kpiPercentualRam" class="kpi-dado"></p>
+                <p class="kpi-dado" id="KpiDadoRam"></p>
             </div>
             <div class="kpis">
                 <p class="kpi-titulo titulo-legenda"><b>Legenda</b></p>
@@ -441,7 +441,7 @@
 
     var comboBox = document.getElementById("comboBox");
     var chart = null;
-    
+
     comboBox.onchange = function () {
         var valorSelecionado = comboBox.value;
 
@@ -530,19 +530,19 @@
 
 
         // Adicionando gráfico criado em div na tela
-            if(chart !== null) {
-                chart.destroy()
-            }
+        if (chart !== null) {
+            chart.destroy()
+        }
 
-            chart = new Chart(document.getElementById(`linha_percentual_atividade`), config);
-        
+        chart = new Chart(document.getElementById(`linha_percentual_atividade`), config);
+
 
 
         setTimeout(() => atualizarGrafico(idTotem, dados, chart), 2000);
 
     }
 
-    
+
 
     function dadosMonitoramento(idTotem) {
         fetch(`/medidas/dadosMonitoramento/${idTotem}`).then(function (resposta) {
@@ -646,20 +646,21 @@
                     var metrica = resposta[0].cpuPorcMax;
 
                     var kpiPercentualCpuElement = document.getElementById("kpiPercentualCpu");
-                kpiPercentualCpuElement.innerHTML = `${percentual.toFixed(2)}%`;
+                    var kpiDadoCpu = document.getElementById("kpiDadoCpu")
+                    kpiDadoCpu.innerHTML = `${percentual.toFixed(2)}%`;
 
                     if (percentual >= metrica) {
-                        kpiPercentualCpu.classList.remove('bom')
-                        kpiPercentualCpu.classList.remove('alerta')
-                        kpiPercentualCpu.classList.add('critico')
-                    } else if (percentual > 0 && percentual <= 6) {
-                        kpiPercentualCpu.classList.remove('critico')
-                        kpiPercentualCpu.classList.remove('alerta')
-                        kpiPercentualCpu.classList.add('bom')
+                        kpiPercentualCpuElement.classList.remove('bom')
+                        kpiPercentualCpuElement.classList.remove('alerta')
+                        kpiPercentualCpuElement.classList.add('critico')
+                    } else if (percentual > 0 && percentual <= 50) {
+                        kpiPercentualCpuElement.classList.remove('critico')
+                        kpiPercentualCpuElement.classList.remove('alerta')
+                        kpiPercentualCpuElement.classList.add('bom')
                     } else {
-                        kpiPercentualCpu.classList.remove('bom')
-                        kpiPercentualCpu.classList.remove('critico')
-                        kpiPercentualCpu.classList.add('alerta')
+                        kpiPercentualCpuElement.classList.remove('bom')
+                        kpiPercentualCpuElement.classList.remove('critico')
+                        kpiPercentualCpuElement.classList.add('alerta')
                     }
                 })
             }
@@ -678,20 +679,21 @@
                     var metrica = resposta[0].memoriaRAMPorcMax;
 
                     var kpiPercentualRamElement = document.getElementById("kpiPercentualRam");
-                    kpiPercentualRamElement.innerHTML = `${percentual.toFixed(2)}%`;
-                   
+                    var kpiDadoRam = document.getElementById("KpiDadoRam")
+                    kpiDadoRam.innerHTML = `${percentual.toFixed(2)}%`;
+
                     if (percentual >= metrica) {
-                        kpiPercentualRam.classList.remove('bom')
-                        kpiPercentualRam.classList.remove('alerta')
-                        kpiPercentualRam.classList.add('critico')
-                    } else if (percentual > 0 && percentual <= 6) {
-                        kpiPercentualRam.classList.remove('critico')
-                        kpiPercentualRam.classList.remove('alerta')
-                        kpiPercentualRam.classList.add('bom')
+                        kpiPercentualRamElement.classList.remove('bom')
+                        kpiPercentualRamElement.classList.remove('alerta')
+                        kpiPercentualRamElement.classList.add('critico')
+                    } else if (percentual > 0 && percentual <= 50) {
+                        kpiPercentualRamElement.classList.remove('critico')
+                        kpiPercentualRamElement.classList.remove('alerta')
+                        kpiPercentualRamElement.classList.add('bom')
                     } else {
-                        kpiPercentualRam.classList.remove('bom')
-                        kpiPercentualRam.classList.remove('critico')
-                        kpiPercentualRam.classList.add('alerta')
+                        kpiPercentualRamElement.classList.remove('bom')
+                        kpiPercentualRamElement.classList.remove('critico')
+                        kpiPercentualRamElement.classList.add('alerta')
                     }
                 })
             }
@@ -722,6 +724,7 @@
             });
     }
 
+    var mychart = null
     function plotarGraficoBarra(resposta, fkEstabelecimento) {
 
 
@@ -777,11 +780,11 @@
 
 
         // Adicionando gráfico criado em div na tela
-        if (chart) {
-            chart.data = dados;
-            chart.update();
+        if (mychart) {
+            mychart.data = dados;
+            mychart.update();
         } else {
-            chart = new Chart(document.getElementById(`barra_fluxo_incidentes_semana`), config);
+            mychart = new Chart(document.getElementById(`barra_fluxo_incidentes_semana`), config);
         }
 
     }
