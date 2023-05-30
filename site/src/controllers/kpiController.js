@@ -4,7 +4,6 @@ var sessoes = [];
 
 function kpiPercentualCpu(req, res){
     var idTotem = req.params.idTotem
-  
 
     kpiModel.kpiPercentualCpu(idTotem).then(function(resultado){
         if(resultado.length > 0){
