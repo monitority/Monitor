@@ -6,6 +6,7 @@ function navBar(){
     if(permissao == "Gerente"){
         console.log("to na if da permissao gerente")
         nav_dashboard.style.display = "none";
+        nav_listaEstabelecimentos.style.display = "none";
     }else if(permissao == "Técnico"){
         console.log("to na if da permissao técnico")
         nav_ocorrencia.style.display = "none";

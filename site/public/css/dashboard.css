@@ -15,7 +15,7 @@ body{
     font-weight: 400;
     line-height: 1.5;
     text-align: left;
-    background-color: #d5d9dc;
+    background-color: #020E2C;
     width: 100%;
     height: 100%;
 }
@@ -61,10 +61,10 @@ main{
 .dashboard-kpis {
     display: grid;
     position: absolute;
-    height: 20vh;
-    width: 79%;
-    margin-left: 12%;
-    margin-top: 35vh;
+    height: 10vh;
+    width: 74%;
+    margin-left: 26%;
+    margin-top: 25vh;
     justify-content: center;
     grid-template-columns: 1fr 1fr 1fr 1fr;
 }
@@ -75,7 +75,7 @@ main{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: white;
+    background-color: rgb(249, 245, 245);
     border-radius: 15px;
     margin-left: 2vh;
     margin-right: 2vh;
@@ -192,9 +192,10 @@ main{
 .graficos-container {
     display: flex;
     position: relative;
-    width: 31vh;
+    width: 40%;;
     margin-top: 2vh;
     margin-bottom: 2vh;
+    height: 290px;
 }
 
 .container-grafico-linha-fluxo {
@@ -242,10 +243,21 @@ main{
     height: 49.58vh;
 }
 
-.sessao-categorias h2 {
-    margin-bottom: 6vh;
+.sessao-categorias .texto-comboBox h2 {
+    margin-bottom: 3vh;
     color: #99BB00;
     border-bottom: 1px solid #656565;
+}
+.sessao-categorias select {
+    margin-bottom: 2vh;
+}
+
+.texto-comboBox {
+    height: 16vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
 }
 
 
@@ -598,7 +610,13 @@ main{
 .graficos-container-sessoes {
     display: flex;
     position: relative;
-    width: 48vw;
+    width: 80%;
+    height: 400px;
+}
+
+.graficos-container-sessoes canvas {
+    width: 100%;
+    height: 400px;
 }
 
 /* Espacamento nos dados (quando filtram usando o "categorias" */

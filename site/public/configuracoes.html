@@ -25,88 +25,95 @@
 </head>
 
 <body onload="dadosCliente(), navBar()">
-        <!-- Div que contem a parte de navegação (parte verde do menu)-->
-        <div class="navegacao">
-          <ul class="navbar-nav">
-              <li class="nav-item">
-                  <!-- Foto De Perfil do USUARIO e o NOME do mesmo -->
-                  <div class="fotoDePerfil">
-                      <a href="#" class="nav-link">
-                          <!-- imagem do ICONE DA FOTO DE PERFIL-->
-                          <span class="icone"><i class="uil uil-user"></i> </span>
-                          <span class="titulo"><span id="b_usuario">usuário</span></span>
-                      </a>
-                  </div>
-              <li class="nav-item" id="nav_dashboard">
-                  <a href="dashboard-tecnico.html" class="nav-link">
-                      <!-- Imagem do ICONE DO planos-->
-                      <span class="icone"> <i class="uil  uil-chart-line"></i> </span>
-                      <span class="titulo"> Dashboard </span>
-                  </a>
-              </li>
-              <li class="nav-item" id="nav_painel">
-                  <a href="./dashboard-gerente.html" class="nav-link">
-                      <!--Imagem do ICONE DE ADICIONAR -->
-                      <span class="icone"> <i class="uil uil-bell"></i> </span>
-                      <span class="titulo"> Painel</span>
-                  </a>
-              </li>
-              <li class="nav-item" id="nav_ocorrencia">
-                  <a href="ocorrencias.html" class="nav-link">
-                      <!-- Imagem do ICONE DO planos-->
-                      <span class="icone"> <i class="uil  uil-clipboard"></i> </span>
-                      <span class="titulo"> Ocorrências </span>
-                  </a>
-              </li>
-              <li class="nav-item" id="nav_estabelecimento">
-                  <a href="./telaCadastroEstabelecimento.html" class="nav-link">
-                      <!--Imagem do ICONE DE ADICIONAR -->
-                      <span class="icone"> <i class="uil uil-estate"></i> </span>
-                      <span class="titulo"> Estabelecimento</span>
-                  </a>
-              </li>
-              <li class="nav-item" id="nav_totem">
-                  <a href="./telaCadastroTotem.html" class="nav-link">
-                      <!--Imagem do ICONE DE ADICIONAR -->
-                      <span class="icone"> <i class="uil uil-server-connection"></i> </span>
-                      <span class="titulo"> Cadastrar Totem</span>
-                  </a>
-              </li>
-              <li class="nav-item" id="nav_func">
-                  <a href="./telaCadastroFunc.html" class="nav-link">
-                      <!--Imagem do ICONE DE ADICIONAR -->
-                      <span class="icone"> <i class="uil uil-user-plus"></i> </span>
-                      <span class="titulo"> Funcionario</span>
-                  </a>
-              </li>
-              <!-- </div> -->
-              <li class="nav-item" >
-                  <a href="configuracoes.html" class="nav-link">
-                      <!-- Imagem do ICONE DE CONFIGURAÇÕES -->
-                      <span class="icone"><i class="uil uil-cog"></i></span>
-                      <span class="titulo"> Configurações</span>
-                  </a>
-              </li>
-              <li class="nav-item">
-                  <a href="" class="nav-link">
-                      <!-- Imagem do ICONE DE SUPORTE -->
-                      <span class="icone"><i class="uil uil-comment-question"></i>
-                      </span>
-                      <span class="titulo"> Suporte</span>
-                  </a>
-              </li>
-              <li class="nav-item">
-                  <a href="./index.html" class="nav-link">
-                      <!-- Botão de Sair  -->
-                      <span class="icone"><i class="uil uil-signout"></i> </span>
-                      <span class="titulo"> Sair </span>
-                  </a>
-              </li>
-          </ul>
-      </div>
+  <!-- Div que contem a parte de navegação (parte verde do menu)-->
+  <div class="navegacao">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <!-- Foto De Perfil do USUARIO e o NOME do mesmo -->
+        <div class="fotoDePerfil">
+          <a href="#" class="nav-link">
+            <!-- imagem do ICONE DA FOTO DE PERFIL-->
+            <span class="icone"><i class="uil uil-user"></i> </span>
+            <span class="titulo"><span id="b_usuario">usuário</span></span>
+          </a>
+        </div>
+      <li class="nav-item" id="nav_listaEstabelecimentos">
+        <a href="lista-estabelecimentos.html" class="nav-link">
+          <!-- Imagem do ICONE DO planos-->
+          <span class="icone"> <i class="uil  uil-align-justify"></i> </span>
+          <span class="titulo"> Lista Estabelecimentos </span>
+        </a>
+      </li>
+      <li class="nav-item" id="nav_dashboard">
+        <a href="dashboard-tecnico.html" class="nav-link">
+          <!-- Imagem do ICONE DO planos-->
+          <span class="icone"> <i class="uil  uil-chart-line"></i> </span>
+          <span class="titulo"> Dashboard </span>
+        </a>
+      </li>
+      <li class="nav-item" id="nav_painel">
+        <a href="./dashboard-gerente.html" class="nav-link">
+          <!--Imagem do ICONE DE ADICIONAR -->
+          <span class="icone"> <i class="uil uil-bell"></i> </span>
+          <span class="titulo"> Painel</span>
+        </a>
+      </li>
+      <li class="nav-item" id="nav_ocorrencia">
+        <a href="ocorrencias.html" class="nav-link">
+          <!-- Imagem do ICONE DO planos-->
+          <span class="icone"> <i class="uil  uil-clipboard"></i> </span>
+          <span class="titulo"> Ocorrências </span>
+        </a>
+      </li>
+      <li class="nav-item" id="nav_estabelecimento">
+        <a href="./telaCadastroEstabelecimento.html" class="nav-link">
+          <!--Imagem do ICONE DE ADICIONAR -->
+          <span class="icone"> <i class="uil uil-estate"></i> </span>
+          <span class="titulo"> Estabelecimento</span>
+        </a>
+      </li>
+      <li class="nav-item" id="nav_totem">
+        <a href="./telaCadastroTotem.html" class="nav-link">
+          <!--Imagem do ICONE DE ADICIONAR -->
+          <span class="icone"> <i class="uil uil-server-connection"></i> </span>
+          <span class="titulo"> Cadastrar Totem</span>
+        </a>
+      </li>
+      <li class="nav-item" id="nav_func">
+        <a href="./telaCadastroFunc.html" class="nav-link">
+          <!--Imagem do ICONE DE ADICIONAR -->
+          <span class="icone"> <i class="uil uil-user-plus"></i> </span>
+          <span class="titulo"> Funcionario</span>
+        </a>
+      </li>
+      <!-- </div> -->
+      <li class="nav-item">
+        <a href="configuracoes.html" class="nav-link">
+          <!-- Imagem do ICONE DE CONFIGURAÇÕES -->
+          <span class="icone"><i class="uil uil-cog"></i></span>
+          <span class="titulo"> Configurações</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="" class="nav-link">
+          <!-- Imagem do ICONE DE SUPORTE -->
+          <span class="icone"><i class="uil uil-comment-question"></i>
+          </span>
+          <span class="titulo"> Suporte</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="./index.html" class="nav-link">
+          <!-- Botão de Sair  -->
+          <span class="icone"><i class="uil uil-signout"></i> </span>
+          <span class="titulo"> Sair </span>
+        </a>
+      </li>
+    </ul>
+  </div>
 
-    <!-- Seção das configs -->
-    <main>
+  <!-- Seção das configs -->
+  <main>
     <section class="container">
       <div class="config-titulo">
         <h1>Configurações</h1>
@@ -148,7 +155,7 @@
   <footer>
     <!--Espaço vazio no fim do dashboard-->
     <div class="footer-space"></div>
-</footer>
+  </footer>
 </body>
 
 </html>
@@ -159,46 +166,46 @@
 <script>
 
   function dadosCliente() {
-      fetch(`/usuarios/dados/${sessionStorage.ID_USUARIO}`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
+    fetch(`/usuarios/dados/${sessionStorage.ID_USUARIO}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then(function (resposta) {
+        if (resposta.ok) {
+          resposta.json().then((json) => {
+            console.log(json);
+            get = (json)
+
+            //username do Usuario
+            var email_usuario = get[0].email;
+            span_user.innerHTML = email_usuario;
+
+            //senha do usuario
+
+            var tamanhoSenha = atob(get[0].senha)
+            var visualSenha = ""
+
+            for (var a = 0; a < tamanhoSenha.length; a++) {
+              visualSenha += '*'
+            }
+
+            var senha_usuario = atob(get[0].senha);
+            span_senha.innerHTML = visualSenha;
+
+            //telefone do usuario
+
+            var telefone_usuario = get[0].tel;
+            span_telefone.innerHTML = telefone_usuario;
+
+          });
+        }
       })
-        .then(function (resposta) {
-          if (resposta.ok) {
-            resposta.json().then((json) => {
-              console.log(json);
-              get = (json)
-              
-              //username do Usuario
-              var email_usuario = get[0].email;
-              span_user.innerHTML = email_usuario;
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
 
-              //senha do usuario
-
-              var tamanhoSenha = atob(get[0].senha)
-              var visualSenha = ""
-
-              for(var a = 0; a < tamanhoSenha.length ; a++) {
-                visualSenha += '*'
-              }
-
-              var senha_usuario = atob(get[0].senha);
-              span_senha.innerHTML = visualSenha;
-
-              //telefone do usuario
-
-              var telefone_usuario = get[0].tel;
-              span_telefone.innerHTML = telefone_usuario;
-              
-            });
-          }
-        })
-        .catch(function (resposta){
-          console.log(`#ERRO: ${resposta}`);
-        });
-      
-    }
+  }
 
 </script>
