@@ -21,7 +21,7 @@ function kpiPercentualCpu(req, res){
 function kpiPercentualRam(req, res){
     var idTotem = req.params.idTotem
 
-    kpiModel.kpiPercentualCpu(idTotem).then(function(resultado){
+    kpiModel.kpiPercentualRam(idTotem).then(function(resultado){
         if(resultado.length > 0){
             res.status(200).json(resultado);
         }else{

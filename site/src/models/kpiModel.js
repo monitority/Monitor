@@ -11,7 +11,7 @@ function kpiPercentualCpu(idTotem) {
         SELECT TOP 10 processadorPorc
         FROM [dbo].[Dados] d
         JOIN [dbo].[totem] ON idTotem = d.fkTotem
-        WHERE idTotem = 5
+        WHERE idTotem = ${idTotem}
         ORDER BY id DESC
     ) AS subquery
     ) AS subquery_resultado
@@ -31,16 +31,16 @@ function kpiPercentualRam(idTotem) {
     var instrucao = `
     SELECT maior_valor, m.*
         FROM (
-    SELECT MAX(processadorPorc) AS maior_valor
+    SELECT MAX(memoriaPorc) AS maior_valor
     FROM (
-        SELECT TOP 10 processadorPorc
+        SELECT TOP 10 memoriaPorc
         FROM [dbo].[Dados] d
         JOIN [dbo].[totem] ON idTotem = d.fkTotem
-        WHERE idTotem = 5
+        WHERE idTotem = ${idTotem}
         ORDER BY id DESC
     ) AS subquery
     ) AS subquery_resultado
-    JOIN [dbo].[Dados] d ON d.processadorPorc = subquery_resultado.maior_valor
+    JOIN [dbo].[Dados] d ON d.memoriaPorc = subquery_resultado.maior_valor
     JOIN [dbo].[totem] ON idTotem = d.fkTotem
     join [dbo].[metricaAviso] m on d.fkMetricaAviso = m.idMetricaAviso 
     WHERE idTotem = ${idTotem}

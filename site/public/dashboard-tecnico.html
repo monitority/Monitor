@@ -112,9 +112,9 @@
 
         <!--Sessão de KPIs-->
         <div class="dashboard-kpis">
-            <div class="kpis critico">
+            <div class="kpis critico" >
                 <p class="kpi-titulo "><b>Pico de percentual - CPU (%)</b></p>
-                <p id="kpiPercentualCpu" class="kpi-dado"></p>
+                    <p class="kpi-dado" id="kpiPercentualCpu"></p>
             </div>
             <div class="kpis bom">
                 <p class="kpi-titulo"><b>Pico de percentual - M.RAM (%)</b></p>
@@ -476,7 +476,7 @@
     }
 
     function plotarGrafico(resposta, idTotem) {
-
+        console.log(chart)
 
         console.log('iniciando plotagem do gráfico...');
 
@@ -502,9 +502,9 @@
             }]
         };
 
-        console.log('----------------------------------------------')
-        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
-        console.log(resposta)
+        // console.log('----------------------------------------------')
+        // console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+        // console.log(resposta)
 
         // Inserindo valores recebidos em estrutura para plotar o gráfico
         for (i = 0; i < resposta.length; i++) {
@@ -514,13 +514,13 @@
             dados.datasets[1].data.push(registro.memoria);
         }
 
-        console.log('----------------------------------------------')
-        console.log('O gráfico será plotado com os respectivos valores:')
-        console.log('Labels:')
-        console.log(labels)
-        console.log('Dados:')
-        console.log(dados.datasets)
-        console.log('----------------------------------------------')
+        // console.log('----------------------------------------------')
+        // console.log('O gráfico será plotado com os respectivos valores:')
+        // console.log('Labels:')
+        // console.log(labels)
+        // console.log('Dados:')
+        // console.log(dados.datasets)
+        // console.log('----------------------------------------------')
 
         // Criando estrutura para plotar gráfico - config
         const config = {
@@ -530,7 +530,10 @@
 
 
         // Adicionando gráfico criado em div na tela
-      
+            if(chart !== null) {
+                chart.destroy()
+            }
+
             chart = new Chart(document.getElementById(`linha_percentual_atividade`), config);
         
 
@@ -584,7 +587,7 @@
             if (response.ok) {
                 response.json().then(function (novoRegistro) {
 
-                    obterdados(idTotem);
+                    // obterdados(idTotem);
                     // alertar(novoRegistro, idTotem);
                     console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
                     console.log(`Dados atuais do gráfico:`);
@@ -638,11 +641,13 @@
                 }
                 resposta.json().then(function (resposta) {
                     console.log("Dados recebidos: ", JSON.stringify(resposta))
-
+                    console.log(resposta)
                     var percentual = resposta[0].maior_valor;
-                    var metrica = resposta[3].cpuPorcMax;
+                    var metrica = resposta[0].cpuPorcMax;
 
-                    kpiPercentualCpu.innerHTML = `${percentual}%`
+                    var kpiPercentualCpuElement = document.getElementById("kpiPercentualCpu");
+                kpiPercentualCpuElement.innerHTML = `${percentual.toFixed(2)}%`;
+
                     if (percentual >= metrica) {
                         kpiPercentualCpu.classList.remove('bom')
                         kpiPercentualCpu.classList.remove('alerta')
@@ -670,9 +675,11 @@
                 resposta.json().then(function (resposta) {
                     console.log("Dados recebidos: ", JSON.stringify(resposta))
                     var percentual = resposta[0].maior_valor;
-                    var metrica = resposta[2].memoriaRAMPorcMax;
+                    var metrica = resposta[0].memoriaRAMPorcMax;
 
-                    kpiPercentualRam.innerHTML = `${percentual}%`
+                    var kpiPercentualRamElement = document.getElementById("kpiPercentualRam");
+                    kpiPercentualRamElement.innerHTML = `${percentual.toFixed(2)}%`;
+                   
                     if (percentual >= metrica) {
                         kpiPercentualRam.classList.remove('bom')
                         kpiPercentualRam.classList.remove('alerta')

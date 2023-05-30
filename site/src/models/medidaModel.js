@@ -34,7 +34,7 @@ function buscarMedidasEmTempoReal(idTotem) {
         instrucaoSql = `select top 1
         processadorPorc as processador, 
         memoriaPorc as memoria,  
-        CONVERT(varchar, dataHora, 108) as momento_grafico, 
+        CONVERT(varchar, dataHora, 108) as momento_grafico 
         from Dados where fkTotem = ${idTotem}
         order by id desc`;
 
@@ -42,7 +42,7 @@ function buscarMedidasEmTempoReal(idTotem) {
         instrucaoSql = `select
         processadorPorc as processador, 
         memoriaPorc as memoria,  
-        DATE_FORMAT( dataHora,'%H:%i:%s') as momento_grafico, 
+        DATE_FORMAT( dataHora,'%H:%i:%s') as momento_grafico
         from Dados where fkTotem = ${idTotem}
         order by id desc limit 1
        `;
