@@ -732,18 +732,23 @@
     }
 
     var mychart = null
-    function plotarGraficoBarra(resposta, fkEstabelecimento) {
+    function plotarGraficoBarra() {
 
 
         console.log('iniciando plotagem do gráfico...');
 
-        let labels = [];
+        let labels = [
+        'semana1',
+            'semana2',
+            'semana3',
+            'semana4'
+        ];
 
         let dados = {
             labels: labels,
             datasets: [{
                 label: 'CPU',
-                data: [],
+                data: [5,4,8,1],
                 fill: false,
                 backgroundColor: '#020E2C',
                 borderColor: '#020E2C',
@@ -751,7 +756,7 @@
             },
             {
                 label: 'Memória',
-                data: [],
+                data: [6,3,4,7],
                 fill: false,
                 backgroundColor: '#99BB00',
                 borderColor: '#99BB00',
@@ -759,25 +764,7 @@
             }]
         };
 
-        console.log('----------------------------------------------')
-        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
-        console.log(resposta)
-
-        // Inserindo valores recebidos em estrutura para plotar o gráfico
-        for (i = 0; i < resposta.length; i++) {
-            var registro = resposta[i];
-            labels.push(registro.semana);
-            dados.datasets[0].data.push(registro.numero_ocorrencias);
-            dados.datasets[1].data.push(registro.problema);
-        }
-
-        console.log('----------------------------------------------')
-        console.log('O gráfico será plotado com os respectivos valores:')
-        console.log('Labels:')
-        console.log(labels)
-        console.log('Dados:')
-        console.log(dados.datasets)
-        console.log('----------------------------------------------')
+        
 
         // Criando estrutura para plotar gráfico - config
         const config = {
@@ -785,14 +772,8 @@
             data: dados,
         };
 
-
-        // Adicionando gráfico criado em div na tela
-        if (mychart) {
-            mychart.data = dados;
-            mychart.update();
-        } else {
-            mychart = new Chart(document.getElementById(`barra_fluxo_incidentes_semana`), config);
-        }
+        mychart = new Chart(document.getElementById(`barra_fluxo_incidentes_semana`), config);
+    
 
     }
 

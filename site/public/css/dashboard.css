@@ -573,7 +573,7 @@ main{
 .sessao-graficos {
     display: flex;
     flex-direction: column;
-    height: 60vh;
+    height: 68vh;
     width: 77.5%;
     margin-left: 13.2vw;
 }
@@ -582,7 +582,7 @@ main{
     display: flex;
     position: absolute;
     justify-content: center;
-    height: 60vh;
+    height: 65vh;
     width: 100%;
     margin-top: 270vh;
 }
