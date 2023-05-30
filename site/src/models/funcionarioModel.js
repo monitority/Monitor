@@ -16,7 +16,7 @@ function listar(idEmpresa, filtro) {
 
     if (filtro == 1) {
         var instrucao = `
-            SELECT nomeUsuario, email, senha, cargo, permissao, tel FROM usuario where fkEmpresa = ${idEmpresa};
+            SELECT idUsuario, nomeUsuario, email, senha, cargo, permissao, tel FROM usuario where fkEmpresa = ${idEmpresa};
             `
     }else if (filtro == 2) {
         var instrucao = `
@@ -33,7 +33,17 @@ function listar(idEmpresa, filtro) {
     return database.executar(instrucao);
 }
 
+function excluirFunc(idfunc) {
+    console.log("ACESSEI O Totem MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function excluirFunc()");
+    var instrucao = `
+        DELETE FROM usuario where idUsuario = ${idfunc};
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 module.exports = {
     cadastrarFuncionario,
     listar,
+    excluirFunc,
 }
