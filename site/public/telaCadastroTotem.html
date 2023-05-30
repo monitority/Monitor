@@ -201,7 +201,7 @@
         <img src="./assets/imgs/logoHome.png" alt="" class="img-modal">
       </div>
       <div class="modal-esquerda">
-        <span class="close">&times;</span>
+        <span class="close" onclick="closeModal()">&times;</span>
       </div>
     </div>
     <div class="modal-body">
@@ -212,7 +212,7 @@
           </div>
           <div class="containerInput">
             <input class="input-margin" placeholder="Processador" id="input_processador">
-            
+
           </div>
           <div class="containerInput">
             <input class="input-margin" placeholder="Placa Mãe" id="input_plca_mae">
@@ -221,24 +221,24 @@
         <div class="lado-esquerdo-modal">
           <div class="containerInput">
             <input class="input-margin" placeholder="Ram" id="input_Ram">
+          </div>
+          <div class="containerInput">
+            <input class="input-margin" placeholder="Armazenamento em Disco" id="input_armazenamento">
+          </div>
+          <div class="containerInput">
+            <select class="input-margin" name="select" id="input_so">
+              <option value="">Selecione um SO</option>
+              <option value="Linux">Linux</option>
+              <option value="Windows">Windows</option>
+              <option value="Android">Android</option>
+              <option value="Mac">Mac</option>
+            </select>
+            </select>
+          </div><!-- Container input-->
         </div>
-        <div class="containerInput">
-          <input class="input-margin" placeholder="Armazenamento em Disco" id="input_armazenamento">
-        </div>
-        <div class="containerInput">
-          <select class="input-margin" name="select" id="input_so">
-            <option value="">Selecione um SO</option>
-            <option value="Linux">Linux</option>
-            <option value="Windows">Windows</option>
-            <option value="Android">Android</option>
-            <option value="Mac">Mac</option>
-          </select>
-        </select>
-      </div><!-- Container input-->
-    </div>
-  </div>
+      </div>
       <div class="botao">
-        <button onclick="closeModal(), atualizarDados( 'totem',[{modelo: input_modelo.value, input_processador.value, input_plca_mae.value, input_Ram.value, input_Ram.value, input_armazenamento.value, input_so.value}])">Confirmar</button>
+        <button id="btnAtt">Confirmar</button>
       </div>
     </div>
     <div class="modal-footer">
@@ -258,6 +258,44 @@
   var sessionIdEmpresa = sessionStorage.ID_EMPRESA;
   var sessionFkEmpresa = sessionStorage.FK_EMPRESA;
   var idEmpresa = 0;
+  const botao = document.querySelector('#btnAtt')
+  botao.addEventListener('click', function () {
+    var coluna1 = 'modelo'
+    var coluna2 = 'processadorModelo'
+    var coluna3 = 'placaMaeModelo'
+    var coluna4 = 'memoriaRAMModelo'
+    var coluna5 = 'armazenamentoModelo'
+    var coluna6 = 'sistemaOperacional'
+
+    var dados = [
+      {
+        valor: `${input_modelo.value}`,
+        coluna: coluna1
+      },
+      {
+        valor: `${input_processador.value}`,
+        coluna: coluna2
+      },
+      {
+        valor: `${input_plca_mae.value}`,
+        coluna: coluna3
+      },
+      {
+        valor: `${input_Ram.value}`,
+        coluna: coluna4
+      },
+      {
+        valor: `${input_armazenamento.value}`,
+        coluna: coluna5
+      },
+      {
+        valor: `${input_so.value}`,
+        coluna: coluna6
+      }]
+
+    atualizarDados('totem', dados)
+    closeModal()
+  })
 
   function buscarDadoEstabelecimento() {
     if (sessionIdEmpresa > 0) {
@@ -296,8 +334,6 @@
       });
     buscarDadoTotem();
   }
-
-
 
   function cadastrarTotem() {
     var fkEstabelecimento = inputEstabelecimento.value
@@ -406,7 +442,7 @@
                       </div>
                       <div class="estilo-atributos">
                         <h5>Ram:</h5>
-                        <p>${publicacao.ramModelo}</p>
+                        <p>${publicacao.memoriaRAMModelo}</p>
                       </div>
                       <div class="estilo-atributos">
                         <h5>Armazenamento:</h5>

@@ -18,11 +18,19 @@ function excluirTotem(idTotem) {
     return database.executar(instrucao);
 }
 
-function atualizar(idUpdate, novoDado, tabela) {
-    console.log("ACESSEI O Totem MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function atualizar() QUE ATUALIZA TODOS AS TABELAS" + ` idUpadate: ${idUpdate}, Novo dado ${novoDado}, ${tabela} `);
-    var instrucao = `
-        UPDATE Totem SET nome = '${nome}', fkEndereco = '${fkEndereco}', fkMetricaAviso = '${fkMetricaAviso}' WHERE idTotem = '${idTotem}';
-    `;
+function atualizar(idUpdate, novoDado, tabela, coluna) {
+    console.log("ACESSEI O Totem MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function atualizar() QUE ATUALIZA TODOS AS TABELAS" + ` idUpadate: ${idUpdate}, Novo dado ${novoDado}, tabela ${tabela} coluna${coluna}`);
+    
+    if(tabela == 'totem'){
+        var instrucao = `
+        UPDATE ${tabela} SET ${coluna} = ${novoDado} WHERE idTotem = ${idUpdate};
+        `;
+        
+    }else if(tabela == 'usuario'){
+        var instrucao = `
+        UPDATE ${tabela} SET ${coluna} = ${novoDado} WHERE idUsuario = ${idUpdate};
+        `
+    }
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
@@ -53,7 +61,7 @@ function buscarDadosEstabelecimentos(fkEmpresa) {
 module.exports = {
     listar,
     excluirTotem,
-    atualizarTotem,
+    atualizar,
     cadastrarTotem,
     buscarDadosEstabelecimentos,
 };

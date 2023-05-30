@@ -16,7 +16,7 @@ function listar(idEmpresa, filtro) {
 
     if (filtro == 1) {
         var instrucao = `
-            SELECT nomeUsuario, email, senha, cargo, permissao, tel FROM usuario where fkEmpresa = ${idEmpresa};
+            SELECT idUsuario, nomeUsuario, email, senha, cargo, permissao, tel FROM usuario where fkEmpresa = ${idEmpresa};
             `
     }else if (filtro == 2) {
         var instrucao = `

@@ -46,9 +46,9 @@ function excluirTotem(req, res) {
 function atualizar(req, res) {
     var idUpdate = req.params.idUpdate;
     var novoDado = req.params.novoDado;
-    var tabela = req.params.tabela
-
-    totemModel.atualizar(idUpdate, novoDado, tabela)
+    var tabela = req.params.tabela;
+    var coluna = req.params.coluna;
+    totemModel.atualizar(idUpdate, novoDado, tabela, coluna)
         .then(function (resultado) {
             if (resultado.length > 0) {
                 res.status(200).json(resultado);

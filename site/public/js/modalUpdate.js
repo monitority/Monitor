@@ -1,64 +1,63 @@
-const modal = document.querySelector('#my-modal');
+const modal = document.getElementById('my-modal');
 var idUpdate
 // Open
 function openModal(idTotemRecebido) {
-    my_modal.style.display = 'block';
-    idUpdate = idTotemRecebido
+  my_modal.style.display = 'block';
+  idUpdate = idTotemRecebido
+  console.log('estou no open modal para salvar o idUpdate' + idUpdate)
+
 }
 
 // Close
 function closeModal() {
-    my_modal.style.display = 'none';
+  my_modal.style.display = 'none';
 }
 
-function openModal2() {
-   modal2.style.display = 'block';
-}
-
-// Close
-function closeModal2() {
-   modal2.style.display = 'none';
-}
 
 // Close If Outside Click
 function outsideClick(e) {
-    if (e.target == modal) {
-        my_modal.style.display = 'none';
-    }
+  if (e.target == modal) {
+    my_modal.style.display = 'none';
+  }
 }
 
-function atualizarDados(tabela ,dadoRecebidos){
-    for(var i = 0; i < dadoRecebidos.lenght; i++){
-        if(dadoRecebidos[i] != undefined){
-            fetch(`/totem/update/${tabela}/${idUpdate}/${dadoRecebidos[i]}`, {
-                method: "PUT",
-                headers: {
-                  "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                  valorDado: valor
-                })
-              }).then(function (resposta) {
-                
-                if (resposta.ok) {
-                  Swal.fire({
-                    icon: 'success',
-                    title: 'Parabéns',
-                    text: 'Username atualizado com sucesso!',
-                    })
-                  
-                } else if (resposta.status == 404) {
-                  Swal.fire({
-                    icon: 'error',
-                    title: 'Ops...',
-                    text: 'Deu 404!',
-                    })
-                } else {
-                  throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
-                }
-              }).catch(function (resposta) {
-                console.log(`#ERRO: ${resposta}`);
-              })
+function atualizarDados(tabela, dadoRecebidos) {
+  console.log('To na atualizardados do modalupdate ' + JSON.stringify(dadoRecebidos))
+  for (var i = 0; i < dadoRecebidos.length; i++) {
+    if (dadoRecebidos[i].valor != undefined) {
+      const novoDadoJSON = JSON.stringify(dadoRecebidos[i].valor)
+      const novoDado = novoDadoJSON.replace(/"/g, "'")
+      console.log("AQUI TA OS DADOS FORMATADOS COM UMA ASPAS SÓ" + novoDado)
+      const coluna = JSON.stringify(dadoRecebidos[i].coluna)
+      console.log('Dado e coluna' + novoDado + ', ' + coluna
+      
+      )
+      fetch(`/totem/update/${tabela}/${idUpdate}/${novoDado}/${coluna}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json"
+        },
+      }).then(function (resposta) {
+
+        if (resposta.ok) {
+          Swal.fire({
+            icon: 'success',
+            title: 'Parabéns',
+            text: 'Username atualizado com sucesso!',
+          })
+
+        } else if (resposta.status == 404) {
+          Swal.fire({
+            icon: 'error',
+            title: 'Ops...',
+            text: 'Deu 404!',
+          })
+        } else {
+          throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
         }
+      }).catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      })
     }
+  }
 }

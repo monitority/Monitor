@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Monitority - Cadastro Funcionario</title>
 
-  <link rel="stylesheet" href="./css/telaCadastroFunc.css">
+  <link rel="stylesheet" href="./css/telaCadastroTotem.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
@@ -21,10 +21,12 @@
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
   <!-- <script src="./js/funcao.js"></script> -->
   <script src="./js/perfil-validacao.js"></script>
-
+  <script src="./js/filtro_login.js"></script>
+  <script src="./js/modalUpdate.js"></script>
+  <link rel="stylesheet" href="./css/update.css">
 </head>
 
-<body onload="buscarDadoFuncionario()">
+<body onload="buscarDadoFuncionario(), navBar()">
   <main>
     <!-- Div que contem a parte de navegação (parte verde do menu)-->
     <div class="navegacao">
@@ -172,6 +174,67 @@
             CADASTRAR
           </button>
           <hr />
+
+          <!-- para alterar o funcionario -->
+          <div id="my_modal" class="modal">
+            <div class="modal-content">
+              <div class="modal-header">
+                <div class="modal-direita">
+                  <h2>Editar Totem</h2>
+                </div>
+                <div class="logo-header">
+                  <img src="./assets/imgs/logoHome.png" alt="" class="img-modal">
+                </div>
+                <div class="modal-esquerda">
+                  <span class="close" onclick="closeModal()">&times;</span>
+                </div>
+              </div>
+              <div class="modal-body">
+                <div class="modal-meio">
+                  <div class="lado-direito-modal">
+                    <div class="containerInput">
+                      <input class="input-margin" placeholder="Thiago" id="input_nome">
+                    </div>
+                    <div class="containerInput">
+                      <input class="input-margin" placeholder="Senha@123" id="input_senha">
+          
+                    </div>
+                    <div class="containerInput">
+                      <input class="input-margin" placeholder="(XX)xxxxx-xxxx" id="input_tel">
+                    </div>
+                  </div>
+                  <div class="lado-esquerdo-modal">
+                    <div class="containerInput">
+                      <input class="input-margin" placeholder="xpto@sptech.school" id="input_email">
+                    </div>
+                    <div class="containerInput">
+                      <select class="input-margin" name="select" id="input_cargo">
+                        <option value="Gerente">Gerente</option>
+                        <option value="Senior">Senior</option>
+                        <option value="Pleno">Pleno</option>
+                        <option value="Junior">Junior</option>
+                      </select>
+                    </div>
+                    <div class="containerInput">
+                      <select class="input-margin" name="select" id="input_permissao">
+                        <option value="">Selecione</option>
+                        <option value="Gerente">Gerente</option>
+                        <option value="Técnico">Técnico</option>
+                      </select>
+                    </div><!-- Container input-->
+                  </div>
+                </div>
+                <div class="botao">
+                  <button id="btnAtt">Confirmar</button>
+                </div>
+              </div>
+              <div class="modal-footer">
+          
+              </div>
+            </div>
+          </div>
+
+
           <div id="tabela_funcionarios" class="tabela-funcionarios">
             <h3>FUNCIONÁRIOS</h3>
           </div>
@@ -244,7 +307,7 @@
 
               tabelaFuncionarios.innerHTML += `
                         
-              <div class="func" id="${i}">
+              <div class="func" id="${publicacao.idUsuario}">
                       <div class="estilo-atributos">
                         <h5>Login:</h5>
                         <p>${publicacao.email}</p>
@@ -269,7 +332,10 @@
                         <h5>Permissão:</h5>
                         <p>${publicacao.permissao}</p>
                       </div>
-                        <button class="removerCard" onclick="removerCard(${publicacao.idPerfil})">Remover</button>                     
+                      <div class="btns-cards">
+                        <button class="removerCard" onclick="removerCard(${publicacao.idUsuario})">Remover</button>   
+                        <button class="removerCard" onclick="openModal(${publicacao.idUsuario})" >Editar</button>
+                      </div>                  
                   </div>
                     `;
             }
@@ -345,6 +411,44 @@
     return false;
   }
 
+  const botao = document.querySelector('#btnAtt')
+  botao.addEventListener('click', function () {
+    var coluna1 = 'nomeUsuario'
+    var coluna2 = 'senha'
+    var coluna3 = 'email'
+    var coluna4 = 'tel'
+    var coluna5 = 'cargo'
+    var coluna6 = 'permissao'
+
+    var dados = [
+      {
+        valor: `${input_nome.value}`,
+        coluna: coluna1
+      },
+      {
+        valor: `${btoa(input_senha.value)}`,
+        coluna: coluna2
+      },
+      {
+        valor: `${input_email.value}`,
+        coluna: coluna3
+      },
+      {
+        valor: `${input_tel.value}`,
+        coluna: coluna4
+      },
+      {
+        valor: `${input_cargo.value}`,
+        coluna: coluna5
+      },
+      {
+        valor: `${input_permissao.value}`,
+        coluna: coluna6
+      }]
+
+    atualizarDados('usuario', dados)
+    closeModal()
+  })
   // verificarFuncao()
   // verificarAdmin();
   // function verificarAdmin() {

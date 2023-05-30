@@ -15,7 +15,7 @@ router.delete("/excluir/:idTotem", function (req, res) {
     totemController.excluirTotem(req, res);
 });
 
-router.put("/update/:tabela/:idUpdate/:novoDado", function (req, res) {
+router.put("/update/:tabela/:idUpdate/:novoDado/:coluna", function (req, res) {
     totemController.atualizar(req, res);
 });
 
