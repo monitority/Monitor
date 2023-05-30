@@ -30,6 +30,10 @@ function atualizar(idUpdate, novoDado, tabela, coluna) {
         var instrucao = `
         UPDATE ${tabela} SET ${coluna} = ${novoDado} WHERE idUsuario = ${idUpdate};
         `
+    }else if(tabela == 'estabelecimento'){
+        var instrucao = `
+        UPDATE ${tabela} SET ${coluna} = ${novoDado} WHERE idEstabelecimento = ${idUpdate};
+        `
     }
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);

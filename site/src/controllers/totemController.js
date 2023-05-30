@@ -1,3 +1,4 @@
+const { Table } = require("mssql");
 var totemModel = require("../models/totemModel");
 
 var sessoes = [];
@@ -48,6 +49,8 @@ function atualizar(req, res) {
     var novoDado = req.params.novoDado;
     var tabela = req.params.tabela;
     var coluna = req.params.coluna;
+    console.log(`ESTOU NA TOTEM CONTROLLER ATUALIZAR
+    ID ${idUpdate} DADO ${novoDado} TABELA ${tabela} COLUNA${coluna}`)
     totemModel.atualizar(idUpdate, novoDado, tabela, coluna)
         .then(function (resultado) {
             if (resultado.length > 0) {

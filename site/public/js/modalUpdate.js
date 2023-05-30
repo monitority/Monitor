@@ -29,9 +29,7 @@ function atualizarDados(tabela, dadoRecebidos) {
       const novoDado = novoDadoJSON.replace(/"/g, "'")
       console.log("AQUI TA OS DADOS FORMATADOS COM UMA ASPAS SÓ" + novoDado)
       const coluna = JSON.stringify(dadoRecebidos[i].coluna)
-      console.log('Dado e coluna' + novoDado + ', ' + coluna
-      
-      )
+      console.log(`ÌD ${idUpdate} DADO ${novoDado} TABELA ${tabela} COLUNA${coluna}`)
       fetch(`/totem/update/${tabela}/${idUpdate}/${novoDado}/${coluna}`, {
         method: "PUT",
         headers: {

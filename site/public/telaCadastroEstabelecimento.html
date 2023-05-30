@@ -242,10 +242,10 @@
                   <input class="input-margin" placeholder="Métrica Ram" id="input_email">
               </div>
               <div class="containerInput">
-                <select class="input-margin" name="select" id="input_permissao">
+                <select class="input-margin" name="select" id="input_prioridade">
                   <option value="">Prioridade</option>
-                  <option value="Gerente">Normal</option>
-                  <option value="Técnico">Vip</option>
+                  <option value="Normal">Normal</option>
+                  <option value="Vip">Vip</option>
                 </select>
               </div><!-- Container input-->
             </div>
@@ -416,7 +416,7 @@
 
               tabelaFuncionarios.innerHTML += `
                         
-              <div class="func" id="${i}">
+              <div class="func" id="${publicacao.idEstabelecimento}">
                       <div class="estilo-atributos">
                         <h5>Nome estabelecimento:</h5>
                         <p>${publicacao.nome}</p>
@@ -450,8 +450,8 @@
                         <p>${publicacao.prioridade}</p>
                       </div>
                       <div class="btns-cards">
-                        <button class="removerCard" onclick="removerCard(${publicacao.idEstabelecimento})">Remover</button>
-                        <button class="removerCard" onclick="openModal(${publicacao.idUsuario})" >Editar</button>
+                        <button class="removerCard" onclick="removerCardEstabelecimento(${publicacao.idEstabelecimento})">Remover</button>
+                        <button class="removerCard" onclick="openModal(${publicacao.idEstabelecimento})" >Editar</button>
                       </div>
                     </div>
                     `;
@@ -466,4 +466,46 @@
       });
   }
 
+
+
+  function removerCardEstabelecimento(idEstabelecimento){
+    console.log(" apagar idEstabelecimento - ID" + idEstabelecimento);
+        fetch(`/estabelecimento/excluir/${idEstabelecimento}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function (resposta) {
+
+            if (resposta.ok) {
+              buscarDadoEstabelecimento()
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
+            } else {
+                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    }
+
+    const botao = document.querySelector('#btnAtt')
+    botao.addEventListener('click', function () {
+    var coluna1 = 'nome'
+    var coluna2 = 'prioridade'
+
+    var dados = [
+      {
+        valor: `${input_nome.value}`,
+        coluna: coluna1
+      },
+      {
+        valor: `${(input_prioridade.value)}`,
+        coluna: coluna2
+      }]
+
+    atualizarDados('estabelecimento', dados)
+    closeModal()
+    buscarDadoEstabelecimento()
+  })
 </script>
