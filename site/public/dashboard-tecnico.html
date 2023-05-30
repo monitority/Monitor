@@ -441,8 +441,10 @@
 
     var comboBox = document.getElementById("comboBox");
     var chart = null;
+    
     comboBox.onchange = function () {
         var valorSelecionado = comboBox.value;
+
         dadosMonitoramento(valorSelecionado);
         obterDadosGrafico(valorSelecionado);
         kpiPercentualCpu(valorSelecionado);
@@ -528,17 +530,16 @@
 
 
         // Adicionando gráfico criado em div na tela
-        if (chart) {
-            chart.data = dados;
-            chart.update();
-        } else {
+      
             chart = new Chart(document.getElementById(`linha_percentual_atividade`), config);
-        }
+        
 
 
         setTimeout(() => atualizarGrafico(idTotem, dados, chart), 2000);
 
     }
+
+    
 
     function dadosMonitoramento(idTotem) {
         fetch(`/medidas/dadosMonitoramento/${idTotem}`).then(function (resposta) {
@@ -775,9 +776,6 @@
         } else {
             chart = new Chart(document.getElementById(`barra_fluxo_incidentes_semana`), config);
         }
-
-
-        setTimeout(() => atualizarGraficoBarra(fkEstabelecimento, dados, chart), 2000);
 
     }
 

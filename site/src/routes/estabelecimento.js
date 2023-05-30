@@ -44,7 +44,4 @@ router.post("/cadastrarEstabelecimento", function (req, res) {
     estabelecimentoController.cadastrarEstabelecimento(req, res);
 });
 
-
-
-
 module.exports = router;

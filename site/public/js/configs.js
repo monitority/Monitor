@@ -99,7 +99,7 @@ function alterar_user() {
     <div id="div_change_user" class="div_input">
         <label for="change_user"></label>
         <input class="input_user_pass_telefone" id="inputUsuario" onkeyup="validarUsuario()" type="text">
-        <button onclick="validar_atualizacao_func_user()" class="btn_user_pass_telefone">Confirmar</button>
+        <button onclick="alterarDadosUser('email')" class="btn_user_pass_telefone">Confirmar</button>
         <button onclick="cancelar_user()" class="btn_user_pass_telefone_remove">Cancelar</button>
     </div>
     `;
@@ -165,7 +165,7 @@ function alterar_user() {
     <div id="div_change_pass" class="div_input">
         <label for="change_pass"></label>
         <input class="input_user_pass_telefone" id="inputSenha" onkeyup="validarSenha()" type="text">
-        <button onclick="validar_atualizacao_func_senha()" class="btn_user_pass_telefone">Confirmar</button>
+        <button onclick="alterarDadosUser('senha')" class="btn_user_pass_telefone">Confirmar</button>
         <button onclick="cancelar_senha()" class="btn_user_pass_telefone_remove">Cancelar</button>
     </div>
     `;
@@ -238,7 +238,7 @@ function alterar_user() {
     <div id="div_change_telefone" class="div_input">
         <label for="change_telefone"></label>
         <input class="input_user_pass_telefone" id="inputContato" onkeyup="validarContato()" type="number">
-        <button onclick="validar_atualizacao_func_contato()" class="btn_user_pass_telefone">Confirmar</button>
+        <button onclick="alterarDadosUser('tel')" class="btn_user_pass_telefone">Confirmar</button>
         <button onclick="cancelar_telefone()" class="btn_user_pass_telefone_remove">Cancelar</button>
     </div>
     `;
@@ -296,6 +296,54 @@ function alterar_user() {
     `;
   }
 
+  function alterarDadosUser(tipoDado){
+    if(tipoDado == 'email'){
+      valor = inputUsuario.value
+    }else if(tipoDado == 'senha'){
+      valor = btoa(inputSenha.value)
+    }else if(tipoDado == 'tel'){
+      valor = inputContato.value
+    }
+    fetch(`/usuarios/update/${sessionStorage.ID_USUARIO}/${tipoDado}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        valorDado: valor
+      })
+    }).then(function (resposta) {
+      
+      if (resposta.ok) {
+        Swal.fire({
+          icon: 'success',
+          title: 'Parabéns',
+          text: 'Username atualizado com sucesso!',
+          })
+        
+      } else if (resposta.status == 404) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Ops...',
+          text: 'Deu 404!',
+          })
+      } else {
+        throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+      }
+    }).catch(function (resposta) {
+      console.log(`#ERRO: ${resposta}`);
+    })
+    if(tipoDado == 'email'){
+      validar_atualizacao_func_user()
+    }else if(tipoDado == 'senha'){
+      validar_atualizacao_func_senha()
+    }else if(tipoDado == 'tel'){
+      validar_atualizacao_func_contato()
+    }
+
+    
+  }
+
   function logout() {
 
     Swal.fire({
@@ -333,36 +381,6 @@ var botao = document.getElementById('btn_foto_id');
 var selecionarFoto = document.getElementById('foto_input')
 var imagem = document.getElementById('exibir_foto')
 
-botao.addEventListener('click', () => {
-  selecionarFoto.click();
-})
-
-selecionarFoto.addEventListener('change', (e) => {
-  
-  if(selecionarFoto.files.length <= 0) {
-    return;
-  }
-
-    var ler = new FileReader();
-    var size = selecionarFoto.files[0].size;
-    ler.onload = () => {
-      if(size < 90000) { //1MB         
-        sessionStorage.PERFIL_IMAGEM = ler.result;
-        imagem.src = ler.result;
-        adicionarImg();
-      } else {           
-        alert('Não permitido, excedeu o limite de 1MB'); //Acima do limite
-        selecionarFoto.value = ""; //Limpa o campo          
-      }
-      e.preventDefault();
-
-      
-      
-    }
-
-    ler.readAsDataURL(selecionarFoto.files[0]);
-
-});
 
 function adicionarImg() {
 

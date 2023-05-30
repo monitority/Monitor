@@ -75,7 +75,8 @@ function cadastrarTotem(req, res) {
     var disco = req.body.armazenamentoServer;
     var so = req.body.soServer;
     var fkEstabelecimento = req.body.fkEstabelecimento;
-    console.log(modelo, processador, placaMae, ram, disco, so, fkEstabelecimento)
+    var idSerial = req.body.serialServer
+    console.log(modelo, processador, placaMae, ram, disco, so, fkEstabelecimento, idSerial)
     // Faça as validações dos valores
     if (modelo == undefined) {
         res.status(400).send("Seu nome está undefined!");
@@ -94,7 +95,7 @@ function cadastrarTotem(req, res) {
     } else {
         
         // Passe os valores como parâmetro e vá para o arquivo totemModel.js
-        totemModel.cadastrarTotem(modelo, processador, placaMae, ram, disco, so, fkEstabelecimento)
+        totemModel.cadastrarTotem(modelo, processador, placaMae, ram, disco, so, fkEstabelecimento, idSerial)
             .then(
                 function (resultado) {
                     res.json(resultado);

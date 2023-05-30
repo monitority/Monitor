@@ -152,4 +152,6 @@ module.exports = {
     listarDadosTotem,
     dadosMonitoramento,
     buscarUltimasMedidasBarra,
+
 }
+

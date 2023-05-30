@@ -190,10 +190,11 @@
                         divContainerButtons.className = "container-buttons"
                         btnConcluir.className = "btnConcluir";
 
-                        if(dados.statusOcorrencia == "concluído"){
+                        if(dados.statusOcorrencia == "Concluído"){
                             divCardLista.classList.remove('card-lista-aberto');
                             divCardLista.classList.add('card-lista-concluido');
-                        }else if(dados.statusOcorrencia == "aberto"){
+                        }else if(dados.statusOcorrencia == "Aberto"){
+
                             divCardLista.classList.remove('card-lista-concluido');
                             divCardLista.classList.add('card-lista-aberto');
                         }

@@ -142,4 +142,6 @@ module.exports = {
     qtdOcorrencias,
     updateStatusConcluido,
     updateStatusAberto,
+
 };
+

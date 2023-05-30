@@ -1,20 +1,33 @@
 /*Padronização de todos os elementos*/
 
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
- 
+
+body {
+  font-family: "Manrope", sans-serif;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: left;
+  background-color: #d5d9dc;
+}
+
 main{
+
   display: flex;
- justify-content: center;
- align-items: center;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 100%;
-  
+
 }
 
 
@@ -47,7 +60,7 @@ main{
 
 .navegacao ul li:hover {
   transform: translateY(-8px);
-  box-shadow: 0px 6px 2px 1px rgba(0, 0, 0, 0.2), inset 0px 0px 25px 5px rgba(0,0,0,0.16);
+  box-shadow: 0px 6px 2px 1px rgba(0, 0, 0, 0.2), inset 0px 0px 25px 5px rgba(0, 0, 0, 0.16);
   border: 1px solid rgba(255, 255, 255, 0.15);
   transition: 0.4s;
   background: var(--HoverMenu);
@@ -113,7 +126,7 @@ main{
 
 
 /* Parte inicial da Lista */
-.container-lista{
+.container-lista {
   display: flex;
   width: 100%;
   height: 100%;
@@ -124,7 +137,7 @@ main{
 }
 
 /* Titulo da lista */
-.titulo-lista{
+.titulo-lista {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -134,37 +147,41 @@ main{
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 
-.titulo-lista h1{
+.titulo-lista h1 {
   font-size: 3rem;
   color: white;
   margin-top: 5vh;
-  font-family:Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 
-.container-filho-lista{
+.container-filho-lista {
   display: flex;
   width: 100%;
   justify-content: space-around;
+
 }
+
 /* Lista */
 
-.lista-totens{
+.lista-totens {
   display: flex;
   width: 50%;
   height: 15%;
-  margin-top: 6%;
-  margin-left: 18%;
+  margin-top: 3%;
+  margin-left: 25%;
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  background-color: #020E2C;
-  border: 1px solid black;
+  background-color:#d5d9dc;
+  /* border: 1px solid black;
   border-radius: 15px;
-  box-shadow: 5px 6px 2px 1px rgba(0, 0, 0, 0.1);
+  box-shadow: 5px 6px 2px 1px rgba(0, 0, 0, 0.1); */
+  padding-bottom: 3%;
+  margin-right: -2%;
 }
 
-.item-lista{
+.item-lista {
   display: flex;
   width: 60%;
   justify-content: center;
@@ -175,63 +192,77 @@ main{
   padding: 8px;
 }
 
-.item-lista h4{
+.item-lista h4 {
   color: white;
   font-size: 1.1rem;
 }
 
-.item-lista p{
+.item-lista p {
   color: white;
 }
 
-.item-lista h6{
+.item-lista h6 {
   color: white;
 }
 
-.item-lista img{
+.item-lista img {
   margin-bottom: 3px;
   margin-left: 3px;
 }
-.ultimo{
+
+.ultimo {
   margin-bottom: 2vh;
 }
 
-.alerta{
+.alerta {
   border: 4px solid rgb(236, 236, 0);
   border-radius: 10px;
 }
 
-.critico{
+.critico {
   border: 4px solid rgb(236, 0, 0);
   border-radius: 10px;
 }
 
+.card-lista-problemas {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  border: 2.4px rgb(224, 224, 224) solid;
+  padding: 20px;
+  margin-top: 5vh;
+  border-radius: 9px;
+  box-shadow: 5px 6px 2px 1px rgba(0, 0, 0, 0.3);
+  background-color: #f5f5f5;
+}
+
 /* Parte status e legenda */
-.container-pai-status-legenda{
+.container-pai-status-legenda {
   display: flex;
   width: 25%;
   height: 50%;
   justify-content: center;
   flex-direction: column;
-  margin-top: 6%;
+  margin-top: 8%;
 }
 
-.container-status{
+.container-status {
   display: flex;
   width: 100%;
   height: 100%;
   align-items: center;
   flex-direction: column;
-  background-color: #020E2C;
+  background-color: #fdfdfd;
   border-radius: 15px;
   box-shadow: 5px 6px 2px 1px rgba(0, 0, 0, 0.1);
 }
 
-.container-status h1{
+.container-status h1 {
   margin-top: 10%;
   color: #7E8CCD;
   border-bottom: 1px solid #99BB00;
-  font-family:Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 /* Parte categotias */
@@ -255,7 +286,7 @@ main{
   align-items: center;
   justify-content: center;
   font-size: 1.3rem;
-  font-family:Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .svg-seta {
@@ -287,7 +318,7 @@ main{
   transition: 0.4s;
 }
 
-.categorias a{
+.categorias a {
   display: flex;
   justify-content: flex-end;
   width: 107%;
@@ -302,7 +333,7 @@ main{
 }
 
 /* Parte do status geral e da legenda */
-.container-legenda{
+.container-legenda {
   display: flex;
   width: 100%;
   height: 100%;
@@ -314,14 +345,14 @@ main{
   box-shadow: 5px 6px 2px 1px rgba(0, 0, 0, 0.1);
 }
 
-.container-legenda h1{
+.container-legenda h1 {
   margin-top: 10%;
   color: #7E8CCD;
   border-bottom: 1px solid #99BB00;
-  font-family:Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-.subcontainer-totens-problema{
+.subcontainer-totens-problema {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -331,30 +362,30 @@ main{
   margin-bottom: 4vh
 }
 
-.subcontainer-totens-problema h2{
+.subcontainer-totens-problema h2 {
   color: #7E8CCD;
   font-size: 1.3rem;
 }
 
-.dados-totens-problema{
+.dados-totens-problema {
   display: flex;
   width: 83%;
   flex-direction: column;
   margin-top: 2vh;
 }
 
-.dados-totens-problema b{
+.dados-totens-problema b {
   color: white;
   font-size: 1.1rem;
   padding: 5px;
 }
 
-.dados-totens-problema img{
+.dados-totens-problema img {
   margin-bottom: 3px;
   margin-left: 3px;
 }
 
-.legenda{
+.legenda {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -362,12 +393,12 @@ main{
   margin-top: 3vh;
 }
 
-.legenda h2{
+.legenda h2 {
   color: #7E8CCD;
   font-size: 1.3rem;
 }
 
-.categorias-legenda{
+.categorias-legenda {
   display: flex;
   width: 83%;
   justify-content: center;
@@ -376,32 +407,61 @@ main{
   margin-bottom: 3vh;
 }
 
-.categorias-legenda b{
+.categorias-legenda b {
   display: flex;
   justify-content: space-around;
   color: white;
   font-size: 1.1rem;
 }
 
-.categorias-legenda ul{
+.categorias-legenda ul {
   display: flex;
   width: 6.5vw;
   height: 0.3vh;
   margin-top: 1.8vh;
 }
 
-.linha-alerta{
+.linha-alerta {
   background-color: rgb(236, 236, 0);
 }
 
-.linha-critico{
+.linha-critico {
   background-color: rgb(236, 0, 0);
 }
 
- /* espaçamento no fim da página */
+/* espaçamento no fim da página */
 .footer-space {
   display: flex;
   padding: 5%;
   width: 100%;
-  margin-top:5%;
+  margin-top: 5%;
+}
+
+.lista-funcionario-ocorrencia{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 3vh;
+}
+
+.result-lista-func{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 2vh;
+}
+
+.elemento-lista-ocorrencia{
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.h1-titulo-lista-func-ocorrencia{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }

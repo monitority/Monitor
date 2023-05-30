@@ -104,13 +104,15 @@ function cadastrar(req, res) {
 }
 
 // FUNÇÃO QUE PEGA OS VALORES SETADOS EM PERFIL-CONFIG
-function confirmar_user(req, res) {
-    var user = req.body.username;
-    var idPerfil = req.body.idPerfil;
-    if (user == undefined) {
+function updateDados(req, res){
+    var valor = req.body.valorDado;
+    var idPerfil = req.params.user;
+    var tipoDado = req.params.tipoDado
+    console.log('to na update dados user controller' + valor, idPerfil, tipoDado)
+    if (idPerfil == undefined) {
         res.status(400).send("Seu user está undefined!");
     } else {
-        usuarioModel.confirmar_user(user, idPerfil)
+        usuarioModel.updateDados(valor, idPerfil, tipoDado)
         .then(
             function (resultado) {
                 res.json(resultado);
@@ -128,63 +130,28 @@ function confirmar_user(req, res) {
 }
 }
 
-// FUNÇÃO QUE PEGA OS VALORES SETADOS EM PERFIL-CONFIG
-function confirmar_senha(req, res) {
-    var senha = req.body.senha;
-    var idPerfil = req.body.idPerfil;
-    if (senha == undefined) {
-        res.status(400).send("Sua senha está undefined!");
-    } else {
-        usuarioModel.confirmar_senha(senha, idPerfil)
-        .then(
-            function (resultado) {
-                res.json(resultado);
-            }
-        ).catch(
-            function (erro) {
-                console.log(erro);
-                console.log(
-                    "\nHouve um erro ao realizar o cadastro! Erro: ",
-                    erro.sqlMessage
-                );
-                res.status(500).json(erro.sqlMessage);
-            }
-        );
+function dadosUser(req, res){
+    let idUsuario = req.params.id
+    usuarioModel.dadosUser(idUsuario)
+    .then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(
+        function (erro) {
+            console.log(erro);
+            console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        }
+    );
 }
-}
-
-
-// FUNÇÃO QUE PEGA OS VALORES SETADOS EM PERFIL-CONFIG
-function confirmar_telefone(req, res) {
-    var telefone = req.body.telefone;
-    var idPerfil = req.body.idPerfil;
-    if (telefone == undefined) {
-        res.status(400).send("Seu telefone está undefined!");
-    } else {
-        usuarioModel.confirmar_telefone(telefone, idPerfil)
-        .then(
-            function (resultado) {
-                res.json(resultado);
-            }
-        ).catch(
-            function (erro) {
-                console.log(erro);
-                console.log(
-                    "\nHouve um erro ao realizar o cadastro! Erro: ",
-                    erro.sqlMessage
-                );
-                res.status(500).json(erro.sqlMessage);
-            }
-        );
-}
-}
-
 module.exports = {
     entrar,
     cadastrar,
     listar,
     testar,
-    confirmar_user,
-    confirmar_senha,
-    confirmar_telefone
+    dadosUser,
+    updateDados
 }
