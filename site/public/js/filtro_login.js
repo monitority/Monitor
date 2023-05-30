@@ -13,6 +13,11 @@ function navBar(){
         nav_totem.style.display = "none";
         nav_func.style.display = "none";
         nav_painel.style.display = "none";
+    }else{
+        nav_dashboard.style.display = "none";
+        nav_listaEstabelecimentos.display = "none";
+        nav_ocorrencia.style.display = "none";
+        nav_painel.style.display = "none";
     }
 
     

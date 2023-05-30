@@ -26,21 +26,22 @@ function listar(req, res) {
 }
 
 function excluirEstabelecimento(req, res) {
-    var idEstabelecimento = req.body.idEstabelecimentoServer;
+    var idEstabelecimento = req.params.idEstabelecimento;
     estabelecimentoModel.excluirEstabelecimento(idEstabelecimento)
-        .then(function (resultado) {
-            if (resultado.length > 0) {
-                res.status(200).json(resultado);
-            } else {
-                res.status(204).send("Nenhum resultado encontrado!")
-            }
-        }).catch(
-            function (erro) {
-                console.log(erro);
-                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
-                res.status(500).json(erro.sqlMessage);
-            }
-        );
+    console.log('O ID para excluir: ' + idEstabelecimento )
+    estabelecimentoModel.excluirEstabelecimento(idEstabelecimento)
+    .then(
+        function (resultado) {
+            res.json(resultado);
+        }
+    )
+    .catch(
+        function (erro) {
+            console.log(erro);
+            console.log("Houve um erro ao deletar o post: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        }
+    );
 }
 
 function atualizarEstabelecimento(req, res) {

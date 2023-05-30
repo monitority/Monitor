@@ -3,7 +3,7 @@ var database = require("../database/config")
 function listar(fkEmpresa) {
     console.log("ACESSEI O ESTABELECIMENTO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
     var instrucao = `
-    SELECT nome, logradouro, bairro, cep, cidade, estado, numero, prioridade FROM estabelecimento 
+    SELECT idEstabelecimento, nome, logradouro, bairro, cep, cidade, estado, numero, prioridade FROM estabelecimento 
     join endereco on fkendereco = idEndereco where fkEmpresa = ${fkEmpresa};
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
@@ -13,7 +13,7 @@ function listar(fkEmpresa) {
 function excluirEstabelecimento(idEstabelecimento) {
     console.log("ACESSEI O ESTABELECIMENTO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function excluirEstabelecimento()");
     var instrucao = `
-        DELETE FROM estabelecimento where idEstabelecimento = '${idEstabelecimento}';
+        DELETE FROM estabelecimento where idEstabelecimento = ${idEstabelecimento};
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
