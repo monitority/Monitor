@@ -327,22 +327,6 @@ main{
     text-align: center;
     margin-left: 0.3vw;
   }
-  .removerCard{
-  width: 15%;
-  padding: 15px;
-  margin-top: 5vh;
-  position: absolute;
-  right: 50px;
-  bottom: 25px;
-  background: #27508f;
-  color: #fff;
-  border: 1px solid #eee;
-  border-radius: 20px;
-  box-shadow: 5px 5px 5px #eee;
-  text-shadow: none;
-  color: #fff;
-  cursor: pointer;
-  }
   
   .removerCard:hover {
   background: #00194C;

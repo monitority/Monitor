@@ -17,13 +17,15 @@
     href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
   <link rel="icon" href="./assets/imgs/sobreNos.png">
+  <link rel="stylesheet" href="./css/update.css">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
   <!-- <script src="./js/funcao.js"></script> -->
   <script src="./js/perfil-validacao.js"></script>
-
+  <script src="./js/filtro_login.js"></script>
+  <script src="./js/modalUpdate.js"></script>
 </head>
 
-<body onload="buscarDadoTotem()">
+<body onload=" navBar(), buscarDadoTotem()">
   <main>
     <!-- Div que contem a parte de navegação (parte verde do menu)-->
     <div class="navegacao">
@@ -37,50 +39,39 @@
               <span class="titulo"><span id="b_usuario">usuário</span></span>
             </a>
           </div>
-        <li class="nav-item">
-          <a href="dashboard-tecnico.html" class="nav-link">
-            <!-- Imagem do ICONE DO planos-->
-            <span class="icone"> <i class="uil  uil-chart-line"></i> </span>
-            <span class="titulo"> Dashboard </span>
+        <li class="nav-item" id="nav_painel">
+          <a href="./dashboard-gerente.html" class="nav-link">
+            <!--Imagem do ICONE DE ADICIONAR -->
+            <span class="icone"> <i class="uil uil-bell"></i> </span>
+            <span class="titulo"> Painel</span>
           </a>
         </li>
-        <!-- <li onclick="Adicionar()" id="adicionar2">
-                        <a href="#">
-    
-                            -Imagem do ICONE DE ADICIONAR 
-                            <span class="icone"> <i class="uil uil-plus"></i> </span>
-                            <span class="titulo"> Adicionar</span>
-                            <span class="icone2"><i class="uil uil-angle-down"></i></span>
-    
-                        </a>
-                    </li> -->
-        <!-- <div class="adicionar" id="adicionar3"> -->
-        <li class="nav-item">
+        <li class="nav-item" id="nav_ocorrencia">
+          <a href="ocorrencias.html" class="nav-link">
+            <!-- Imagem do ICONE DO planos-->
+            <span class="icone"> <i class="uil  uil-clipboard"></i> </span>
+            <span class="titulo"> Ocorrências </span>
+          </a>
+        </li>
+        <li class="nav-item" id="nav_estabelecimento">
           <a href="./telaCadastroEstabelecimento.html" class="nav-link">
             <!--Imagem do ICONE DE ADICIONAR -->
             <span class="icone"> <i class="uil uil-estate"></i> </span>
             <span class="titulo"> Estabelecimento</span>
           </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" id="nav_totem">
           <a href="./telaCadastroTotem.html" class="nav-link">
             <!--Imagem do ICONE DE ADICIONAR -->
             <span class="icone"> <i class="uil uil-server-connection"></i> </span>
             <span class="titulo"> Cadastrar Totem</span>
           </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" id="nav_func">
           <a href="./telaCadastroFunc.html" class="nav-link">
             <!--Imagem do ICONE DE ADICIONAR -->
             <span class="icone"> <i class="uil uil-user-plus"></i> </span>
             <span class="titulo"> Funcionario</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="./lista.html" class="nav-link">
-            <!--Imagem do ICONE DE ADICIONAR -->
-            <span class="icone"> <i class="uil uil-bell"></i> </span>
-            <span class="titulo"> Notificações</span>
           </a>
         </li>
         <!-- </div> -->
@@ -92,7 +83,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="https://chamadosgrupo9.auvo.com.br/Login#signin" class="nav-link">
+          <a href="" class="nav-link">
             <!-- Imagem do ICONE DE SUPORTE -->
             <span class="icone"><i class="uil uil-comment-question"></i>
             </span>
@@ -103,11 +94,12 @@
           <a href="./index.html" class="nav-link">
             <!-- Botão de Sair  -->
             <span class="icone"><i class="uil uil-signout"></i> </span>
-            <span class="titulo"> Home </span>
+            <span class="titulo"> Sair </span>
           </a>
         </li>
       </ul>
     </div>
+
     <!-- Right Panel -->
     <div id="right-panel" class="right-panel">
       <div class="animated fadeIn">
@@ -146,6 +138,10 @@
                 <p>Armazenamento</p>
                 <input class="input-empresa" id="inputArmazenamento" placeholder="Ex: 250" required
                   onblur="validarArmazenamento()" />
+              </div>
+              <div class="estilo-box">
+                <p>Serial Id</p>
+                <input type="text" class="input-empresa" id="inputSerial" placeholder="Ex: 01220574">
               </div>
               <div class="estilo-box">
                 <p>Sistema Operacional</p>
@@ -188,6 +184,61 @@
       src="https://static.zdassets.com/ekr/snippet.js?key=2f1c47af-6ca3-4ce8-9188-958944ef0eb5"> </script>
     <!-- End of securithelp Zendesk Widget script -->
 </body>
+<div id="my_modal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <div class="modal-direita">
+        <h2>Editar Totem</h2>
+      </div>
+      <div class="logo-header">
+        <img src="./assets/imgs/logoHome.png" alt="" class="img-modal">
+      </div>
+      <div class="modal-esquerda">
+        <span class="close" onclick="closeModal()">&times;</span>
+      </div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-meio">
+        <div class="lado-direito-modal">
+          <div class="containerInput">
+            <input class="input-margin" placeholder="Modelo" id="input_modelo">
+          </div>
+          <div class="containerInput">
+            <input class="input-margin" placeholder="Processador" id="input_processador">
+
+          </div>
+          <div class="containerInput">
+            <input class="input-margin" placeholder="Placa Mãe" id="input_plca_mae">
+          </div>
+        </div>
+        <div class="lado-esquerdo-modal">
+          <div class="containerInput">
+            <input class="input-margin" placeholder="Ram" id="input_Ram">
+          </div>
+          <div class="containerInput">
+            <input class="input-margin" placeholder="Armazenamento em Disco" id="input_armazenamento">
+          </div>
+          <div class="containerInput">
+            <select class="input-margin" name="select" id="input_so">
+              <option value="">Selecione um SO</option>
+              <option value="Linux">Linux</option>
+              <option value="Windows">Windows</option>
+              <option value="Android">Android</option>
+              <option value="Mac">Mac</option>
+            </select>
+            </select>
+          </div><!-- Container input-->
+        </div>
+      </div>
+      <div class="botao">
+        <button id="btnAtt">Confirmar</button>
+      </div>
+    </div>
+    <div class="modal-footer">
+
+    </div>
+  </div>
+</div>
 
 </html>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
@@ -200,49 +251,83 @@
   var sessionIdEmpresa = sessionStorage.ID_EMPRESA;
   var sessionFkEmpresa = sessionStorage.FK_EMPRESA;
   var idEmpresa = 0;
+  const botao = document.querySelector('#btnAtt')
+  botao.addEventListener('click', function () {
+    var coluna1 = 'modelo'
+    var coluna2 = 'processadorModelo'
+    var coluna3 = 'placaMaeModelo'
+    var coluna4 = 'memoriaRAMModelo'
+    var coluna5 = 'armazenamentoModelo'
+    var coluna6 = 'sistemaOperacional'
 
-function buscarDadoEstabelecimento() {
+    var dados = [
+      {
+        valor: `${input_modelo.value}`,
+        coluna: coluna1
+      },
+      {
+        valor: `${input_processador.value}`,
+        coluna: coluna2
+      },
+      {
+        valor: `${input_plca_mae.value}`,
+        coluna: coluna3
+      },
+      {
+        valor: `${input_Ram.value}`,
+        coluna: coluna4
+      },
+      {
+        valor: `${input_armazenamento.value}`,
+        coluna: coluna5
+      },
+      {
+        valor: `${input_so.value}`,
+        coluna: coluna6
+      }]
 
-  
-  if (sessionIdEmpresa > 0) {
-    idEmpresa = sessionIdEmpresa;
-  } else if (sessionFkEmpresa > 0) {
-    idEmpresa = sessionFkEmpresa;
-  } else {
-    console.log("id e fk empresa estão errados");
-  }
-  
-  fetch(`/totem/listarEstabelecimentos/${idEmpresa}`)
-    .then(resposta => resposta.json())
-    .then(function (estabelecimentos) {
-      console.log('estou na listarEstabelecimentos para a combo box', estabelecimentos);
-      if (estabelecimentos.length === 0) {
-        var tabelaFuncionarios = document.getElementById("tabela_funcionarios");
-        var mensagem = document.createElement("span");
-        mensagem.classList.add('mensagem');
-        mensagem.innerHTML = "Nenhum resultado encontrado.";
-        tabelaFuncionarios.appendChild(mensagem);
-        throw "Nenhum resultado encontrado!!";
-      }
+    atualizarDados('totem', dados)
+    closeModal()
+  })
 
-      console.log("Dados recebidos!!!!!: ", JSON.stringify(estabelecimentos));
-      var comboEstabelecimento = document.getElementById("inputEstabelecimento");
+  function buscarDadoEstabelecimento() {
+    if (sessionIdEmpresa > 0) {
+      idEmpresa = sessionIdEmpresa;
+    } else if (sessionFkEmpresa > 0) {
+      idEmpresa = sessionFkEmpresa;
+    } else {
+      console.log("id e fk empresa estão errados");
+    }
 
-      for (var i = 0; i < estabelecimentos.length; i++) {
-        var option = document.createElement('option');
-        option.value = estabelecimentos[i].idEstabelecimento; // Substitua 'id_estabelecimento' pelo nome da coluna que contém o valor da opção
-        option.text = estabelecimentos[i].nome; // Substitua 'nome' pelo nome da coluna que contém o texto da opção
-        comboEstabelecimento.appendChild(option);
-      }
-    })
-    .catch(function (erro) {
-      console.log(erro);
-    });
+    fetch(`/totem/listarEstabelecimentos/${idEmpresa}`)
+      .then(resposta => resposta.json())
+      .then(function (estabelecimentos) {
+        console.log('estou na listarEstabelecimentos para a combo box', estabelecimentos);
+        if (estabelecimentos.length === 0) {
+          var tabelaFuncionarios = document.getElementById("tabela_funcionarios");
+          var mensagem = document.createElement("span");
+          mensagem.classList.add('mensagem');
+          mensagem.innerHTML = "Nenhum resultado encontrado.";
+          tabelaFuncionarios.appendChild(mensagem);
+          throw "Nenhum resultado encontrado!!";
+        }
+
+        console.log("Dados recebidos!!!!!: ", JSON.stringify(estabelecimentos));
+        var comboEstabelecimento = document.getElementById("inputEstabelecimento");
+
+        for (var i = 0; i < estabelecimentos.length; i++) {
+          var option = document.createElement('option');
+          option.value = estabelecimentos[i].idEstabelecimento; // Substitua 'id_estabelecimento' pelo nome da coluna que contém o valor da opção
+          option.text = estabelecimentos[i].nome; // Substitua 'nome' pelo nome da coluna que contém o texto da opção
+          comboEstabelecimento.appendChild(option);
+        }
+      })
+      .catch(function (erro) {
+        console.log(erro);
+      });
     buscarDadoTotem();
-}
+  }
 
-  
-  
   function cadastrarTotem() {
     var fkEstabelecimento = inputEstabelecimento.value
     //Recupere o valor da nova input pelo nome do id
@@ -253,6 +338,7 @@ function buscarDadoEstabelecimento() {
     var ramVar = inputRam.value;
     var armazenamentoVar = inputArmazenamento.value;
     var soVar = inputSo.value;
+    var idSerial = inputSerial.value;
 
 
     fetch(`/totem/cadastrarTotem`, {
@@ -270,6 +356,7 @@ function buscarDadoEstabelecimento() {
         ramServer: ramVar,
         armazenamentoServer: armazenamentoVar,
         soServer: soVar,
+        serialServer: idSerial
       }),
     })
       .then(function (resposta) {
@@ -302,12 +389,12 @@ function buscarDadoEstabelecimento() {
 
   function buscarDadoTotem() {
     if (sessionIdEmpresa > 0) {
-    idEmpresa = sessionIdEmpresa;
-  } else if (sessionFkEmpresa > 0) {
-    idEmpresa = sessionFkEmpresa;
-  } else {
-    console.log("id e fk empresa estão errados");
-  }
+      idEmpresa = sessionIdEmpresa;
+    } else if (sessionFkEmpresa > 0) {
+      idEmpresa = sessionFkEmpresa;
+    } else {
+      console.log("id e fk empresa estão errados");
+    }
     fetch(`/totem/listar/${idEmpresa}`)
       .then(function (resposta) {
         console.log('estou na buscarDadoTotem', resposta);
@@ -333,7 +420,7 @@ function buscarDadoEstabelecimento() {
 
               tabelaFuncionarios.innerHTML += `
                         
-              <div class="func" id="${i}">
+              <div class="func" id="${publicacao.idTotem}">
                       <div class="estilo-atributos">
                         <h5>Modelo:</h5>
                         <p>${publicacao.modelo}</p>
@@ -348,7 +435,7 @@ function buscarDadoEstabelecimento() {
                       </div>
                       <div class="estilo-atributos">
                         <h5>Ram:</h5>
-                        <p>${publicacao.ramModelo}</p>
+                        <p>${publicacao.memoriaRAMModelo}</p>
                       </div>
                       <div class="estilo-atributos">
                         <h5>Armazenamento:</h5>
@@ -362,7 +449,10 @@ function buscarDadoEstabelecimento() {
                         <h5>Estabelecimento:</h5>
                         <p>${publicacao.nome}</p>
                       </div>
-                      <button class="removerCard" onclick="removerCard(${publicacao.idTotem})">Remover</button>
+                      <div class="btns-cards">
+                          <button class="removerCard" onclick="removerCardTotem(${publicacao.idTotem})">Remover</button>
+                          <button onclick="openModal(${publicacao.idTotem})" class="removerCard">Editar</button>
+                      </div>    
                   </div>
                     `;
             }
@@ -375,6 +465,28 @@ function buscarDadoEstabelecimento() {
         console.log(resposta);
       });
   }
+
+  function removerCardTotem(idtotem){
+    console.log(" apagar totem - ID" + idtotem);
+        fetch(`/totem/excluir/${idtotem}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function (resposta) {
+
+            if (resposta.ok) {
+                buscarDadoTotem()
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
+            } else {
+                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    }
+
 
 
 </script>

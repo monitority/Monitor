@@ -5,7 +5,9 @@ var sessoes = [];
 function listar(req, res) {
     console.log("estou na listarFuncionario controller")
     var idEmpresa = req.params.idEmpresa;
-    funcionarioModel.listar(idEmpresa)
+    var filtro = req.params.n;
+    
+    funcionarioModel.listar(idEmpresa, filtro)
         .then(function (resultado) {
             if (resultado.length > 0) {
                 res.status(200).json(resultado);
@@ -49,7 +51,26 @@ function cadastrarFuncionario(req, res) {
     
 }
 
+function excluirFunc(req, res) {
+    var idfunc = req.params.idFunc
+    console.log('O ID para excluir: ' + idfunc )
+    funcionarioModel.excluirFunc(idfunc)
+    .then(
+        function (resultado) {
+            res.json(resultado);
+        }
+    )
+    .catch(
+        function (erro) {
+            console.log(erro);
+            console.log("Houve um erro ao deletar o post: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        }
+    );
+}
+
 module.exports = {
     listar,
     cadastrarFuncionario,
+    excluirFunc
 }

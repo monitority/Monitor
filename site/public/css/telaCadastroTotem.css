@@ -328,10 +328,8 @@ main{
     margin-left: 0.3vw;
   }
   .removerCard{
-  width: 15%;
+  width: 30%;
   padding: 15px;
-  margin-top: 5vh;
-  position: absolute;
   right: 50px;
   bottom: 25px;
   background: #27508f;

@@ -7,9 +7,13 @@ router.get("/", function (req, res) {
     funcionarioController.testar(req, res);
 });
 
-router.get("/listar/:idEmpresa", function (req, res) {
+router.get("/listar/:idEmpresa/:n", function (req, res) {
     console.log("estou na listar funcionario Router")
     funcionarioController.listar(req, res);
+});
+
+router.delete("/excluir/:idFunc", function (req, res) {
+    funcionarioController.excluirFunc(req, res);
 });
 
 //Recebendo os dados do html e direcionando para a função cadastrar de funcionarioController.js

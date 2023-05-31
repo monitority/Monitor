@@ -19,9 +19,10 @@
     <link rel="icon" href="./assets/imgs/sobreNos.png">
     <link rel="stylesheet" href="./css/dashboard.css">
     <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
+    <script src="./js/filtro_login.js"></script>
 </head>
 
-<body>
+<body >
 
     <!-- Div que contem a parte de navegação (parte verde do menu)-->
     <div class="navegacao">
@@ -35,41 +36,21 @@
                         <span class="titulo"><span id="b_usuario">usuário</span></span>
                     </a>
                 </div>
-            <li class="nav-item">
+            <li class="nav-item" id="nav_listaEstabelecimentos">
+                <a href="lista-estabelecimentos.html" class="nav-link">
+                    <!-- Imagem do ICONE DO planos-->
+                    <span class="icone"> <i class="uil  uil-align-justify"></i> </span>
+                    <span class="titulo"> Lista Estabelecimentos </span>
+                </a>
+            </li>
+            <li class="nav-item" id="nav_dashboard">
                 <a href="dashboard-tecnico.html" class="nav-link">
                     <!-- Imagem do ICONE DO planos-->
                     <span class="icone"> <i class="uil  uil-chart-line"></i> </span>
                     <span class="titulo"> Dashboard </span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a href="./telaCadastroEstabelecimento.html" class="nav-link">
-                  <!--Imagem do ICONE DE ADICIONAR -->
-                  <span class="icone"> <i class="uil uil-estate"></i> </span>
-                  <span class="titulo"> Estabelecimento</span>
-                </a>
-              </li>
-            <li class="nav-item">
-                <a href="telaCadastroTotem.html" class="nav-link">
-                    <!--Imagem do ICONE DE ADICIONAR -->
-                    <span class="icone"> <i class="uil uil-server-connection"></i> </span>
-                    <span class="titulo"> Cadastrar Totem</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="./telaCadastroFunc.html" class="nav-link">
-                    <!--Imagem do ICONE DE ADICIONAR -->
-                    <span class="icone"> <i class="uil uil-user-plus"></i> </span>
-                    <span class="titulo"> Funcionario</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="./lista.html" class="nav-link">
-                  <!--Imagem do ICONE DE ADICIONAR -->
-                  <span class="icone"> <i class="uil uil-bell"></i> </span>
-                  <span class="titulo"> Notificações</span>
-                </a>
-              </li>
+           
             <!-- </div> -->
             <li class="nav-item">
                 <a href="configuracoes.html" class="nav-link">
@@ -79,7 +60,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="https://chamadosgrupo9.auvo.com.br/Login#signin" class="nav-link">
+                <a href="" class="nav-link">
                     <!-- Imagem do ICONE DE SUPORTE -->
                     <span class="icone"><i class="uil uil-comment-question"></i>
                     </span>
@@ -104,17 +85,13 @@
 
         <!--Sessão de KPIs-->
         <div class="dashboard-kpis">
-            <div class="kpis critico">
-                <p class="kpi-titulo "><b>Pico de percentual da CPU (%)</b></p>
-                <p id="kpi_dado" class="kpi-dado">90%</p>
+            <div class="kpis " id="kpiPercentualCpu">
+                <p class="kpi-titulo "><b>Pico de percentual - CPU (%)</b></p>
+                <p class="kpi-dado" id="kpiDadoCpu"></p>
             </div>
-            <div class="kpis bom">
-                <p class="kpi-titulo"><b>Pico de percentual da M.RAM (%)</b></p>
-                <p id="kpi_dado" class="kpi-dado">15%</p>
-            </div>
-            <div class="kpis alerta">
-                <p class="kpi-titulo"><b>Percentual de ocupação Disco (%)</b></p>
-                <p id="kpiComMenorPercentual" class="kpi-dado">63%</p>
+            <div class="kpis " id="kpiPercentualRam">
+                <p class="kpi-titulo"><b>Pico de percentual - M.RAM (%)</b></p>
+                <p class="kpi-dado" id="KpiDadoRam"></p>
             </div>
             <div class="kpis">
                 <p class="kpi-titulo titulo-legenda"><b>Legenda</b></p>
@@ -138,29 +115,18 @@
                 </div>
                 <div class="lista-dados-cpu">
                     <div class="espacamento">
-                        <div class="dados-cpu">
-                            <h4>
-                                <b>Utilização(%)</b>
-                            </h4>
-                            <p>9%</p>
+                        <div class="dados-cpu" id="utilizacaoCpu">
+
                         </div>
-                        <div class="dados-cpu">
-                            <h4>
-                                <b>Processos</b>
-                            </h4>
-                            <p>255</p>
+
+                        <div class="dados-cpu" id="processosCpu">
+
                         </div>
-                        <div class="dados-cpu">
-                            <h4>
-                                <b>Threads</b>
-                            </h4>
-                            <p>2433</p>
+                        <div class="dados-cpu" id="threadsCpu">
+
                         </div>
-                        <div class="dados-cpu">
-                            <h4>
-                                <b>Velocidade</b>
-                            </h4>
-                            <p>271000 Hz</p>
+                        <div class="dados-cpu" id="velocidadeCpu">
+
                         </div>
                     </div>
                     <ul class="voltar-cpu">
@@ -186,23 +152,15 @@
                 </div>
                 <div class="lista-dados-memoria">
                     <div class="espacamento">
-                        <div class="dados-memoria">
-                            <h4>
-                                <b>Total</b>
-                            </h4>
-                            <p>25 GB</p>
+                        <div class="dados-memoria" id="totalMemoria">
+
                         </div>
-                        <div class="dados-memoria">
-                            <h4>
-                                <b>Disponível</b>
-                            </h4>
-                            <p>16 GB</p>
+                        <div class="dados-memoria" id="memoriaDisponivel">
+
                         </div>
-                        <div class="dados-memoria">
-                            <h4>
-                                <b>Em uso</b>
-                            </h4>
-                            <p>8 GB</p>
+
+                        <div class="dados-memoria" id="memoriaEmUso">
+
                         </div>
                     </div>
                     <ul class="voltar">
@@ -228,29 +186,17 @@
                 </div>
                 <div class="lista-dados-disco">
                     <div class="espacamento-disco">
-                        <div class="dados-disco">
-                            <h4>
-                                <b>Capacidade</b>
-                            </h4>
-                            <p>239 GB</p>
+                        <div class="dados-disco" id="totalDisco">
+
                         </div>
-                        <div class="dados-disco">
-                            <h4>
-                                <b>Leitura disco</b>
-                            </h4>
-                            <p>428616</p>
+                        <div class="dados-disco" id="leituraDisco">
+
                         </div>
-                        <div class="dados-disco">
-                            <h4>
-                                <b>Escrita disco</b>
-                            </h4>
-                            <p>228874</p>
+                        <div class="dados-disco" id="escritaDisco">
+
                         </div>
-                        <div class="dados-disco">
-                            <h4>
-                                <b>Tempo Transf.</b>
-                            </h4>
-                            <p>18774747</p>
+                        <div class="dados-disco" id="tempoTransferencia">
+
                         </div>
                     </div>
                     <ul class="voltar-disco">
@@ -276,25 +222,16 @@
                 </div>
                 <div class="lista-dados-rede">
                     <div class="espacamento">
-                        <div class="dados-rede">
-                            <h4>
-                                <b>Nome da rede</b>
-                            </h4>
-                            <p>wlan 1</p>
+                        <div class="dados-rede" id="nomeRede">
+
                         </div>
-                        <div class="dados-rede">
-                            <h4>
-                                <b>Hostname</b>
-                            </h4>
-                            <p>DESKTOP-HLTHS7</p>
+                        <div class="dados-rede" id="hostName">
+
                         </div>
-                        <div class="dados-rede">
-                            <h4>
-                                <b>Nome Domínio</b>
-                            </h4>
-                            <p>DESKTOP-HLTHS7</p>
+                        <div class="dados-rede" id="nomeDominio">
+
                         </div>
-                        
+
                     </div>
                     <ul class="voltar">
                         <li onclick="voltar()">
@@ -315,7 +252,16 @@
 
             <!-- Gráficos -->
             <div class="sessoes sessao-categorias" id="categorias">
-                <h2>Categorias</h2>
+                <div class="texto-comboBox">
+                    <h2>Categorias</h2>
+
+                    <select id="comboBox" class="comboBox">
+                        <option value="''"></option>
+
+                    </select>
+                </div>
+
+
                 <ul class="categorias">
                     <li onclick="filtroCpu()">
                         <div class="container-categorias">
@@ -370,7 +316,7 @@
                     Percentual de Atividade
                 </div>
                 <div class="graficos-container container-grafico-linha-fluxo">
-                    <canvas class="graficos-canvas" id="linha_percentual_atividade"></canvas>
+                    <canvas class="sessao-grafico-canvas" id="linha_percentual_atividade"></canvas>
                 </div>
             </div>
         </div>
@@ -390,7 +336,7 @@
 
     </main>
 
-    <footer> 
+    <footer>
         <!--Espaço vazio no fim do dashboard-->
         <div class="footer-space"></div>
     </footer>
@@ -440,4 +386,361 @@
         dados_card_cpu.style.display = "none";
         dados_card_rede.style.display = "none";
     }
+
+    listarDadosTotem()
+
+    function listarDadosTotem() {
+        var idEstabelecimento = sessionStorage.getItem("id_estabelecimento_totem");
+        obterDadosGraficoBarra(idEstabelecimento);
+        console.log(sessionStorage.getItem("id_estabelecimento_totem"))
+        fetch(`/medidas/listarDadosTotem/${idEstabelecimento}`)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                let i = 1
+                // Adicione as novas opções à combobox
+                data.forEach(item => {
+                    const option = document.createElement('option');
+                    option.value = item.idTotem;
+                    option.text = `${i} - ${item.serialTotem}`;
+                    comboBox.appendChild(option);
+                    i++;
+                });
+            })
+            .catch(error => {
+                console.error(`Erro ao obter os dados do backend:${error.message}`);
+            });
+    }
+
+    var comboBox = document.getElementById("comboBox");
+    var chart = null;
+
+    comboBox.onchange = function () {
+        var valorSelecionado = comboBox.value;
+
+        dadosMonitoramento(valorSelecionado);
+        obterDadosGrafico(valorSelecionado);
+        kpiPercentualCpu(valorSelecionado);
+        kpiPercentualRam(valorSelecionado);
+    };
+
+    function obterDadosGrafico(idTotem) {
+
+        let proximaAtualizacao;
+
+        if (proximaAtualizacao != undefined) {
+            clearTimeout(proximaAtualizacao);
+        }
+
+        fetch(`/medidas/ultimas/${idTotem}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    // ...
+
+                    plotarGrafico(resposta, idTotem);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+
+    function plotarGrafico(resposta, idTotem) {
+        console.log(chart)
+
+        console.log('iniciando plotagem do gráfico...');
+
+        let labels = [];
+
+        let dados = {
+            labels: labels,
+            datasets: [{
+                label: 'CPU',
+                data: [],
+                fill: false,
+                backgroundColor: '#020E2C',
+                borderColor: '#020E2C',
+                tension: 0.1
+            },
+            {
+                label: 'Memória',
+                data: [],
+                fill: false,
+                backgroundColor: '#99BB00',
+                borderColor: '#99BB00',
+                tension: 0.1
+            }]
+        };
+
+        // console.log('----------------------------------------------')
+        // console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+        // console.log(resposta)
+
+        // Inserindo valores recebidos em estrutura para plotar o gráfico
+        for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+            labels.push(registro.momento_grafico);
+            dados.datasets[0].data.push(registro.processador);
+            dados.datasets[1].data.push(registro.memoria);
+        }
+
+        // console.log('----------------------------------------------')
+        // console.log('O gráfico será plotado com os respectivos valores:')
+        // console.log('Labels:')
+        // console.log(labels)
+        // console.log('Dados:')
+        // console.log(dados.datasets)
+        // console.log('----------------------------------------------')
+
+        // Criando estrutura para plotar gráfico - config
+        const config = {
+            type: 'line',
+            data: dados,
+        };
+
+
+        // Adicionando gráfico criado em div na tela
+        if (chart !== null) {
+            chart.destroy()
+        }
+
+        chart = new Chart(document.getElementById(`linha_percentual_atividade`), config);
+
+
+
+        setTimeout(() => atualizarGrafico(idTotem, dados, chart), 2000);
+
+    }
+
+
+
+    function dadosMonitoramento(idTotem) {
+        fetch(`/medidas/dadosMonitoramento/${idTotem}`).then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    throw "Nenhum resultado encontrado!!";
+                }
+                resposta.json().then(function (resposta) {
+                    console.log("DadosMonitoramento recebidos: ", JSON.stringify(resposta));
+                    console.log(resposta)
+                    let processadorPorcFormat = resposta[0].processador;
+                    utilizacaoCpu.innerHTML = `<h4><b>Utilização(%)</b></h4><p>${processadorPorcFormat.toFixed(2)}</p>`
+                    processosCpu.innerHTML = `<h4><b>Processos</b></h4><p>${resposta[0].processos}</p>`
+                    threadsCpu.innerHTML = `<h4><b>Threads</b></h4><p>${resposta[0].threads}</p>`
+                    velocidadeCpu.innerHTML = `<h4><b>Velocidade</b></h4><p>${resposta[0].cpuVelocidade}</p>`
+
+                    totalMemoria.innerHTML = `<h4><b>Total</b></h4><p>${resposta[0].memTotal}</p>`
+                    memoriaDisponivel.innerHTML = `<h4><b>Disponível</b></h4><p>${resposta[0].menDisp}</p>`
+                    memoriaEmUso.innerHTML = `<h4><b>Em uso</b></h4><p>${resposta[0].menUso}</p>`
+
+                    totalDisco.innerHTML = `<h4><b>Capacidade</b></h4><p>${resposta[0].tamDisco}</p>`
+                    leituraDisco.innerHTML = `<h4><b>Leitura disco</b></h4><p>${resposta[0].leiDisco}</p>`
+                    escritaDisco.innerHTML = `<h4><b>Escrita disco</b></h4><p>${resposta[0].escDisco}</p>`
+                    tempoTransferencia.innerHTML = `<h4><b>Tempo Transf.</b></h4><p>${resposta[0].tempoTrans}</p>`
+
+                    nomeRede.innerHTML = `<h4><b>Nome da rede</b></h4><p>${resposta[0].nomRede}</p>`
+                    hostName.innerHTML = `<h4><b>Hostname</b></h4><p>${resposta[0].hostNameRede}</p>`
+                    nomeDominio.innerHTML = `<h4><b>Nome Domínio</b></h4><p>${resposta[0].NomeDominio}</p>`
+
+                });
+            } else {
+                throw ('Houve um erro na API!');
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+        });
+    }
+
+    function atualizarGrafico(idTotem, dados, chart) {
+
+        fetch(`/medidas/tempo-real/${idTotem}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (novoRegistro) {
+
+                    // obterdados(idTotem);
+                    // alertar(novoRegistro, idTotem);
+                    console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                    console.log(`Dados atuais do gráfico:`);
+                    console.log(dados);
+
+                    if (novoRegistro[0].momento_grafico == dados.labels[dados.labels.length - 1]) {
+                        console.log("---------------------------------------------------------------")
+                        console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+                        // avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
+                        console.log("Horário do novo dado capturado:")
+                        console.log(novoRegistro[0].momento_grafico)
+                        console.log("Horário do último dado capturado:")
+                        console.log(dados.labels[dados.labels.length - 1])
+                        console.log("---------------------------------------------------------------")
+                    } else {
+                        // tirando e colocando valores no gráfico
+                        dados.labels.shift(); // apagar o primeiro
+                        dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
+
+                        dados.datasets[0].data.shift();  // apagar o primeiro de processador
+                        dados.datasets[0].data.push(novoRegistro[0].processador); // incluir uma nova medida processador
+
+                        dados.datasets[1].data.shift();  // apagar o primeiro de memoria
+                        dados.datasets[1].data.push(novoRegistro[0].memoria); // incluir uma nova medida de memoria
+
+                        chart.update();
+                    }
+
+                    dadosMonitoramento(idTotem);
+
+                    // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                    proximaAtualizacao = setTimeout(() => atualizarGrafico(idTotem, dados, chart), 2000);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+                // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                proximaAtualizacao = setTimeout(() => atualizarGrafico(idTotem, dados, chart), 2000);
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+
+    }
+
+    function kpiPercentualCpu(idTotem) {
+        fetch(`/kpis/kpiPercentualCpu/${idTotem}`).then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    console.log("Nenhum dado encontrado")
+                }
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta))
+                    console.log(resposta)
+                    var percentual = resposta[0].maior_valor;
+                    var metrica = resposta[0].cpuPorcMax;
+
+                    var kpiPercentualCpuElement = document.getElementById("kpiPercentualCpu");
+                    var kpiDadoCpu = document.getElementById("kpiDadoCpu")
+                    kpiDadoCpu.innerHTML = `${percentual.toFixed(2)}%`;
+
+                    if (percentual >= metrica) {
+                        kpiPercentualCpuElement.classList.remove('bom')
+                        kpiPercentualCpuElement.classList.remove('alerta')
+                        kpiPercentualCpuElement.classList.add('critico')
+                    } else if (percentual > 0 && percentual <= 50) {
+                        kpiPercentualCpuElement.classList.remove('critico')
+                        kpiPercentualCpuElement.classList.remove('alerta')
+                        kpiPercentualCpuElement.classList.add('bom')
+                    } else {
+                        kpiPercentualCpuElement.classList.remove('bom')
+                        kpiPercentualCpuElement.classList.remove('critico')
+                        kpiPercentualCpuElement.classList.add('alerta')
+                    }
+                })
+            }
+        });
+    }
+
+    function kpiPercentualRam(idTotem) {
+        fetch(`/kpis/kpiPercentualRam/${idTotem}`).then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    console.log("Nenhum dado encontrado")
+                }
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta))
+                    var percentual = resposta[0].maior_valor;
+                    var metrica = resposta[0].memoriaRAMPorcMax;
+
+                    var kpiPercentualRamElement = document.getElementById("kpiPercentualRam");
+                    var kpiDadoRam = document.getElementById("KpiDadoRam")
+                    kpiDadoRam.innerHTML = `${percentual.toFixed(2)}%`;
+
+                    if (percentual >= metrica) {
+                        kpiPercentualRamElement.classList.remove('bom')
+                        kpiPercentualRamElement.classList.remove('alerta')
+                        kpiPercentualRamElement.classList.add('critico')
+                    } else if (percentual > 0 && percentual <= 50) {
+                        kpiPercentualRamElement.classList.remove('critico')
+                        kpiPercentualRamElement.classList.remove('alerta')
+                        kpiPercentualRamElement.classList.add('bom')
+                    } else {
+                        kpiPercentualRamElement.classList.remove('bom')
+                        kpiPercentualRamElement.classList.remove('critico')
+                        kpiPercentualRamElement.classList.add('alerta')
+                    }
+                })
+            }
+        });
+    }
+
+    function obterDadosGraficoBarra(fkEstabelecimento) {
+
+        let proximaAtualizacao;
+
+        if (proximaAtualizacao != undefined) {
+            clearTimeout(proximaAtualizacao);
+        }
+
+        fetch(`/medidas/ultimasBarra/${fkEstabelecimento}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    // ...
+
+                    plotarGraficoBarra(resposta, fkEstabelecimento);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+
+    var mychart = null
+    function plotarGraficoBarra() {
+
+
+        console.log('iniciando plotagem do gráfico...');
+
+        let labels = [
+        'semana1',
+            'semana2',
+            'semana3',
+            'semana4'
+        ];
+
+        let dados = {
+            labels: labels,
+            datasets: [{
+                label: 'CPU',
+                data: [5,4,8,1],
+                fill: false,
+                backgroundColor: '#020E2C',
+                borderColor: '#020E2C',
+                tension: 0.1
+            },
+            {
+                label: 'Memória',
+                data: [6,3,4,7],
+                fill: false,
+                backgroundColor: '#99BB00',
+                borderColor: '#99BB00',
+                tension: 0.1
+            }]
+        };
+
+        
+
+        // Criando estrutura para plotar gráfico - config
+        const config = {
+            type: 'bar',
+            data: dados,
+        };
+
+        mychart = new Chart(document.getElementById(`barra_fluxo_incidentes_semana`), config);
+    
+
+    }
+
 </script>

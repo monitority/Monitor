@@ -1,3 +1,4 @@
+const { Table } = require("mssql");
 var totemModel = require("../models/totemModel");
 
 var sessoes = [];
@@ -26,30 +27,31 @@ function listar(req, res) {
 }
 
 function excluirTotem(req, res) {
-    var idtotem = req.body.idtotemServer;
-    totemModel.excluirtotem(idtotem)
-        .then(function (resultado) {
-            if (resultado.length > 0) {
-                res.status(200).json(resultado);
-            } else {
-                res.status(204).send("Nenhum resultado encontrado!")
-            }
-        }).catch(
-            function (erro) {
-                console.log(erro);
-                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
-                res.status(500).json(erro.sqlMessage);
-            }
-        );
+    var idtotem = req.params.idTotem
+    console.log('O ID para excluir: ' + idtotem )
+    totemModel.excluirTotem(idtotem)
+    .then(
+        function (resultado) {
+            res.json(resultado);
+        }
+    )
+    .catch(
+        function (erro) {
+            console.log(erro);
+            console.log("Houve um erro ao deletar o post: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        }
+    );
 }
 
-function atualizarTotem(req, res) {
-    var idtotem = req.body.idtotemServer;
-    var nome = req.body.nomeServer;
-    var fkEndereco = req.body.fkEnderecoServer;
-    var fkMetricaAviso = req.body.fkMetricaAvisoServer;
-
-    totemModel.atualizartotem(idtotem, nome, fkEndereco, fkMetricaAviso)
+function atualizar(req, res) {
+    var idUpdate = req.params.idUpdate;
+    var novoDado = req.params.novoDado;
+    var tabela = req.params.tabela;
+    var coluna = req.params.coluna;
+    console.log(`ESTOU NA TOTEM CONTROLLER ATUALIZAR
+    ID ${idUpdate} DADO ${novoDado} TABELA ${tabela} COLUNA${coluna}`)
+    totemModel.atualizar(idUpdate, novoDado, tabela, coluna)
         .then(function (resultado) {
             if (resultado.length > 0) {
                 res.status(200).json(resultado);
@@ -75,7 +77,8 @@ function cadastrarTotem(req, res) {
     var disco = req.body.armazenamentoServer;
     var so = req.body.soServer;
     var fkEstabelecimento = req.body.fkEstabelecimento;
-    console.log(modelo, processador, placaMae, ram, disco, so, fkEstabelecimento)
+    var idSerial = req.body.serialServer
+    console.log(modelo, processador, placaMae, ram, disco, so, fkEstabelecimento, idSerial)
     // Faça as validações dos valores
     if (modelo == undefined) {
         res.status(400).send("Seu nome está undefined!");
@@ -94,7 +97,7 @@ function cadastrarTotem(req, res) {
     } else {
         
         // Passe os valores como parâmetro e vá para o arquivo totemModel.js
-        totemModel.cadastrarTotem(modelo, processador, placaMae, ram, disco, so, fkEstabelecimento)
+        totemModel.cadastrarTotem(modelo, processador, placaMae, ram, disco, so, fkEstabelecimento, idSerial)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -133,7 +136,7 @@ module.exports = {
     listar,
     testar,
     excluirTotem,
-    atualizarTotem,
+    atualizar,
     cadastrarTotem,
     buscarDadosEstabelecimentos,
 }
