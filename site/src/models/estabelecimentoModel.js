@@ -120,12 +120,12 @@ function atualizarEstabelecimento(idEstabelecimento, nome, fkEndereco, fkMetrica
 }
 
 // Coloque os mesmos parâmetros aqui. Vá para a var instrucao
-function cadastrarEstabelecimento(fkEmpresa, nome, lougradouro, bairro, cep, cidade, estado, numero, cpuMax, ramMax, discoMax) {
-    console.log("ACESSEI O ESTABELECIMENTO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", fkEmpresa, nome, lougradouro, bairro, cep, cidade, estado, numero, cpuMax, ramMax, discoMax);
+function cadastrarEstabelecimento(fkEmpresa, nome, lougradouro, bairro, cep, cidade, estado, numero, cpuMax, ramMax, prioridade) {
+    console.log("ACESSEI O ESTABELECIMENTO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", fkEmpresa, nome, lougradouro, bairro, cep, cidade, estado, numero, cpuMax);
 
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
-    var instrucao = `EXEC inserirEstabelecimento'${nome}', '${cidade}', '${lougradouro}',  '${bairro}', ${numero}, '${cep}', '${estado}', ${cpuMax},${ramMax},${discoMax},70,${fkEmpresa};
+    var instrucao = `EXEC inserirEstabelecimento'${nome}', '${cidade}', '${lougradouro}',  '${bairro}', ${numero}, '${cep}', '${estado}',${ramMax}, ${cpuMax},${fkEmpresa}, ${prioridade};
 
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
