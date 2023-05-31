@@ -22,7 +22,7 @@
     <script src="./js/modalUpdate.js"></script>
 </head>
 
-<body onload="navBar(),listarEstabelecimentosPorUsuario()">
+<body onload="listarEstabelecimentosPorUsuario()">
 
     <!-- Div que contem a parte de navegação (parte verde do menu)-->
     <div class="navegacao">
@@ -106,7 +106,7 @@
 <script>
 
     function listarEstabelecimentosPorUsuario() {
-        let fkUsuario = 5;
+        let fkUsuario = sessionStorage.ID_USUARIO;
         let filtroSelects = document.getElementById("select_filtro").value;
         lista_container_estabelecimento.innerHTML = "";
         fetch(`/estabelecimento/listarEstabelecimentosPorUsuario/${fkUsuario}/${filtroSelects}`).then(function (resposta) {

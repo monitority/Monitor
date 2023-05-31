@@ -17,6 +17,12 @@ router.get("/listarEstabelecimentos/:idEmpresa", function (req, res) {
     ocorrenciasController.listarEstabelecimentosProblema(req, res);
 });
 
+router.get("/count/:idEstabelecimento", function (req, res) {
+    console.log("to na rota de count ocorrencia")
+    ocorrenciasController.count(req, res);
+});
+
+
 router.delete("/excluir/:idTotem", function (req, res) {
     ocorrenciasController.excluirTotem(req, res);
 });

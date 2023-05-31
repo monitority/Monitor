@@ -203,17 +203,15 @@
                 console.log('estou na BuscarEstabelecimento()', resposta);
                 if (resposta.ok) {
                     if (resposta.status == 204) {
-                        var tabelaFuncionarios = document.getElementById("tabela_funcionarios");
                         var mensagem = document.createElement("span");
                         mensagem.classList.add('mensagem');
                         mensagem.innerHTML = "Nenhum resultado encontrado.";
-                        tabelaFuncionarios.appendChild(mensagem);
                         throw "Nenhum resultado encontrado!!";
                     }
 
                     resposta.json().then(function (resposta) {
                         console.log("Dados recebidos: ", JSON.stringify(resposta));
-
+                  
                         var tabelaFuncionarios = document.getElementById("lista-totens");
                         tabelaFuncionarios.innerHTML = "<h3>Novas Ocorrências</h3>";
                         for (let i = 0; i < resposta.length; i++) {
@@ -265,7 +263,7 @@
             .catch(function (resposta) {
                 console.log(resposta);
             });
-
+            
             
             
 
@@ -345,6 +343,7 @@
             console.log("id e fk empresa estão errado")
         }
 
+       
         var fkfunc = document.getElementById("select_func").value
         console.log(problema + fkEstabelecimento + fkfunc + idEmpresa + idTotem) 
 
@@ -418,6 +417,26 @@
             });
 
     }
+
+    // function countOcorrencia(idEstabelecimento){
+    //     console.log('ESSE È O ID ESTABELECIMENTO'+ idEstabelecimento)
+    //     fetch(`/ocorrencia/count/${idEstabelecimento}`)
+    //         .then(function (func) {
+    //             console.log('estou na count ocorrencia');
+    //             if (func.length === 0) {
+    //                 var tabelaFuncionarios = document.getElementById("tabela_funcionarios");
+    //                 var mensagem = document.createElement("span");
+    //                 mensagem.classList.add('mensagem');
+    //                 mensagem.innerHTML = "Nenhum resultado encontrado.";
+    //                 tabelaFuncionarios.appendChild(mensagem);
+    //                 throw "Nenhum resultado encontrado!!";
+    //             }
+    //             console.log('COUNT OCORRENCIA '+  JSON.stringify(func.totalOcorrenciasConcluidas))
+    //         })
+    //         .catch(function (erro) {
+    //             console.log(erro);
+    //         });
+    // }
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
 </script>

@@ -126,8 +126,8 @@
                 <div class="filtro-ocorrencia">
                     <select name="" id="select_filtro" class="filtro-ocorrencia" onchange="listarOcorrencia()">
                         <option value='todos'>Todos</option>
-                        <option value='aberto'>Abertos</option>
-                        <option value='concluído'>Concluído</option>
+                        <option value='Aberto'>Abertos</option>
+                        <option value='Concluído'>Concluído</option>
                     </select>
                 </div>
             </div>
@@ -184,7 +184,7 @@
                         for (let i = 0; i < resposta.length; i++) {
                             var publicacao = resposta[i];
                             let cor = "red"
-                            if (publicacao.statusOcorrencia == "concluído") {
+                            if (publicacao.statusOcorrencia == "Concluído") {
                                 cor = "green";
                             }
                             // criando e manipulando elementos do HTML via JavaScript

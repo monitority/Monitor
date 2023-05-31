@@ -9,12 +9,12 @@ function listar(fkEmpresa, filtro) {
         JOIN estabelecimento e ON o.fkEstabelecimento = e.idEstabelecimento
         JOIN usuario u ON o.fkUsuario = u.idUsuario
         WHERE o.fkEmpresa = ${fkEmpresa}`;
-    } else if (filtro == 'concluído') {
+    } else if (filtro == 'Concluído') {
         var instrucao = `SELECT e.nome, o.problema, o.statusOcorrencia, u.nomeUsuario FROM ocorrencias o
         JOIN estabelecimento e ON o.fkEstabelecimento = e.idEstabelecimento
         JOIN usuario u ON o.fkUsuario = u.idUsuario
         WHERE o.fkEmpresa = ${fkEmpresa} AND o.statusOcorrencia = '${filtro}'`;
-    } else if (filtro == 'aberto') {
+    } else if (filtro == 'Aberto') {
         var instrucao = `SELECT e.nome, o.problema, o.statusOcorrencia, u.nomeUsuario FROM ocorrencias o
         JOIN estabelecimento e ON o.fkEstabelecimento = e.idEstabelecimento
         JOIN usuario u ON o.fkUsuario = u.idUsuario
@@ -51,13 +51,6 @@ function listarEstabelecimentosProblema(fkEmpresa) {
                         JOIN estabelecimento e ON t.fkEstabelecimento = e.idEstabelecimento
                         WHERE (counts.memoriaRAMPorc_count >= 7
                             OR counts.cpuPorc_count >= 7)
-                            AND NOT EXISTS (
-                                SELECT 1
-                                FROM ocorrencias o
-                                join totem t on o.fkTotem = t.idTotem 
-                                join dados d on d.fkTotem = t.idTotem
-                                WHERE  o.statusOcorrencia = 'Aberto'
-                            )
                                 `
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -98,15 +91,8 @@ function cadastrarOcorrencia(problema, fkFunc, fkEmpresa, fkEstabelecimento, fkT
 function listarFunc(fkEmpresa, fkEstabelecimento, prioridade) {
     console.log("ACESSEI O OCORRENCIA MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor do seu BD está rodando corretamente. \n\n function listarFunc()" + fkEmpresa, fkEstabelecimento, prioridade);
 
-    var qtdOcorrencias = pegarQtdOcorrencia(fkEstabelecimento);
-
-    if (qtdOcorrencias >= 10) {
-        var instrucao = `SELECT u.nomeUsuario, COUNT(*) AS totalOcorrenciasConcluidas
-        FROM ocorrencias o
-        JOIN usuario u ON o.fkUsuario = u.idUsuario
-        WHERE o.fkEstabelecimento = ${fkEstabelecimento}
-        GROUP BY u.nomeUsuario
-        order by totalOcorrenciasConcluidas desc`;
+    if ( fkEstabelecimento == 7) {
+        var instrucao = `SELECT * from usuario where fkEmpresa = ${fkEmpresa} order by cargo desc`;
     } else if (prioridade == 'Vip') {
         var instrucao = `SELECT * from usuario where fkEmpresa = ${fkEmpresa} order by cargo desc`;
     } else {
@@ -117,8 +103,11 @@ function listarFunc(fkEmpresa, fkEstabelecimento, prioridade) {
     return database.executar(instrucao);
 }
 
-function pegarQtdOcorrencia(fkEstabelecimento) {
+function count(fkEstabelecimento) {
+    console.log("TO PEGANDO A QTD DE OCORRENCIA")
     var instrucaoQtd = `select count(*) from ocorrencias where fkEstabelecimento  = ${fkEstabelecimento}`
+    console.log("TO FAZENDO A INSTRUCAO PRA PEGAR O QTD OCORRECIA " + instrucaoQtd)
+
     return database.executar(instrucaoQtd);
 }
 
@@ -129,4 +118,5 @@ module.exports = {
     listarEstabelecimentosProblema,
     cadastrarOcorrencia,
     listarFunc,
+    count
 };

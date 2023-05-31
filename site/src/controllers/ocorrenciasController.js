@@ -106,10 +106,30 @@ function cadastrarOcorrencia(req, res) {
             );
     }
 
+    function count(req, res) {
+        var fkEstabelecimento = req.params.idEstabelecimento;
+        console.log("estou na listar de ocorrenciasController " + fkEstabelecimento)
+        ocorrenciaModel.count(fkEstabelecimento)
+            .then(function (resultado) {
+                if (resultado.length > 0) {
+                    res.status(200).json(resultado);
+                } else {
+                    res.status(204).send("Nenhum resultado encontrado!")
+                }
+            }).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+
 module.exports = {
     listar,
     testar,
     listarEstabelecimentosProblema,
     cadastrarOcorrencia,
     listarFunc,
+    count
 }
