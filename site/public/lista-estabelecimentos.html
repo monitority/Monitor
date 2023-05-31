@@ -19,9 +19,10 @@
     <link rel="icon" href="./assets/imgs/sobreNos.png">
     <link rel="stylesheet" href="./css/lista-estabelecimentos.css">
     <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
+    <script src="./js/modalUpdate.js"></script>
 </head>
 
-<body onload="listarEstabelecimentosPorUsuario()">
+<body onload="navBar(),listarEstabelecimentosPorUsuario()">
 
     <!-- Div que contem a parte de navegação (parte verde do menu)-->
     <div class="navegacao">
@@ -49,34 +50,7 @@
                     <span class="titulo"> Dashboard </span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a href="./telaCadastroEstabelecimento.html" class="nav-link">
-                    <!--Imagem do ICONE DE ADICIONAR -->
-                    <span class="icone"> <i class="uil uil-estate"></i> </span>
-                    <span class="titulo"> Estabelecimento</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="./cadastro_armazem.html" class="nav-link">
-                    <!--Imagem do ICONE DE ADICIONAR -->
-                    <span class="icone"> <i class="uil uil-server-connection"></i> </span>
-                    <span class="titulo"> Cadastrar Totem</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="./telaCadastroFunc.html" class="nav-link">
-                    <!--Imagem do ICONE DE ADICIONAR -->
-                    <span class="icone"> <i class="uil uil-user-plus"></i> </span>
-                    <span class="titulo"> Funcionario</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="./lista.html" class="nav-link">
-                    <!--Imagem do ICONE DE ADICIONAR -->
-                    <span class="icone"> <i class="uil uil-bell"></i> </span>
-                    <span class="titulo"> Notificações</span>
-                </a>
-            </li>
+            
             <!-- </div> -->
             <li class="nav-item">
                 <a href="configuracoes.html" class="nav-link">
