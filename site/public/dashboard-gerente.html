@@ -225,6 +225,7 @@
                             } else if (publicacao.tipo_excedido_CPU == "CPU") {
                                 problema = "CPU"
                             }
+                            listarFuncOcorrencia(publicacao.idEstabelecimento, publicacao.prioridade, selectId)
                             // criando e manipulando elementos do HTML via JavaScript
                             var selectId = `select_func_${i}`;
                             tabelaFuncionarios.innerHTML += `       
@@ -250,10 +251,9 @@
                                         <select name="" id="${selectId}">
                                         </select>
                                     </div>
-                                    <button class="removerCard" onclick="atribuirFuncionarioOcorrencia('${problema}',${publicacao.idEstabelecimento}, ${publicacao.idTotem})">Atribuir</button>
+                                    <button class="removerCard" onclick="atribuirFuncionarioOcorrencia('${problema}',${publicacao.idEstabelecimento}, ${publicacao.idTotem}, '${selectId}')">Atribuir</button>
                                 </div>
                                 `;
-                            listarFuncOcorrencia(publicacao.idEstabelecimento, publicacao.prioridade, selectId)
                         }
                         kpiNovaOcorrencia(resposta.length, idEmpresa)
                         kpi_qtd_ocorrencia.innerHTML = resposta.length
@@ -340,7 +340,7 @@
             console.log("listei os funcionarios")
     }
 
-    function atribuirFuncionarioOcorrencia(problema, fkEstabelecimento, idTotem) {
+    function atribuirFuncionarioOcorrencia(problema, fkEstabelecimento, idTotem, selectId) {
         if (sessionStorage.ID_EMPRESA > 0) {
             idEmpresa = sessionStorage.ID_EMPRESA;
         } else if (sessionStorage.FK_EMPRESA > 0) {
@@ -350,7 +350,7 @@
         }
 
        
-        var fkfunc = document.getElementById("select_func").value
+        var fkfunc = document.getElementById(selectId).value
         console.log(problema + fkEstabelecimento + fkfunc + idEmpresa + idTotem) 
 
         fetch(`/ocorrencia/cadastrarOcorrencia`, {
