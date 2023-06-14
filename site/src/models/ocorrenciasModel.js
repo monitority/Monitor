@@ -29,28 +29,36 @@ function listarEstabelecimentosProblema(fkEmpresa) {
     console.log("ACESSEI O OCORRENCIA MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor do seu BD está rodando corretamente. \n\n function listar()");
 
     var instrucao = `SELECT t.idTotem, t.serialTotem, t.modelo, e.nome, e.idEstabelecimento, e.prioridade,
-                            CASE WHEN memoriaRAMPorc_count >= 7 THEN 'Ram' ELSE NULL END AS tipo_excedido_RAM,
-                            CASE WHEN cpuPorc_count >= 7 THEN 'CPU' ELSE NULL END AS tipo_excedido_CPU
-                        FROM (
-                            SELECT d.fkTotem,
-                                SUM(CASE WHEN d.memoriaPorc > ma.memoriaRAMPorcMax THEN 1 ELSE 0 END) AS memoriaRAMPorc_count,
-                                SUM(CASE WHEN d.processadorPorc > ma.cpuPorcMax THEN 1 ELSE 0 END) AS cpuPorc_count
-                            FROM (
-                                SELECT d.*,
-                                    ROW_NUMBER() OVER (PARTITION BY d.fkTotem ORDER BY d.dataHora DESC) AS row_num
-                                FROM dados d
-                                INNER JOIN totem t ON d.fkTotem = t.idTotem
-                                INNER JOIN estabelecimento e ON t.fkEstabelecimento = e.idEstabelecimento
-                                WHERE e.fkEmpresa = ${fkEmpresa}
-                            ) AS d
-                            JOIN metricaAviso ma ON d.fkMetricaAviso = ma.idMetricaAviso
-                            WHERE d.row_num <= 10
-                            GROUP BY d.fkTotem
-                        ) AS counts
-                        JOIN totem t ON counts.fkTotem = t.idTotem
-                        JOIN estabelecimento e ON t.fkEstabelecimento = e.idEstabelecimento
-                        WHERE (counts.memoriaRAMPorc_count >= 7
-                            OR counts.cpuPorc_count >= 7)
+                         CASE WHEN memoriaRAMPorc_count >= 7 THEN 'Ram' ELSE NULL END AS tipo_excedido_RAM,
+                         CASE WHEN cpuPorc_count >= 7 THEN 'CPU' ELSE NULL END AS tipo_excedido_CPU
+                                         FROM (
+                                             SELECT d.fkTotem,
+                                                 SUM(CASE WHEN d.memoriaPorc > ma.memoriaRAMPorcMax THEN 1 ELSE 0 END) AS memoriaRAMPorc_count,
+                                                 SUM(CASE WHEN d.processadorPorc > ma.cpuPorcMax THEN 1 ELSE 0 END) AS cpuPorc_count
+                                             FROM (
+                                                 SELECT d.*,
+                                                     ROW_NUMBER() OVER (PARTITION BY d.fkTotem ORDER BY d.dataHora DESC) AS row_num
+                                                 FROM dados d
+                                                 INNER JOIN totem t ON d.fkTotem = t.idTotem
+                                                 INNER JOIN estabelecimento e ON t.fkEstabelecimento = e.idEstabelecimento
+                                                 WHERE e.fkEmpresa = 9
+                                             ) AS d
+                                             JOIN metricaAviso ma ON d.fkMetricaAviso = ma.idMetricaAviso
+                                             WHERE d.row_num <= 10
+                                             GROUP BY d.fkTotem
+                                         ) AS counts
+                                         JOIN totem t ON counts.fkTotem = t.idTotem
+                                         JOIN estabelecimento e ON t.fkEstabelecimento = e.idEstabelecimento
+                                         WHERE (counts.memoriaRAMPorc_count >= 7
+                                             OR counts.cpuPorc_count >= 7)
+                                             AND t.idTotem NOT IN (
+                                                                         SELECT o.fkTotem
+                                                                         FROM ocorrencias o
+                                                                         JOIN totem t ON o.fkTotem = t.idTotem
+                                                                         JOIN estabelecimento e ON o.fkEstabelecimento = e.idEstabelecimento
+                                                                         JOIN empresa em ON e.fkEmpresa = em.idEmpresa
+                                                                         WHERE o.statusOcorrencia = 'Aberto' AND em.idEmpresa = 9
+                                                                         )
                                 `
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -91,12 +99,10 @@ function cadastrarOcorrencia(problema, fkFunc, fkEmpresa, fkEstabelecimento, fkT
 function listarFunc(fkEmpresa, fkEstabelecimento, prioridade) {
     console.log("ACESSEI O OCORRENCIA MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor do seu BD está rodando corretamente. \n\n function listarFunc()" + fkEmpresa, fkEstabelecimento, prioridade);
 
-    if ( fkEstabelecimento == 7) {
-        var instrucao = `SELECT * from usuario where fkEmpresa = ${fkEmpresa} order by cargo desc`;
-    } else if (prioridade == 'Vip') {
-        var instrucao = `SELECT * from usuario where fkEmpresa = ${fkEmpresa} order by cargo desc`;
+    if (prioridade == 'Vip') {
+        var instrucao = `SELECT * FROM usuario WHERE fkEmpresa = ${fkEmpresa} ORDER BY cargo DESC`;
     } else {
-        var instrucao = `SELECT * from usuario where fkEmpresa = ${fkEmpresa} order by cargo asc`;
+        var instrucao = `SELECT * FROM usuario WHERE fkEmpresa = ${fkEmpresa} AND cargo <> 'gerente' ORDER BY cargo asc`;
     }
 
     console.log("Executando a instrução SQL: \n" + instrucao);

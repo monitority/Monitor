@@ -214,6 +214,7 @@
                   
                         var tabelaFuncionarios = document.getElementById("lista-totens");
                         tabelaFuncionarios.innerHTML = "<h3>Novas Ocorrências</h3>";
+                        
                         for (let i = 0; i < resposta.length; i++) {
                             var publicacao = resposta[i];
                             var problema
@@ -225,6 +226,7 @@
                                 problema = "CPU"
                             }
                             // criando e manipulando elementos do HTML via JavaScript
+                            var selectId = `select_func_${i}`;
                             tabelaFuncionarios.innerHTML += `       
                                 <div class="card-lista-problemas">
                                     <div class="estilo-atributos">
@@ -245,13 +247,13 @@
                                     </div>
                                     <div>
                                         <span>Desginar funcionario:</span>
-                                        <select name="" id="select_func">
+                                        <select name="" id="${selectId}">
                                         </select>
                                     </div>
                                     <button class="removerCard" onclick="atribuirFuncionarioOcorrencia('${problema}',${publicacao.idEstabelecimento}, ${publicacao.idTotem})">Atribuir</button>
                                 </div>
                                 `;
-                            listarFuncOcorrencia(publicacao.idEstabelecimento, publicacao.prioridade)
+                            listarFuncOcorrencia(publicacao.idEstabelecimento, publicacao.prioridade, selectId)
                         }
                         kpiNovaOcorrencia(resposta.length, idEmpresa)
                         kpi_qtd_ocorrencia.innerHTML = resposta.length
@@ -305,7 +307,7 @@
   }
 
 
-    function listarFuncOcorrencia(idEstabelecimento, prioridade) {
+    function listarFuncOcorrencia(idEstabelecimento, prioridade, selectId) {
         fetch(`/ocorrencia/listarFunc/${idEmpresa}/${idEstabelecimento}/${prioridade}`)
             .then(resposta => resposta.json())
             .then(function (func) {
@@ -320,18 +322,22 @@
                 }
 
                 console.log("Dados recebidos!!!!!: ", JSON.stringify(func));
-                var comboFunc = document.getElementById("select_func");
+                // Dentro do loop:
+                var comboFunc = document.getElementById(selectId);
+
 
                 for (var i = 0; i < func.length; i++) {
                     var option = document.createElement('option');
                     option.value = func[i].idUsuario; // Substitua 'id_estabelecimento' pelo nome da coluna que contém o valor da opção
                     option.text = `${func[i].nomeUsuario}, ${func[i].cargo}`; // Substitua 'nome' pelo nome da coluna que contém o texto da opção
                     comboFunc.appendChild(option);
+                    console.log("estou colocando func na combo")
                 }
             })
             .catch(function (erro) {
                 console.log(erro);
             });
+            console.log("listei os funcionarios")
     }
 
     function atribuirFuncionarioOcorrencia(problema, fkEstabelecimento, idTotem) {
